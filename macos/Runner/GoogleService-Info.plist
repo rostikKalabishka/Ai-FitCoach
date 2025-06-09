@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCGd-5WHo5NaBZn0ldMAO3FJAa9fYp-SHc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>663846395985</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.aiFitCoach</string>
+	<key>PROJECT_ID</key>
+	<string>ai-fitcoach-8a7cf</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ai-fitcoach-8a7cf.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:663846395985:ios:9e3d08949548b378b39870</string>
+</dict>
+</plist>
