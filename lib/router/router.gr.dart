@@ -27,6 +27,22 @@ class LoaderRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MainSettingsScreen]
+class MainSettingsRoute extends PageRouteInfo<void> {
+  const MainSettingsRoute({List<PageRouteInfo>? children})
+    : super(MainSettingsRoute.name, initialChildren: children);
+
+  static const String name = 'MainSettingsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const MainSettingsScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [OnboardingScreen]
 class OnboardingRoute extends PageRouteInfo<void> {
   const OnboardingRoute({List<PageRouteInfo>? children})
@@ -38,6 +54,22 @@ class OnboardingRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const OnboardingScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [SettingsScreen]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute({List<PageRouteInfo>? children})
+    : super(SettingsRoute.name, initialChildren: children);
+
+  static const String name = 'SettingsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SettingsScreen();
     },
   );
 }

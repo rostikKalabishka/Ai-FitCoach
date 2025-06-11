@@ -1,6 +1,7 @@
-import 'package:ai_fit_coach/ui/widgets/custom_textfield/custom_textfield.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_textfield/regexp_strings.dart';
 import 'package:flutter/material.dart';
+
+import '../../../ui/widgets/custom_textfield/custom_textfield.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
