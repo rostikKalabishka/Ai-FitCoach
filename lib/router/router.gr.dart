@@ -27,22 +27,6 @@ class LoaderRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [MainSettingsScreen]
-class MainSettingsRoute extends PageRouteInfo<void> {
-  const MainSettingsRoute({List<PageRouteInfo>? children})
-    : super(MainSettingsRoute.name, initialChildren: children);
-
-  static const String name = 'MainSettingsRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const MainSettingsScreen();
-    },
-  );
-}
-
-/// generated route for
 /// [OnboardingScreen]
 class OnboardingRoute extends PageRouteInfo<void> {
   const OnboardingRoute({List<PageRouteInfo>? children})

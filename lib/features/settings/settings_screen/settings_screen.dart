@@ -1,5 +1,3 @@
-import 'package:ai_fit_coach/features/settings/main_settings_screen/main_settings_screen.dart';
-import 'package:ai_fit_coach/router/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -44,7 +42,7 @@ class SettingsScreen extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  height: 180,
+                  height: 120,
                   width: 400,
                   decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 29, 29, 29),
@@ -56,37 +54,6 @@ class SettingsScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainSettingsScreen()));
-                          },
-                          child: Row(
-                            children: [
-                              Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.blue,
-                                  ),
-                                  child: Icon(
-                                    Icons.settings,
-                                    size: 20,
-                                  )),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                'Main Settings',
-                                style: themeDark.textTheme.headlineLarge,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Divider(
-                          thickness: 1,
-                          color: Colors.black,
-                        ),
                         InkWell(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfileScreen()));
@@ -122,7 +89,7 @@ class SettingsScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => WeightGoalScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => FitnessGoalScreen()));
                           },
                           child: Row(
                             children: [
@@ -143,7 +110,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Weight Goal',
+                                'Fitness Goal',
                                 style: themeDark.textTheme.headlineLarge,
                               ),
                             ],
