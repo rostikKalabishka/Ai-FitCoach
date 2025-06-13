@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DifficultyLevelScreen extends StatelessWidget {
-  const DifficultyLevelScreen({super.key});
+class FitnessGoalScreen extends StatelessWidget {
+  const FitnessGoalScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +9,7 @@ class DifficultyLevelScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: themeDark.appBarTheme.backgroundColor,
-        title: Text('Difficulty Level', style: themeDark.textTheme.labelMedium),
+        title: Text('Fitness Goal', style: themeDark.textTheme.labelMedium),
         centerTitle: true,
       ),
       backgroundColor: themeDark.scaffoldBackgroundColor,
@@ -18,12 +18,12 @@ class DifficultyLevelScreen extends StatelessWidget {
           children: [
             Center(
               child: InkWell(
-                onTap: () {},
+                onTap: (){},
                 child: Container(
                   height: 60,
                   width: 400,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadiusDirectional.circular(16),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
@@ -31,40 +31,37 @@ class DifficultyLevelScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          spacing: 15,
                           children: [
-                            Icon(Icons.looks_one),
-                            SizedBox(width: 10),
-                            Text(
-                              'Beginner',
-                              style: themeDark.textTheme.headlineLarge,
-                            ),
+                            Icon(Icons.scale),
+                            Text('Weight Loss',
+                                textAlign: TextAlign.start,
+                                style: themeDark.textTheme.headlineLarge),
+                            SizedBox(width: 180),
                           ],
                         ),
                         Container(
                           height: 20,
                           width: 20,
                           decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                          ),
-                        ),
+                              shape: BoxShape.circle, color: Colors.white),
+                        )
                       ],
                     ),
                   ),
                 ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10,),
             Center(
               child: InkWell(
-                onTap: () {},
+                onTap: (){},
                 child: Container(
                   height: 60,
                   width: 400,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadiusDirectional.circular(16),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
@@ -72,40 +69,37 @@ class DifficultyLevelScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          spacing: 15,
                           children: [
-                            Icon(Icons.looks_two),
-                            SizedBox(width: 10),
-                            Text(
-                              'Intermediate',
-                              style: themeDark.textTheme.headlineLarge,
-                            ),
+                            Icon(Icons.fitness_center),
+                            Text('Muscle Gain',
+                                textAlign: TextAlign.start,
+                                style: themeDark.textTheme.headlineLarge),
+                            SizedBox(width: 180),
                           ],
                         ),
                         Container(
                           height: 20,
                           width: 20,
                           decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                          ),
-                        ),
+                              shape: BoxShape.circle, color: Colors.white),
+                        )
                       ],
                     ),
                   ),
                 ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10,),
             Center(
               child: InkWell(
-                onTap: () {},
+                onTap: (){},
                 child: Container(
                   height: 60,
                   width: 400,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadiusDirectional.circular(16),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
@@ -113,29 +107,66 @@ class DifficultyLevelScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          spacing: 15,
                           children: [
-                            Icon(Icons.looks_one),
-                            SizedBox(width: 10),
-                            Text(
-                              'Advanced',
-                              style: themeDark.textTheme.headlineLarge,
-                            ),
+                            Icon(Icons.accessibility_new),
+                            Text('Stay Fit',
+                                textAlign: TextAlign.start,
+                                style: themeDark.textTheme.headlineLarge),
+                            SizedBox(width: 215),
                           ],
                         ),
                         Container(
                           height: 20,
                           width: 20,
                           decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                          ),
-                        ),
+                              shape: BoxShape.circle, color: Colors.white),
+                        )
                       ],
                     ),
                   ),
                 ),
               ),
             ),
+            SizedBox(height: 10,),
+            Center(
+              child: InkWell(
+                onTap: (){},
+                child: Container(
+                  height: 60,
+                  width: 400,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadiusDirectional.circular(16),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          spacing: 15,
+                          children: [
+                            Icon(Icons.more_horiz),
+                            Text('Other',
+                                textAlign: TextAlign.start,
+                                style: themeDark.textTheme.headlineLarge),
+                            SizedBox(width: 230),
+                          ],
+                        ),
+                        Container(
+                          height: 20,
+                          width: 20,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.white),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
