@@ -33,7 +33,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
             height: 250,
             width: 250,
             child: Image.asset(
-              'assets/images/logo.jpg',
+              'assets/images/welcome/logo.jpg',
             ),
           ),
           TabBar(
