@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/ui/widgets/custom_calendar.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -17,12 +18,15 @@ class SettingsScreen extends StatelessWidget {
           children: [
             Column(
               children: [
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 Text(
                   'Settings',
                   style: themeDark.textTheme.labelMedium,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
                       padding:
@@ -39,8 +43,30 @@ class SettingsScreen extends StatelessWidget {
                         ],
                       ),
                     ),
+                    Row(
+                      children: [
+                        Icon(Icons.local_fire_department, size: 35,),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '0 Days Streak',
+                              style: themeDark.textTheme.headlineMedium,
+                            ),
+                            Text(
+                              'Personal Best: 0',
+                              style: themeDark.textTheme.headlineSmall,
+                            )
+                          ],
+                        )
+                      ],
+                    )
                   ],
                 ),
+                CustomCalendar(),
                 Container(
                   height: 120,
                   width: 400,
@@ -56,7 +82,8 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserProfileScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => UserProfileScreen()));
                           },
                           child: Row(
                             children: [
@@ -89,7 +116,8 @@ class SettingsScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => FitnessGoalScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => FitnessGoalScreen()));
                           },
                           child: Row(
                             children: [
@@ -138,7 +166,8 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => DifficultyLevelScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => DifficultyLevelScreen()));
                           },
                           child: Row(
                             children: [
@@ -170,7 +199,8 @@ class SettingsScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => WorkoutTypesScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => WorkoutTypesScreen()));
                           },
                           child: Row(
                             children: [
@@ -203,7 +233,9 @@ class SettingsScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => AutomaticActivityTrackingScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    AutomaticActivityTrackingScreen()));
                           },
                           child: Row(
                             children: [
@@ -251,7 +283,8 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => CalorieGoalScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => CalorieGoalScreen()));
                           },
                           child: Row(
                             children: [
@@ -283,7 +316,8 @@ class SettingsScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => WaterBalanceScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => WaterBalanceScreen()));
                           },
                           child: Row(
                             children: [
@@ -332,7 +366,9 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => DoNotDisturbModeScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    DoNotDisturbModeScreen()));
                           },
                           child: Row(
                             children: [
@@ -379,7 +415,9 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => AccountManagementScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    AccountManagementScreen()));
                           },
                           child: Row(
                             children: [
@@ -411,7 +449,8 @@ class SettingsScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => PrivacyScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => PrivacyScreen()));
                           },
                           child: Row(
                             children: [
@@ -444,7 +483,9 @@ class SettingsScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => LanguageLocalizationScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    LanguageLocalizationScreen()));
                           },
                           child: Row(
                             children: [
@@ -493,7 +534,8 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => PrivacyPolicyScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => PrivacyPolicyScreen()));
                           },
                           child: Row(
                             children: [
@@ -524,7 +566,8 @@ class SettingsScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => RateUsScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => RateUsScreen()));
                           },
                           child: Row(
                             children: [
@@ -558,7 +601,9 @@ class SettingsScreen extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => DeleteYourAccountScreen()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    DeleteYourAccountScreen()));
                           },
                           child: Row(
                             children: [
@@ -595,7 +640,7 @@ class SettingsScreen extends StatelessWidget {
         ),
         SizedBox(
           height: 40,
-        )
+        ),
       ]),
     );
   }
