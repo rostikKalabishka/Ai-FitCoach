@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
-class WaterBalanceScreen extends StatelessWidget {
+class WaterBalanceScreen extends StatefulWidget {
   const WaterBalanceScreen({super.key});
+
+  @override
+  State<WaterBalanceScreen> createState() => _WaterBalanceScreenState();
+}
+
+class _WaterBalanceScreenState extends State<WaterBalanceScreen> {
+bool isSwitched = false;
+bool isSwitched1 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +48,14 @@ class WaterBalanceScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                          ),
-                        ),
+                        Switch(
+                          value: isSwitched,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched = value;
+                            });
+                          },
+                        )
                       ],
                     ),
                   ),
@@ -81,14 +89,14 @@ class WaterBalanceScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                          ),
-                        ),
+                        Switch(
+                          value: isSwitched1,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched1 = value;
+                            });
+                          },
+                        )
                       ],
                     ),
                   ),
