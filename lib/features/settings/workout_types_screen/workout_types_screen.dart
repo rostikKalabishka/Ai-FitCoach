@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
-class WorkoutTypesScreen extends StatelessWidget {
+class WorkoutTypesScreen extends StatefulWidget {
   const WorkoutTypesScreen({super.key});
+
+  @override
+  State<WorkoutTypesScreen> createState() => _WorkoutTypesScreenState();
+}
+
+class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
+bool isSwitched = false;
+bool isSwitched1 = false;
+bool isSwitched2 = false;
+bool isSwitched3 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -41,14 +51,14 @@ class WorkoutTypesScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Container(
-                            height: 20,
-                            width: 20,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                          ),
+                          Switch(
+                          value: isSwitched,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched = value;
+                            });
+                          },
+                        )
                         ],
                       ),
                     ),
@@ -82,14 +92,14 @@ class WorkoutTypesScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Container(
-                            height: 20,
-                            width: 20,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                          ),
+                          Switch(
+                          value: isSwitched1,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched1 = value;
+                            });
+                          },
+                        )
                         ],
                       ),
                     ),
@@ -123,14 +133,14 @@ class WorkoutTypesScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Container(
-                            height: 20,
-                            width: 20,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                          ),
+                          Switch(
+                          value: isSwitched2,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched2 = value;
+                            });
+                          },
+                        )
                         ],
                       ),
                     ),
@@ -164,14 +174,14 @@ class WorkoutTypesScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Container(
-                            height: 20,
-                            width: 20,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                          ),
+                          Switch(
+                          value: isSwitched3,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched3 = value;
+                            });
+                          },
+                        )
                         ],
                       ),
                     ),

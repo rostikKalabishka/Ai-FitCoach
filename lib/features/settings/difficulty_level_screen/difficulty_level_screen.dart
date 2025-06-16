@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-class DifficultyLevelScreen extends StatelessWidget {
+class DifficultyLevelScreen extends StatefulWidget {
   const DifficultyLevelScreen({super.key});
+
+  @override
+  State<DifficultyLevelScreen> createState() => _DifficultyLevelScreenState();
+}
+
+class _DifficultyLevelScreenState extends State<DifficultyLevelScreen> {
+bool isSwitched = false;
+bool isSwitched1 = false;
+bool isSwitched2 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +49,14 @@ class DifficultyLevelScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                          ),
-                        ),
+                        Switch(
+                          value: isSwitched,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched = value;
+                            });
+                          },
+                        )
                       ],
                     ),
                   ),
@@ -81,14 +90,14 @@ class DifficultyLevelScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                          ),
-                        ),
+                        Switch(
+                          value: isSwitched1,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched1 = value;
+                            });
+                          },
+                        )
                       ],
                     ),
                   ),
@@ -122,14 +131,14 @@ class DifficultyLevelScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
-                          ),
-                        ),
+                        Switch(
+                          value: isSwitched2,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched2 = value;
+                            });
+                          },
+                        )
                       ],
                     ),
                   ),

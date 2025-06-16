@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
-class DoNotDisturbModeScreen extends StatelessWidget {
+class DoNotDisturbModeScreen extends StatefulWidget {
   const DoNotDisturbModeScreen({super.key});
+
+  @override
+  State<DoNotDisturbModeScreen> createState() => _DoNotDisturbModeScreenState();
+}
+
+class _DoNotDisturbModeScreenState extends State<DoNotDisturbModeScreen> {
+bool isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +46,14 @@ class DoNotDisturbModeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Container(
-                      height: 20,
-                      width: 20,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white,
-                      ),
-                    ),
+                    Switch(
+                          value: isSwitched,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched = value;
+                            });
+                          },
+                        )
                   ],
                 ),
               ),

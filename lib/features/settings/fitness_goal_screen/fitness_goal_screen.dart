@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
-class FitnessGoalScreen extends StatelessWidget {
+class FitnessGoalScreen extends StatefulWidget {
   const FitnessGoalScreen({super.key});
+
+  @override
+  State<FitnessGoalScreen> createState() => _FitnessGoalScreenState();
+}
+
+class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
+  bool isSwitched = false;
+  bool isSwitched1 = false;
+  bool isSwitched2 = false;
+  bool isSwitched3 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +28,7 @@ class FitnessGoalScreen extends StatelessWidget {
           children: [
             Center(
               child: InkWell(
-                onTap: (){},
+                onTap: () {},
                 child: Container(
                   height: 60,
                   width: 400,
@@ -32,20 +42,22 @@ class FitnessGoalScreen extends StatelessWidget {
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: 15,
+                          spacing: 10,
                           children: [
                             Icon(Icons.scale),
                             Text('Weight Loss',
                                 textAlign: TextAlign.start,
                                 style: themeDark.textTheme.headlineLarge),
-                            SizedBox(width: 180),
+                            SizedBox(width: 170),
                           ],
                         ),
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle, color: Colors.white),
+                        Switch(
+                          value: isSwitched,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched = value;
+                            });
+                          },
                         )
                       ],
                     ),
@@ -53,10 +65,12 @@ class FitnessGoalScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Center(
               child: InkWell(
-                onTap: (){},
+                onTap: () {},
                 child: Container(
                   height: 60,
                   width: 400,
@@ -70,20 +84,22 @@ class FitnessGoalScreen extends StatelessWidget {
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: 15,
+                          spacing: 10,
                           children: [
                             Icon(Icons.fitness_center),
                             Text('Muscle Gain',
                                 textAlign: TextAlign.start,
                                 style: themeDark.textTheme.headlineLarge),
-                            SizedBox(width: 180),
+                            SizedBox(width: 170),
                           ],
                         ),
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle, color: Colors.white),
+                        Switch(
+                          value: isSwitched1,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched1 = value;
+                            });
+                          },
                         )
                       ],
                     ),
@@ -91,10 +107,12 @@ class FitnessGoalScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Center(
               child: InkWell(
-                onTap: (){},
+                onTap: () {},
                 child: Container(
                   height: 60,
                   width: 400,
@@ -108,20 +126,22 @@ class FitnessGoalScreen extends StatelessWidget {
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: 15,
+                          spacing: 10,
                           children: [
                             Icon(Icons.accessibility_new),
                             Text('Stay Fit',
                                 textAlign: TextAlign.start,
                                 style: themeDark.textTheme.headlineLarge),
-                            SizedBox(width: 215),
+                            SizedBox(width: 200),
                           ],
                         ),
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle, color: Colors.white),
+                        Switch(
+                          value: isSwitched2,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched2 = value;
+                            });
+                          },
                         )
                       ],
                     ),
@@ -129,10 +149,12 @@ class FitnessGoalScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Center(
               child: InkWell(
-                onTap: (){},
+                onTap: () {},
                 child: Container(
                   height: 60,
                   width: 400,
@@ -146,20 +168,22 @@ class FitnessGoalScreen extends StatelessWidget {
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: 15,
+                          spacing: 10,
                           children: [
                             Icon(Icons.more_horiz),
                             Text('Other',
                                 textAlign: TextAlign.start,
                                 style: themeDark.textTheme.headlineLarge),
-                            SizedBox(width: 230),
+                            SizedBox(width: 210),
                           ],
                         ),
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle, color: Colors.white),
+                        Switch(
+                          value: isSwitched3,
+                          onChanged: (bool value) {
+                            setState(() {
+                              isSwitched3 = value;
+                            });
+                          },
                         )
                       ],
                     ),
