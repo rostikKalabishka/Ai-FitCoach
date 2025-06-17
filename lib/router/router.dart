@@ -1,8 +1,13 @@
+import 'package:ai_fit_coach/features/auth/auth_screen/auth_screen.dart';
+
+import 'package:ai_fit_coach/features/home/home.dart';
 import 'package:ai_fit_coach/features/loader/view/loader_screen.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 
+import '../features/auth/welcome/welcome_screen.dart';
 import '../features/onboarding/onboarding.dart';
-import '../features/settings/settings_screen/view.dart';
+
 part 'router.gr.dart';
 
 @AutoRouterConfig()
@@ -18,8 +23,16 @@ class AppRouter extends RootStackRouter {
           path: '/onboarding',
         ),
         AutoRoute(
-          page: SettingsRoute.page,
-          path: '/settings',
+          page: WelcomeRoute.page,
+          path: '/welcome',
+        ),
+        AutoRoute(
+          page: AuthRoute.page,
+          path: '/welcome/auth',
+        ),
+        AutoRoute(
+          page: HomeRoute.page,
+          path: '/home',
         ),
       ];
 }

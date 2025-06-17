@@ -11,26 +11,129 @@
 part of 'router.dart';
 
 /// generated route for
+/// [AuthScreen]
+class AuthRoute extends PageRouteInfo<AuthRouteArgs> {
+  AuthRoute({
+    Key? key,
+    required int initialIndex,
+    List<PageRouteInfo>? children,
+  }) : super(
+          AuthRoute.name,
+          args: AuthRouteArgs(key: key, initialIndex: initialIndex),
+          initialChildren: children,
+        );
+
+  static const String name = 'AuthRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<AuthRouteArgs>();
+      return AuthScreen(key: args.key, initialIndex: args.initialIndex);
+    },
+  );
+}
+
+class AuthRouteArgs {
+  const AuthRouteArgs({this.key, required this.initialIndex});
+
+  final Key? key;
+
+  final int initialIndex;
+
+  @override
+  String toString() {
+    return 'AuthRouteArgs{key: $key, initialIndex: $initialIndex}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! AuthRouteArgs) return false;
+    return key == other.key && initialIndex == other.initialIndex;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ initialIndex.hashCode;
+}
+
+/// generated route for
+/// [HomeScreen]
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute({List<PageRouteInfo>? children})
+      : super(HomeRoute.name, initialChildren: children);
+
+  static const String name = 'HomeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const HomeScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [LoaderScreen]
-class LoaderRoute extends PageRouteInfo<void> {
-  const LoaderRoute({List<PageRouteInfo>? children})
-    : super(LoaderRoute.name, initialChildren: children);
+class LoaderRoute extends PageRouteInfo<LoaderRouteArgs> {
+  LoaderRoute({
+    Key? key,
+    bool showCircularProgressIndicator = false,
+    List<PageRouteInfo>? children,
+  }) : super(
+          LoaderRoute.name,
+          args: LoaderRouteArgs(
+            key: key,
+            showCircularProgressIndicator: showCircularProgressIndicator,
+          ),
+          initialChildren: children,
+        );
 
   static const String name = 'LoaderRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const LoaderScreen();
+      final args = data.argsAs<LoaderRouteArgs>(
+        orElse: () => const LoaderRouteArgs(),
+      );
+      return LoaderScreen(
+        key: args.key,
+        showCircularProgressIndicator: args.showCircularProgressIndicator,
+      );
     },
   );
+}
+
+class LoaderRouteArgs {
+  const LoaderRouteArgs({this.key, this.showCircularProgressIndicator = false});
+
+  final Key? key;
+
+  final bool showCircularProgressIndicator;
+
+  @override
+  String toString() {
+    return 'LoaderRouteArgs{key: $key, showCircularProgressIndicator: $showCircularProgressIndicator}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! LoaderRouteArgs) return false;
+    return key == other.key &&
+        showCircularProgressIndicator == other.showCircularProgressIndicator;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ showCircularProgressIndicator.hashCode;
 }
 
 /// generated route for
 /// [OnboardingScreen]
 class OnboardingRoute extends PageRouteInfo<void> {
   const OnboardingRoute({List<PageRouteInfo>? children})
-    : super(OnboardingRoute.name, initialChildren: children);
+      : super(OnboardingRoute.name, initialChildren: children);
 
   static const String name = 'OnboardingRoute';
 
@@ -43,17 +146,17 @@ class OnboardingRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SettingsScreen]
-class SettingsRoute extends PageRouteInfo<void> {
-  const SettingsRoute({List<PageRouteInfo>? children})
-    : super(SettingsRoute.name, initialChildren: children);
+/// [WelcomeScreen]
+class WelcomeRoute extends PageRouteInfo<void> {
+  const WelcomeRoute({List<PageRouteInfo>? children})
+      : super(WelcomeRoute.name, initialChildren: children);
 
-  static const String name = 'SettingsRoute';
+  static const String name = 'WelcomeRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const SettingsScreen();
+      return const WelcomeScreen();
     },
   );
 }
