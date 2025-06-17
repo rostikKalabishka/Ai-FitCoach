@@ -1,6 +1,6 @@
 
 // import 'package:ai_fit_coach/features/auth/auth.dart';
-import 'package:ai_fit_coach/features/settings/settings_screen/view.dart';
+import 'package:ai_fit_coach/features/challenges/challenges.dart';
 import 'package:ai_fit_coach/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +18,7 @@ class _AiFitCoachAppState extends State<AiFitCoachApp> {
       title: 'Flutter Demo',
       theme: themeDark,
       debugShowCheckedModeBanner: false,
-      home: SettingsScreen()
+      home: ChallengesScreen()
       );
   }
 }
