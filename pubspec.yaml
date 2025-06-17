@@ -87,6 +87,12 @@ flutter:
     - assets/images/welcome/
     - assets/images/onboarding/
     - assets/images/languages/
+    - assets/images/challenges/food/
+    - assets/images/challenges/exercise/
+    - assets/images/challenges/hydration/
+    - assets/images/challenges/mental/
+    - assets/images/challenges/sleep_and_relax/
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

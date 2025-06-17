@@ -1,6 +1,5 @@
 import 'package:ai_fit_coach/app/app_initializer.dart';
 import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
-
 import 'package:ai_fit_coach/router/router.dart';
 import 'package:ai_fit_coach/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
