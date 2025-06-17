@@ -95,13 +95,21 @@ class UserApiClient {
       final LoginResult loginResult = await FacebookAuth.instance.login();
 
       if (loginResult.status == LoginStatus.success) {
-        final AccessToken accessToken = loginResult.accessToken!;
+        final AccessToken? accessToken = loginResult.accessToken;
+
+        if (accessToken == null) {
+          print('Facebook login success, але AccessToken відсутній');
+          return;
+        }
+
+        print('Facebook Access Token: ${accessToken.tokenString}');
+        print('Token expires: ${accessToken.tokenString}');
 
         final OAuthCredential credential =
             FacebookAuthProvider.credential(accessToken.tokenString);
 
         final UserCredential userCredential =
-            await FirebaseAuth.instance.signInWithCredential(credential);
+            await _firebaseAuth.signInWithCredential(credential);
 
         final User? firebaseUser = userCredential.user;
 
@@ -120,7 +128,8 @@ class UserApiClient {
           }
         }
       } else {
-        print('Facebook login failed: ${loginResult.status}');
+        print(
+            'Facebook login failed: ${loginResult.status} - ${loginResult.message}');
       }
     } catch (e) {
       print('Facebook sign-in error: $e');
@@ -139,7 +148,7 @@ class UserApiClient {
         final credential = GoogleAuthProvider.credential(
             accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
         final UserCredential userCredential =
-            await FirebaseAuth.instance.signInWithCredential(credential);
+            await _firebaseAuth.signInWithCredential(credential);
 
         final User? firebaseUser = userCredential.user;
 
@@ -167,7 +176,7 @@ class UserApiClient {
       final twitterProvider = TwitterAuthProvider();
 
       final UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithProvider(twitterProvider);
+          await _firebaseAuth.signInWithProvider(twitterProvider);
 
       final User? firebaseUser = userCredential.user;
 
