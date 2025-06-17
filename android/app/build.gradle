@@ -45,3 +45,5 @@ android {
 flutter {
     source = "../.."
 }
+
+implementation 'com.facebook.android:facebook-android-sdk:[4,5)'

@@ -1,7 +1,10 @@
+import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
 import 'package:ai_fit_coach/features/onboarding/model/model.dart';
+import 'package:ai_fit_coach/router/router.dart';
 import 'package:ai_fit_coach/ui/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class OnboardingScreen extends StatefulWidget {
@@ -30,7 +33,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    // final theme = Theme.of(context);
     final _size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -113,7 +116,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ? Colors.blue
                       : Colors.grey[800],
                   onPressed: () {
-                    handleOnboardingAction();
+                    handleOnboardingAction(context);
                   },
                   child: Text(
                     _currentIndex == arr.length - 1 ? 'START' : 'NEXT',
@@ -128,12 +131,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  void handleOnboardingAction() {
+  void handleOnboardingAction(BuildContext context) {
     if (_currentIndex < arr.length - 1) {
       _pageController.nextPage(
         duration: Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
-    } else {}
+    } else {
+      context.read<SettingsCubit>().setOnboardingShown();
+      AutoRouter.of(context)
+          .pushAndPopUntil(WelcomeRoute(), predicate: (route) => false);
+    }
   }
 }
