@@ -8,9 +8,9 @@ class DifficultyLevelScreen extends StatefulWidget {
 }
 
 class _DifficultyLevelScreenState extends State<DifficultyLevelScreen> {
-bool isSwitched = false;
-bool isSwitched1 = false;
-bool isSwitched2 = false;
+  bool isSwitched = false;
+  bool isSwitched1 = false;
+  bool isSwitched2 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ bool isSwitched2 = false;
                             ),
                           ],
                         ),
-                        Switch(
+                        Switch.adaptive(
                           value: isSwitched,
                           onChanged: (bool value) {
                             setState(() {
@@ -90,7 +90,7 @@ bool isSwitched2 = false;
                             ),
                           ],
                         ),
-                        Switch(
+                        Switch.adaptive(
                           value: isSwitched1,
                           onChanged: (bool value) {
                             setState(() {
@@ -131,7 +131,7 @@ bool isSwitched2 = false;
                             ),
                           ],
                         ),
-                        Switch(
+                        Switch.adaptive(
                           value: isSwitched2,
                           onChanged: (bool value) {
                             setState(() {

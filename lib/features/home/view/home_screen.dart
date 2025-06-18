@@ -1,3 +1,5 @@
+import 'package:ai_fit_coach/router/router.dart';
+import 'package:ai_fit_coach/ui/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -7,10 +9,52 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home page'),
-      ),
+    return AutoTabsRouter(
+      routes: [
+        SettingsRoute(),
+        SettingsRoute(),
+        // SettingsRoute(),
+        // SettingsRoute()
+      ],
+      builder: (context, child) {
+        final tabsRouter = AutoTabsRouter.of(context);
+        return Scaffold(
+          body: child,
+          bottomNavigationBar: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              PlatformNavigationBar(
+                tabsRouter: tabsRouter,
+                onSelect: (int index) {
+                  _openPage(index, tabsRouter);
+                },
+                items: <BottomNavigationBarItem>[
+                  BottomNavigationBarItem(
+                    label: 'Home',
+                    icon: Icon(Icons.home),
+                  ),
+                  BottomNavigationBarItem(
+                    label: 'Challenges',
+                    icon: Icon(Icons.local_fire_department),
+                  ),
+                  // BottomNavigationBarItem(
+                  //   label: 'AI assistant',
+                  //   icon: Icon(Icons.list),
+                  // ),
+                  // BottomNavigationBarItem(
+                  //   label: 'Settings',
+                  //   icon: Icon(Icons.settings),
+                  // ),
+                ],
+              )
+            ],
+          ),
+        );
+      },
     );
+  }
+
+  void _openPage(int index, TabsRouter tabsRouter) {
+    tabsRouter.setActiveIndex(index);
   }
 }

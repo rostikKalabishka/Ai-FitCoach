@@ -8,7 +8,7 @@ class DoNotDisturbModeScreen extends StatefulWidget {
 }
 
 class _DoNotDisturbModeScreenState extends State<DoNotDisturbModeScreen> {
-bool isSwitched = false;
+  bool isSwitched = false;
 
   @override
   Widget build(BuildContext context) {
@@ -46,14 +46,14 @@ bool isSwitched = false;
                         ),
                       ],
                     ),
-                    Switch(
-                          value: isSwitched,
-                          onChanged: (bool value) {
-                            setState(() {
-                              isSwitched = value;
-                            });
-                          },
-                        )
+                    Switch.adaptive(
+                      value: isSwitched,
+                      onChanged: (bool value) {
+                        setState(() {
+                          isSwitched = value;
+                        });
+                      },
+                    )
                   ],
                 ),
               ),

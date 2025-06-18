@@ -8,8 +8,8 @@ class WaterBalanceScreen extends StatefulWidget {
 }
 
 class _WaterBalanceScreenState extends State<WaterBalanceScreen> {
-bool isSwitched = false;
-bool isSwitched1 = false;
+  bool isSwitched = false;
+  bool isSwitched1 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ bool isSwitched1 = false;
                             ),
                           ],
                         ),
-                        Switch(
+                        Switch.adaptive(
                           value: isSwitched,
                           onChanged: (bool value) {
                             setState(() {
@@ -89,7 +89,7 @@ bool isSwitched1 = false;
                             ),
                           ],
                         ),
-                        Switch(
+                        Switch.adaptive(
                           value: isSwitched1,
                           onChanged: (bool value) {
                             setState(() {
