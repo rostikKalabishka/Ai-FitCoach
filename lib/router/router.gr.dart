@@ -58,6 +58,22 @@ class AuthRouteArgs {
 }
 
 /// generated route for
+/// [ChallengesScreen]
+class ChallengesRoute extends PageRouteInfo<void> {
+  const ChallengesRoute({List<PageRouteInfo>? children})
+      : super(ChallengesRoute.name, initialChildren: children);
+
+  static const String name = 'ChallengesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ChallengesScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -157,6 +173,22 @@ class SettingsRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const SettingsScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [UserParametersScreen]
+class UserParametersRoute extends PageRouteInfo<void> {
+  const UserParametersRoute({List<PageRouteInfo>? children})
+      : super(UserParametersRoute.name, initialChildren: children);
+
+  static const String name = 'UserParametersRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const UserParametersScreen();
     },
   );
 }

@@ -1,7 +1,9 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 
 import '../challenges.dart';
 
+@RoutePage()
 class ChallengesScreen extends StatefulWidget {
   const ChallengesScreen({super.key});
 
@@ -71,7 +73,9 @@ class _ChallengesScreenState extends State<ChallengesScreen> {
               },
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Expanded(
             child: screens[selectedIndex],
           ),

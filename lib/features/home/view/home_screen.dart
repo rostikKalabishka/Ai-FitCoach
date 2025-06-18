@@ -12,9 +12,9 @@ class HomeScreen extends StatelessWidget {
     return AutoTabsRouter(
       routes: [
         SettingsRoute(),
-        SettingsRoute(),
-        // SettingsRoute(),
-        // SettingsRoute()
+        ChallengesRoute(),
+        UserParametersRoute(),
+        SettingsRoute()
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
@@ -37,14 +37,14 @@ class HomeScreen extends StatelessWidget {
                     label: 'Challenges',
                     icon: Icon(Icons.local_fire_department),
                   ),
-                  // BottomNavigationBarItem(
-                  //   label: 'AI assistant',
-                  //   icon: Icon(Icons.list),
-                  // ),
-                  // BottomNavigationBarItem(
-                  //   label: 'Settings',
-                  //   icon: Icon(Icons.settings),
-                  // ),
+                  BottomNavigationBarItem(
+                    label: 'AI assistant',
+                    icon: Icon(Icons.list),
+                  ),
+                  BottomNavigationBarItem(
+                    label: 'Settings',
+                    icon: Icon(Icons.settings),
+                  ),
                 ],
               )
             ],
