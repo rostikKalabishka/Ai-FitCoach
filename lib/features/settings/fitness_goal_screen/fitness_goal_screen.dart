@@ -51,7 +51,7 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
                             SizedBox(width: 170),
                           ],
                         ),
-                        Switch(
+                        Switch.adaptive(
                           value: isSwitched,
                           onChanged: (bool value) {
                             setState(() {
@@ -93,7 +93,7 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
                             SizedBox(width: 170),
                           ],
                         ),
-                        Switch(
+                        Switch.adaptive(
                           value: isSwitched1,
                           onChanged: (bool value) {
                             setState(() {
@@ -135,7 +135,7 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
                             SizedBox(width: 200),
                           ],
                         ),
-                        Switch(
+                        Switch.adaptive(
                           value: isSwitched2,
                           onChanged: (bool value) {
                             setState(() {
@@ -177,7 +177,7 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
                             SizedBox(width: 210),
                           ],
                         ),
-                        Switch(
+                        Switch.adaptive(
                           value: isSwitched3,
                           onChanged: (bool value) {
                             setState(() {

@@ -8,50 +8,49 @@ class WorkoutTypesScreen extends StatefulWidget {
 }
 
 class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
-bool isSwitched = false;
-bool isSwitched1 = false;
-bool isSwitched2 = false;
-bool isSwitched3 = false;
+  bool isSwitched = false;
+  bool isSwitched1 = false;
+  bool isSwitched2 = false;
+  bool isSwitched3 = false;
 
   @override
   Widget build(BuildContext context) {
     final themeDark = Theme.of(context);
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: themeDark.appBarTheme.backgroundColor,
-          title:
-              Text('Workout Types', style: themeDark.textTheme.labelMedium),
-          centerTitle: true,
-        ),
-        backgroundColor: themeDark.scaffoldBackgroundColor,
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Center(
-                child: InkWell(
-                  onTap: () {},
-                  child: Container(
-                    height: 60,
-                    width: 400,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(Icons.directions_run),
-                              SizedBox(width: 10),
-                              Text(
-                                'Cardio',
-                                style: themeDark.textTheme.headlineLarge,
-                              ),
-                            ],
-                          ),
-                          Switch(
+      appBar: AppBar(
+        backgroundColor: themeDark.appBarTheme.backgroundColor,
+        title: Text('Workout Types', style: themeDark.textTheme.labelMedium),
+        centerTitle: true,
+      ),
+      backgroundColor: themeDark.scaffoldBackgroundColor,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  height: 60,
+                  width: 400,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.directions_run),
+                            SizedBox(width: 10),
+                            Text(
+                              'Cardio',
+                              style: themeDark.textTheme.headlineLarge,
+                            ),
+                          ],
+                        ),
+                        Switch.adaptive(
                           value: isSwitched,
                           onChanged: (bool value) {
                             setState(() {
@@ -59,40 +58,40 @@ bool isSwitched3 = false;
                             });
                           },
                         )
-                        ],
-                      ),
+                      ],
                     ),
                   ),
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Center(
-                child: InkWell(
-                  onTap: () {},
-                  child: Container(
-                    height: 60,
-                    width: 400,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(Icons.fitness_center),
-                              SizedBox(width: 10),
-                              Text(
-                                'Strength',
-                                style: themeDark.textTheme.headlineLarge,
-                              ),
-                            ],
-                          ),
-                          Switch(
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Center(
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  height: 60,
+                  width: 400,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.fitness_center),
+                            SizedBox(width: 10),
+                            Text(
+                              'Strength',
+                              style: themeDark.textTheme.headlineLarge,
+                            ),
+                          ],
+                        ),
+                        Switch.adaptive(
                           value: isSwitched1,
                           onChanged: (bool value) {
                             setState(() {
@@ -100,40 +99,40 @@ bool isSwitched3 = false;
                             });
                           },
                         )
-                        ],
-                      ),
+                      ],
                     ),
                   ),
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Center(
-                child: InkWell(
-                  onTap: () {},
-                  child: Container(
-                    height: 60,
-                    width: 400,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(Icons.self_improvement),
-                              SizedBox(width: 10),
-                              Text(
-                                'Yoga',
-                                style: themeDark.textTheme.headlineLarge,
-                              ),
-                            ],
-                          ),
-                          Switch(
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Center(
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  height: 60,
+                  width: 400,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.self_improvement),
+                            SizedBox(width: 10),
+                            Text(
+                              'Yoga',
+                              style: themeDark.textTheme.headlineLarge,
+                            ),
+                          ],
+                        ),
+                        Switch.adaptive(
                           value: isSwitched2,
                           onChanged: (bool value) {
                             setState(() {
@@ -141,40 +140,40 @@ bool isSwitched3 = false;
                             });
                           },
                         )
-                        ],
-                      ),
+                      ],
                     ),
                   ),
                 ),
               ),
-               SizedBox(
-                height: 10,
-              ),
-              Center(
-                child: InkWell(
-                  onTap: () {},
-                  child: Container(
-                    height: 60,
-                    width: 400,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(Icons.flash_on),
-                              SizedBox(width: 10),
-                              Text(
-                                'HIIT',
-                                style: themeDark.textTheme.headlineLarge,
-                              ),
-                            ],
-                          ),
-                          Switch(
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Center(
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  height: 60,
+                  width: 400,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.flash_on),
+                            SizedBox(width: 10),
+                            Text(
+                              'HIIT',
+                              style: themeDark.textTheme.headlineLarge,
+                            ),
+                          ],
+                        ),
+                        Switch.adaptive(
                           value: isSwitched3,
                           onChanged: (bool value) {
                             setState(() {
@@ -182,16 +181,16 @@ bool isSwitched3 = false;
                             });
                           },
                         )
-                        ],
-                      ),
+                      ],
                     ),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-        bottomNavigationBar: Padding(
+      ),
+      bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 75, vertical: 32),
         child: SizedBox(
           height: 60,
@@ -232,6 +231,6 @@ bool isSwitched3 = false;
           ),
         ),
       ),
-        );
+    );
   }
 }

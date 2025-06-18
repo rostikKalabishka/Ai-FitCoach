@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 final themeDark = ThemeData(
@@ -27,3 +28,11 @@ final themeDark = ThemeData(
       headlineSmall: TextStyle(
           fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold),
     ));
+
+extension ThemePlatformExtension on ThemeData {
+  bool get isAndroid => defaultTargetPlatform == TargetPlatform.android;
+  bool get isCupertino => [TargetPlatform.iOS, TargetPlatform.macOS]
+      .contains(defaultTargetPlatform);
+  Color get cupertinoAlertColor => const Color(0xFFF82B10);
+  Color get cupertinoActionColor => const Color(0xFF3478F7);
+}

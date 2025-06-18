@@ -1,6 +1,7 @@
 import 'package:ai_fit_coach/features/auth/auth.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
 import 'package:ai_fit_coach/router/router.dart';
+import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,8 +27,7 @@ class WelcomeScreen extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(
-                        'assets/images/welcome_screen_background.png'),
+                    image: AssetImage(AppConst.welcomeBackground),
                     fit: BoxFit.cover,
                   ),
                 ),

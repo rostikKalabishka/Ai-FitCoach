@@ -2,6 +2,7 @@ import 'package:ai_fit_coach/features/auth/auth_screen/auth_screen.dart';
 
 import 'package:ai_fit_coach/features/home/home.dart';
 import 'package:ai_fit_coach/features/loader/view/loader_screen.dart';
+import 'package:ai_fit_coach/features/settings/settings_screen/settings_screen.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -30,9 +31,11 @@ class AppRouter extends RootStackRouter {
           page: AuthRoute.page,
           path: '/welcome/auth',
         ),
-        AutoRoute(
-          page: HomeRoute.page,
-          path: '/home',
-        ),
+        AutoRoute(page: HomeRoute.page, path: '/home', children: [
+          AutoRoute(
+            page: SettingsRoute.page,
+            path: 'settings',
+          ),
+        ]),
       ];
 }
