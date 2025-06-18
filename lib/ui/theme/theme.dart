@@ -1,10 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 final themeDark = ThemeData(
     colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-    iconTheme: IconThemeData(
-      color: Colors.white
-    ),
+    iconTheme: IconThemeData(color: Colors.white),
     appBarTheme: AppBarTheme(
         elevation: 0,
         backgroundColor: Colors.black,
@@ -22,10 +21,18 @@ final themeDark = ThemeData(
           fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
       labelSmall: TextStyle(
           fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
-          headlineLarge: TextStyle(
+      headlineLarge: TextStyle(
           fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
-          headlineMedium: TextStyle(
+      headlineMedium: TextStyle(
           fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold),
-          headlineSmall: TextStyle(
+      headlineSmall: TextStyle(
           fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold),
     ));
+
+extension ThemePlatformExtension on ThemeData {
+  bool get isAndroid => defaultTargetPlatform == TargetPlatform.android;
+  bool get isCupertino => [TargetPlatform.iOS, TargetPlatform.macOS]
+      .contains(defaultTargetPlatform);
+  Color get cupertinoAlertColor => const Color(0xFFF82B10);
+  Color get cupertinoActionColor => const Color(0xFF3478F7);
+}
