@@ -17,7 +17,7 @@ class MentalChallenges extends StatelessWidget {
             ChallengeCard(
               title: '3-Minute Daily Journal',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/food/background_food.png',
+              imagePath: 'assets/images/challenges/mental/1.png',
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -28,7 +28,7 @@ class MentalChallenges extends StatelessWidget {
             ChallengeCard(
               title: 'Screen-Free Time',
               subtitle: '5 Days challenge',
-              imagePath: 'assets/images/challenges/food/background_food.png',
+              imagePath: 'assets/images/challenges/mental/2.png',
               price: '4.69',
               onJoin: () {},
               onInfoTap: () {},
@@ -39,7 +39,7 @@ class MentalChallenges extends StatelessWidget {
             ChallengeCard(
               title: 'Daily Positive Thought',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/food/background_food.png',
+              imagePath: 'assets/images/challenges/mental/3.png',
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -50,7 +50,7 @@ class MentalChallenges extends StatelessWidget {
             ChallengeCard(
               title: 'Nightly Gratitude',
               subtitle: '14 days challenge',
-              imagePath: 'assets/images/challenges/food/background_food.png',
+              imagePath: 'assets/images/challenges/mental/4.png',
               price: '4.59',
               onJoin: () {},
               onInfoTap: () {},
@@ -61,7 +61,7 @@ class MentalChallenges extends StatelessWidget {
             ChallengeCard(
               title: "One Real Talk",
               subtitle: '7 days challenge',
-              imagePath: 'assets/images/challenges/food/background_food.png',
+              imagePath: 'assets/images/challenges/mental/5.png',
               price: '9.99',
               onJoin: () {},
               onInfoTap: () {},
