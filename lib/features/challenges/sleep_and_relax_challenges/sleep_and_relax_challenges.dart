@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../ui/widgets/custom_card.dart';
+import '../../../ui/widgets/custom_challenge_card.dart';
 
 class SleepAndRelaxChallenges extends StatelessWidget {
   const SleepAndRelaxChallenges({super.key});
@@ -14,7 +14,7 @@ class SleepAndRelaxChallenges extends StatelessWidget {
         Column(
           children: [
             SizedBox(height: 10),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'No Screens Before Bed',
               subtitle: '5 Days challenge',
               imagePath: 'assets/images/challenges/sleep_and_relax/1.png',
@@ -25,7 +25,7 @@ class SleepAndRelaxChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'Bedtime Wind-Down Ritual',
               subtitle: '7 Days challenge',
               imagePath: 'assets/images/challenges/sleep_and_relax/2.png',
@@ -36,7 +36,7 @@ class SleepAndRelaxChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'Wake Up at the Same Time',
               subtitle: '7 Days challenge',
               imagePath: 'assets/images/challenges/sleep_and_relax/3.png',
@@ -47,7 +47,7 @@ class SleepAndRelaxChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'Try 5-Minute Breathing',
               subtitle: '5 Days challenge',
               imagePath: 'assets/images/challenges/sleep_and_relax/4.png',
@@ -58,7 +58,7 @@ class SleepAndRelaxChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: "Digital Sunset",
               subtitle: '7 Days challenge',
               imagePath: 'assets/images/challenges/sleep_and_relax/5.png',

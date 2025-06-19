@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class ChallengeCard extends StatelessWidget {
+class CustomChallengeCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final String imagePath;
@@ -10,7 +10,7 @@ class ChallengeCard extends StatelessWidget {
   final VoidCallback onJoin;
   final VoidCallback? onInfoTap;
 
-  const ChallengeCard({
+  const CustomChallengeCard({
     super.key,
     required this.title,
     required this.subtitle,

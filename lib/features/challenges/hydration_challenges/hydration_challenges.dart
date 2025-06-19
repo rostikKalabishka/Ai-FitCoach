@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../ui/widgets/custom_card.dart';
+import '../../../ui/widgets/custom_challenge_card.dart';
 
 class HydrationChallenges extends StatelessWidget {
   const HydrationChallenges({super.key});
@@ -14,7 +14,7 @@ class HydrationChallenges extends StatelessWidget {
         Column(
           children: [
             SizedBox(height: 10),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'Drink a Water Before Meal',
               subtitle: '7 Days challenge',
               imagePath: 'assets/images/challenges/hydration/1.png',
@@ -25,7 +25,7 @@ class HydrationChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: '2 Liters a Day',
               subtitle: '7 Days challenge',
               imagePath: 'assets/images/challenges/hydration/2.png',
@@ -36,7 +36,7 @@ class HydrationChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'Morning Hydration Ritual',
               subtitle: '5 Days challenge',
               imagePath: 'assets/images/challenges/hydration/3.png',
@@ -47,7 +47,7 @@ class HydrationChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'Replace One Soda with Water',
               subtitle: '7 Days challenge',
               imagePath: 'assets/images/challenges/hydration/4.png',
@@ -58,7 +58,7 @@ class HydrationChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: "Evening with Herbal Tea",
               subtitle: '5 Days challenge',
               imagePath: 'assets/images/challenges/hydration/5.png',

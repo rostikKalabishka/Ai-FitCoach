@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../ui/widgets/custom_card.dart';
+import '../../../ui/widgets/custom_challenge_card.dart';
 
 class ExerciseChallenges extends StatelessWidget {
   const ExerciseChallenges({super.key});
@@ -14,7 +14,7 @@ class ExerciseChallenges extends StatelessWidget {
         Column(
           children: [
             SizedBox(height: 10),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'Morning Movement',
               subtitle: '7 Days challenge',
               imagePath: 'assets/images/challenges/exercise/1.png',
@@ -25,7 +25,7 @@ class ExerciseChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: '5,000 Steps a Day',
               subtitle: '7 Days challenge',
               imagePath: 'assets/images/challenges/exercise/2.png',
@@ -36,7 +36,7 @@ class ExerciseChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: '1-Minute Plank Daily',
               subtitle: '21 Days challenge',
               imagePath: 'assets/images/challenges/exercise/3.png',
@@ -47,7 +47,7 @@ class ExerciseChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: '3 Workouts This Week',
               subtitle: '7 Days challenge',
               imagePath: 'assets/images/challenges/exercise/4.png',
@@ -58,7 +58,7 @@ class ExerciseChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: "Stretch Before Bed",
               subtitle: '14 Days challenge',
               imagePath: 'assets/images/challenges/exercise/5.png',
