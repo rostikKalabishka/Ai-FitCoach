@@ -26,14 +26,15 @@ class GoalButton extends StatelessWidget {
         onPressed: () => onSelected(goalType),
         style: ElevatedButton.styleFrom(
           backgroundColor: isSelected ? Colors.purple : Colors.grey[800],
-          padding: const EdgeInsets.symmetric(vertical: 16),
+          padding: const EdgeInsets.symmetric(vertical: 8),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
           ),
         ),
         child: Text(
           text,
           style: TextStyle(
+            fontSize: 24,
             color: Colors.white,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
