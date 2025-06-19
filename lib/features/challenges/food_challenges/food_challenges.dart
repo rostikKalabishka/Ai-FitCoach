@@ -1,4 +1,4 @@
-import 'package:ai_fit_coach/ui/widgets/custom_card.dart';
+import 'package:ai_fit_coach/ui/widgets/custom_challenge_card.dart';
 import 'package:flutter/material.dart';
 
 import '../challenges.dart';
@@ -15,7 +15,7 @@ class FoodChallenges extends StatelessWidget {
         Column(
           children: [
             SizedBox(height: 10),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'No Sugar',
               subtitle: '3 Days challenge',
               imagePath: 'assets/images/challenges/food/1.png',
@@ -29,7 +29,7 @@ class FoodChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'Eat Breakfast Every Morning',
               subtitle: '7 Days challenge',
               imagePath: 'assets/images/challenges/food/2.png',
@@ -40,7 +40,7 @@ class FoodChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'Add Vegetables to Every Meal',
               subtitle: '7 Days challenge',
               imagePath: 'assets/images/challenges/food/3.png',
@@ -51,7 +51,7 @@ class FoodChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'Drink Water Before Every Meal',
               subtitle: '7 Days challenge',
               imagePath: 'assets/images/challenges/food/4.png',
@@ -62,7 +62,7 @@ class FoodChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: "Don't Eat After 8:00 PM",
               subtitle: '21 Days challenge',
               imagePath: 'assets/images/challenges/food/5.png',
