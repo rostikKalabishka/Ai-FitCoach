@@ -208,3 +208,19 @@ class WelcomeRoute extends PageRouteInfo<void> {
     },
   );
 }
+
+/// generated route for
+/// [WorkoutScreen]
+class WorkoutRoute extends PageRouteInfo<void> {
+  const WorkoutRoute({List<PageRouteInfo>? children})
+      : super(WorkoutRoute.name, initialChildren: children);
+
+  static const String name = 'WorkoutRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const WorkoutScreen();
+    },
+  );
+}

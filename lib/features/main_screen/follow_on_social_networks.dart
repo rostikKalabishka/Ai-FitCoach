@@ -77,7 +77,7 @@ class FollowOnSocialNetworks extends StatelessWidget {
               }, icon: Icon(FontAwesomeIcons.whatsapp)),
           ],
         ),
-        SizedBox(height: 50,),
+        SizedBox(height: 20,),
       ],
     );
   }
