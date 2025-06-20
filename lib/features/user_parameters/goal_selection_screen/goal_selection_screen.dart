@@ -73,11 +73,6 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
           ContinueButton(
             isNextEnabled: _isNextEnabled,
             pageController: widget.pageController,
-            function: () {
-              if (_selectedGoal != null) {
-                widget.onGoalSelected(_getGoalString(_selectedGoal!));
-              }
-            },
           ),
         ],
       ),
