@@ -58,6 +58,22 @@ class AuthRouteArgs {
 }
 
 /// generated route for
+/// [ChallengesScreen]
+class ChallengesRoute extends PageRouteInfo<void> {
+  const ChallengesRoute({List<PageRouteInfo>? children})
+      : super(ChallengesRoute.name, initialChildren: children);
+
+  static const String name = 'ChallengesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ChallengesScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -127,6 +143,22 @@ class LoaderRouteArgs {
 
   @override
   int get hashCode => key.hashCode ^ showCircularProgressIndicator.hashCode;
+}
+
+/// generated route for
+/// [MainScreen]
+class MainRoute extends PageRouteInfo<void> {
+  const MainRoute({List<PageRouteInfo>? children})
+      : super(MainRoute.name, initialChildren: children);
+
+  static const String name = 'MainRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const MainScreen();
+    },
+  );
 }
 
 /// generated route for

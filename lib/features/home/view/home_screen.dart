@@ -3,8 +3,6 @@ import 'package:ai_fit_coach/ui/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../../challenges/challenges.dart';
-
 @RoutePage()
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,7 +12,8 @@ class HomeScreen extends StatelessWidget {
     return AutoTabsRouter(
       routes: [
         SettingsRoute(),
-        SettingsRoute(),
+        ChallengesRoute(),
+        MainRoute(),
         // SettingsRoute(),
         // SettingsRoute()
       ],
@@ -39,6 +38,9 @@ class HomeScreen extends StatelessWidget {
                     label: 'Challenges',
                     icon: Icon(Icons.local_fire_department),
                   ),
+                  BottomNavigationBarItem(
+                    label: 'Main Screen',
+                    icon: Icon(Icons.language)),
                   // BottomNavigationBarItem(
                   //   label: 'AI assistant',
                   //   icon: Icon(Icons.list),

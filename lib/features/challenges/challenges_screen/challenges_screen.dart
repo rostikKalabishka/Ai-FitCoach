@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../challenges.dart';
 
+@RoutePage()
 class ChallengesScreen extends StatefulWidget {
   const ChallengesScreen({super.key});
 

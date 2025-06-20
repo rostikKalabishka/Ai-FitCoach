@@ -1,8 +1,10 @@
 import 'package:ai_fit_coach/features/main_screen/follow_on_social_networks.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ui/widgets/custom_main_screen_card.dart';
 
+@RoutePage()
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 

@@ -7,6 +7,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../features/auth/welcome/welcome_screen.dart';
+import '../features/challenges/challenges.dart';
+import '../features/main_screen/main_screen.dart';
 import '../features/onboarding/onboarding.dart';
 
 part 'router.gr.dart';
@@ -36,6 +38,14 @@ class AppRouter extends RootStackRouter {
             page: SettingsRoute.page,
             path: 'settings',
           ),
-        ]),
+          AutoRoute(
+            page: MainRoute.page,
+            path: 'main_screen',
+          ),
+          AutoRoute(
+            page: ChallengesRoute.page,
+            path: 'challenges_screen',
+          ),
+          ],),
       ];
 }

@@ -5,8 +5,6 @@ import 'package:ai_fit_coach/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../features/main_screen/main_screen.dart';
-
 class AiFitCoachApp extends StatefulWidget {
   const AiFitCoachApp({super.key});
 
@@ -15,29 +13,20 @@ class AiFitCoachApp extends StatefulWidget {
 }
 
 class _AiFitCoachAppState extends State<AiFitCoachApp> {
+  final _router = AppRouter();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: themeDark,
-      home: MainScreen(),
+    return AppInitializer(
+      child: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            title: 'Flutter Demo',
+            theme: themeDark,
+            debugShowCheckedModeBanner: false,
+            routerConfig: _router.config(),
+          );
+        },
+      ),
     );
   }
 }
-
-//   final _router = AppRouter();
-//   @override
-//   Widget build(BuildContext context) {
-//     return AppInitializer(
-//       child: BlocBuilder<SettingsCubit, SettingsState>(
-//         builder: (context, state) {
-//           return MaterialApp.router(
-//             title: 'Flutter Demo',
-//             theme: themeDark,
-//             debugShowCheckedModeBanner: false,
-//             routerConfig: _router.config(),
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
