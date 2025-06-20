@@ -15,7 +15,7 @@ abstract interface class AbstractUserRepository {
 
   Future<void> logOut();
 
-  Stream<UserModel?> get user;
+  Stream<UserModel> get user;
 
   Future<void> setUserData(UserModel userModel);
 

@@ -12,9 +12,12 @@ class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit({required AbstractSettingsRepository settingsRepository})
       : _settingsRepository = settingsRepository,
         super(SettingsState(
-            brightness: Brightness.dark, isOnboardingShowing: false)) {
+            brightness: Brightness.dark,
+            isOnboardingShowing: false,
+            isUserParametersScreenShown: false)) {
     _checkSelectedTheme();
     _checkShowOnboarding();
+    _checkUserParametersScreen();
   }
 
   final AbstractSettingsRepository _settingsRepository;
@@ -23,6 +26,17 @@ class SettingsCubit extends Cubit<SettingsState> {
     try {
       final isShowOnboarding = _settingsRepository.isOnboardingShown();
       emit(SettingsState(isOnboardingShowing: isShowOnboarding));
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  void _checkUserParametersScreen() {
+    try {
+      final isUserParametersScreenShown =
+          _settingsRepository.isUserParametersScreenShown();
+      emit(SettingsState(
+          isUserParametersScreenShown: isUserParametersScreenShown));
     } catch (e) {
       log(e.toString());
     }
@@ -43,6 +57,14 @@ class SettingsCubit extends Cubit<SettingsState> {
   Future<void> setOnboardingShown() async {
     try {
       await _settingsRepository.setOnboardingShown();
+    } catch (e) {
+      log(e.toString());
+    }
+  }
+
+  Future<void> setUserParametersScreen() async {
+    try {
+      await _settingsRepository.setUserParametersScreenShown();
     } catch (e) {
       log(e.toString());
     }

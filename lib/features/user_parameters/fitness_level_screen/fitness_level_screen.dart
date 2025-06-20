@@ -1,5 +1,7 @@
-import 'package:ai_fit_coach/features/user_parameters/widgets/widgets.dart';
+import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
+import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FitnessLevelPage extends StatefulWidget {
   final PageController pageController;
@@ -19,28 +21,31 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
   int _fitnessLevel = 0;
   bool _isNextEnabled = false;
 
-  String _getFitnessLevelName(int level) {
+  String _getFitnessLevelString(int level) {
     switch (level) {
       case 0:
-        return 'Початківець';
+        return 'Beginner';
       case 1:
-        return 'Аматор';
+        return 'Amateur';
       case 2:
-        return 'Середній';
+        return 'Medium';
       case 3:
-        return 'Експерт';
+        return 'Expert';
       default:
-        return 'Початківець';
+        return 'Beginner';
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<UserParametersBloc>();
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('How fit are you?',
-            style: TextStyle(color: Colors.white, fontSize: 20)),
+        title: const Text(
+          'What is your level of physical fitness?',
+          style: TextStyle(color: Colors.white, fontSize: 20),
+        ),
         backgroundColor: Colors.black,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
@@ -81,19 +86,19 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
                         min: 0.0,
                         max: 3.0,
                         divisions: 3,
-                        label: _getFitnessLevelName(_fitnessLevel.round()),
+                        label: _getFitnessLevelString(_fitnessLevel),
                         onChanged: (double value) {
                           setState(() {
                             _fitnessLevel = value.round();
                             _isNextEnabled = true;
                           });
-                          widget.onFitnessLevelChanged(
-                              _getFitnessLevelName(_fitnessLevel));
+                          bloc.add(FitnessLevelChanged(
+                              _getFitnessLevelString(_fitnessLevel)));
                         },
                       ),
                     ),
                     Text(
-                      'Рівень: ${_getFitnessLevelName(_fitnessLevel.round())}',
+                      'Level: ${_getFitnessLevelString(_fitnessLevel)}',
                       style: const TextStyle(color: Colors.white, fontSize: 24),
                     ),
                   ],

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class BodyParametersPage extends StatefulWidget {
   final PageController pageController;
-  final void Function(double, double, int) onParametersChanged;
+  final void Function(int, int, int) onParametersChanged;
 
   const BodyParametersPage({
     super.key,
@@ -17,14 +17,20 @@ class BodyParametersPage extends StatefulWidget {
 }
 
 class _BodyParametersPageState extends State<BodyParametersPage> {
-  double _weight = 65;
-  double _height = 170;
-  int _age = 18;
+  late int _weight;
+  late int _height;
+  late int _age;
   bool _isNextEnabled = false;
+  @override
+  void initState() {
+    super.initState();
+    _weight = 65;
+    _height = 170;
+    _age = 18;
+  }
 
   @override
   Widget build(BuildContext context) {
-    _isNextEnabled = _weight > 0 && _height > 0 && _age > 0;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -56,7 +62,7 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
                     initialValue: _weight.toInt(),
                     onChanged: (value) {
                       setState(() {
-                        _weight = value.toDouble();
+                        _weight = value;
                         _isNextEnabled = _weight > 0 && _height > 0 && _age > 0;
                       });
                       widget.onParametersChanged(_weight, _height, _age);
@@ -70,7 +76,7 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
                     initialValue: _height.toInt(),
                     onChanged: (value) {
                       setState(() {
-                        _height = value.toDouble();
+                        _height = value;
                         _isNextEnabled = _weight > 0 && _height > 0 && _age > 0;
                       });
                       widget.onParametersChanged(_weight, _height, _age);
@@ -84,7 +90,7 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
                     initialValue: _age,
                     onChanged: (value) {
                       setState(() {
-                        _age = value.toInt();
+                        _age = value;
                         _isNextEnabled = _weight > 0 && _height > 0 && _age > 0;
                       });
                       widget.onParametersChanged(_weight, _height, _age);

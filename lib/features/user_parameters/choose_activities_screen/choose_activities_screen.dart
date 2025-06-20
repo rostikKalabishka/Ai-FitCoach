@@ -36,8 +36,12 @@ class _ChooseActivitiesPageState extends State<ChooseActivitiesPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Choose up to 3 activities you’re interested in',
-            style: TextStyle(color: Colors.white, fontSize: 20)),
+        title: const Text(
+          'Choose up to 3 activities\nyou’re interested in',
+          maxLines: 2,
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.white, fontSize: 20),
+        ),
         backgroundColor: Colors.black,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),

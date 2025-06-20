@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/features/user_parameters/widgets/widgets.dart';
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:flutter/material.dart';
 
@@ -48,18 +49,24 @@ class _TermsPageState extends State<TermsPage> {
                 spacing: 20,
                 children: [
                   Image.asset(AppConst.privacy),
-                  Text('Do you agree with our terms and policies?',
-                      style: TextStyle(color: Colors.white)),
+                  Text(
+                    'Do you agree with our terms and policies?',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                   CheckboxListTile(
                     title: const Text(
-                        'i agree to the Terms of Use and Subscription Terms. I am also aware of the Privacy Notice',
+                        'I agree to the Terms of Use and Subscription Terms. I am also aware of the Privacy Notice',
                         style: TextStyle(color: Colors.white)),
                     value: _termsAccepted,
                     checkColor: Colors.black,
                     activeColor: Colors.purple,
                     onChanged: (value) {
                       setState(() {
-                        _termsAccepted = value!;
+                        _termsAccepted = value ?? false;
                         _isSubmitEnabled = _termsAccepted;
                       });
                       widget.onTermsChanged(_termsAccepted);
@@ -69,22 +76,10 @@ class _TermsPageState extends State<TermsPage> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: _isSubmitEnabled ? widget.onSubmit : null,
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple),
-                    child: const Text('CONTINUE',
-                        style: TextStyle(color: Colors.white, fontSize: 24)),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          ContinueButton(
+            pageController: widget.pageController,
+            isSubmitEnabled: _isSubmitEnabled,
+          )
         ],
       ),
     );

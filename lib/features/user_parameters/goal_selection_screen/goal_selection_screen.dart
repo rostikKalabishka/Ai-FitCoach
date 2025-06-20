@@ -1,4 +1,5 @@
-import 'package:ai_fit_coach/features/user_parameters/widgets/widgets.dart';
+import 'package:ai_fit_coach/common/api/model/user_data.dart';
+import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
 import 'package:flutter/material.dart';
 
 class GoalSelectionPage extends StatefulWidget {
@@ -16,8 +17,19 @@ class GoalSelectionPage extends StatefulWidget {
 }
 
 class _GoalSelectionPageState extends State<GoalSelectionPage> {
-  GoalType? _selectedGoal;
+  Goal? _selectedGoal;
   bool _isNextEnabled = false;
+
+  String _getGoalString(Goal goal) {
+    switch (goal) {
+      case Goal.loseWeight:
+        return 'Lose weight';
+      case Goal.gainMuscle:
+        return 'Gain muscle mass';
+      case Goal.keepFit:
+        return 'Keep fit';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +41,15 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            widget.pageController.previousPage(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
+          },
+        ),
       ),
       body: Column(
         children: [
@@ -40,44 +61,11 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 60),
-                  GoalButton(
-                    goalType: GoalType.loseWeight,
-                    text: 'Lose weight',
-                    selectedGoal: _selectedGoal,
-                    onSelected: (goalType) {
-                      setState(() {
-                        _selectedGoal = goalType;
-                        _isNextEnabled = true;
-                      });
-                      widget.onGoalSelected('Lose weight');
-                    },
-                  ),
+                  _buildGoalButton(Goal.loseWeight, 'Lose weight'),
                   const SizedBox(height: 20),
-                  GoalButton(
-                    goalType: GoalType.gainMuscle,
-                    text: 'Gain muscle',
-                    selectedGoal: _selectedGoal,
-                    onSelected: (goalType) {
-                      setState(() {
-                        _selectedGoal = goalType;
-                        _isNextEnabled = true;
-                      });
-                      widget.onGoalSelected('Gain muscle');
-                    },
-                  ),
+                  _buildGoalButton(Goal.gainMuscle, 'Gain muscle mass'),
                   const SizedBox(height: 20),
-                  GoalButton(
-                    goalType: GoalType.keepFit,
-                    text: 'Keep fit',
-                    selectedGoal: _selectedGoal,
-                    onSelected: (goalType) {
-                      setState(() {
-                        _selectedGoal = goalType;
-                        _isNextEnabled = true;
-                      });
-                      widget.onGoalSelected('Keep fit');
-                    },
-                  ),
+                  _buildGoalButton(Goal.keepFit, 'Keep fit'),
                 ],
               ),
             ),
@@ -85,8 +73,40 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
           ContinueButton(
             isNextEnabled: _isNextEnabled,
             pageController: widget.pageController,
+            function: () {
+              if (_selectedGoal != null) {
+                widget.onGoalSelected(_getGoalString(_selectedGoal!));
+              }
+            },
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildGoalButton(Goal goal, String text) {
+    final isSelected = _selectedGoal == goal;
+    return InkWell(
+      onTap: () {
+        setState(() {
+          _selectedGoal = goal;
+          _isNextEnabled = true;
+        });
+        widget.onGoalSelected(_getGoalString(goal));
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        decoration: BoxDecoration(
+          color: isSelected ? Colors.purple : Colors.grey[800],
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Center(
+          child: Text(
+            text,
+            style: const TextStyle(color: Colors.white, fontSize: 16),
+          ),
+        ),
       ),
     );
   }

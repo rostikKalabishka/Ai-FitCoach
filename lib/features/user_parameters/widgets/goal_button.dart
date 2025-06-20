@@ -1,12 +1,13 @@
+import 'package:ai_fit_coach/common/api/model/user_data.dart';
 import 'package:flutter/material.dart';
 
-enum GoalType { loseWeight, gainMuscle, keepFit }
+// enum GoalType { loseWeight, gainMuscle, keepFit }
 
 class GoalButton extends StatelessWidget {
-  final GoalType goalType;
+  final Goal goalType;
   final String text;
-  final GoalType? selectedGoal;
-  final ValueChanged<GoalType> onSelected;
+  final Goal? selectedGoal;
+  final ValueChanged<Goal> onSelected;
 
   const GoalButton({
     super.key,

@@ -6,6 +6,7 @@ class SettingsRepository implements AbstractSettingsRepository {
   final SharedPreferences sharedPreferences;
   static const _isDarkThemeSelectedKey = 'dark_theme_selected';
   static const _isOnboardingShownKey = 'onboarding_show';
+  static const _isUserParametersScreenShownKey = 'user_parameters_screen_show';
   SettingsRepository({required this.sharedPreferences});
   @override
   bool isDarkThemeSelected() {
@@ -38,6 +39,25 @@ class SettingsRepository implements AbstractSettingsRepository {
   Future<void> setDarkThemeSelected(bool selected) async {
     try {
       await sharedPreferences.setBool(_isDarkThemeSelectedKey, selected);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  bool isUserParametersScreenShown() {
+    try {
+      return sharedPreferences.getBool(_isUserParametersScreenShownKey) ??
+          false;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> setUserParametersScreenShown() async {
+    try {
+      await sharedPreferences.setBool(_isUserParametersScreenShownKey, true);
     } catch (e) {
       rethrow;
     }

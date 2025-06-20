@@ -1,6 +1,8 @@
 import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
+import 'package:ai_fit_coach/blocs/user_bloc/user_bloc.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
 import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
+import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
 import 'package:ai_fit_coach/repositories/user_repository/user.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,7 +25,19 @@ void initDI({required SharedPreferences sharedPreferences}) {
 
   getIt.registerLazySingleton<AuthenticationBloc>(
     () => AuthenticationBloc(
+      userRepository: getIt<AbstractUserRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<UserBloc>(
+    () => UserBloc(
       myUserRepository: getIt<AbstractUserRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<UserParametersBloc>(
+    () => UserParametersBloc(
+      userRepository: getIt<AbstractUserRepository>(),
     ),
   );
 

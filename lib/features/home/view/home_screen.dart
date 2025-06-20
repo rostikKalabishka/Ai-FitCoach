@@ -13,7 +13,8 @@ class HomeScreen extends StatelessWidget {
       routes: [
         SettingsRoute(),
         ChallengesRoute(),
-        UserParametersRoute(),
+        //UserParametersRoute(),
+        SettingsRoute(),
         SettingsRoute()
       ],
       builder: (context, child) {
