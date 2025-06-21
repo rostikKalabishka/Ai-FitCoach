@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
         SettingsRoute(),
         ChallengesRoute(),
         MainRoute(),
+        WorkoutRoute(),
         // SettingsRoute(),
         // SettingsRoute()
       ],
@@ -31,16 +32,29 @@ class HomeScreen extends StatelessWidget {
                 },
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
-                    label: 'Home',
-                    icon: Icon(Icons.home),
+                    label: 'Settings',
+                    icon: Icon(
+                      Icons.settings,
+                    ),
                   ),
                   BottomNavigationBarItem(
                     label: 'Challenges',
-                    icon: Icon(Icons.local_fire_department),
+                    icon: Icon(
+                      Icons.local_fire_department,
+                    ),
                   ),
                   BottomNavigationBarItem(
                     label: 'Main Screen',
-                    icon: Icon(Icons.language)),
+                    icon: Icon(
+                      Icons.home,
+                    ),
+                  ),
+                  BottomNavigationBarItem(
+                    label: 'Workout',
+                    icon: Icon(
+                      Icons.fitness_center,
+                    ),
+                  ),
                   // BottomNavigationBarItem(
                   //   label: 'AI assistant',
                   //   icon: Icon(Icons.list),
