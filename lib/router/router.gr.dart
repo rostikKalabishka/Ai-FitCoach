@@ -146,6 +146,22 @@ class LoaderRouteArgs {
 }
 
 /// generated route for
+/// [MainScreen]
+class MainRoute extends PageRouteInfo<void> {
+  const MainRoute({List<PageRouteInfo>? children})
+      : super(MainRoute.name, initialChildren: children);
+
+  static const String name = 'MainRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const MainScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [OnboardingScreen]
 class OnboardingRoute extends PageRouteInfo<void> {
   const OnboardingRoute({List<PageRouteInfo>? children})
@@ -205,6 +221,22 @@ class WelcomeRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const WelcomeScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [WorkoutScreen]
+class WorkoutRoute extends PageRouteInfo<void> {
+  const WorkoutRoute({List<PageRouteInfo>? children})
+      : super(WorkoutRoute.name, initialChildren: children);
+
+  static const String name = 'WorkoutRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const WorkoutScreen();
     },
   );
 }

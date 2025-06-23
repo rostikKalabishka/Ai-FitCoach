@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../ui/widgets/custom_card.dart';
+import '../../../ui/widgets/custom_challenge_card.dart';
 
 class MentalChallenges extends StatelessWidget {
   const MentalChallenges({super.key});
 
- @override
+  @override
   Widget build(BuildContext context) {
     final themeDark = Theme.of(context);
     return Scaffold(
@@ -14,10 +14,10 @@ class MentalChallenges extends StatelessWidget {
         Column(
           children: [
             SizedBox(height: 10),
-            ChallengeCard(
+            CustomChallengeCard(
               title: '3-Minute Daily Journal',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/food/background_food.png',
+              imagePath: 'assets/images/challenges/mental/1.png',
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -25,10 +25,10 @@ class MentalChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'Screen-Free Time',
               subtitle: '5 Days challenge',
-              imagePath: 'assets/images/challenges/food/background_food.png',
+              imagePath: 'assets/images/challenges/mental/2.png',
               price: '4.69',
               onJoin: () {},
               onInfoTap: () {},
@@ -36,10 +36,10 @@ class MentalChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'Daily Positive Thought',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/food/background_food.png',
+              imagePath: 'assets/images/challenges/mental/3.png',
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -47,10 +47,10 @@ class MentalChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: 'Nightly Gratitude',
               subtitle: '14 days challenge',
-              imagePath: 'assets/images/challenges/food/background_food.png',
+              imagePath: 'assets/images/challenges/mental/4.png',
               price: '4.59',
               onJoin: () {},
               onInfoTap: () {},
@@ -58,10 +58,10 @@ class MentalChallenges extends StatelessWidget {
             SizedBox(
               height: 13,
             ),
-            ChallengeCard(
+            CustomChallengeCard(
               title: "One Real Talk",
               subtitle: '7 days challenge',
-              imagePath: 'assets/images/challenges/food/background_food.png',
+              imagePath: 'assets/images/challenges/mental/5.png',
               price: '9.99',
               onJoin: () {},
               onInfoTap: () {},

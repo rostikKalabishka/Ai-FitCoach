@@ -4,3 +4,4 @@ export 'hydration_challenges/view.dart';
 export 'mental_challenges/view.dart';
 export 'sleep_and_relax_challenges/view.dart';
 export 'challenges_screen/view.dart';
+export 'join_now_screen/view.dart';

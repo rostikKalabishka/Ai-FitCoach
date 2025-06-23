@@ -11,10 +11,15 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: [
-        SettingsRoute(),
+        MainRoute(),
         ChallengesRoute(),
+        WorkoutRoute(),
         SettingsRoute(),
-        SettingsRoute()
+        SettingsRoute(),
+
+       
+      
+
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
@@ -29,13 +34,25 @@ class HomeScreen extends StatelessWidget {
                   _openPage(index, tabsRouter);
                 },
                 items: <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                    label: 'Home',
-                    icon: Icon(Icons.home),
+               BottomNavigationBarItem(
+                    label: 'Main Screen',
+                    icon: Icon(
+                      Icons.home,
+                    ),
                   ),
+                  
                   BottomNavigationBarItem(
                     label: 'Challenges',
-                    icon: Icon(Icons.local_fire_department),
+                    icon: Icon(
+                      Icons.local_fire_department,
+                    ),
+                  ),
+                
+                  BottomNavigationBarItem(
+                    label: 'Workout',
+                    icon: Icon(
+                      Icons.fitness_center,
+                    ),
                   ),
                   BottomNavigationBarItem(
                     label: 'AI assistant',
