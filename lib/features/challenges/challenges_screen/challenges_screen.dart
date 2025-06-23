@@ -1,4 +1,7 @@
+
+import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
+
 import 'package:flutter/material.dart';
 
 import '../challenges.dart';
@@ -73,7 +76,9 @@ class _ChallengesScreenState extends State<ChallengesScreen> {
               },
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Expanded(
             child: screens[selectedIndex],
           ),

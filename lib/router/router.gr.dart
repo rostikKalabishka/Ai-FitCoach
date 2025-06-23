@@ -194,6 +194,22 @@ class SettingsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [UserParametersScreen]
+class UserParametersRoute extends PageRouteInfo<void> {
+  const UserParametersRoute({List<PageRouteInfo>? children})
+      : super(UserParametersRoute.name, initialChildren: children);
+
+  static const String name = 'UserParametersRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const UserParametersScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [WelcomeScreen]
 class WelcomeRoute extends PageRouteInfo<void> {
   const WelcomeRoute({List<PageRouteInfo>? children})

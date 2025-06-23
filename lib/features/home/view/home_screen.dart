@@ -11,12 +11,15 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: [
-        SettingsRoute(),
-        ChallengesRoute(),
         MainRoute(),
+        ChallengesRoute(),
         WorkoutRoute(),
-        // SettingsRoute(),
-        // SettingsRoute()
+        SettingsRoute(),
+        SettingsRoute(),
+
+       
+      
+
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
@@ -31,38 +34,34 @@ class HomeScreen extends StatelessWidget {
                   _openPage(index, tabsRouter);
                 },
                 items: <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                    label: 'Settings',
+               BottomNavigationBarItem(
+                    label: 'Main Screen',
                     icon: Icon(
-                      Icons.settings,
+                      Icons.home,
                     ),
                   ),
+                  
                   BottomNavigationBarItem(
                     label: 'Challenges',
                     icon: Icon(
                       Icons.local_fire_department,
                     ),
                   ),
-                  BottomNavigationBarItem(
-                    label: 'Main Screen',
-                    icon: Icon(
-                      Icons.home,
-                    ),
-                  ),
+                
                   BottomNavigationBarItem(
                     label: 'Workout',
                     icon: Icon(
                       Icons.fitness_center,
                     ),
                   ),
-                  // BottomNavigationBarItem(
-                  //   label: 'AI assistant',
-                  //   icon: Icon(Icons.list),
-                  // ),
-                  // BottomNavigationBarItem(
-                  //   label: 'Settings',
-                  //   icon: Icon(Icons.settings),
-                  // ),
+                  BottomNavigationBarItem(
+                    label: 'AI assistant',
+                    icon: Icon(Icons.list),
+                  ),
+                  BottomNavigationBarItem(
+                    label: 'Settings',
+                    icon: Icon(Icons.settings),
+                  ),
                 ],
               )
             ],

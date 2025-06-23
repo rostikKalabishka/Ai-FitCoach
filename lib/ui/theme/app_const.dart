@@ -18,4 +18,6 @@ abstract class AppConst {
 
   static const String welcomeBackground =
       'assets/images/welcome/welcome_screen_background.png';
+
+  static const String privacy = 'assets/images/privacy/privacy.png';
 }

@@ -99,8 +99,15 @@ class _LoaderScreenState extends State<LoaderScreen>
       debugPrint("Navigating to HomeRoute");
       router.replaceAll([OnboardingRoute()]);
     } else if (state.status == AuthenticationStatus.authenticated) {
-      debugPrint("Navigating to HomeRoute");
-      router.replaceAll([HomeRoute()]);
+      final settingsState =
+          context.read<SettingsCubit>().state.isUserParametersScreenShown;
+      if (settingsState == false) {
+        debugPrint("Navigating to UserParameters");
+        router.replaceAll([UserParametersRoute()]);
+      } else {
+        debugPrint("Navigating to HomeRoute");
+        router.replaceAll([HomeRoute()]);
+      }
     } else if (state.status == AuthenticationStatus.unauthenticated) {
       debugPrint("Navigating to WelcomeRoute");
       router.replaceAll([const WelcomeRoute()]);

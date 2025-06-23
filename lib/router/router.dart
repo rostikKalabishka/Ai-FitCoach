@@ -1,4 +1,5 @@
 import 'package:ai_fit_coach/features/auth/auth_screen/auth_screen.dart';
+import 'package:ai_fit_coach/features/challenges/challenges.dart';
 
 import 'package:ai_fit_coach/features/home/home.dart';
 import 'package:ai_fit_coach/features/loader/view/loader_screen.dart';
@@ -10,7 +11,11 @@ import '../features/auth/welcome/welcome_screen.dart';
 import '../features/challenges/challenges.dart';
 import '../features/main_screen/main_screen.dart';
 import '../features/onboarding/onboarding.dart';
+
+import '../features/user_parameters/user_parameters.dart';
+
 import '../features/workout/workout.dart';
+
 
 part 'router.gr.dart';
 
@@ -39,7 +44,14 @@ class AppRouter extends RootStackRouter {
             page: SettingsRoute.page,
             path: 'settings',
           ),
-          AutoRoute(
+        
+
+        ]),
+        AutoRoute(
+          page: UserParametersRoute.page,
+          path: '/welcome/auth/user_parameters',
+        ),
+
             page: MainRoute.page,
             path: 'main_screen',
           ),
@@ -52,5 +64,6 @@ class AppRouter extends RootStackRouter {
             path: 'workout_screen',
           ),
           ],),
+
       ];
 }

@@ -4,4 +4,7 @@ abstract interface class AbstractSettingsRepository {
 
   bool isOnboardingShown();
   Future<void> setOnboardingShown();
+
+  bool isUserParametersScreenShown();
+  Future<void> setUserParametersScreenShown();
 }

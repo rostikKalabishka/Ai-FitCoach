@@ -6,7 +6,7 @@ class UserRepository implements AbstractUserRepository {
   final UserApiClient _userApiClient = UserApiClient();
 
   @override
-  Stream<UserModel?> get user => _userApiClient.user;
+  Stream<UserModel> get user => _userApiClient.user;
 
   @override
   Future<UserModel> getMyUser(String myUserId) =>
