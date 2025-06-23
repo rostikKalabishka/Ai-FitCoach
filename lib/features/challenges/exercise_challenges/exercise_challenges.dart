@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ui/widgets/custom_challenge_card.dart';
@@ -17,7 +18,7 @@ class ExerciseChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: 'Morning Movement',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/exercise/1.png',
+              imagePath: AppConst.challengeExercise1Image,
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -28,7 +29,7 @@ class ExerciseChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: '5,000 Steps a Day',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/exercise/2.png',
+              imagePath: AppConst.challengeExercise2Image,
               price: '4.69',
               onJoin: () {},
               onInfoTap: () {},
@@ -39,7 +40,7 @@ class ExerciseChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: '1-Minute Plank Daily',
               subtitle: '21 Days challenge',
-              imagePath: 'assets/images/challenges/exercise/3.png',
+              imagePath: AppConst.challengeExercise3Image,
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -50,7 +51,7 @@ class ExerciseChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: '3 Workouts This Week',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/exercise/4.png',
+              imagePath: AppConst.challengeExercise4Image,
               price: '4.59',
               onJoin: () {},
               onInfoTap: () {},
@@ -61,7 +62,7 @@ class ExerciseChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: "Stretch Before Bed",
               subtitle: '14 Days challenge',
-              imagePath: 'assets/images/challenges/exercise/5.png',
+              imagePath: AppConst.challengeExercise5Image,
               price: '9.99',
               onJoin: () {},
               onInfoTap: () {},

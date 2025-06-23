@@ -1,4 +1,5 @@
 import 'package:ai_fit_coach/features/main_screen/follow_on_social_networks.dart';
+import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +48,7 @@ class MainScreen extends StatelessWidget {
                         subtitle: '28 Days',
                         description:
                             'Build serious size and strength in your biceps, triceps, and forearms with this intense arm-blasting workout. Designed to maximize hypertrophy and definition, this session targets all angles of your arm muscles through a mix of isolation and compound movements. Expect supersets, slow negatives, and high volume to fully fatigue your arms and spark growth. ',
-                        imagePath: 'assets/images/challenges/exercise/4.png',
+                        imagePath: AppConst.challengeExercise4Image,
                         onJoin: () {},
                       ),
                     );
@@ -81,7 +82,7 @@ class MainScreen extends StatelessWidget {
                         subtitle: 'Popular',
                         description:
                             'Salmon & Avocado Grain Bowl — a nutrient-packed meal combining omega-3-rich grilled salmon, creamy avocado, fiber-loaded quinoa, and fresh greens. Topped with a drizzle of lemon-tahini dressing, this bowl supports brain function, balances blood sugar, and keeps you full and energized. Ideal for a nourishing lunch or dinner that satisfies without slowing you down.',
-                        imagePath: 'assets/images/challenges/food/1.png',
+                        imagePath: AppConst.challengeFood1Image,
                         onJoin: () {},
                       ),
                     );
@@ -115,7 +116,7 @@ class MainScreen extends StatelessWidget {
                         subtitle: '5 Days',
                         description:
                             'Screens overload the brain with stimuli. A short break resets your attention span, reduces anxiety, and helps you feel calmer.',
-                        imagePath: 'assets/images/challenges/mental/4.png',
+                        imagePath: AppConst.challengeMental4Image,
                         onJoin: () {},
                       ),
                     );

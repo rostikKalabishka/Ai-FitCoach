@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:flutter/material.dart';
 
 class JoinNowScreen extends StatelessWidget {
@@ -19,7 +20,7 @@ class JoinNowScreen extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(32),
                     child: Image.asset(
-                      'assets/images/challenges/food/1.png',
+                      AppConst.challengeFood1Image,
                       height: 400,
                       width: double.infinity,
                       fit: BoxFit.cover,

@@ -16,10 +16,6 @@ class HomeScreen extends StatelessWidget {
         WorkoutRoute(),
         SettingsRoute(),
         SettingsRoute(),
-
-       
-      
-
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
@@ -34,20 +30,18 @@ class HomeScreen extends StatelessWidget {
                   _openPage(index, tabsRouter);
                 },
                 items: <BottomNavigationBarItem>[
-               BottomNavigationBarItem(
+                  BottomNavigationBarItem(
                     label: 'Main Screen',
                     icon: Icon(
                       Icons.home,
                     ),
                   ),
-                  
                   BottomNavigationBarItem(
                     label: 'Challenges',
                     icon: Icon(
                       Icons.local_fire_department,
                     ),
                   ),
-                
                   BottomNavigationBarItem(
                     label: 'Workout',
                     icon: Icon(

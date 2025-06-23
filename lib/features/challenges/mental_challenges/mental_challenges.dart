@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ui/widgets/custom_challenge_card.dart';
@@ -17,7 +18,7 @@ class MentalChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: '3-Minute Daily Journal',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/mental/1.png',
+              imagePath: AppConst.challengeMental1Image,
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -28,7 +29,7 @@ class MentalChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: 'Screen-Free Time',
               subtitle: '5 Days challenge',
-              imagePath: 'assets/images/challenges/mental/2.png',
+              imagePath: AppConst.challengeMental2Image,
               price: '4.69',
               onJoin: () {},
               onInfoTap: () {},
@@ -39,7 +40,7 @@ class MentalChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: 'Daily Positive Thought',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/mental/3.png',
+              imagePath: AppConst.challengeMental3Image,
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -50,7 +51,7 @@ class MentalChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: 'Nightly Gratitude',
               subtitle: '14 days challenge',
-              imagePath: 'assets/images/challenges/mental/4.png',
+              imagePath: AppConst.challengeMental4Image,
               price: '4.59',
               onJoin: () {},
               onInfoTap: () {},
@@ -61,7 +62,7 @@ class MentalChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: "One Real Talk",
               subtitle: '7 days challenge',
-              imagePath: 'assets/images/challenges/mental/5.png',
+              imagePath: AppConst.challengeMental5Image,
               price: '9.99',
               onJoin: () {},
               onInfoTap: () {},

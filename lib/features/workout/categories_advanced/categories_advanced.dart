@@ -1,5 +1,5 @@
+import 'package:ai_fit_coach/ui/widgets/custom_workout_card.dart';
 import 'package:flutter/material.dart';
-import '../../../ui/widgets/widgets.dart';
 
 class CategoriesAdvanced extends StatelessWidget {
   const CategoriesAdvanced({super.key});

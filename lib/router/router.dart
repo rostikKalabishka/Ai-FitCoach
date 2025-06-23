@@ -8,14 +8,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../features/auth/welcome/welcome_screen.dart';
-import '../features/challenges/challenges.dart';
+
 import '../features/main_screen/main_screen.dart';
 import '../features/onboarding/onboarding.dart';
 
 import '../features/user_parameters/user_parameters.dart';
 
 import '../features/workout/workout.dart';
-
 
 part 'router.gr.dart';
 
@@ -39,19 +38,16 @@ class AppRouter extends RootStackRouter {
           page: AuthRoute.page,
           path: '/welcome/auth',
         ),
+        AutoRoute(
+          page: UserParametersRoute.page,
+          path: '/welcome/auth/user_parameters',
+        ),
         AutoRoute(page: HomeRoute.page, path: '/home', children: [
           AutoRoute(
             page: SettingsRoute.page,
             path: 'settings',
           ),
-        
-
-        ]),
-        AutoRoute(
-          page: UserParametersRoute.page,
-          path: '/welcome/auth/user_parameters',
-        ),
-
+          AutoRoute(
             page: MainRoute.page,
             path: 'main_screen',
           ),
@@ -63,7 +59,6 @@ class AppRouter extends RootStackRouter {
             page: WorkoutRoute.page,
             path: 'workout_screen',
           ),
-          ],),
-
+        ]),
       ];
 }

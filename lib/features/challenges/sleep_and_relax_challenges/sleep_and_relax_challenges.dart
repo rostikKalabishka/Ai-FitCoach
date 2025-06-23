@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ui/widgets/custom_challenge_card.dart';
@@ -17,7 +18,7 @@ class SleepAndRelaxChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: 'No Screens Before Bed',
               subtitle: '5 Days challenge',
-              imagePath: 'assets/images/challenges/sleep_and_relax/1.png',
+              imagePath: AppConst.challengeSleepAndRelax1Image,
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -28,7 +29,7 @@ class SleepAndRelaxChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: 'Bedtime Wind-Down Ritual',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/sleep_and_relax/2.png',
+              imagePath: AppConst.challengeSleepAndRelax2Image,
               price: '4.69',
               onJoin: () {},
               onInfoTap: () {},
@@ -39,7 +40,7 @@ class SleepAndRelaxChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: 'Wake Up at the Same Time',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/sleep_and_relax/3.png',
+              imagePath: AppConst.challengeSleepAndRelax3Image,
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -50,7 +51,7 @@ class SleepAndRelaxChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: 'Try 5-Minute Breathing',
               subtitle: '5 Days challenge',
-              imagePath: 'assets/images/challenges/sleep_and_relax/4.png',
+              imagePath: AppConst.challengeSleepAndRelax4Image,
               price: '4.59',
               onJoin: () {},
               onInfoTap: () {},
@@ -61,7 +62,7 @@ class SleepAndRelaxChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: "Digital Sunset",
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/sleep_and_relax/5.png',
+              imagePath: AppConst.challengeSleepAndRelax5Image,
               price: '9.99',
               onJoin: () {},
               onInfoTap: () {},

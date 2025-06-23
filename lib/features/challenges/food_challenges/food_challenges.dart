@@ -1,7 +1,7 @@
+import 'package:ai_fit_coach/features/challenges/join_now_screen/join_now_screen.dart';
+import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_challenge_card.dart';
 import 'package:flutter/material.dart';
-
-import '../challenges.dart';
 
 class FoodChallenges extends StatelessWidget {
   const FoodChallenges({super.key});
@@ -18,7 +18,7 @@ class FoodChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: 'No Sugar',
               subtitle: '3 Days challenge',
-              imagePath: 'assets/images/challenges/food/1.png',
+              imagePath: AppConst.challengeFood1Image,
               price: '3.99',
               onJoin: () {
                 Navigator.of(context).push(
@@ -32,7 +32,7 @@ class FoodChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: 'Eat Breakfast Every Morning',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/food/2.png',
+              imagePath: AppConst.challengeFood2Image,
               price: '4.69',
               onJoin: () {},
               onInfoTap: () {},
@@ -43,7 +43,7 @@ class FoodChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: 'Add Vegetables to Every Meal',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/food/3.png',
+              imagePath: AppConst.challengeFood3Image,
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -54,7 +54,7 @@ class FoodChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: 'Drink Water Before Every Meal',
               subtitle: '7 Days challenge',
-              imagePath: 'assets/images/challenges/food/4.png',
+              imagePath: AppConst.challengeFood4Image,
               price: '4.59',
               onJoin: () {},
               onInfoTap: () {},
@@ -65,7 +65,7 @@ class FoodChallenges extends StatelessWidget {
             CustomChallengeCard(
               title: "Don't Eat After 8:00 PM",
               subtitle: '21 Days challenge',
-              imagePath: 'assets/images/challenges/food/5.png',
+              imagePath: AppConst.challengeFood5Image,
               price: '9.99',
               onJoin: () {},
               onInfoTap: () {},
