@@ -7,3 +7,4 @@ export 'custom_challenge_card.dart';
 export 'custom_main_screen_card.dart';
 export 'custom_workout_card.dart';
 export 'custom_subcategory_workout.dart';
+export 'text_widget.dart';

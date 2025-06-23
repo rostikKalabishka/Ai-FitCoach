@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
         MainRoute(),
         ChallengesRoute(),
         WorkoutRoute(),
-        SettingsRoute(),
+        AiChatRoute(),
         SettingsRoute(),
       ],
       builder: (context, child) {
