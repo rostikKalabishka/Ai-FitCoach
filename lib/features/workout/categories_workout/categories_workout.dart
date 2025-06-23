@@ -56,7 +56,7 @@ class _CategoriesWorkoutState extends State<CategoriesWorkout> {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     decoration: BoxDecoration(
                       color: isSelected
-                          ? const Color.fromARGB(255, 55, 0, 255)
+                          ? const Color.fromARGB(255, 0, 0, 139)
                           : const Color.fromARGB(255, 39, 39, 39),
                       borderRadius: BorderRadius.circular(20),
                     ),
