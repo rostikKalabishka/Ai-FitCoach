@@ -108,7 +108,7 @@ class CustomChallengeCard extends StatelessWidget {
                     children: [
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+                          backgroundColor: const Color.fromARGB(255, 0, 0, 139),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(32),
                           ),
