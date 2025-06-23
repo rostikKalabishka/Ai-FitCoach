@@ -1,4 +1,4 @@
-import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
+import 'package:ai_fit_coach/features/user_parameters/widgets/widgets.dart';
 import 'package:ai_fit_coach/ui/ui.dart';
 import 'package:flutter/material.dart';
 
@@ -37,15 +37,7 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
         title: const Text('Body parameters',
             style: TextStyle(color: Colors.white, fontSize: 20)),
         backgroundColor: Colors.black,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            widget.pageController.previousPage(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            );
-          },
-        ),
+        leading: NavigationBackButton(pageController: widget.pageController),
       ),
       body: Column(
         children: [
@@ -53,6 +45,7 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Column(
+                spacing: 20,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   PlatformAdaptivePicker(
@@ -68,7 +61,6 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
                       widget.onParametersChanged(_weight, _height, _age);
                     },
                   ),
-                  const SizedBox(height: 20),
                   PlatformAdaptivePicker(
                     label: 'YOUR HEIGHT:',
                     minValue: 0,
@@ -82,7 +74,6 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
                       widget.onParametersChanged(_weight, _height, _age);
                     },
                   ),
-                  const SizedBox(height: 20),
                   PlatformAdaptivePicker(
                     label: 'YOUR AGE:',
                     minValue: 0,

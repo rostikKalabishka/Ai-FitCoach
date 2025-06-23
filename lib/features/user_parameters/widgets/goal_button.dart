@@ -1,8 +1,6 @@
 import 'package:ai_fit_coach/common/api/model/user_data.dart';
 import 'package:flutter/material.dart';
 
-// enum GoalType { loseWeight, gainMuscle, keepFit }
-
 class GoalButton extends StatelessWidget {
   final Goal goalType;
   final String text;
@@ -26,7 +24,7 @@ class GoalButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () => onSelected(goalType),
         style: ElevatedButton.styleFrom(
-          backgroundColor: isSelected ? Colors.purple : Colors.grey[800],
+          backgroundColor: isSelected ? Colors.blue : Colors.grey[800],
           padding: const EdgeInsets.symmetric(vertical: 8),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),

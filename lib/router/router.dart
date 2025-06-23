@@ -42,10 +42,6 @@ class AppRouter extends RootStackRouter {
             page: ChallengesRoute.page,
             path: 'challenges',
           ),
-          // AutoRoute(
-          //   page: UserParametersRoute.page,
-          //   path: 'user_parameters',
-          // ),
         ]),
         AutoRoute(
           page: UserParametersRoute.page,

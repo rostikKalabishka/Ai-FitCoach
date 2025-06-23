@@ -1,5 +1,6 @@
 import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
-import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
+
+import 'package:ai_fit_coach/features/user_parameters/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,15 +48,7 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.black,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            widget.pageController.previousPage(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            );
-          },
-        ),
+        leading: NavigationBackButton(pageController: widget.pageController),
       ),
       body: Column(
         children: [
@@ -71,11 +64,11 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
                     SliderTheme(
                       data: SliderTheme.of(context).copyWith(
                         trackHeight: 4.0,
-                        activeTrackColor: Colors.purple,
+                        activeTrackColor: Colors.blue,
                         inactiveTrackColor: Colors.grey,
-                        thumbColor: Colors.purple,
-                        overlayColor: Colors.purple.withAlpha(50),
-                        valueIndicatorColor: Colors.purple,
+                        thumbColor: Colors.blue,
+                        overlayColor: Colors.blue.withAlpha(50),
+                        valueIndicatorColor: Colors.blue,
                         tickMarkShape:
                             const RoundSliderTickMarkShape(tickMarkRadius: 8.0),
                         activeTickMarkColor: Colors.white,

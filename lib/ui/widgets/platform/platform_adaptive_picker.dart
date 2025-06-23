@@ -52,7 +52,7 @@ class _PlatformAdaptivePickerState extends State<PlatformAdaptivePicker> {
             axis: Axis.vertical,
             textStyle: const TextStyle(color: Colors.white, fontSize: 20),
             selectedTextStyle:
-                const TextStyle(color: Colors.purple, fontSize: 24),
+                const TextStyle(color: Colors.blue, fontSize: 24),
             onChanged: (value) {
               setState(() {
                 _currentValue = value;

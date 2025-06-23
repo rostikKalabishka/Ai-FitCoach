@@ -27,18 +27,12 @@ class _TermsPageState extends State<TermsPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Terms',
-            style: TextStyle(color: Colors.white, fontSize: 20)),
-        backgroundColor: Colors.black,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            widget.pageController.previousPage(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            );
-          },
+        title: const Text(
+          'Terms',
+          style: TextStyle(color: Colors.white, fontSize: 20),
         ),
+        backgroundColor: Colors.black,
+        leading: NavigationBackButton(pageController: widget.pageController),
       ),
       body: Column(
         children: [
@@ -63,7 +57,7 @@ class _TermsPageState extends State<TermsPage> {
                         style: TextStyle(color: Colors.white)),
                     value: _termsAccepted,
                     checkColor: Colors.black,
-                    activeColor: Colors.purple,
+                    activeColor: Colors.blue,
                     onChanged: (value) {
                       setState(() {
                         _termsAccepted = value ?? false;

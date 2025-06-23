@@ -1,6 +1,7 @@
 import 'package:ai_fit_coach/common/api/model/user_motivation.dart';
-
 import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
+import 'package:ai_fit_coach/features/user_parameters/widgets/navigation_back_button.dart';
+import 'package:ai_fit_coach/features/user_parameters/widgets/selection_button.dart';
 import 'package:flutter/material.dart';
 
 class MotivationPage extends StatefulWidget {
@@ -53,15 +54,7 @@ class _MotivationPageState extends State<MotivationPage> {
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.black,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            widget.pageController.previousPage(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            );
-          },
-        ),
+        leading: NavigationBackButton(pageController: widget.pageController),
       ),
       body: Column(
         children: [
@@ -69,6 +62,7 @@ class _MotivationPageState extends State<MotivationPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Column(
+                spacing: 20,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
@@ -79,56 +73,76 @@ class _MotivationPageState extends State<MotivationPage> {
                       decoration: TextDecoration.underline,
                     ),
                   ),
-                  const SizedBox(height: 20),
-                  _buildMotivationButton('Reducing stress', _stressReduction,
-                      (value) {
-                    setState(() {
-                      _stressReduction = value;
-                    });
-                    _updateMotivation();
-                  }),
-                  _buildMotivationButton(
-                      'Preparing for the event', _eventTraining, (value) {
-                    setState(() {
-                      _eventTraining = value;
-                    });
-                    _updateMotivation();
-                  }),
-                  _buildMotivationButton('Rehabilitation', _rehabilitation,
-                      (value) {
-                    setState(() {
-                      _rehabilitation = value;
-                    });
-                    _updateMotivation();
-                  }),
-                  _buildMotivationButton('Improving health', _improveHealth,
-                      (value) {
-                    setState(() {
-                      _improveHealth = value;
-                    });
-                    _updateMotivation();
-                  }),
-                  _buildMotivationButton('Building strength', _buildStrength,
-                      (value) {
-                    setState(() {
-                      _buildStrength = value;
-                    });
-                    _updateMotivation();
-                  }),
-                  _buildMotivationButton('Improving immunity', _boostImmune,
-                      (value) {
-                    setState(() {
-                      _boostImmune = value;
-                    });
-                    _updateMotivation();
-                  }),
-                  _buildMotivationButton('Increase in libido', _boostLibido,
-                      (value) {
-                    setState(() {
-                      _boostLibido = value;
-                    });
-                    _updateMotivation();
-                  }),
+                  SelectionButton(
+                    text: 'Reducing stress',
+                    isSelected: _stressReduction,
+                    onTap: () {
+                      setState(() {
+                        _stressReduction = !_stressReduction;
+                      });
+                      _updateMotivation();
+                    },
+                  ),
+                  SelectionButton(
+                    text: 'Preparing for the event',
+                    isSelected: _eventTraining,
+                    onTap: () {
+                      setState(() {
+                        _eventTraining = !_eventTraining;
+                      });
+                      _updateMotivation();
+                    },
+                  ),
+                  SelectionButton(
+                    text: 'Rehabilitation',
+                    isSelected: _rehabilitation,
+                    onTap: () {
+                      setState(() {
+                        _rehabilitation = !_rehabilitation;
+                      });
+                      _updateMotivation();
+                    },
+                  ),
+                  SelectionButton(
+                    text: 'Improving health',
+                    isSelected: _improveHealth,
+                    onTap: () {
+                      setState(() {
+                        _improveHealth = !_improveHealth;
+                      });
+                      _updateMotivation();
+                    },
+                  ),
+                  SelectionButton(
+                    text: 'Building strength',
+                    isSelected: _buildStrength,
+                    onTap: () {
+                      setState(() {
+                        _buildStrength = !_buildStrength;
+                      });
+                      _updateMotivation();
+                    },
+                  ),
+                  SelectionButton(
+                    text: 'Improving immunity',
+                    isSelected: _boostImmune,
+                    onTap: () {
+                      setState(() {
+                        _boostImmune = !_boostImmune;
+                      });
+                      _updateMotivation();
+                    },
+                  ),
+                  SelectionButton(
+                    text: 'Increase in libido',
+                    isSelected: _boostLibido,
+                    onTap: () {
+                      setState(() {
+                        _boostLibido = !_boostLibido;
+                      });
+                      _updateMotivation();
+                    },
+                  ),
                 ],
               ),
             ),
@@ -138,27 +152,6 @@ class _MotivationPageState extends State<MotivationPage> {
             pageController: widget.pageController,
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildMotivationButton(
-      String text, bool value, ValueChanged<bool> onChanged) {
-    return InkWell(
-      onTap: () => onChanged(!value),
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 8),
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-        decoration: BoxDecoration(
-          color: value ? Colors.purple : Colors.grey[800],
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Center(
-          child: Text(
-            text,
-            style: const TextStyle(color: Colors.white, fontSize: 16),
-          ),
-        ),
       ),
     );
   }

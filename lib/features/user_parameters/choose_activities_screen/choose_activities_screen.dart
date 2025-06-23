@@ -1,4 +1,6 @@
-import 'package:ai_fit_coach/features/user_parameters/widgets/widgets.dart';
+import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
+import 'package:ai_fit_coach/features/user_parameters/widgets/navigation_back_button.dart';
+import 'package:ai_fit_coach/features/user_parameters/widgets/selection_button.dart';
 import 'package:flutter/material.dart';
 
 class ChooseActivitiesPage extends StatefulWidget {
@@ -23,12 +25,13 @@ class _ChooseActivitiesPageState extends State<ChooseActivitiesPage> {
     setState(() {
       if (_selectedActivities.contains(activity)) {
         _selectedActivities.remove(activity);
-      } else {
+      } else if (_selectedActivities.length < 3) {
         _selectedActivities.add(activity);
       }
-      _isNextEnabled = _selectedActivities.isNotEmpty;
+      _isNextEnabled =
+          _selectedActivities.isNotEmpty && _selectedActivities.length <= 3;
     });
-    widget.onActivitiesSelected(_selectedActivities);
+    widget.onActivitiesSelected(List.from(_selectedActivities));
   }
 
   @override
@@ -43,15 +46,7 @@ class _ChooseActivitiesPageState extends State<ChooseActivitiesPage> {
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.black,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            widget.pageController.previousPage(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            );
-          },
-        ),
+        leading: NavigationBackButton(pageController: widget.pageController),
       ),
       body: Column(
         children: [
@@ -59,155 +54,44 @@ class _ChooseActivitiesPageState extends State<ChooseActivitiesPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Column(
+                spacing: 20,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  InkWell(
+                  SelectionButton(
+                    text: 'Dancing',
+                    isSelected: _selectedActivities.contains('Dancing'),
                     onTap: () => _toggleActivity('Dancing'),
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: _selectedActivities.contains('Dancing')
-                            ? Colors.purple
-                            : Colors.grey[800],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Dancing',
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 16),
-                        ),
-                      ),
-                    ),
                   ),
-                  InkWell(
+                  SelectionButton(
+                    text: 'Swimming & Water Activities',
+                    isSelected: _selectedActivities
+                        .contains('Swimming & Water Activities'),
                     onTap: () => _toggleActivity('Swimming & Water Activities'),
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: _selectedActivities
-                                .contains('Swimming & Water Activities')
-                            ? Colors.purple
-                            : Colors.grey[800],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Swimming & Water Activities',
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 16),
-                        ),
-                      ),
-                    ),
                   ),
-                  InkWell(
+                  SelectionButton(
+                    text: 'Cycling',
+                    isSelected: _selectedActivities.contains('Cycling'),
                     onTap: () => _toggleActivity('Cycling'),
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: _selectedActivities.contains('Cycling')
-                            ? Colors.purple
-                            : Colors.grey[800],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Cycling',
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 16),
-                        ),
-                      ),
-                    ),
                   ),
-                  InkWell(
+                  SelectionButton(
+                    text: 'Walking',
+                    isSelected: _selectedActivities.contains('Walking'),
                     onTap: () => _toggleActivity('Walking'),
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: _selectedActivities.contains('Walking')
-                            ? Colors.purple
-                            : Colors.grey[800],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Walking',
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 16),
-                        ),
-                      ),
-                    ),
                   ),
-                  InkWell(
+                  SelectionButton(
+                    text: 'Running',
+                    isSelected: _selectedActivities.contains('Running'),
                     onTap: () => _toggleActivity('Running'),
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: _selectedActivities.contains('Running')
-                            ? Colors.purple
-                            : Colors.grey[800],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Running',
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 16),
-                        ),
-                      ),
-                    ),
                   ),
-                  InkWell(
+                  SelectionButton(
+                    text: 'Fitness at home',
+                    isSelected: _selectedActivities.contains('Fitness at home'),
                     onTap: () => _toggleActivity('Fitness at home'),
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: _selectedActivities.contains('Fitness at home')
-                            ? Colors.purple
-                            : Colors.grey[800],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Fitness at home',
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 16),
-                        ),
-                      ),
-                    ),
                   ),
-                  InkWell(
+                  SelectionButton(
+                    text: 'Yoga',
+                    isSelected: _selectedActivities.contains('Yoga'),
                     onTap: () => _toggleActivity('Yoga'),
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: _selectedActivities.contains('Yoga')
-                            ? Colors.purple
-                            : Colors.grey[800],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Yoga',
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 16),
-                        ),
-                      ),
-                    ),
                   ),
                 ],
               ),

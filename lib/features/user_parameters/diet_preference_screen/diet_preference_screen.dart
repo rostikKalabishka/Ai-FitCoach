@@ -1,4 +1,6 @@
 import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
+import 'package:ai_fit_coach/features/user_parameters/widgets/navigation_back_button.dart';
+import 'package:ai_fit_coach/features/user_parameters/widgets/selection_button.dart';
 import 'package:flutter/material.dart';
 
 class DietPreferencePage extends StatefulWidget {
@@ -22,10 +24,10 @@ class _DietPreferencePageState extends State<DietPreferencePage> {
   void _toggleDiet(String diet) {
     setState(() {
       if (_selectedDiet == diet) {
-        _selectedDiet = null; // Deselect if the same diet is tapped
+        _selectedDiet = null;
         _isNextEnabled = false;
       } else {
-        _selectedDiet = diet; // Select the new diet
+        _selectedDiet = diet;
         _isNextEnabled = true;
       }
     });
@@ -42,15 +44,7 @@ class _DietPreferencePageState extends State<DietPreferencePage> {
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.black,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            widget.pageController.previousPage(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            );
-          },
-        ),
+        leading: NavigationBackButton(pageController: widget.pageController),
       ),
       body: Column(
         children: [
@@ -58,17 +52,57 @@ class _DietPreferencePageState extends State<DietPreferencePage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Column(
-                //spacing: 20,
+                spacing: 10,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildDietButton('Low-Carb'),
-                  _buildDietButton('High-Protein'),
-                  _buildDietButton('Gluten-Free'),
-                  _buildDietButton('Pescatarian'),
-                  _buildDietButton('Keto'),
-                  _buildDietButton('Vegan'),
-                  _buildDietButton('Vegetarian'),
-                  _buildDietButton('All-food diet'),
+                  SelectionButton(
+                    text: 'Low-Carb',
+                    isSelected: _selectedDiet == 'Low-Carb',
+                    onTap: () => _toggleDiet('Low-Carb'),
+                    selectedColor: Colors.blue,
+                  ),
+                  SelectionButton(
+                    text: 'High-Protein',
+                    isSelected: _selectedDiet == 'High-Protein',
+                    onTap: () => _toggleDiet('High-Protein'),
+                    selectedColor: Colors.blue,
+                  ),
+                  SelectionButton(
+                    text: 'Gluten-Free',
+                    isSelected: _selectedDiet == 'Gluten-Free',
+                    onTap: () => _toggleDiet('Gluten-Free'),
+                    selectedColor: Colors.blue,
+                  ),
+                  SelectionButton(
+                    text: 'Pescatarian',
+                    isSelected: _selectedDiet == 'Pescatarian',
+                    onTap: () => _toggleDiet('Pescatarian'),
+                    selectedColor: Colors.blue,
+                  ),
+                  SelectionButton(
+                    text: 'Keto',
+                    isSelected: _selectedDiet == 'Keto',
+                    onTap: () => _toggleDiet('Keto'),
+                    selectedColor: Colors.blue,
+                  ),
+                  SelectionButton(
+                    text: 'Vegan',
+                    isSelected: _selectedDiet == 'Vegan',
+                    onTap: () => _toggleDiet('Vegan'),
+                    selectedColor: Colors.blue,
+                  ),
+                  SelectionButton(
+                    text: 'Vegetarian',
+                    isSelected: _selectedDiet == 'Vegetarian',
+                    onTap: () => _toggleDiet('Vegetarian'),
+                    selectedColor: Colors.blue,
+                  ),
+                  SelectionButton(
+                    text: 'All-food diet',
+                    isSelected: _selectedDiet == 'All-food diet',
+                    onTap: () => _toggleDiet('All-food diet'),
+                    selectedColor: Colors.blue,
+                  ),
                 ],
               ),
             ),
@@ -78,27 +112,6 @@ class _DietPreferencePageState extends State<DietPreferencePage> {
             pageController: widget.pageController,
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildDietButton(String diet) {
-    final isSelected = _selectedDiet == diet;
-    return InkWell(
-      onTap: () => _toggleDiet(diet),
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 8),
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-        decoration: BoxDecoration(
-          color: isSelected ? Colors.purple : Colors.grey[800],
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Center(
-          child: Text(
-            diet,
-            style: const TextStyle(color: Colors.white, fontSize: 16),
-          ),
-        ),
       ),
     );
   }
