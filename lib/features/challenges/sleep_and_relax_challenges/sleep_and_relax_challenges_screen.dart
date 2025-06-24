@@ -1,11 +1,18 @@
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ui/widgets/custom_challenge_card.dart';
 
-class MentalChallenges extends StatelessWidget {
-  const MentalChallenges({super.key});
+@RoutePage()
+class SleepAndRelaxChallengesScreen extends StatefulWidget {
+  const SleepAndRelaxChallengesScreen({super.key});
 
+  @override
+  State<SleepAndRelaxChallengesScreen> createState() => _SleepAndRelaxChallengesScreenState();
+}
+
+class _SleepAndRelaxChallengesScreenState extends State<SleepAndRelaxChallengesScreen> {
   @override
   Widget build(BuildContext context) {
     final themeDark = Theme.of(context);
@@ -16,9 +23,9 @@ class MentalChallenges extends StatelessWidget {
           children: [
             SizedBox(height: 10),
             CustomChallengeCard(
-              title: '3-Minute Daily Journal',
-              subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeMental1Image,
+              title: 'No Screens Before Bed',
+              subtitle: '5 Days challenge',
+              imagePath: AppConst.challengeSleepAndRelax1Image,
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -27,9 +34,9 @@ class MentalChallenges extends StatelessWidget {
               height: 13,
             ),
             CustomChallengeCard(
-              title: 'Screen-Free Time',
-              subtitle: '5 Days challenge',
-              imagePath: AppConst.challengeMental2Image,
+              title: 'Bedtime Wind-Down Ritual',
+              subtitle: '7 Days challenge',
+              imagePath: AppConst.challengeSleepAndRelax2Image,
               price: '4.69',
               onJoin: () {},
               onInfoTap: () {},
@@ -38,9 +45,9 @@ class MentalChallenges extends StatelessWidget {
               height: 13,
             ),
             CustomChallengeCard(
-              title: 'Daily Positive Thought',
+              title: 'Wake Up at the Same Time',
               subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeMental3Image,
+              imagePath: AppConst.challengeSleepAndRelax3Image,
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -49,9 +56,9 @@ class MentalChallenges extends StatelessWidget {
               height: 13,
             ),
             CustomChallengeCard(
-              title: 'Nightly Gratitude',
-              subtitle: '14 days challenge',
-              imagePath: AppConst.challengeMental4Image,
+              title: 'Try 5-Minute Breathing',
+              subtitle: '5 Days challenge',
+              imagePath: AppConst.challengeSleepAndRelax4Image,
               price: '4.59',
               onJoin: () {},
               onInfoTap: () {},
@@ -60,9 +67,9 @@ class MentalChallenges extends StatelessWidget {
               height: 13,
             ),
             CustomChallengeCard(
-              title: "One Real Talk",
-              subtitle: '7 days challenge',
-              imagePath: AppConst.challengeMental5Image,
+              title: "Digital Sunset",
+              subtitle: '7 Days challenge',
+              imagePath: AppConst.challengeSleepAndRelax5Image,
               price: '9.99',
               onJoin: () {},
               onInfoTap: () {},

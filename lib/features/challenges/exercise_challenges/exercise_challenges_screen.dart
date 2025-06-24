@@ -1,11 +1,18 @@
-import 'package:ai_fit_coach/features/challenges/join_now_screen/join_now_screen.dart';
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
-import 'package:ai_fit_coach/ui/widgets/custom_challenge_card.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-class FoodChallenges extends StatelessWidget {
-  const FoodChallenges({super.key});
+import '../../../ui/widgets/custom_challenge_card.dart';
 
+@RoutePage()
+class ExerciseChallengesScreen extends StatefulWidget {
+  const ExerciseChallengesScreen({super.key});
+
+  @override
+  State<ExerciseChallengesScreen> createState() => _ExerciseChallengesScreenState();
+}
+
+class _ExerciseChallengesScreenState extends State<ExerciseChallengesScreen> {
   @override
   Widget build(BuildContext context) {
     final themeDark = Theme.of(context);
@@ -16,23 +23,20 @@ class FoodChallenges extends StatelessWidget {
           children: [
             SizedBox(height: 10),
             CustomChallengeCard(
-              title: 'No Sugar',
-              subtitle: '3 Days challenge',
-              imagePath: AppConst.challengeFood1Image,
+              title: 'Morning Movement',
+              subtitle: '7 Days challenge',
+              imagePath: AppConst.challengeExercise1Image,
               price: '3.99',
-              onJoin: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => JoinNowScreen()));
-              },
+              onJoin: () {},
               onInfoTap: () {},
             ),
             SizedBox(
               height: 13,
             ),
             CustomChallengeCard(
-              title: 'Eat Breakfast Every Morning',
+              title: '5,000 Steps a Day',
               subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeFood2Image,
+              imagePath: AppConst.challengeExercise2Image,
               price: '4.69',
               onJoin: () {},
               onInfoTap: () {},
@@ -41,9 +45,9 @@ class FoodChallenges extends StatelessWidget {
               height: 13,
             ),
             CustomChallengeCard(
-              title: 'Add Vegetables to Every Meal',
-              subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeFood3Image,
+              title: '1-Minute Plank Daily',
+              subtitle: '21 Days challenge',
+              imagePath: AppConst.challengeExercise3Image,
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -52,9 +56,9 @@ class FoodChallenges extends StatelessWidget {
               height: 13,
             ),
             CustomChallengeCard(
-              title: 'Drink Water Before Every Meal',
+              title: '3 Workouts This Week',
               subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeFood4Image,
+              imagePath: AppConst.challengeExercise4Image,
               price: '4.59',
               onJoin: () {},
               onInfoTap: () {},
@@ -63,9 +67,9 @@ class FoodChallenges extends StatelessWidget {
               height: 13,
             ),
             CustomChallengeCard(
-              title: "Don't Eat After 8:00 PM",
-              subtitle: '21 Days challenge',
-              imagePath: AppConst.challengeFood5Image,
+              title: "Stretch Before Bed",
+              subtitle: '14 Days challenge',
+              imagePath: AppConst.challengeExercise5Image,
               price: '9.99',
               onJoin: () {},
               onInfoTap: () {},

@@ -1,1 +1,1 @@
-export 'categories_medium.dart';
+export 'categories_medium_screen.dart';

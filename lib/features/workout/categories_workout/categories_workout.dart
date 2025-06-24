@@ -1,6 +1,6 @@
+import 'package:ai_fit_coach/features/workout/workout.dart';
 import 'package:flutter/material.dart';
 
-import '../workout.dart';
 
 class CategoriesWorkout extends StatefulWidget {
   const CategoriesWorkout({super.key});
@@ -19,9 +19,9 @@ class _CategoriesWorkoutState extends State<CategoriesWorkout> {
   ];
 
   final List<Widget> screens = [
-    CategoriesNewbies(),
-    CategoriesMedium(),
-    CategoriesAdvanced(),
+    CategoriesNewbiesScreen(),
+    CategoriesMediumScreen(),
+    CategoriesAdvancedScreen(),
   ];
 
   @override

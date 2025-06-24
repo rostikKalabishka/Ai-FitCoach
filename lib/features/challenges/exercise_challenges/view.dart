@@ -1,1 +1,1 @@
-export 'exercise_challenges.dart';
+export 'exercise_challenges_screen.dart';

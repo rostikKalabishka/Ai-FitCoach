@@ -1,10 +1,17 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import '../../../ui/widgets/widgets.dart';
 import '../workout.dart';
 
-class CategoriesNewbies extends StatelessWidget {
-  const CategoriesNewbies({super.key});
+@RoutePage()
+class CategoriesNewbiesScreen extends StatefulWidget {
+  const CategoriesNewbiesScreen({super.key});
 
+  @override
+  State<CategoriesNewbiesScreen> createState() => _CategoriesNewbiesScreenState();
+}
+
+class _CategoriesNewbiesScreenState extends State<CategoriesNewbiesScreen> {
   @override
   Widget build(BuildContext context) {
     final themeDark = Theme.of(context);

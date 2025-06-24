@@ -1,11 +1,18 @@
+import 'package:ai_fit_coach/features/challenges/join_now_screen/join_now_screen.dart';
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
+import 'package:ai_fit_coach/ui/widgets/custom_challenge_card.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../../../ui/widgets/custom_challenge_card.dart';
+@RoutePage()
+class FoodChallengesScreen extends StatefulWidget {
+  const FoodChallengesScreen({super.key});
 
-class SleepAndRelaxChallenges extends StatelessWidget {
-  const SleepAndRelaxChallenges({super.key});
+  @override
+  State<FoodChallengesScreen> createState() => _FoodChallengesScreenState();
+}
 
+class _FoodChallengesScreenState extends State<FoodChallengesScreen> {
   @override
   Widget build(BuildContext context) {
     final themeDark = Theme.of(context);
@@ -16,20 +23,23 @@ class SleepAndRelaxChallenges extends StatelessWidget {
           children: [
             SizedBox(height: 10),
             CustomChallengeCard(
-              title: 'No Screens Before Bed',
-              subtitle: '5 Days challenge',
-              imagePath: AppConst.challengeSleepAndRelax1Image,
+              title: 'No Sugar',
+              subtitle: '3 Days challenge',
+              imagePath: AppConst.challengeFood1Image,
               price: '3.99',
-              onJoin: () {},
+              onJoin: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => JoinNowScreen()));
+              },
               onInfoTap: () {},
             ),
             SizedBox(
               height: 13,
             ),
             CustomChallengeCard(
-              title: 'Bedtime Wind-Down Ritual',
+              title: 'Eat Breakfast Every Morning',
               subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeSleepAndRelax2Image,
+              imagePath: AppConst.challengeFood2Image,
               price: '4.69',
               onJoin: () {},
               onInfoTap: () {},
@@ -38,9 +48,9 @@ class SleepAndRelaxChallenges extends StatelessWidget {
               height: 13,
             ),
             CustomChallengeCard(
-              title: 'Wake Up at the Same Time',
+              title: 'Add Vegetables to Every Meal',
               subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeSleepAndRelax3Image,
+              imagePath: AppConst.challengeFood3Image,
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -49,9 +59,9 @@ class SleepAndRelaxChallenges extends StatelessWidget {
               height: 13,
             ),
             CustomChallengeCard(
-              title: 'Try 5-Minute Breathing',
-              subtitle: '5 Days challenge',
-              imagePath: AppConst.challengeSleepAndRelax4Image,
+              title: 'Drink Water Before Every Meal',
+              subtitle: '7 Days challenge',
+              imagePath: AppConst.challengeFood4Image,
               price: '4.59',
               onJoin: () {},
               onInfoTap: () {},
@@ -60,9 +70,9 @@ class SleepAndRelaxChallenges extends StatelessWidget {
               height: 13,
             ),
             CustomChallengeCard(
-              title: "Digital Sunset",
-              subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeSleepAndRelax5Image,
+              title: "Don't Eat After 8:00 PM",
+              subtitle: '21 Days challenge',
+              imagePath: AppConst.challengeFood5Image,
               price: '9.99',
               onJoin: () {},
               onInfoTap: () {},

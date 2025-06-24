@@ -55,7 +55,7 @@ class _UserParametersScreenState extends State<UserParametersScreen> {
       listener: (context, state) {
         if (state is UserParametersSuccess) {
           AutoRouter.of(context)
-              .pushAndPopUntil(LoaderRoute(), predicate: (route) => false);
+              .pushAndPopUntil(HomeRoute(), predicate: (route) => false);
         }
       },
       builder: (BuildContext context, state) {

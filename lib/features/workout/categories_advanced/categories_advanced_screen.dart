@@ -1,9 +1,16 @@
 import 'package:ai_fit_coach/ui/widgets/custom_workout_card.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-class CategoriesAdvanced extends StatelessWidget {
-  const CategoriesAdvanced({super.key});
+@RoutePage()
+class CategoriesAdvancedScreen extends StatefulWidget {
+  const CategoriesAdvancedScreen({super.key});
 
+  @override
+  State<CategoriesAdvancedScreen> createState() => _CategoriesAdvancedScreenState();
+}
+
+class _CategoriesAdvancedScreenState extends State<CategoriesAdvancedScreen> {
   @override
   Widget build(BuildContext context) {
     final themeDark = Theme.of(context);

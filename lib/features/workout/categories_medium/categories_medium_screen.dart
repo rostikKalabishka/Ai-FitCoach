@@ -1,9 +1,16 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import '../../../ui/widgets/widgets.dart';
 
-class CategoriesMedium extends StatelessWidget {
-  const CategoriesMedium({super.key});
+@RoutePage()
+class CategoriesMediumScreen extends StatefulWidget {
+  const CategoriesMediumScreen({super.key});
 
+  @override
+  State<CategoriesMediumScreen> createState() => _CategoriesMediumScreenState();
+}
+
+class _CategoriesMediumScreenState extends State<CategoriesMediumScreen> {
   @override
   Widget build(BuildContext context) {
     final themeDark = Theme.of(context);
