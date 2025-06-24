@@ -21,7 +21,6 @@ class AiChatLoaded extends ChatState {
     this.chatId = '',
     this.isTyping = false,
     this.isListening = false,
-    this.currentVoiceInput = '',
     this.userCreatorChatId = '',
   });
 
@@ -29,7 +28,7 @@ class AiChatLoaded extends ChatState {
   final String chatId;
   final bool isTyping;
   final bool isListening;
-  final String currentVoiceInput;
+
   final String userCreatorChatId;
 
   @override
@@ -38,7 +37,6 @@ class AiChatLoaded extends ChatState {
         chatId,
         isTyping,
         isListening,
-        currentVoiceInput,
         userCreatorChatId,
       ];
 
@@ -47,7 +45,6 @@ class AiChatLoaded extends ChatState {
     String? chatId,
     bool? isTyping,
     bool? isListening,
-    String? currentVoiceInput,
     String? userCreatorChatId,
   }) {
     return AiChatLoaded(
@@ -55,7 +52,6 @@ class AiChatLoaded extends ChatState {
       chatId: chatId ?? this.chatId,
       isTyping: isTyping ?? this.isTyping,
       isListening: isListening ?? this.isListening,
-      currentVoiceInput: currentVoiceInput ?? this.currentVoiceInput,
       userCreatorChatId: userCreatorChatId ?? this.userCreatorChatId,
     );
   }
@@ -64,7 +60,7 @@ class AiChatLoaded extends ChatState {
 class AiChatFailure extends ChatState {
   const AiChatFailure(this.error);
 
-  final String error;
+  final Object error;
 
   @override
   List<Object> get props => [error];

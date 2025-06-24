@@ -1,4 +1,4 @@
-import 'package:ai_fit_coach/ui/widgets/text_widget.dart';
+import 'package:ai_fit_coach/ui/widgets/widgets.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
@@ -17,32 +17,26 @@ class ChatWidget extends StatelessWidget {
     return Column(
       children: [
         Material(
-          color: isUser ? theme.scaffoldBackgroundColor : theme.cardColor,
+          color: isUser ? Colors.black : Colors.blueAccent,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // isUser
-                //     ? MyCircleAvatar(
-                //         userImage: userUmage,
-                //         radius: 15,
-                //       )
-                //     : Image.asset(
-                //         AssetsManager.chatLogoImage,
-                //         width: 30,
-                //         height: 30,
-                //       ),
+                CustomCircleAvatar(
+                  radius: 20,
+                  isUser: isUser,
+                ),
                 const SizedBox(width: 10),
                 Expanded(
                   child: isUser
                       ? TextWidget(
                           label: message,
-                          color: theme.textTheme.titleSmall?.color,
+                          color: theme.textTheme.headlineLarge?.color,
                         )
                       : DefaultTextStyle(
                           style: TextStyle(
-                              color: theme.textTheme.titleSmall?.color,
+                              color: theme.textTheme.headlineLarge?.color,
                               fontWeight: FontWeight.bold,
                               fontSize: 18),
                           child: AnimatedTextKit(

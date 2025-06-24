@@ -18,4 +18,13 @@ class SendMessageEvent extends ChatEvent {
   // List<Object> get props => super.props.addAll([]);
 }
 
+class GetResponse extends ChatEvent {
+  final Message message;
+
+  const GetResponse({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
 class LoadChatEvent extends ChatEvent {}

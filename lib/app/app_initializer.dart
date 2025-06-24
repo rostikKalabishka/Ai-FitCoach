@@ -1,6 +1,7 @@
 import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
 import 'package:ai_fit_coach/blocs/user_bloc/user_bloc.dart';
 import 'package:ai_fit_coach/common/di/di.dart';
+import 'package:ai_fit_coach/features/ai_chat/bloc/chat_bloc.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
 import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
@@ -30,6 +31,9 @@ class AppInitializer extends StatelessWidget {
           ),
           BlocProvider(
             create: (_) => getIt<UserParametersBloc>(),
+          ),
+          BlocProvider(
+            create: (_) => getIt<ChatBloc>(),
           )
         ],
         child: child,

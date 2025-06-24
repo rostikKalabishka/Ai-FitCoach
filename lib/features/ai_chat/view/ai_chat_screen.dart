@@ -27,6 +27,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
     _textFieldController = TextEditingController();
     _scrollController = ScrollController();
     focusNode = FocusNode();
+    context.read<ChatBloc>().add(LoadChatEvent());
 
     super.initState();
   }
@@ -51,7 +52,12 @@ class _AiChatScreenState extends State<AiChatScreen> {
             focusNode.unfocus();
           },
           child: Scaffold(
-            appBar: AppBar(),
+            appBar: AppBar(
+              title: const Text(
+                'AiChat',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
             body: RefreshIndicator.adaptive(
               onRefresh: () async {},
               child: state is AiChatLoaded
@@ -82,8 +88,20 @@ class _AiChatScreenState extends State<AiChatScreen> {
                             const SizedBox(
                               height: 20,
                             ),
-                            Material(
-                              color: theme.cardColor,
+                            Container(
+                              decoration: BoxDecoration(
+                                color: theme.cardColor,
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(16.0),
+                                  topRight: Radius.circular(16.0),
+                                ),
+                                border: Border(
+                                  top: BorderSide(
+                                    color: theme.dividerColor,
+                                    width: 1.0,
+                                  ),
+                                ),
+                              ),
                               child: Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Row(
@@ -95,27 +113,21 @@ class _AiChatScreenState extends State<AiChatScreen> {
                                         onSubmitted: (value) {
                                           _sendMessage(context);
                                         },
-                                        decoration: InputDecoration.collapsed(
+                                        decoration: const InputDecoration(
                                           hintText: 'how can u help you?',
+                                          border: InputBorder.none,
+                                          enabledBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
                                         ),
                                       ),
                                     ),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(
-                                          state.isListening == false
-                                              ? Icons.mic
-                                              : Icons.mic_off,
-                                          color: state.isListening
-                                              ? Colors.red
-                                              : null,
-                                        )),
                                     IconButton(
                                         onPressed: () {
                                           _sendMessage(context);
                                         },
                                         icon: const Icon(
                                           Icons.send,
+                                          color: Colors.black,
                                         ))
                                   ],
                                 ),
@@ -146,6 +158,9 @@ class _AiChatScreenState extends State<AiChatScreen> {
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeOut,
       );
+      context.read<ChatBloc>().add(
+            SendMessageEvent(message: newMessage),
+          );
     }
   }
 }
