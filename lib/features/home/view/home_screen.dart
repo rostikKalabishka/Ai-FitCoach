@@ -1,6 +1,7 @@
 import 'package:ai_fit_coach/router/router.dart';
 import 'package:ai_fit_coach/ui/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -31,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                 },
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
-                    label: 'Main Screen',
+                    label: 'Home',
                     icon: Icon(
                       Icons.home,
                     ),
@@ -50,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   BottomNavigationBarItem(
                     label: 'AI assistant',
-                    icon: Icon(Icons.list),
+                    icon: Icon(Icons.smart_toy),
                   ),
                   BottomNavigationBarItem(
                     label: 'Settings',

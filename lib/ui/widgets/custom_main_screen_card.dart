@@ -18,7 +18,7 @@ class CustomMainScreenCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Center(
         child: Container(
       height: 250,
@@ -45,7 +45,7 @@ class CustomMainScreenCard extends StatelessWidget {
           children: [
             Text(
               subtitle,
-              style: themeDark.textTheme.headlineLarge
+              style: theme.textTheme.headlineLarge
                   ?.copyWith(color: Colors.white),
             ),
             const SizedBox(height: 16),
@@ -53,7 +53,7 @@ class CustomMainScreenCard extends StatelessWidget {
               widthFactor: 0.5,
               child: Text(
                 title,
-                style: themeDark.textTheme.labelMedium
+                style: theme.textTheme.labelMedium
                     ?.copyWith(color: Colors.white),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -63,7 +63,7 @@ class CustomMainScreenCard extends StatelessWidget {
             const SizedBox(height: 24),
             Text(
               description,
-              style: themeDark.textTheme.headlineMedium
+              style: theme.textTheme.headlineMedium
                   ?.copyWith(color: Colors.white),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
@@ -74,14 +74,14 @@ class CustomMainScreenCard extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 0, 0, 139),
+                  backgroundColor: const Color.fromARGB(255, 85, 0, 0),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
                 ),
                 onPressed: onJoin,
                 child: Text('Start',
-                    style: themeDark.textTheme.labelSmall
+                    style: theme.textTheme.labelSmall
                         ?.copyWith(color: Colors.white)),
               ),
             ),

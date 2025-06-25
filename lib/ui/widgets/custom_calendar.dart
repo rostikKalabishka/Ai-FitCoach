@@ -17,6 +17,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       height: MediaQuery.of(context).size.width,
       width: MediaQuery.of(context).size.width,
@@ -41,16 +42,29 @@ class _CustomCalendarState extends State<CustomCalendar> {
               _focusedDay = focusedDay;
             });
           },
+          headerStyle: HeaderStyle(
+            formatButtonVisible: true,
+            titleTextStyle: theme.textTheme.headlineMedium!.copyWith(fontSize: 18),
+            formatButtonTextStyle: theme.textTheme.headlineMedium!,
+            formatButtonDecoration: BoxDecoration(
+              color: Colors.transparent,
+              border: Border.all(color: Colors.black),
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
           calendarStyle: CalendarStyle(
-            holidayTextStyle: TextStyle(color: Colors.white),
-            weekNumberTextStyle: TextStyle(color: Colors.white),
-            defaultTextStyle: TextStyle(color: Colors.white),
+            holidayTextStyle:
+                TextStyle(color: theme.textTheme.headlineMedium?.color),
+            weekNumberTextStyle:
+                TextStyle(color: theme.textTheme.headlineMedium?.color),
+            defaultTextStyle:
+                TextStyle(color: theme.textTheme.headlineMedium?.color),
             todayDecoration: BoxDecoration(
-              color: const Color.fromARGB(255, 46, 54, 90),
+              color: theme.colorScheme.primary,
               shape: BoxShape.circle,
             ),
             selectedDecoration: BoxDecoration(
-              color: const Color.fromARGB(255, 114, 113, 44),
+              color: theme.colorScheme.secondary,
               shape: BoxShape.circle,
             ),
           ),

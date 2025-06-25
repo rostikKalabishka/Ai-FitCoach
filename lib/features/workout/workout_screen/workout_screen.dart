@@ -10,14 +10,14 @@ class WorkoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
-        title: Text('Workout', style: themeDark.textTheme.labelMedium),
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        title: Text('Workout', style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +26,7 @@ class WorkoutScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
                 'FOR YOU',
-                style: themeDark.textTheme.headlineLarge,
+                style: theme.textTheme.headlineLarge,
               ),
             ),
             Center(
@@ -38,12 +38,15 @@ class WorkoutScreen extends StatelessWidget {
                   subtitle: 'number of existing workouts',
                   imageUrl: 'assets/images/challenges/exercise/1.png',
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => CategoriesWorkout()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => CategoriesWorkout()));
                   },
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -57,10 +60,11 @@ class WorkoutScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 16, left: 16, bottom: 8, top: 16),
+              padding: const EdgeInsets.only(
+                  right: 16, left: 16, bottom: 8, top: 16),
               child: Text(
                 'ALL CATEGORIES',
-                style: themeDark.textTheme.headlineLarge,
+                style: theme.textTheme.headlineLarge,
               ),
             ),
             Center(
@@ -75,7 +79,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -88,7 +94,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -101,7 +109,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -114,7 +124,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -127,7 +139,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -140,7 +154,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -153,7 +169,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -166,7 +184,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -179,7 +199,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -192,7 +214,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -205,7 +229,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -218,7 +244,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -231,7 +259,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -244,7 +274,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -257,7 +289,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,
@@ -270,7 +304,9 @@ class WorkoutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(thickness: 0.5, color: const Color.fromARGB(255, 63, 63, 63), ),
+            Divider(
+              thickness: 0.5,
+            ),
             Center(
               child: Container(
                 height: 110,

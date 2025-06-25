@@ -14,12 +14,13 @@ class CustomSubcategoryWorkout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return InkWell(
-      onTap: (){},
+      onTap: () {},
       child: Container(
         height: 95,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(color: const Color.fromARGB(255, 0, 0, 0)),
+        decoration: BoxDecoration(color: theme.colorScheme.tertiary),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,17 +47,20 @@ class CustomSubcategoryWorkout extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: themeDark.textTheme.headlineLarge,
+                      style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                            fontSize: 16,
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
                     ),
-                    SizedBox(
-                      height: 5,
-                    ),
+                    SizedBox(height: 5),
                     Text(
                       '$repsNumber times',
-                      style: themeDark.textTheme.headlineMedium,
+                      style: theme.textTheme.displaySmall?.copyWith(
+                        color: theme.colorScheme.onSurface,
+                      ),
                     ),
                   ],
-                ),
+                )
               ],
             ),
             Icon(Icons.arrow_forward_ios),

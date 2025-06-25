@@ -15,9 +15,9 @@ class FoodChallengesScreen extends StatefulWidget {
 class _FoodChallengesScreenState extends State<FoodChallengesScreen> {
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: ListView(children: [
         Column(
           children: [

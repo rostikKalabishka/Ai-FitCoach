@@ -7,26 +7,29 @@ class CalorieGoalScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
-        title: Text('Calorie Goal', style: themeDark.textTheme.labelMedium),
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        title: Text('Calorie Goal', style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
-        child: TextField(
-          decoration: InputDecoration(
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.white24),
-            ),
-            suffixIcon: Icon(Icons.timelapse),
-            hintText: 'Set Daily Limit',
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25),
-              borderSide: BorderSide(color: Colors.white24),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(color: theme.colorScheme.onSurface),
+              ),
+              suffixIcon: Icon(Icons.timelapse),
+              hintText: 'Set Daily Limit',
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(25),
+                borderSide: BorderSide(color: theme.colorScheme.onSurface),
+              ),
             ),
           ),
         ),
@@ -50,7 +53,7 @@ class CalorieGoalScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Cancel',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),
@@ -64,7 +67,7 @@ class CalorieGoalScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Confirm',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),

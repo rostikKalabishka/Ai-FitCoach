@@ -15,9 +15,9 @@ class HydrationChallengesScreen extends StatefulWidget {
 class _HydrationChallengesScreenState extends State<HydrationChallengesScreen> {
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: ListView(children: [
         Column(
           children: [
@@ -36,7 +36,7 @@ class _HydrationChallengesScreenState extends State<HydrationChallengesScreen> {
             CustomChallengeCard(
               title: '2 Liters a Day',
               subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeHydration1Image,
+              imagePath: AppConst.challengeHydration2Image,
               price: '4.69',
               onJoin: () {},
               onInfoTap: () {},
@@ -47,7 +47,7 @@ class _HydrationChallengesScreenState extends State<HydrationChallengesScreen> {
             CustomChallengeCard(
               title: 'Morning Hydration Ritual',
               subtitle: '5 Days challenge',
-              imagePath: AppConst.challengeHydration1Image,
+              imagePath: AppConst.challengeHydration3Image,
               price: '3.99',
               onJoin: () {},
               onInfoTap: () {},
@@ -58,7 +58,7 @@ class _HydrationChallengesScreenState extends State<HydrationChallengesScreen> {
             CustomChallengeCard(
               title: 'Replace One Soda with Water',
               subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeHydration1Image,
+              imagePath: AppConst.challengeHydration4Image,
               price: '4.59',
               onJoin: () {},
               onInfoTap: () {},
@@ -69,7 +69,7 @@ class _HydrationChallengesScreenState extends State<HydrationChallengesScreen> {
             CustomChallengeCard(
               title: "Evening with Herbal Tea",
               subtitle: '5 Days challenge',
-              imagePath: AppConst.challengeHydration1Image,
+              imagePath: AppConst.challengeHydration5Image,
               price: '9.99',
               onJoin: () {},
               onInfoTap: () {},

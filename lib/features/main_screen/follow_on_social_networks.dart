@@ -7,7 +7,7 @@ class FollowOnSocialNetworks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -15,7 +15,7 @@ class FollowOnSocialNetworks extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             'Follow AI FitCoach on',
-            style: themeDark.textTheme.labelSmall,
+            style: theme.textTheme.labelSmall,
           ),
         ),
         SizedBox(height: 8,),

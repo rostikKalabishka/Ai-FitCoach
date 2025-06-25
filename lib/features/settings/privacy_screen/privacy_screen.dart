@@ -8,14 +8,14 @@ class PrivacyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
-        title: Text('Privacy', style: themeDark.textTheme.labelMedium),
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        title: Text('Privacy', style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -40,7 +40,7 @@ class PrivacyScreen extends StatelessWidget {
                             const SizedBox(width: 10),
                             Text(
                               'Location Access',
-                              style: themeDark.textTheme.headlineLarge,
+                              style: theme.textTheme.headlineLarge,
                             ),
                           ],
                         ),
@@ -48,7 +48,7 @@ class PrivacyScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Settings',
-                              style: themeDark.textTheme.headlineSmall,
+                              style: theme.textTheme.headlineSmall,
                             ),
                             const Icon(Icons.arrow_right_outlined)
                           ],
@@ -80,7 +80,7 @@ class PrivacyScreen extends StatelessWidget {
                             const SizedBox(width: 10),
                             Text(
                               'Share Progress',
-                              style: themeDark.textTheme.headlineLarge,
+                              style: theme.textTheme.headlineLarge,
                             ),
                           ],
                         ),
@@ -88,7 +88,7 @@ class PrivacyScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Settings',
-                              style: themeDark.textTheme.headlineSmall,
+                              style: theme.textTheme.headlineSmall,
                             ),
                             const Icon(Icons.arrow_right_outlined)
                           ],
@@ -122,7 +122,7 @@ class PrivacyScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Cancel',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),
@@ -136,7 +136,7 @@ class PrivacyScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Confirm',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),

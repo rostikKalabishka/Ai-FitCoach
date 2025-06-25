@@ -25,9 +25,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
-        backgroundColor: themeDark.scaffoldBackgroundColor,
+        backgroundColor: theme.scaffoldBackgroundColor,
         body: Form(
           key: _formKey,
           child: Column(
@@ -134,7 +134,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     },
                     child: Text(
                       'Sign Up',
-                      style: themeDark.textTheme.labelSmall,
+                      style: theme.textTheme.labelSmall,
                     )),
               )
             ],

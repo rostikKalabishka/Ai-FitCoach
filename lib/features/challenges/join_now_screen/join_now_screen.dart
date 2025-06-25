@@ -13,7 +13,7 @@ class JoinNowScreen extends StatefulWidget {
 class _JoinNowScreenState extends State<JoinNowScreen> {
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -50,7 +50,7 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Text(
                       'Name of the challenge',
-                      style: themeDark.textTheme.labelSmall,
+                      style: theme.textTheme.labelSmall,
                     ),
                   ),
                   Row(
@@ -64,7 +64,7 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Text(
                           '7 Days',
-                          style: themeDark.textTheme.headlineMedium,
+                          style: theme.textTheme.headlineMedium,
                         ),
                       )
                     ],
@@ -77,7 +77,7 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 136, 0, 0),
+                    backgroundColor: const Color.fromARGB(255, 85, 0, 0),
                     padding: const EdgeInsets.symmetric(vertical: 8),
                   ),
                   child: Column(
@@ -85,11 +85,11 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                     children: [
                       Text(
                         'JOIN CHALLENGE',
-                        style: themeDark.textTheme.headlineMedium,
+                        style: theme.textTheme.displaySmall,
                       ),
                       Text(
                         'Only 3.99 US \$',
-                        style: themeDark.textTheme.headlineSmall,
+                        style: theme.textTheme.displaySmall,
                       ),
                     ],
                   ),
@@ -101,7 +101,7 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: Text(
                   'One-time payment. Once finished, the challenge will be removed from your list.',
-                  style: themeDark.textTheme.headlineSmall,
+                  style: theme.textTheme.headlineSmall,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -110,7 +110,7 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
               SizedBox(height: 10),
               Text(
                 "WHAT YOU'LL GET",
-                style: themeDark.textTheme.headlineMedium,
+                style: theme.textTheme.headlineMedium,
               ),
               SizedBox(
                 height: 10,
@@ -131,11 +131,11 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                         children: [
                           Text(
                             'Grow confidence',
-                            style: themeDark.textTheme.headlineMedium,
+                            style: theme.textTheme.headlineMedium,
                           ),
                           Text(
                             'Tame your inner critic',
-                            style: themeDark.textTheme.headlineSmall,
+                            style: theme.textTheme.headlineSmall,
                           )
                         ],
                       ),
@@ -153,11 +153,11 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                         children: [
                           Text(
                             'Reduce anxiety',
-                            style: themeDark.textTheme.headlineMedium,
+                            style: theme.textTheme.headlineMedium,
                           ),
                           Text(
                             'Improved mental health',
-                            style: themeDark.textTheme.headlineSmall,
+                            style: theme.textTheme.headlineSmall,
                           )
                         ],
                       ),
@@ -175,11 +175,11 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                         children: [
                           Text(
                             'Develop self-compassion',
-                            style: themeDark.textTheme.headlineMedium,
+                            style: theme.textTheme.headlineMedium,
                           ),
                           Text(
                             'Kindness towards yourself',
-                            style: themeDark.textTheme.headlineSmall,
+                            style: theme.textTheme.headlineSmall,
                           )
                         ],
                       ),
@@ -197,11 +197,11 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                         children: [
                           Text(
                             'Improve focus',
-                            style: themeDark.textTheme.headlineMedium,
+                            style: theme.textTheme.headlineMedium,
                           ),
                           Text(
                             'Less brain fog from sugar highs/lows',
-                            style: themeDark.textTheme.headlineSmall,
+                            style: theme.textTheme.headlineSmall,
                           )
                         ],
                       ),
@@ -219,11 +219,11 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                         children: [
                           Text(
                             'Strengthen willpower',
-                            style: themeDark.textTheme.headlineMedium,
+                            style: theme.textTheme.headlineMedium,
                           ),
                           Text(
                             'practice daily discipline',
-                            style: themeDark.textTheme.headlineSmall,
+                            style: theme.textTheme.headlineSmall,
                           )
                         ],
                       ),

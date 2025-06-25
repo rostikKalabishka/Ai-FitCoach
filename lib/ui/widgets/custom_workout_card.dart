@@ -16,10 +16,10 @@ class WorkoutCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Card(
       elevation: 2,
-      color: const Color.fromARGB(255, 15, 15, 15),
+      color: theme.colorScheme.primary,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
@@ -45,9 +45,9 @@ class WorkoutCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title, style: themeDark.textTheme.headlineLarge),
+                    Text(title, style: theme.textTheme.displaySmall?.copyWith(fontSize: 16)),
                     const SizedBox(height: 4),
-                    Text(subtitle, style: themeDark.textTheme.headlineSmall),
+                    Text(subtitle, style: theme.textTheme.displaySmall),
                   ],
                 ),
               ),

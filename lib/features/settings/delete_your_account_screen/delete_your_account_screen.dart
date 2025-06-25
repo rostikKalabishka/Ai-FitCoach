@@ -7,15 +7,15 @@ class DeleteYourAccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
+        backgroundColor: theme.appBarTheme.backgroundColor,
         title:
-            Text('Delete Your Account', style: themeDark.textTheme.labelMedium),
+            Text('Delete Your Account', style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: ListView(
         children: [
           Column(
@@ -28,7 +28,7 @@ class DeleteYourAccountScreen extends StatelessWidget {
                         const EdgeInsets.only(bottom: 8, left: 12, right: 12),
                     child: Text(
                       e,
-                      style: themeDark.textTheme.headlineMedium,
+                      style: theme.textTheme.headlineMedium,
                     ),
                   );
                 }).toList(),
@@ -38,7 +38,6 @@ class DeleteYourAccountScreen extends StatelessWidget {
               ),
               Divider(
                 thickness: 0.5,
-                color: Colors.white,
               ),
               SizedBox(
                 height: 16,
@@ -51,7 +50,7 @@ class DeleteYourAccountScreen extends StatelessWidget {
                         const EdgeInsets.only(bottom: 8, left: 12, right: 12),
                     child: Text(
                       e,
-                      style: themeDark.textTheme.headlineMedium,
+                      style: theme.textTheme.headlineMedium,
                     ),
                   );
                 }).toList(),
@@ -61,7 +60,6 @@ class DeleteYourAccountScreen extends StatelessWidget {
               ),
               Divider(
                 thickness: 0.5,
-                color: Colors.white,
               ),
               SizedBox(
                 height: 16,
@@ -74,7 +72,7 @@ class DeleteYourAccountScreen extends StatelessWidget {
                         const EdgeInsets.only(bottom: 8, left: 12, right: 12),
                     child: Text(
                       e,
-                      style: themeDark.textTheme.headlineMedium,
+                      style: theme.textTheme.headlineMedium,
                     ),
                   );
                 }).toList(),
@@ -84,7 +82,6 @@ class DeleteYourAccountScreen extends StatelessWidget {
               ),
               Divider(
                 thickness: 0.5,
-                color: Colors.white,
               ),
               SizedBox(
                 height: 16,
@@ -97,7 +94,7 @@ class DeleteYourAccountScreen extends StatelessWidget {
                         const EdgeInsets.only(bottom: 8, left: 12, right: 12),
                     child: Text(
                       e,
-                      style: themeDark.textTheme.headlineMedium,
+                      style: theme.textTheme.headlineMedium,
                     ),
                   );
                 }).toList(),
@@ -107,7 +104,6 @@ class DeleteYourAccountScreen extends StatelessWidget {
               ),
               Divider(
                 thickness: 0.5,
-                color: Colors.white,
               ),
               SizedBox(
                 height: 16,
@@ -120,7 +116,7 @@ class DeleteYourAccountScreen extends StatelessWidget {
                         const EdgeInsets.only(bottom: 8, left: 12, right: 12),
                     child: Text(
                       e,
-                      style: themeDark.textTheme.headlineMedium,
+                      style: theme.textTheme.headlineMedium,
                     ),
                   );
                 }).toList(),
@@ -148,7 +144,7 @@ class DeleteYourAccountScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Cancel',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),
@@ -162,7 +158,7 @@ class DeleteYourAccountScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Confirm',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),

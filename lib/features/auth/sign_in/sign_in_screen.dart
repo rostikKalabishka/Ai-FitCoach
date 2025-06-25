@@ -21,9 +21,9 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
-        backgroundColor: themeDark.scaffoldBackgroundColor,
+        backgroundColor: theme.scaffoldBackgroundColor,
         body: Form(
           key: _formKey,
           child: Column(
@@ -84,7 +84,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     },
                     child: Text(
                       'Sign In',
-                      style: themeDark.textTheme.labelSmall,
+                      style: theme.textTheme.labelSmall,
                     )),
               )
             ],

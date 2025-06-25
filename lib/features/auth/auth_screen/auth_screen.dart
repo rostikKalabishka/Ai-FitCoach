@@ -28,7 +28,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthSuccess) {
@@ -38,14 +38,14 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
       },
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: themeDark.appBarTheme.backgroundColor,
+          backgroundColor: theme.appBarTheme.backgroundColor,
         ),
-        backgroundColor: themeDark.scaffoldBackgroundColor,
+        backgroundColor: theme.scaffoldBackgroundColor,
         body: Column(
           children: [
             Text(
               'AI FitCoach',
-              style: themeDark.textTheme.labelLarge,
+              style: theme.textTheme.labelLarge,
             ),
             SizedBox(
               height: 250,
@@ -61,12 +61,12 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                   Padding(
                     padding: EdgeInsets.all(12),
                     child:
-                        Text('Sign In', style: themeDark.textTheme.labelSmall),
+                        Text('Sign In', style: theme.textTheme.labelSmall),
                   ),
                   Padding(
                     padding: EdgeInsets.all(12),
                     child:
-                        Text('Sign Up', style: themeDark.textTheme.labelSmall),
+                        Text('Sign Up', style: theme.textTheme.labelSmall),
                   ),
                 ]),
             Expanded(

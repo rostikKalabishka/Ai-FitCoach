@@ -17,14 +17,14 @@ class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
-        title: Text('Workout Types', style: themeDark.textTheme.labelMedium),
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        title: Text('Workout Types', style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -48,7 +48,7 @@ class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
                             SizedBox(width: 10),
                             Text(
                               'Cardio',
-                              style: themeDark.textTheme.headlineLarge,
+                              style: theme.textTheme.headlineLarge,
                             ),
                           ],
                         ),
@@ -89,7 +89,7 @@ class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
                             SizedBox(width: 10),
                             Text(
                               'Strength',
-                              style: themeDark.textTheme.headlineLarge,
+                              style: theme.textTheme.headlineLarge,
                             ),
                           ],
                         ),
@@ -130,7 +130,7 @@ class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
                             SizedBox(width: 10),
                             Text(
                               'Yoga',
-                              style: themeDark.textTheme.headlineLarge,
+                              style: theme.textTheme.headlineLarge,
                             ),
                           ],
                         ),
@@ -171,7 +171,7 @@ class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
                             SizedBox(width: 10),
                             Text(
                               'HIIT',
-                              style: themeDark.textTheme.headlineLarge,
+                              style: theme.textTheme.headlineLarge,
                             ),
                           ],
                         ),
@@ -211,7 +211,7 @@ class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
                   ),
                   child: Text(
                     'Cancel',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),
@@ -225,7 +225,7 @@ class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
                   ),
                   child: Text(
                     'Confirm',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),

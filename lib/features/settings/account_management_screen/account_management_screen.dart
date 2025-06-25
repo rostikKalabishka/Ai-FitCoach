@@ -8,104 +8,119 @@ class AccountManagementScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
+        backgroundColor: theme.appBarTheme.backgroundColor,
         title:
-            Text('Account Management', style: themeDark.textTheme.labelMedium),
+            Text('Account Management', style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TextField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.white24),
-                ),
-                suffixIcon: Icon(
-                  Icons.email,
-                  size: 24,
-                ),
-                hintText: 'Email',
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: Colors.white24),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.white24),
-                ),
-                suffixIcon: Icon(
-                  FontAwesomeIcons.envelopeCircleCheck,
-                  size: 21,
-                ),
-                hintText: 'Reserved email',
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: Colors.white24),
+            Padding(
+              padding: const EdgeInsets.only(right: 10, left: 10),
+              child: TextField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                  ),
+                  suffixIcon: Icon(
+                    Icons.email,
+                    size: 24,
+                  ),
+                  hintText: 'Email',
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                  ),
                 ),
               ),
             ),
             SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.white24),
-                ),
-                suffixIcon: Icon(
-                  FontAwesomeIcons.google,
-                  size: 21,
-                ),
-                hintText: 'Google',
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: Colors.white24),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.white24),
-                ),
-                suffixIcon: Icon(
-                  FontAwesomeIcons.facebook,
-                  size: 21,
-                ),
-                hintText: 'Facebook',
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: Colors.white24),
+            Padding(
+              padding: const EdgeInsets.only(right: 10, left: 10),
+              child: TextField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                  ),
+                  suffixIcon: Icon(
+                    FontAwesomeIcons.envelopeCircleCheck,
+                    size: 21,
+                  ),
+                  hintText: 'Reserved email',
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                  ),
                 ),
               ),
             ),
             SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.white24),
+            Padding(
+              padding: const EdgeInsets.only(right: 10, left: 10),
+              child: TextField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                  ),
+                  suffixIcon: Icon(
+                    FontAwesomeIcons.google,
+                    size: 21,
+                  ),
+                  hintText: 'Google',
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                  ),
                 ),
-                suffixIcon: Icon(
-                  FontAwesomeIcons.twitter,
-                  size: 21,
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(right: 10, left: 10),
+              child: TextField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                  ),
+                  suffixIcon: Icon(
+                    FontAwesomeIcons.facebook,
+                    size: 21,
+                  ),
+                  hintText: 'Facebook',
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                  ),
                 ),
-                hintText: 'Twitter',
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: Colors.white24),
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(right: 10, left: 10),
+              child: TextField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                  ),
+                  suffixIcon: Icon(
+                    FontAwesomeIcons.twitter,
+                    size: 21,
+                  ),
+                  hintText: 'Twitter',
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                  ),
                 ),
               ),
             ),
@@ -131,7 +146,7 @@ class AccountManagementScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Cancel',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),
@@ -145,7 +160,7 @@ class AccountManagementScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Confirm',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),
