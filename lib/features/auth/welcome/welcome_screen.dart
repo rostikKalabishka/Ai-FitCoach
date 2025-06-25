@@ -12,7 +12,7 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (BuildContext context, AuthState state) {
         if (state is AuthSuccess) {
@@ -41,7 +41,7 @@ class WelcomeScreen extends StatelessWidget {
                       SizedBox(height: 90),
                       Text(
                         'AI FitCoach',
-                        style: themeDark.textTheme.labelLarge,
+                        style: theme.textTheme.labelLarge,
                       ),
                       SizedBox(height: 70),
                       Align(
@@ -51,11 +51,11 @@ class WelcomeScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Welcome,',
-                              style: themeDark.textTheme.labelMedium,
+                              style: theme.textTheme.labelMedium,
                             ),
                             Text(
                               'glad to see you!',
-                              style: themeDark.textTheme.labelMedium,
+                              style: theme.textTheme.labelMedium,
                             ),
                           ],
                         ),
@@ -69,7 +69,7 @@ class WelcomeScreen extends StatelessWidget {
                             width: 150,
                             child: ElevatedButton(
                               style: ButtonStyle(
-                                  backgroundColor: themeDark.elevatedButtonTheme
+                                  backgroundColor: theme.elevatedButtonTheme
                                       .style!.backgroundColor),
                               onPressed: () {
                                 Navigator.of(context).push(
@@ -81,7 +81,7 @@ class WelcomeScreen extends StatelessWidget {
                                 );
                               },
                               child: Text('Sign In',
-                                  style: themeDark.textTheme.labelSmall),
+                                  style: theme.textTheme.labelSmall),
                             ),
                           ),
                           SizedBox(width: 30),
@@ -99,7 +99,7 @@ class WelcomeScreen extends StatelessWidget {
                                 );
                               },
                               child: Text('Sign Up',
-                                  style: themeDark.textTheme.labelSmall),
+                                  style: theme.textTheme.labelSmall),
                             ),
                           ),
                         ],
@@ -113,7 +113,7 @@ class WelcomeScreen extends StatelessWidget {
                             width: 150,
                             child: ElevatedButton(
                               style: ButtonStyle(
-                                  backgroundColor: themeDark.elevatedButtonTheme
+                                  backgroundColor: theme.elevatedButtonTheme
                                       .style!.backgroundColor),
                               onPressed: () {
                                 context
@@ -122,7 +122,7 @@ class WelcomeScreen extends StatelessWidget {
                               },
                               child: Text('Continue with Google',
                                   textAlign: TextAlign.center,
-                                  style: themeDark.textTheme.labelSmall),
+                                  style: theme.textTheme.labelSmall),
                             ),
                           ),
                           SizedBox(width: 30),
@@ -137,7 +137,7 @@ class WelcomeScreen extends StatelessWidget {
                               },
                               child: Text('Continue with Facebook',
                                   textAlign: TextAlign.center,
-                                  style: themeDark.textTheme.labelSmall),
+                                  style: theme.textTheme.labelSmall),
                             ),
                           ),
                         ],
@@ -154,7 +154,7 @@ class WelcomeScreen extends StatelessWidget {
                           },
                           child: Text('Continue with Twitter',
                               textAlign: TextAlign.center,
-                              style: themeDark.textTheme.labelSmall),
+                              style: theme.textTheme.labelSmall),
                         ),
                       ),
                     ],

@@ -37,7 +37,7 @@ class _ChallengesScreenState extends State<ChallengesScreen>
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
 
     return AutoTabsRouter(
       routes: [
@@ -52,11 +52,11 @@ class _ChallengesScreenState extends State<ChallengesScreen>
 
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: themeDark.appBarTheme.backgroundColor,
-            title: Text('Challenges', style: themeDark.textTheme.labelMedium),
+            backgroundColor: theme.appBarTheme.backgroundColor,
+            title: Text('Challenges', style: theme.textTheme.labelMedium),
             centerTitle: true,
           ),
-          backgroundColor: themeDark.scaffoldBackgroundColor,
+          backgroundColor: theme.scaffoldBackgroundColor,
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -110,15 +110,15 @@ class _ChallengesScreenState extends State<ChallengesScreen>
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: isSelected ? const Color.fromARGB(255, 255, 255, 255) : Colors.transparent,
-              width: 2,
+              color: isSelected ? const Color.fromARGB(255, 87, 48, 69) : theme.primaryColor,
+              width: 3,
             ),
           ),
         ),
         child: Text(
           title,
           style: theme.textTheme.headlineLarge?.copyWith(
-            color: isSelected ? const Color.fromARGB(255, 255, 255, 255) : Colors.grey,
+            color: isSelected ? theme.textTheme.headlineLarge?.color : Colors.grey,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),

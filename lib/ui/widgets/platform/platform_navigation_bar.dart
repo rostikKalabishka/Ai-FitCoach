@@ -19,11 +19,11 @@ class PlatformNavigationBar extends StatelessWidget {
     final selectedIndex = tabsRouter.activeIndex;
     if (theme.isAndroid) {
       return BottomNavigationBar(
-        backgroundColor: Colors.black,
+        backgroundColor: theme.scaffoldBackgroundColor,
         items: items,
         currentIndex: selectedIndex,
-        selectedItemColor: theme.primaryColor,
-        unselectedItemColor: theme.hintColor,
+        selectedLabelStyle: theme.bottomNavigationBarTheme.selectedLabelStyle,
+        unselectedItemColor: theme.bottomNavigationBarTheme.unselectedItemColor,
         onTap: onSelect,
       );
     }
@@ -31,7 +31,7 @@ class PlatformNavigationBar extends StatelessWidget {
       activeColor: theme.primaryColor,
       items: items,
       currentIndex: selectedIndex,
-      backgroundColor: Colors.black,
+      backgroundColor: theme.scaffoldBackgroundColor,
       onTap: onSelect,
     );
   }

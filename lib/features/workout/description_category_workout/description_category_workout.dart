@@ -7,9 +7,9 @@ class DescriptionCategoryWorkout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,7 +41,7 @@ class DescriptionCategoryWorkout extends StatelessWidget {
                     height: 160,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: theme.colorScheme.tertiary,
                         borderRadius: BorderRadiusDirectional.only(
                             topStart: Radius.circular(24),
                             topEnd: Radius.circular(24))),
@@ -51,30 +51,34 @@ class DescriptionCategoryWorkout extends StatelessWidget {
                           padding: const EdgeInsets.all(24),
                           child: Text(
                             'HIIT (High Intensity)',
-                            style: themeDark.textTheme.labelMedium,
+                            style: theme.textTheme.displaySmall?.copyWith(
+                              fontSize: 24,
+                              color: theme.colorScheme.onSurface,
+                            ),
                           ),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.favorite_border_outlined)),
+                              onPressed: () {},
+                              icon: Icon(Icons.favorite_border_outlined),
+                            ),
                             Container(
                               height: MediaQuery.of(context).size.width * 0.12,
                               width: MediaQuery.of(context).size.width * 0.7,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
-                                      const Color.fromARGB(255, 136, 0, 0),
+                                      const Color.fromARGB(255, 39, 1, 21),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                 ),
                                 onPressed: () {},
                                 child: Text('START WORKOUT',
-                                    style: themeDark.textTheme.labelSmall
-                                        ?.copyWith(color: Colors.white)),
+                                    style: theme.textTheme.displaySmall
+                                        ?.copyWith(fontSize: 18)),
                               ),
                             ),
                           ],
@@ -95,7 +99,7 @@ class DescriptionCategoryWorkout extends StatelessWidget {
                     children: [
                       Text(
                         'Exercises',
-                        style: themeDark.textTheme.labelSmall,
+                        style: theme.textTheme.labelSmall,
                       ),
                       SizedBox(
                         height: 10,
@@ -107,6 +111,7 @@ class DescriptionCategoryWorkout extends StatelessWidget {
                       ),
                       Divider(
                         thickness: 0.5,
+                        color: Colors.grey,
                       ),
                       SizedBox(
                         height: 10,
@@ -118,6 +123,7 @@ class DescriptionCategoryWorkout extends StatelessWidget {
                       ),
                       Divider(
                         thickness: 0.5,
+                        color: Colors.grey,
                       ),
                       SizedBox(
                         height: 10,
@@ -129,6 +135,7 @@ class DescriptionCategoryWorkout extends StatelessWidget {
                       ),
                       Divider(
                         thickness: 0.5,
+                        color: Colors.grey,
                       ),
                       SizedBox(
                         height: 10,
@@ -137,7 +144,7 @@ class DescriptionCategoryWorkout extends StatelessWidget {
                   ),
                   Text(
                     'You might also like',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                   SizedBox(
                     height: 10,
@@ -151,6 +158,7 @@ class DescriptionCategoryWorkout extends StatelessWidget {
                       ),
                       Divider(
                         thickness: 0.5,
+                        color: Colors.grey,
                       ),
                       SizedBox(
                         height: 10,
@@ -162,6 +170,7 @@ class DescriptionCategoryWorkout extends StatelessWidget {
                       ),
                       Divider(
                         thickness: 0.5,
+                        color: Colors.grey,
                       ),
                       SizedBox(
                         height: 10,

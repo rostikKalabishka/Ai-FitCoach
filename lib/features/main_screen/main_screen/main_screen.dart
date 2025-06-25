@@ -11,14 +11,14 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
-        title: Text('Main Screen', style: themeDark.textTheme.labelMedium),
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        title: Text('Home', style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,7 +27,7 @@ class MainScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
                 'Trending workout',
-                style: themeDark.textTheme.labelSmall,
+                style: theme.textTheme.labelSmall,
               ),
             ),
             SizedBox(
@@ -61,7 +61,7 @@ class MainScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
                 'Food recommendation',
-                style: themeDark.textTheme.labelSmall,
+                style: theme.textTheme.labelSmall,
               ),
             ),
             SizedBox(
@@ -95,7 +95,7 @@ class MainScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
                 'Trending challenges',
-                style: themeDark.textTheme.labelSmall,
+                style: theme.textTheme.labelSmall,
               ),
             ),
             SizedBox(
@@ -134,7 +134,7 @@ class MainScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'About us',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
                 SizedBox(

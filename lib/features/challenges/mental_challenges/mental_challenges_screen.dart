@@ -15,9 +15,9 @@ class MentalChallengesScreen extends StatefulWidget {
 class _MentalChallengesScreenState extends State<MentalChallengesScreen> {
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: ListView(children: [
         Column(
           children: [

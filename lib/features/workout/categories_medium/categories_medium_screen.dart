@@ -13,7 +13,7 @@ class CategoriesMediumScreen extends StatefulWidget {
 class _CategoriesMediumScreenState extends State<CategoriesMediumScreen> {
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,7 +22,7 @@ class _CategoriesMediumScreenState extends State<CategoriesMediumScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
               'Number of existing workouts',
-              style: themeDark.textTheme.headlineLarge,
+              style: theme.textTheme.headlineLarge,
             ),
           ),
           Center(
@@ -39,7 +39,6 @@ class _CategoriesMediumScreenState extends State<CategoriesMediumScreen> {
           ),
           Divider(
             thickness: 0.5,
-            color: const Color.fromARGB(255, 63, 63, 63),
           ),
           Center(
             child: Container(

@@ -26,15 +26,15 @@ class _CategoriesWorkoutState extends State<CategoriesWorkout> {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
+        backgroundColor: theme.appBarTheme.backgroundColor,
         title: Text("Name of workout, what you'll choose",
-            style: themeDark.textTheme.labelMedium),
+            style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: Column(
         children: [
           SizedBox(
@@ -56,13 +56,13 @@ class _CategoriesWorkoutState extends State<CategoriesWorkout> {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     decoration: BoxDecoration(
                       color: isSelected
-                          ? const Color.fromARGB(255, 0, 0, 139)
+                          ? const Color.fromARGB(255, 39, 1, 21)
                           : const Color.fromARGB(255, 39, 39, 39),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     alignment: Alignment.center,
                     child: Text(sections[index],
-                        style: themeDark.textTheme.headlineMedium),
+                        style: theme.textTheme.displaySmall),
                   ),
                 );
               },

@@ -22,8 +22,9 @@ class CustomChallengeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Card(
+      color: theme.colorScheme.primary,
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       child: Column(
@@ -69,31 +70,27 @@ class CustomChallengeCard extends StatelessWidget {
                   children: [
                     RichText(
                       text: TextSpan(
-                        style:
-                            const TextStyle(fontSize: 16, color: Colors.black),
+                        style: theme.textTheme.displaySmall,
                         children: [
-                          TextSpan(text: '$title '),
+                          TextSpan(
+                              text: '$title ',
+                              style: theme.textTheme.displaySmall?.copyWith(fontSize: 16)),
                         ],
                       ),
                     ),
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        const Icon(Icons.attach_money,
-                            size: 14, color: Colors.black),
-                        Text(price,
-                            style: const TextStyle(color: Colors.black)),
+                        Text('\$ $price',
+                            style: theme.textTheme.displaySmall),
                         const SizedBox(width: 16),
                         RichText(
                           text: TextSpan(
-                            style: const TextStyle(
-                                fontSize: 14, color: Colors.black),
+                            style: theme.textTheme.displaySmall,
                             children: [
                               TextSpan(
-                                text: subtitle,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
-                              ),
+                                  text: subtitle,
+                                  style: theme.textTheme.displaySmall),
                             ],
                           ),
                         )
@@ -108,7 +105,7 @@ class CustomChallengeCard extends StatelessWidget {
                     children: [
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 0, 0, 139),
+                          backgroundColor: const Color.fromARGB(255, 85, 0, 0),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(32),
                           ),
@@ -116,13 +113,13 @@ class CustomChallengeCard extends StatelessWidget {
                         onPressed: onJoin,
                         child: Text(
                           'JOIN NOW!',
-                          style: themeDark.textTheme.headlineMedium,
+                          style: theme.textTheme.displaySmall,
                         ),
                       ),
                       IconButton(
                         icon: const Icon(Icons.info_outline),
                         onPressed: onInfoTap,
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                     ],
                   ),

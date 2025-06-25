@@ -21,7 +21,7 @@ class _AiFitCoachAppState extends State<AiFitCoachApp> {
         builder: (context, state) {
           return MaterialApp.router(
             title: 'Flutter Demo',
-            theme: themeDark,
+            theme: state.isDark ? themeDark : themeLight,
             debugShowCheckedModeBanner: false,
             routerConfig: _router.config(),
           );

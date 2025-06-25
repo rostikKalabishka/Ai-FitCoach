@@ -7,15 +7,15 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
+        backgroundColor: theme.appBarTheme.backgroundColor,
         title: Text('Automatic Activity Tracking',
-            style: themeDark.textTheme.labelMedium),
+            style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -39,7 +39,7 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
                             SizedBox(width: 10),
                             Text(
                               'Step Count',
-                              style: themeDark.textTheme.headlineLarge,
+                              style: theme.textTheme.headlineLarge,
                             ),
                           ],
                         ),
@@ -47,7 +47,7 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Settings',
-                              style: themeDark.textTheme.headlineSmall,
+                              style: theme.textTheme.headlineSmall,
                             ),
                             Icon(Icons.arrow_right_outlined)
                           ],
@@ -81,7 +81,7 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
                             SizedBox(width: 10),
                             Text(
                               'GPS Tracking',
-                              style: themeDark.textTheme.headlineLarge,
+                              style: theme.textTheme.headlineLarge,
                             ),
                           ],
                         ),
@@ -89,7 +89,7 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Settings',
-                              style: themeDark.textTheme.headlineSmall,
+                              style: theme.textTheme.headlineSmall,
                             ),
                             Icon(Icons.arrow_right_outlined)
                           ],
@@ -123,7 +123,7 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
                             SizedBox(width: 10),
                             Text(
                               'Heart Rate',
-                              style: themeDark.textTheme.headlineLarge,
+                              style: theme.textTheme.headlineLarge,
                             ),
                           ],
                         ),
@@ -131,7 +131,7 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Settings',
-                              style: themeDark.textTheme.headlineSmall,
+                              style: theme.textTheme.headlineSmall,
                             ),
                             Icon(Icons.arrow_right_outlined)
                           ],
@@ -164,7 +164,7 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Cancel',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),
@@ -178,7 +178,7 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Confirm',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),
