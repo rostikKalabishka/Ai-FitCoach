@@ -10,41 +10,7 @@ part 'chat_state.dart';
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   final AbstractChatRepository _chatRepository;
-
-  ChatModel _chatModel = ChatModel(
-    id: '',
-    createAt: null,
-    updateAt: null,
-    chatName: 'test1',
-    userCreatorChat: '',
-    messages: [
-      Message(
-          isUser: true,
-          message: 'sadsadasda asdasdsaddsa',
-          createAt: DateTime.now(),
-          id: 'id'),
-      Message(
-          isUser: false,
-          message: 'test1234567',
-          createAt: DateTime.now(),
-          id: 'id'),
-      Message(
-          isUser: true,
-          message: 'ihihihihiihhi',
-          createAt: DateTime.now(),
-          id: 'id'),
-      Message(
-          isUser: false,
-          message: 'wwwwwwwww',
-          createAt: DateTime.now(),
-          id: 'id'),
-      Message(
-          isUser: true,
-          message: 'yep12312312312',
-          createAt: DateTime.now(),
-          id: 'id'),
-    ],
-  );
+  late ChatModel _chatModel;
 
   ChatBloc({required AbstractChatRepository chatRepository})
       : _chatRepository = chatRepository,
@@ -55,8 +21,19 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
   }
 
   Future<void> _onLoadChat(LoadChatEvent event, Emitter<ChatState> emit) async {
-    emit(AiChatLoading());
+    if (state is! AiChatLoaded) {
+      emit(AiChatLoading());
+    }
     try {
+      if (event.chatId.isEmpty) {
+        _chatModel = ChatModel.emptyChatModel.copyWith(
+            createAt: DateTime.now(),
+            updateAt: DateTime.now(),
+            userCreatorChat: event.userCreatorChatId);
+      } else {
+        _chatModel = await _chatRepository.getChat(chatId: event.chatId);
+      }
+
       emit(AiChatLoaded(chatModel: _chatModel));
     } catch (e) {
       emit(AiChatFailure(e));
@@ -65,6 +42,10 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
   Future<void> _onSendMessage(
       SendMessageEvent event, Emitter<ChatState> emit) async {
+    if (state is! AiChatLoaded) {
+      emit(AiChatLoading());
+    }
+
     final userMessage = Message.emptyMessage.copyWith(
       message: event.message,
       isUser: true,
@@ -72,7 +53,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
       id: const Uuid().v4(),
     );
 
-    _updateMessages(userMessage, emit, true);
+    await _updateMessages(userMessage, emit, true);
 
     try {
       final aiResponse = await _chatRepository.sendMessage(
@@ -87,15 +68,30 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     }
   }
 
-  void _onGetResponse(GetResponse event, Emitter<ChatState> emit) {
-    _updateMessages(event.message, emit, false);
+  void _onGetResponse(GetResponse event, Emitter<ChatState> emit) async {
+    await _updateMessages(event.message, emit, false);
   }
 
-  void _updateMessages(
-      Message message, Emitter<ChatState> emit, bool isTyping) {
-    _chatModel = _chatModel.copyWith(
-      messages: [..._chatModel.messages, message],
-    );
-    emit(AiChatLoaded(chatModel: _chatModel, isTyping: isTyping));
+  Future<void> _updateMessages(
+      Message message, Emitter<ChatState> emit, bool isTyping) async {
+    if (state is! AiChatLoaded) {
+      emit(AiChatLoading());
+    }
+    try {
+      _chatModel = _chatModel.copyWith(
+        messages: [..._chatModel.messages, message],
+      );
+      if (_chatModel.id.isNotEmpty) {
+        await _chatRepository.updateChat(chatModel: _chatModel);
+      } else {
+        _chatModel = _chatModel.copyWith(
+          id: Uuid().v4(),
+        );
+        await _chatRepository.createChat(chatModel: _chatModel);
+      }
+      emit(AiChatLoaded(chatModel: _chatModel, isTyping: isTyping));
+    } catch (e) {
+      emit(AiChatFailure(e));
+    }
   }
 }

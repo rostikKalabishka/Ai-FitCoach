@@ -6,9 +6,8 @@ import 'package:ai_fit_coach/repositories/chat_repository/abstract_chat_reposito
 class ChatRepository implements AbstractChatRepository {
   final ChatApiClient _chatApiClient = ChatApiClient();
   @override
-  Future<ChatModel> getChat({required String chatId}) {
-    // TODO: implement getChat
-    throw UnimplementedError();
+  Future<ChatModel> getChat({required String chatId}) async {
+    return _chatApiClient.getChat(chatId: chatId);
   }
 
   @override
@@ -16,5 +15,25 @@ class ChatRepository implements AbstractChatRepository {
       {required ChatModel chatModel, required Message userMessage}) {
     return _chatApiClient.sendMessage(
         chatModel: chatModel, userMessage: userMessage);
+  }
+
+  @override
+  Future<void> createChat({required ChatModel chatModel}) async {
+    return _chatApiClient.createChat(chatModel: chatModel);
+  }
+
+  @override
+  Future<void> updateChat({required ChatModel chatModel}) async {
+    return _chatApiClient.updateChat(chatModel: chatModel);
+  }
+
+  @override
+  Future<void> deleteChat({required String chatId}) async {
+    return _chatApiClient.deleteChat(chatId: chatId);
+  }
+
+  @override
+  Stream<List<ChatModel>> getHistoryStream({required String userId}) {
+    return _chatApiClient.getHistoryStream(userId: userId);
   }
 }

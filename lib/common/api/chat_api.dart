@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:ai_fit_coach/common/api/model/chat_model.dart';
+import 'package:ai_fit_coach/common/api/promt/promt.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -19,30 +20,13 @@ class ChatApiClient {
     );
   }
 
-  Future<ChatModel> createChat({required String userCreatorChat}) async {
+  Future<void> createChat({required ChatModel chatModel}) async {
     try {
-      final dateTime = DateTime.now();
-      final ChatModel chatModel = ChatModel(
-        messages: [],
-        id: const Uuid().v1(),
-        createAt: dateTime,
-        updateAt: dateTime,
-        chatName: '',
-        userCreatorChat: userCreatorChat,
+      final ChatModel updateChat = chatModel.copyWith(
+        chatName: chatModel.messages[0].message,
       );
 
-      await _chatsCollection.doc(chatModel.id).set(chatModel.toJson());
-
-      final chatSnapshot = await _chatsCollection.doc(chatModel.id).get();
-
-      if (chatSnapshot.exists) {
-        final chatData = chatSnapshot.data();
-        if (chatData != null) {
-          return ChatModel.fromJson(chatData);
-        }
-      }
-
-      throw Exception('Chat not found or data is null');
+      await _chatsCollection.doc(updateChat.id).set(updateChat.toJson());
     } catch (e) {
       log(e.toString());
       rethrow;
@@ -80,12 +64,15 @@ class ChatApiClient {
   }) async {
     final dateTime = DateTime.now();
     try {
-      // final context = chatModel.messages
-      //     .map((e) => {"message": e.message, "isUser": e.isUser})
-      //     .toList()
-      //     .join('\n');
+      final conversationHistory = chatModel.messages
+          .map((e) => '${e.isUser ? "User" : "Assistant"}: ${e.message}')
+          .join('\n');
 
-      final TextPart prompt = TextPart(userMessage.message);
+      final formattedPrompt = fitnessAssistantPrompt
+          .replaceAll('{{conversationHistory}}', conversationHistory)
+          .replaceAll('{{userMessage}}', userMessage.message);
+
+      final TextPart prompt = TextPart(formattedPrompt);
 
       final response = await _model.generateContent([
         Content.multi([prompt])
@@ -98,11 +85,11 @@ class ChatApiClient {
         id: const Uuid().v4(),
       );
 
-      // final updateChatModel = chatModel.copyWith(
-      //     messages: [...chatModel.messages, userMessage, responseMessage],
-      //     updateAt: DateTime.now());
+      final updateChatModel = chatModel.copyWith(
+          messages: [...chatModel.messages, responseMessage],
+          updateAt: DateTime.now());
 
-      //await updateChat(chatModel: updateChatModel);
+      await updateChat(chatModel: updateChatModel);
 
       return responseMessage;
     } catch (e) {
@@ -114,24 +101,6 @@ class ChatApiClient {
   Future<void> deleteChat({required String chatId}) async {
     try {
       await _chatsCollection.doc(chatId).delete();
-    } catch (e) {
-      log(e.toString());
-      rethrow;
-    }
-  }
-
-  Future<List<ChatModel>> getHistoryCurrentUser(
-      {required String userId}) async {
-    try {
-      final querySnapshot = await _chatsCollection
-          .where("userCreatorChat", isEqualTo: userId)
-          .orderBy('updateAt', descending: true)
-          .get();
-
-      final historyData = querySnapshot.docs
-          .map((doc) => ChatModel.fromJson(doc.data()))
-          .toList();
-      return historyData;
     } catch (e) {
       log(e.toString());
       rethrow;

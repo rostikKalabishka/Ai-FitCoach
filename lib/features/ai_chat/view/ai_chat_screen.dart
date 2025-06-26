@@ -1,8 +1,10 @@
 import 'dart:ui';
 
+import 'package:ai_fit_coach/blocs/user_bloc/user_bloc.dart';
 import 'package:ai_fit_coach/common/api/model/message_model.dart';
 import 'package:ai_fit_coach/features/ai_chat/bloc/chat_bloc.dart';
 import 'package:ai_fit_coach/features/ai_chat/widgets/chat_screen.dart';
+import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,8 +28,11 @@ class _AiChatScreenState extends State<AiChatScreen> {
   void initState() {
     _textFieldController = TextEditingController();
     _scrollController = ScrollController();
+    final String userId =
+        context.read<AuthenticationBloc>().state.user?.id ?? '';
     focusNode = FocusNode();
-    context.read<ChatBloc>().add(LoadChatEvent());
+    context.read<ChatBloc>().add(
+        LoadChatEvent(chatId: widget.chatId ?? '', userCreatorChatId: userId));
 
     super.initState();
   }

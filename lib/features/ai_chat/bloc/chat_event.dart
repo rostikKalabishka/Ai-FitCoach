@@ -27,4 +27,15 @@ class GetResponse extends ChatEvent {
   List<Object> get props => [message];
 }
 
-class LoadChatEvent extends ChatEvent {}
+class LoadChatEvent extends ChatEvent {
+  final String chatId;
+  final String userCreatorChatId;
+
+  const LoadChatEvent({
+    required this.chatId,
+    required this.userCreatorChatId,
+  });
+
+  @override
+  List<Object> get props => [chatId, userCreatorChatId];
+}
