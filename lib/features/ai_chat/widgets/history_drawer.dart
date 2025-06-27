@@ -1,13 +1,20 @@
-import 'package:ai_fit_coach/blocs/history_bloc/history_bloc.dart';
-import 'package:ai_fit_coach/router/router.dart';
-import 'package:ai_fit_coach/ui/ui.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:ai_fit_coach/blocs/history_bloc/history_bloc.dart';
+import 'package:ai_fit_coach/router/router.dart';
+import 'package:ai_fit_coach/ui/ui.dart';
+
 class HistoryDrawer extends StatefulWidget {
-  const HistoryDrawer({super.key, required this.currentChatId});
+  const HistoryDrawer({
+    super.key,
+    required this.currentChatId,
+    required this.userId,
+  });
   final String currentChatId;
+  final String userId;
   @override
   State<HistoryDrawer> createState() => _HistoryDrawerState();
 }
@@ -43,8 +50,16 @@ class _HistoryDrawerState extends State<HistoryDrawer> {
                     DrawerHeader(
                       margin: EdgeInsets.only(bottom: 0),
                       child: Column(spacing: 20, children: [
-                        Text('Chat history'),
+                        Text(
+                          'Chat history',
+                          style: theme.textTheme.labelMedium,
+                        ),
                         CustomTextfield(
+                          onChanged: (value) {
+                            if (value != null && value.isNotEmpty) {}
+                            context.read<HistoryBloc>().add(SearchChatEvent(
+                                query: value!.trim(), userId: widget.userId));
+                          },
                           controller: _searchHistoryController,
                           hintText: 'Search chat',
                           obscureText: false,
@@ -61,6 +76,8 @@ class _HistoryDrawerState extends State<HistoryDrawer> {
                               chat.chatName,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
+                              style: theme.textTheme.headlineLarge
+                                  ?.copyWith(fontWeight: FontWeight.normal),
                             ),
                             onTap: () {
                               currentChatId != chat.id

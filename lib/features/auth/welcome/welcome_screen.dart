@@ -51,11 +51,13 @@ class WelcomeScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Welcome,',
-                              style: theme.textTheme.labelMedium,
+                              style: theme.textTheme.displaySmall
+                                  ?.copyWith(fontSize: 24),
                             ),
                             Text(
                               'glad to see you!',
-                              style: theme.textTheme.labelMedium,
+                              style: theme.textTheme.displaySmall
+                                  ?.copyWith(fontSize: 24),
                             ),
                           ],
                         ),

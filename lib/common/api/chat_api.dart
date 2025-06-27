@@ -112,6 +112,8 @@ class ChatApiClient {
     try {
       final querySnapshot = await _chatsCollection
           .where("userCreatorChat", isEqualTo: userId)
+          .orderBy('updateAt', descending: true)
+          .orderBy('chatName', descending: false)
           .get();
 
       var filteredDocs = querySnapshot.docs

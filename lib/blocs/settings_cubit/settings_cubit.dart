@@ -11,10 +11,7 @@ part 'settings_state.dart';
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit({required AbstractSettingsRepository settingsRepository})
       : _settingsRepository = settingsRepository,
-        super(SettingsState(
-            brightness: Brightness.dark,
-            isOnboardingShowing: false,
-            isUserParametersScreenShown: false)) {
+        super(const SettingsState()) {
     _checkSelectedTheme();
     _checkShowOnboarding();
     _checkUserParametersScreen();
@@ -25,7 +22,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   void _checkShowOnboarding() {
     try {
       final isShowOnboarding = _settingsRepository.isOnboardingShown();
-      emit(SettingsState(isOnboardingShowing: isShowOnboarding));
+      emit(state.copyWith(isOnboardingShowing: isShowOnboarding));
     } catch (e) {
       log(e.toString());
     }
@@ -35,7 +32,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     try {
       final isUserParametersScreenShown =
           _settingsRepository.isUserParametersScreenShown();
-      emit(SettingsState(
+      emit(state.copyWith(
           isUserParametersScreenShown: isUserParametersScreenShown));
     } catch (e) {
       log(e.toString());
@@ -48,7 +45,7 @@ class SettingsCubit extends Cubit<SettingsState> {
           ? Brightness.dark
           : Brightness.light;
 
-      emit(SettingsState(brightness: brightness));
+      emit(state.copyWith(brightness: brightness));
     } catch (e) {
       log(e.toString());
     }
@@ -57,6 +54,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   Future<void> setOnboardingShown() async {
     try {
       await _settingsRepository.setOnboardingShown();
+      emit(state.copyWith(isOnboardingShowing: true));
     } catch (e) {
       log(e.toString());
     }
@@ -65,6 +63,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   Future<void> setUserParametersScreen() async {
     try {
       await _settingsRepository.setUserParametersScreenShown();
+      emit(state.copyWith(isUserParametersScreenShown: true));
     } catch (e) {
       log(e.toString());
     }
@@ -72,7 +71,7 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   Future<void> setThemeBrightness(Brightness brightness) async {
     try {
-      emit(SettingsState(brightness: brightness));
+      emit(state.copyWith(brightness: brightness));
       await _settingsRepository
           .setDarkThemeSelected(brightness == Brightness.dark);
     } catch (e) {

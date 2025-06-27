@@ -40,10 +40,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return BlocConsumer<ChatBloc, ChatState>(
-      listener: (BuildContext context, state) {},
+    return BlocBuilder<ChatBloc, ChatState>(
       builder: (BuildContext context, state) {
         final theme = Theme.of(context);
         final chatId = widget.chatId;
@@ -54,6 +51,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
           child: Scaffold(
             drawer: HistoryDrawer(
               currentChatId: chatId ?? '',
+              userId: userId,
             ),
             appBar: AppBar(
               actions: [
@@ -68,8 +66,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
                     icon: Icon(Icons.edit)),
               ],
               title: const Text(
-                'AiChat',
-                style: TextStyle(color: Colors.white),
+                'Ai Assistant',
               ),
             ),
             body: RefreshIndicator.adaptive(
@@ -97,8 +94,8 @@ class _AiChatScreenState extends State<AiChatScreen> {
                               ),
                             ),
                             if (state.isTyping) ...[
-                              const SpinKitThreeBounce(
-                                color: Color.fromARGB(255, 106, 153, 107),
+                              SpinKitThreeBounce(
+                                color: theme.colorScheme.secondary,
                                 size: 18,
                               ),
                             ],
@@ -125,12 +122,15 @@ class _AiChatScreenState extends State<AiChatScreen> {
                                   children: [
                                     Expanded(
                                       child: TextField(
+                                        style: theme.textTheme.headlineLarge
+                                            ?.copyWith(
+                                                fontWeight: FontWeight.normal),
                                         focusNode: focusNode,
                                         controller: _textFieldController,
                                         onSubmitted: (value) {
                                           _sendMessage(context);
                                         },
-                                        decoration: const InputDecoration(
+                                        decoration: InputDecoration(
                                           hintText: 'how can u help you?',
                                           border: InputBorder.none,
                                           enabledBorder: InputBorder.none,
@@ -144,7 +144,6 @@ class _AiChatScreenState extends State<AiChatScreen> {
                                         },
                                         icon: const Icon(
                                           Icons.send,
-                                          color: Colors.black,
                                         ))
                                   ],
                                 ),

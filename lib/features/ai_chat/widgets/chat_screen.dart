@@ -24,7 +24,7 @@ class ChatWidget extends StatelessWidget {
     return Column(
       children: [
         Material(
-          color: isUser ? Colors.black : Colors.blueAccent,
+          color: isUser ? theme.scaffoldBackgroundColor : theme.primaryColor,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(

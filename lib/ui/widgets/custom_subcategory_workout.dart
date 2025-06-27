@@ -1,4 +1,3 @@
-import 'package:ai_fit_coach/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class CustomSubcategoryWorkout extends StatelessWidget {
