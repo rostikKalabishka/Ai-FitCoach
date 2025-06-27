@@ -1,5 +1,9 @@
+import 'package:ai_fit_coach/ui/widgets/custom_confirm_cancel_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+
+import '../../../ui/ui.dart';
+import '../../../ui/widgets/custom_user_data_dialog.dart';
 
 @RoutePage()
 class UserProfileScreen extends StatelessWidget {
@@ -8,6 +12,7 @@ class UserProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
@@ -16,322 +21,61 @@ class UserProfileScreen extends StatelessWidget {
       ),
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            TextField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                ),
-                suffixIcon: Icon(Icons.account_circle),
-                hintText: 'Name',
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                ),
-              ),
+            const CustomUserDataField(hint: 'Name', icon: Icons.account_circle),
+            const SizedBox(height: 20),
+            const CustomUserDataField(hint: 'Age', icon: Icons.calendar_today),
+            const SizedBox(height: 20),
+            const CustomUserDataField(hint: 'Height', icon: Icons.straighten),
+            const SizedBox(height: 20),
+            const CustomUserDataField(hint: 'Weight', icon: Icons.monitor_weight),
+            const SizedBox(height: 20),
+            CustomUserDataDialog(
+              hint: 'Gender',
+              icon: Icons.wc,
+              dialogTitle: 'Please select your gender',
+              options: const [
+                DialogOption(label: 'Male', icon: Icons.male),
+                DialogOption(label: 'Female', icon: Icons.female),
+                DialogOption(label: 'Other', icon: Icons.person),
+              ],
             ),
-            SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                ),
-                suffixIcon: Icon(Icons.calendar_today),
-                hintText: 'Age',
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                ),
-                suffixIcon: Icon(Icons.straighten),
-                hintText: 'Height',
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                ),
-                suffixIcon: Icon(Icons.monitor_weight),
-                hintText: 'Weight',
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.white, width: 1),
-                          borderRadius: BorderRadius.circular(16)),
-                      backgroundColor: Colors.black,
-                      title: Text(
-                        'Please select your gender',
-                        style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
-                      ),
-                      content: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                              child: InkWell(
-                            onTap: () {},
-                            child: ListTile(
-                                leading: Icon(Icons.male),
-                                title: Text(
-                                  'Male',
-                                  style: theme.textTheme.displaySmall,
-                                )),
-                          )),
-                          Divider(
-                            thickness: 0.5,
-                          ),
-                          Container(
-                              child: InkWell(
-                            onTap: () {},
-                            child: ListTile(
-                                leading: Icon(Icons.female),
-                                title: Text(
-                                  'Female',
-                                  style: theme.textTheme.displaySmall,
-                                )),
-                          )),
-                          Divider(
-                            thickness: 0.5,
-                          ),
-                          Container(
-                              child: InkWell(
-                            onTap: () {},
-                            child: ListTile(
-                                leading: Icon(Icons.person),
-                                title: Text(
-                                  'Other',
-                                  style: theme.textTheme.displaySmall,
-                                )),
-                          ))
-                        ],
-                      ),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          child: Text(
-                            'OK',
-                            style: theme.textTheme.displaySmall,
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
-              child: AbsorbPointer(
-                child: TextField(
-                  readOnly: true,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                    ),
-                    suffixIcon: Icon(Icons.wc),
-                    hintText: 'Gender',
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25),
-                      borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            GestureDetector(
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.white, width: 1),
-                          borderRadius: BorderRadius.circular(16)),
-                      backgroundColor: Colors.black,
-                      title: Text(
-                        'Please select your gender',
-                        style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
-                      ),
-                      content: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            child: InkWell(
-                              onTap: () {},
-                              child: ListTile(
-                                leading: Icon(Icons.chair),
-                                title: Text(
-                                  'Sedentary',
-                                  style: theme.textTheme.displaySmall,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Divider(
-                            thickness: 0.5,
-                          ),
-                          Container(
-                            child: InkWell(
-                              onTap: () {},
-                              child: ListTile(
-                                leading: Icon(Icons.directions_walk),
-                                title: Text(
-                                  'Lightly Active',
-                                  style: theme.textTheme.displaySmall,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Divider(
-                            thickness: 0.5,
-                          ),
-                          Container(
-                            child: InkWell(
-                              onTap: () {},
-                              child: ListTile(
-                                leading: Icon(Icons.directions_run),
-                                title: Text(
-                                  'Moderately Active',
-                                  style: theme.textTheme.displaySmall,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Divider(
-                            thickness: 0.5,
-                          ),
-                          Container(
-                            child: InkWell(
-                              onTap: () {},
-                              child: ListTile(
-                                leading: Icon(Icons.sports_gymnastics),
-                                title: Text(
-                                  'Very Active',
-                                  style: theme.textTheme.displaySmall,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Divider(
-                            thickness: 0.5,
-                          ),
-                          Container(
-                            child: InkWell(
-                              onTap: () {},
-                              child: ListTile(
-                                leading: Icon(Icons.military_tech),
-                                title: Text(
-                                  'Extremely Active',
-                                  style: theme.textTheme.displaySmall,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          child: Text(
-                            'OK',
-                            style: theme.textTheme.displaySmall,
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
-              child: AbsorbPointer(
-                child: TextField(
-                  readOnly: true,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                    ),
-                    suffixIcon: Icon(Icons.directions_run),
-                    hintText: 'Activity Level',
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25),
-                      borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                    ),
-                  ),
-                ),
-              ),
+            const SizedBox(height: 20),
+            CustomUserDataDialog(
+              hint: 'Activity Level',
+              icon: Icons.directions_run,
+              dialogTitle: 'Please select your activity level',
+              options: const [
+                DialogOption(label: 'Sedentary', icon: Icons.chair),
+                DialogOption(label: 'Lightly Active', icon: Icons.directions_walk),
+                DialogOption(label: 'Moderately Active', icon: Icons.directions_run),
+                DialogOption(label: 'Very Active', icon: Icons.sports_gymnastics),
+                DialogOption(label: 'Extremely Active', icon: Icons.military_tech),
+              ],
             ),
           ],
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 75, vertical: 32),
-        child: SizedBox(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                width: 110,
-                child: OutlinedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                  ),
-                  child: Text(
-                    'Cancel',
-                    style: theme.textTheme.labelSmall,
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 110,
-                child: OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                  ),
-                  child: Text(
-                    'Confirm',
-                    style: theme.textTheme.labelSmall,
-                  ),
-                ),
-              ),
-            ],
-          ),
+        padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CustomConfirmCancelButton(
+              label: 'Cancel',
+              onPressed: () => Navigator.pop(context),
+            ),
+            CustomConfirmCancelButton(
+              label: 'Confirm',
+              onPressed: () {
+              },
+            ),
+          ],
         ),
       ),
     );
   }
 }
+

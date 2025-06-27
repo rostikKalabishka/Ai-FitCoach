@@ -48,8 +48,6 @@ class _ChallengesScreenState extends State<ChallengesScreen>
         MentalChallengesRoute(),
       ],
       builder: (context, child) {
-        final tabsRouter = AutoTabsRouter.of(context);
-
         return Scaffold(
           appBar: AppBar(
             backgroundColor: theme.appBarTheme.backgroundColor,
@@ -110,7 +108,7 @@ class _ChallengesScreenState extends State<ChallengesScreen>
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: isSelected ? const Color.fromARGB(255, 87, 48, 69) : theme.primaryColor,
+              color: isSelected ? const Color.fromARGB(255, 87, 48, 69) : theme.colorScheme.onTertiary,
               width: 3,
             ),
           ),
