@@ -22,6 +22,7 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
     });
     on<SearchChatEvent>(_searchChat);
     on<DeleteChatEvent>(_deleteChat);
+    on<RenameChatEvent>(_onRenameChat);
   }
   void _loadHistory(LoadHistoryEvent event, Emitter<HistoryState> emit) {
     _historySubscription?.cancel();
@@ -75,6 +76,25 @@ class HistoryBloc extends Bloc<HistoryEvent, HistoryState> {
     } catch (e) {
       log(e.toString());
       emit(HistoryFailure(error: e));
+    }
+  }
+
+  Future<void> _onRenameChat(
+    RenameChatEvent event,
+    Emitter<HistoryState> emit,
+  ) async {
+    if (state is HistoryLoaded) {
+      final currentState = state as HistoryLoaded;
+      final updatedList = currentState.historyList.map((chat) {
+        if (chat.id == event.chatId) {
+          return chat.copyWith(chatName: event.newName);
+        }
+        return chat;
+      }).toList();
+
+      emit(currentState.copyWith(historyList: updatedList));
+      await _chatRepository.renameChat(
+          chatId: event.chatId, newName: event.newName);
     }
   }
 }

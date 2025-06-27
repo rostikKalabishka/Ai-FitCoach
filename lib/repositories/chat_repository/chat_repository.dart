@@ -38,6 +38,12 @@ class ChatRepository implements AbstractChatRepository {
   }
 
   @override
+  Future<void> renameChat(
+      {required String chatId, required String newName}) async {
+    return _chatApiClient.renameChat(chatId: chatId, newName: newName);
+  }
+
+  @override
   Future<List<ChatModel>> searchChat(
       {required String query, required String userId}) async {
     return _chatApiClient.searchChat(userId: userId, query: query);

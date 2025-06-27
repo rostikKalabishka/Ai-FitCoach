@@ -10,6 +10,8 @@ abstract interface class AbstractChatRepository {
 
   Future<void> createChat({required ChatModel chatModel});
 
+  Future<void> renameChat({required String chatId, required String newName});
+
   Future<void> updateChat({required ChatModel chatModel});
 
   Future<void> deleteChat({required String chatId});

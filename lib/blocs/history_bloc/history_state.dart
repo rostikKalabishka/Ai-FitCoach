@@ -16,8 +16,16 @@ final class HistoryLoaded extends HistoryState {
 
   const HistoryLoaded({required this.historyList});
 
+  HistoryLoaded copyWith({
+    List<ChatModel>? historyList,
+  }) {
+    return HistoryLoaded(
+      historyList: historyList ?? this.historyList,
+    );
+  }
+
   @override
-  List<Object> get props => super.props..add(historyList);
+  List<Object> get props => [historyList];
 }
 
 final class HistoryFailure extends HistoryState {

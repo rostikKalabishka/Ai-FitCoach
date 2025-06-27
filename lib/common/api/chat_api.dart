@@ -58,6 +58,16 @@ class ChatApiClient {
     }
   }
 
+  Future<void> renameChat(
+      {required String chatId, required String newName}) async {
+    try {
+      await _chatsCollection.doc(chatId).update({"chatName": newName});
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
+
   Future<Message> sendMessage({
     required ChatModel chatModel,
     required Message userMessage,

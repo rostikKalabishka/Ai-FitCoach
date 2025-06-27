@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'history_bloc.dart';
 
 sealed class HistoryEvent extends Equatable {
@@ -46,4 +47,17 @@ class DeleteChatEvent extends HistoryEvent {
     ..add(
       chatId,
     );
+}
+
+class RenameChatEvent extends HistoryEvent {
+  final String chatId;
+  final String newName;
+
+  const RenameChatEvent({
+    required this.chatId,
+    required this.newName,
+  });
+
+  @override
+  List<Object> get props => [chatId, newName];
 }

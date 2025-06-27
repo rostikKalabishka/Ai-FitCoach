@@ -28,7 +28,7 @@ class PlatformNavigationBar extends StatelessWidget {
       );
     }
     return CupertinoTabBar(
-      activeColor: theme.primaryColor,
+      activeColor: theme.colorScheme.primary,
       items: items,
       currentIndex: selectedIndex,
       backgroundColor: theme.scaffoldBackgroundColor,
