@@ -95,4 +95,10 @@ abstract class AppConst {
 
   static const String challengeSleepAndRelax5Image =
       'assets/images/challenges/sleep_and_relax/5.png';
+
+  static const String userPlaceHolder =
+      'assets/images/chat/user_placeholder.png';
+
+  static const String chatBotPlaceHolder =
+      'assets/images/chat/ai_bot_placeholder.png';
 }

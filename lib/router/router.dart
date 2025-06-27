@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/features/ai_chat/view/ai_chat_screen.dart';
 import 'package:ai_fit_coach/features/auth/auth_screen/auth_screen.dart';
 import 'package:ai_fit_coach/features/challenges/challenges.dart';
 
@@ -80,6 +81,10 @@ class AppRouter extends RootStackRouter {
           AutoRoute(
             page: WorkoutRoute.page,
             path: 'workout_screen',
+          ),
+          AutoRoute(
+            page: AiChatRoute.page,
+            path: 'ai_chat_screen',
           ),
         ]),
         AutoRoute(

@@ -27,6 +27,52 @@ class AccountManagementRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [AiChatScreen]
+class AiChatRoute extends PageRouteInfo<AiChatRouteArgs> {
+  AiChatRoute({Key? key, String? chatId, List<PageRouteInfo>? children})
+      : super(
+          AiChatRoute.name,
+          args: AiChatRouteArgs(key: key, chatId: chatId),
+          initialChildren: children,
+        );
+
+  static const String name = 'AiChatRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<AiChatRouteArgs>(
+        orElse: () => const AiChatRouteArgs(),
+      );
+      return AiChatScreen(key: args.key, chatId: args.chatId);
+    },
+  );
+}
+
+class AiChatRouteArgs {
+  const AiChatRouteArgs({this.key, this.chatId});
+
+  final Key? key;
+
+  final String? chatId;
+
+  @override
+  String toString() {
+    return 'AiChatRouteArgs{key: $key, chatId: $chatId}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! AiChatRouteArgs) return false;
+    return key == other.key && chatId == other.chatId;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ chatId.hashCode;
+}
+
+/// generated route for
 /// [AuthScreen]
 class AuthRoute extends PageRouteInfo<AuthRouteArgs> {
   AuthRoute({

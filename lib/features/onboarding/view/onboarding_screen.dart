@@ -33,11 +33,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final theme = Theme.of(context);
+    final theme = Theme.of(context);
     final _size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      // backgroundColor: Colors.black,
       body: SafeArea(
         child: AnimatedOpacity(
           opacity: _formOpacity,
@@ -73,19 +73,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             Text(
                               arr[index].title,
                               textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
+                              style: theme.textTheme.labelMedium,
                             ),
                             const SizedBox(height: 10),
-                            Text(
-                              arr[index].description,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                  fontSize: 16, color: Colors.white),
-                            ),
+                            Text(arr[index].description,
+                                textAlign: TextAlign.center,
+                                style: theme.textTheme.headlineLarge),
                             const SizedBox(height: 50),
                           ],
                         ),
@@ -102,7 +95,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     height: _currentIndex == index ? 18 : 12,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: _currentIndex == index ? Colors.blue : Colors.grey,
+                      color: _currentIndex == index
+                          ? theme.colorScheme.secondary
+                          : Colors.grey,
                     ),
                   );
                 }),
@@ -113,7 +108,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                 child: CustomButtonWidget(
                   backgroundColor: _currentIndex == arr.length - 1
-                      ? Colors.blue
+                      ? theme.colorScheme.primary
                       : Colors.grey[800],
                   onPressed: () {
                     handleOnboardingAction(context);

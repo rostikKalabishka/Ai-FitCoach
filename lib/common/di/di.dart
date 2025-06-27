@@ -1,5 +1,7 @@
+import 'package:ai_fit_coach/blocs/history_bloc/history_bloc.dart';
 import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
 import 'package:ai_fit_coach/blocs/user_bloc/user_bloc.dart';
+import 'package:ai_fit_coach/features/ai_chat/bloc/chat_bloc.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
 import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
@@ -7,6 +9,7 @@ import 'package:ai_fit_coach/repositories/user_repository/user.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../repositories/chat_repository/chat.dart';
 import '../../repositories/settings_repository/settings.dart';
 
 final getIt = GetIt.instance;
@@ -16,6 +19,8 @@ void initDI({required SharedPreferences sharedPreferences}) {
       () => SettingsRepository(sharedPreferences: sharedPreferences));
 
   getIt.registerLazySingleton<AbstractUserRepository>(() => UserRepository());
+
+  getIt.registerLazySingleton<AbstractChatRepository>(() => ChatRepository());
 
   getIt.registerLazySingleton<SettingsCubit>(
     () => SettingsCubit(
@@ -44,6 +49,18 @@ void initDI({required SharedPreferences sharedPreferences}) {
   getIt.registerLazySingleton<AuthBloc>(
     () => AuthBloc(
       userRepository: getIt<AbstractUserRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<ChatBloc>(
+    () => ChatBloc(
+      chatRepository: getIt<AbstractChatRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<HistoryBloc>(
+    () => HistoryBloc(
+      chatRepository: getIt<AbstractChatRepository>(),
     ),
   );
 }

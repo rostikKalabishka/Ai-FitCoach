@@ -50,6 +50,7 @@ final themeDark = ThemeData.dark().copyWith(
 );
 
 final themeLight = ThemeData.light().copyWith(
+  primaryColor: Colors.grey[400],
   colorScheme: ColorScheme.fromSeed(
     seedColor: Colors.white,
     primary: const Color.fromARGB(255, 44, 0, 24),

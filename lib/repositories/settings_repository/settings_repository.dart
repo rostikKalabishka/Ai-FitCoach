@@ -7,7 +7,7 @@ class SettingsRepository implements AbstractSettingsRepository {
   static const _isDarkThemeSelectedKey = 'dark_theme_selected';
   static const _isOnboardingShownKey = 'onboarding_show';
   static const _isUserParametersScreenShownKey = 'user_parameters_screen_show';
-  SettingsRepository({required this.sharedPreferences});
+  const SettingsRepository({required this.sharedPreferences});
   @override
   bool isDarkThemeSelected() {
     try {
