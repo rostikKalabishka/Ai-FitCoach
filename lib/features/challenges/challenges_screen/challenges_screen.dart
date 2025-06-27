@@ -1,4 +1,4 @@
-
+import 'package:ai_fit_coach/router/router.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 
@@ -14,75 +14,114 @@ class ChallengesScreen extends StatefulWidget {
   State<ChallengesScreen> createState() => _ChallengesScreenState();
 }
 
-class _ChallengesScreenState extends State<ChallengesScreen> {
-  int selectedIndex = 0;
+class _ChallengesScreenState extends State<ChallengesScreen>
+    with TickerProviderStateMixin {
+  late TabController tabController;
+  int initialIndex = 0;
 
-  final List<String> sections = [
-    'Food',
-    'Exercise',
-    'Sleep and Relax',
-    'Hydration',
-    'Mental',
-  ];
+  @override
+  void initState() {
+    super.initState();
+    tabController =
+        TabController(initialIndex: initialIndex, length: 5, vsync: this);
+    tabController.addListener(() {
+      setState(() {});
+    });
+  }
 
-  final List<Widget> screens = [
-    FoodChallenges(),
-    ExerciseChallenges(),
-    SleepAndRelaxChallenges(),
-    HydrationChallenges(),
-    MentalChallenges(),
-  ];
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
-        title: Text('Challenges', style: themeDark.textTheme.labelMedium),
-        centerTitle: true,
-      ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
-      body: Column(
-        children: [
-          SizedBox(
-            height: 30,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: sections.length,
-              itemBuilder: (BuildContext context, int index) {
-                final isSelected = index == selectedIndex;
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedIndex = index;
-                    });
-                  },
-                  child: Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    decoration: BoxDecoration(
-                      color: isSelected
-                          ? const Color.fromARGB(255, 0, 0, 139)
-                          : const Color.fromARGB(255, 39, 39, 39),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(sections[index],
-                        style: themeDark.textTheme.headlineMedium),
-                  ),
-                );
-              },
+    final theme = Theme.of(context);
+
+    return AutoTabsRouter(
+      routes: [
+        FoodChallengesRoute(),
+        ExerciseChallengesRoute(),
+        SleepAndRelaxChallengesRoute(),
+        HydrationChallengesRoute(),
+        MentalChallengesRoute(),
+      ],
+      builder: (context, child) {
+        final tabsRouter = AutoTabsRouter.of(context);
+
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: theme.appBarTheme.backgroundColor,
+            title: Text('Challenges', style: theme.textTheme.labelMedium),
+            centerTitle: true,
+          ),
+          backgroundColor: theme.scaffoldBackgroundColor,
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    const SizedBox(width: 8),
+                    _buildTab('Food', 0),
+                    _buildTab('Exercise', 1),
+                    _buildTab('Sleep and Relax', 2),
+                    _buildTab('Hydration', 3),
+                    _buildTab('Mental', 4),
+                    const SizedBox(width: 8),
+                  ],
+                ),
+              ),
+                            const SizedBox(height: 8),
+              Expanded(
+                child: TabBarView(
+                  controller: tabController,
+                  children: [
+                    FoodChallengesScreen(),
+                    ExerciseChallengesScreen(),
+                    SleepAndRelaxChallengesScreen(),
+                    HydrationChallengesScreen(),
+                    MentalChallengesScreen(),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildTab(String title, int index) {
+    final theme = Theme.of(context);
+    final isSelected = tabController.index == index;
+
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          tabController.index = index;
+        });
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        margin: const EdgeInsets.only(right: 8),
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: isSelected ? const Color.fromARGB(255, 87, 48, 69) : theme.primaryColor,
+              width: 3,
             ),
           ),
-          SizedBox(
-            height: 10,
+        ),
+        child: Text(
+          title,
+          style: theme.textTheme.headlineLarge?.copyWith(
+            color: isSelected ? theme.textTheme.headlineLarge?.color : Colors.grey,
+            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
-          Expanded(
-            child: screens[selectedIndex],
-          ),
-        ],
+        ),
       ),
     );
   }

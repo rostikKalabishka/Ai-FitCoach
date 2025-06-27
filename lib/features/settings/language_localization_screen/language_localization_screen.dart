@@ -1,21 +1,23 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class LanguageLocalizationScreen extends StatelessWidget {
   const LanguageLocalizationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
+        backgroundColor: theme.appBarTheme.backgroundColor,
         title: Text(
           'Language & Localization',
-          style: themeDark.textTheme.labelMedium,
+          style: theme.textTheme.labelMedium,
         ),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: GestureDetector(
           onTap: () {
@@ -29,9 +31,12 @@ class LanguageLocalizationScreen extends StatelessWidget {
                   ),
                   backgroundColor: Colors.black,
                   title: Center(
-                    child: Text(
-                      'Please select language',
-                      style: themeDark.textTheme.labelSmall,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Text(
+                        'Please select language',
+                        style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                      ),
                     ),
                   ),
                   content: Column(
@@ -50,14 +55,13 @@ class LanguageLocalizationScreen extends StatelessWidget {
                             ),
                             title: Text(
                               'English',
-                              style: themeDark.textTheme.headlineMedium,
+                              style: theme.textTheme.displaySmall,
                             ),
                           ),
                         ),
                       ),
                       Divider(
                         thickness: 0.5,
-                        color: Colors.white,
                       ),
                       Container(
                         child: InkWell(
@@ -72,14 +76,13 @@ class LanguageLocalizationScreen extends StatelessWidget {
                             ),
                             title: Text(
                               'French',
-                              style: themeDark.textTheme.headlineMedium,
+                              style: theme.textTheme.displaySmall,
                             ),
                           ),
                         ),
                       ),
                       Divider(
                         thickness: 0.5,
-                        color: Colors.white,
                       ),
                       Container(
                         child: InkWell(
@@ -94,14 +97,13 @@ class LanguageLocalizationScreen extends StatelessWidget {
                             ),
                             title: Text(
                               'German',
-                              style: themeDark.textTheme.headlineMedium,
+                              style: theme.textTheme.displaySmall,
                             ),
                           ),
                         ),
                       ),
                       Divider(
                         thickness: 0.5,
-                        color: Colors.white,
                       ),
                       Container(
                         child: InkWell(
@@ -116,14 +118,13 @@ class LanguageLocalizationScreen extends StatelessWidget {
                             ),
                             title: Text(
                               'Japanese',
-                              style: themeDark.textTheme.headlineMedium,
+                              style: theme.textTheme.displaySmall,
                             ),
                           ),
                         ),
                       ),
                       Divider(
                         thickness: 0.5,
-                        color: Colors.white,
                       ),
                       Container(
                         child: InkWell(
@@ -138,14 +139,13 @@ class LanguageLocalizationScreen extends StatelessWidget {
                             ),
                             title: Text(
                               'Portuguese',
-                              style: themeDark.textTheme.headlineMedium,
+                              style: theme.textTheme.displaySmall,
                             ),
                           ),
                         ),
                       ),
                       Divider(
                         thickness: 0.5,
-                        color: Colors.white,
                       ),
                       Container(
                         child: InkWell(
@@ -160,14 +160,13 @@ class LanguageLocalizationScreen extends StatelessWidget {
                             ),
                             title: Text(
                               'Spanish',
-                              style: themeDark.textTheme.headlineMedium,
+                              style: theme.textTheme.displaySmall,
                             ),
                           ),
                         ),
                       ),
                       Divider(
                         thickness: 0.5,
-                        color: Colors.white,
                       ),
                       Container(
                         child: InkWell(
@@ -182,14 +181,13 @@ class LanguageLocalizationScreen extends StatelessWidget {
                             ),
                             title: Text(
                               'Ukrainian',
-                              style: themeDark.textTheme.headlineMedium,
+                              style: theme.textTheme.displaySmall,
                             ),
                           ),
                         ),
                       ),
                       Divider(
                         thickness: 0.5,
-                        color: Colors.white,
                       ),
                     ],
                   ),
@@ -198,7 +196,7 @@ class LanguageLocalizationScreen extends StatelessWidget {
                           onPressed: () => Navigator.of(context).pop(),
                           child: Text(
                             'OK',
-                            style: themeDark.textTheme.headlineMedium,
+                            style: theme.textTheme.displaySmall,
                           ),
                         ),
                       ],
@@ -207,18 +205,21 @@ class LanguageLocalizationScreen extends StatelessWidget {
             );
           },
           child: AbsorbPointer(
-                child: TextField(
-                  readOnly: true,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.white24),
-                    ),
-                    suffixIcon: Icon(Icons.language),
-                    hintText: 'Please select preferred language',
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25),
-                      borderSide: BorderSide(color: Colors.white24),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10, left: 10),
+                  child: TextField(
+                    readOnly: true,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                      ),
+                      suffixIcon: Icon(Icons.language),
+                      hintText: 'Please select preferred language',
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                      ),
                     ),
                   ),
                 ),
@@ -245,7 +246,7 @@ class LanguageLocalizationScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Cancel',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),
@@ -259,7 +260,7 @@ class LanguageLocalizationScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Confirm',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),

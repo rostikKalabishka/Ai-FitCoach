@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class WaterBalanceScreen extends StatefulWidget {
   const WaterBalanceScreen({super.key});
 
@@ -13,14 +15,14 @@ class _WaterBalanceScreenState extends State<WaterBalanceScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
-        title: Text('Water Balance', style: themeDark.textTheme.labelMedium),
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        title: Text('Water Balance', style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -44,7 +46,7 @@ class _WaterBalanceScreenState extends State<WaterBalanceScreen> {
                             SizedBox(width: 10),
                             Text(
                               'Daily Reminders',
-                              style: themeDark.textTheme.headlineLarge,
+                              style: theme.textTheme.headlineLarge,
                             ),
                           ],
                         ),
@@ -85,7 +87,7 @@ class _WaterBalanceScreenState extends State<WaterBalanceScreen> {
                             SizedBox(width: 10),
                             Text(
                               'Water Intake Goals',
-                              style: themeDark.textTheme.headlineLarge,
+                              style: theme.textTheme.headlineLarge,
                             ),
                           ],
                         ),
@@ -125,7 +127,7 @@ class _WaterBalanceScreenState extends State<WaterBalanceScreen> {
                   ),
                   child: Text(
                     'Cancel',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),
@@ -139,7 +141,7 @@ class _WaterBalanceScreenState extends State<WaterBalanceScreen> {
                   ),
                   child: Text(
                     'Confirm',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),

@@ -1,1 +1,1 @@
-export 'categories_newbies.dart';
+export 'categories_newbies_screen.dart';

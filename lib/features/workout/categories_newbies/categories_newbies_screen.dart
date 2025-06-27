@@ -1,13 +1,20 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import '../../../ui/widgets/widgets.dart';
 import '../workout.dart';
 
-class CategoriesNewbies extends StatelessWidget {
-  const CategoriesNewbies({super.key});
+@RoutePage()
+class CategoriesNewbiesScreen extends StatefulWidget {
+  const CategoriesNewbiesScreen({super.key});
 
   @override
+  State<CategoriesNewbiesScreen> createState() => _CategoriesNewbiesScreenState();
+}
+
+class _CategoriesNewbiesScreenState extends State<CategoriesNewbiesScreen> {
+  @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -16,7 +23,7 @@ class CategoriesNewbies extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
               'Number of existing workouts',
-              style: themeDark.textTheme.headlineLarge,
+              style: theme.textTheme.headlineLarge,
             ),
           ),
           Center(
@@ -35,7 +42,6 @@ class CategoriesNewbies extends StatelessWidget {
           ),
           Divider(
             thickness: 0.5,
-            color: const Color.fromARGB(255, 63, 63, 63),
           ),
         ],
       ),

@@ -1,16 +1,23 @@
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ui/widgets/custom_challenge_card.dart';
 
-class SleepAndRelaxChallenges extends StatelessWidget {
-  const SleepAndRelaxChallenges({super.key});
+@RoutePage()
+class SleepAndRelaxChallengesScreen extends StatefulWidget {
+  const SleepAndRelaxChallengesScreen({super.key});
 
   @override
+  State<SleepAndRelaxChallengesScreen> createState() => _SleepAndRelaxChallengesScreenState();
+}
+
+class _SleepAndRelaxChallengesScreenState extends State<SleepAndRelaxChallengesScreen> {
+  @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: ListView(children: [
         Column(
           children: [

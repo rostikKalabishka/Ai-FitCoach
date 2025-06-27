@@ -1,18 +1,20 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
-        title: Text('User Profile', style: themeDark.textTheme.labelMedium),
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        title: Text('User Profile', style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
         child: Column(
@@ -21,13 +23,13 @@ class UserProfileScreen extends StatelessWidget {
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.white24),
+                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
                 ),
                 suffixIcon: Icon(Icons.account_circle),
                 hintText: 'Name',
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: Colors.white24),
+                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
                 ),
               ),
             ),
@@ -36,13 +38,13 @@ class UserProfileScreen extends StatelessWidget {
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.white24),
+                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
                 ),
                 suffixIcon: Icon(Icons.calendar_today),
                 hintText: 'Age',
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: Colors.white24),
+                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
                 ),
               ),
             ),
@@ -51,13 +53,13 @@ class UserProfileScreen extends StatelessWidget {
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.white24),
+                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
                 ),
                 suffixIcon: Icon(Icons.straighten),
                 hintText: 'Height',
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: Colors.white24),
+                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
                 ),
               ),
             ),
@@ -66,13 +68,13 @@ class UserProfileScreen extends StatelessWidget {
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.white24),
+                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
                 ),
                 suffixIcon: Icon(Icons.monitor_weight),
                 hintText: 'Weight',
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: Colors.white24),
+                  borderSide: BorderSide(color: theme.colorScheme.onSurface),
                 ),
               ),
             ),
@@ -89,7 +91,7 @@ class UserProfileScreen extends StatelessWidget {
                       backgroundColor: Colors.black,
                       title: Text(
                         'Please select your gender',
-                        style: themeDark.textTheme.labelSmall,
+                        style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                       ),
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -101,12 +103,11 @@ class UserProfileScreen extends StatelessWidget {
                                 leading: Icon(Icons.male),
                                 title: Text(
                                   'Male',
-                                  style: themeDark.textTheme.headlineMedium,
+                                  style: theme.textTheme.displaySmall,
                                 )),
                           )),
                           Divider(
                             thickness: 0.5,
-                            color: Colors.white,
                           ),
                           Container(
                               child: InkWell(
@@ -115,12 +116,11 @@ class UserProfileScreen extends StatelessWidget {
                                 leading: Icon(Icons.female),
                                 title: Text(
                                   'Female',
-                                  style: themeDark.textTheme.headlineMedium,
+                                  style: theme.textTheme.displaySmall,
                                 )),
                           )),
                           Divider(
                             thickness: 0.5,
-                            color: Colors.white,
                           ),
                           Container(
                               child: InkWell(
@@ -129,7 +129,7 @@ class UserProfileScreen extends StatelessWidget {
                                 leading: Icon(Icons.person),
                                 title: Text(
                                   'Other',
-                                  style: themeDark.textTheme.headlineMedium,
+                                  style: theme.textTheme.displaySmall,
                                 )),
                           ))
                         ],
@@ -139,7 +139,7 @@ class UserProfileScreen extends StatelessWidget {
                           onPressed: () => Navigator.of(context).pop(),
                           child: Text(
                             'OK',
-                            style: themeDark.textTheme.headlineMedium,
+                            style: theme.textTheme.displaySmall,
                           ),
                         ),
                       ],
@@ -153,13 +153,13 @@ class UserProfileScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.white24),
+                      borderSide: BorderSide(color: theme.colorScheme.onSurface),
                     ),
                     suffixIcon: Icon(Icons.wc),
                     hintText: 'Gender',
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25),
-                      borderSide: BorderSide(color: Colors.white24),
+                      borderSide: BorderSide(color: theme.colorScheme.onSurface),
                     ),
                   ),
                 ),
@@ -178,7 +178,7 @@ class UserProfileScreen extends StatelessWidget {
                       backgroundColor: Colors.black,
                       title: Text(
                         'Please select your gender',
-                        style: themeDark.textTheme.labelSmall,
+                        style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                       ),
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -190,14 +190,13 @@ class UserProfileScreen extends StatelessWidget {
                                 leading: Icon(Icons.chair),
                                 title: Text(
                                   'Sedentary',
-                                  style: themeDark.textTheme.headlineMedium,
+                                  style: theme.textTheme.displaySmall,
                                 ),
                               ),
                             ),
                           ),
                           Divider(
                             thickness: 0.5,
-                            color: Colors.white,
                           ),
                           Container(
                             child: InkWell(
@@ -206,14 +205,13 @@ class UserProfileScreen extends StatelessWidget {
                                 leading: Icon(Icons.directions_walk),
                                 title: Text(
                                   'Lightly Active',
-                                  style: themeDark.textTheme.headlineMedium,
+                                  style: theme.textTheme.displaySmall,
                                 ),
                               ),
                             ),
                           ),
                           Divider(
                             thickness: 0.5,
-                            color: Colors.white,
                           ),
                           Container(
                             child: InkWell(
@@ -222,14 +220,13 @@ class UserProfileScreen extends StatelessWidget {
                                 leading: Icon(Icons.directions_run),
                                 title: Text(
                                   'Moderately Active',
-                                  style: themeDark.textTheme.headlineMedium,
+                                  style: theme.textTheme.displaySmall,
                                 ),
                               ),
                             ),
                           ),
                           Divider(
                             thickness: 0.5,
-                            color: Colors.white,
                           ),
                           Container(
                             child: InkWell(
@@ -238,14 +235,13 @@ class UserProfileScreen extends StatelessWidget {
                                 leading: Icon(Icons.sports_gymnastics),
                                 title: Text(
                                   'Very Active',
-                                  style: themeDark.textTheme.headlineMedium,
+                                  style: theme.textTheme.displaySmall,
                                 ),
                               ),
                             ),
                           ),
                           Divider(
                             thickness: 0.5,
-                            color: Colors.white,
                           ),
                           Container(
                             child: InkWell(
@@ -254,7 +250,7 @@ class UserProfileScreen extends StatelessWidget {
                                 leading: Icon(Icons.military_tech),
                                 title: Text(
                                   'Extremely Active',
-                                  style: themeDark.textTheme.headlineMedium,
+                                  style: theme.textTheme.displaySmall,
                                 ),
                               ),
                             ),
@@ -266,7 +262,7 @@ class UserProfileScreen extends StatelessWidget {
                           onPressed: () => Navigator.of(context).pop(),
                           child: Text(
                             'OK',
-                            style: themeDark.textTheme.headlineMedium,
+                            style: theme.textTheme.displaySmall,
                           ),
                         ),
                       ],
@@ -280,13 +276,13 @@ class UserProfileScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.white24),
+                      borderSide: BorderSide(color: theme.colorScheme.onSurface),
                     ),
                     suffixIcon: Icon(Icons.directions_run),
                     hintText: 'Activity Level',
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25),
-                      borderSide: BorderSide(color: Colors.white24),
+                      borderSide: BorderSide(color: theme.colorScheme.onSurface),
                     ),
                   ),
                 ),
@@ -314,7 +310,7 @@ class UserProfileScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Cancel',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),
@@ -328,7 +324,7 @@ class UserProfileScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Confirm',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),

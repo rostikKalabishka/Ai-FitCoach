@@ -1,1 +1,1 @@
-export 'mental_challenges.dart';
+export 'mental_challenges_screen.dart';

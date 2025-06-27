@@ -1,21 +1,23 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class RateUsScreen extends StatelessWidget {
   const RateUsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
+        backgroundColor: theme.appBarTheme.backgroundColor,
         title: Text(
           'Rate Us',
-          style: themeDark.textTheme.labelMedium,
+          style: theme.textTheme.labelMedium,
         ),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: ListView(
         padding: const EdgeInsets.all(8),
         children: [
@@ -26,7 +28,7 @@ class RateUsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 8, left: 12, right: 12),
                 child: Text(
                   e,
-                  style: themeDark.textTheme.headlineMedium,
+                  style: theme.textTheme.headlineMedium,
                 ),
               );
             }).toList(),
@@ -36,7 +38,6 @@ class RateUsScreen extends StatelessWidget {
           ),
           Divider(
             thickness: 0.5,
-            color: Colors.white,
           ),
           SizedBox(
             height: 16,
@@ -48,7 +49,7 @@ class RateUsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 8, left: 12, right: 12),
                 child: Text(
                   e,
-                  style: themeDark.textTheme.headlineMedium,
+                  style: theme.textTheme.headlineMedium,
                 ),
               );
             }).toList(),
@@ -58,7 +59,6 @@ class RateUsScreen extends StatelessWidget {
           ),
           Divider(
             thickness: 0.5,
-            color: Colors.white,
           ),
           SizedBox(
             height: 16,
@@ -70,7 +70,7 @@ class RateUsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 8, left: 12, right: 12),
                 child: Text(
                   e,
-                  style: themeDark.textTheme.headlineMedium,
+                  style: theme.textTheme.headlineMedium,
                 ),
               );
             }).toList(),
@@ -80,7 +80,6 @@ class RateUsScreen extends StatelessWidget {
           ),
           Divider(
             thickness: 0.5,
-            color: Colors.white,
           ),
           SizedBox(
             height: 16,
@@ -92,7 +91,7 @@ class RateUsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 8, left: 12, right: 12),
                 child: Text(
                   e,
-                  style: themeDark.textTheme.headlineMedium,
+                  style: theme.textTheme.headlineMedium,
                 ),
               );
             }).toList(),
@@ -102,7 +101,6 @@ class RateUsScreen extends StatelessWidget {
           ),
           Divider(
             thickness: 0.5,
-            color: Colors.white,
           ),
           SizedBox(
             height: 16,
@@ -114,7 +112,7 @@ class RateUsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 8, left: 12, right: 12),
                 child: Text(
                   e,
-                  style: themeDark.textTheme.headlineMedium,
+                  style: theme.textTheme.headlineMedium,
                 ),
               );
             }).toList(),
@@ -140,7 +138,7 @@ class RateUsScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Cancel',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),
@@ -154,7 +152,7 @@ class RateUsScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Confirm',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),

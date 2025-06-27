@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class FitnessGoalScreen extends StatefulWidget {
   const FitnessGoalScreen({super.key});
 
@@ -15,14 +17,14 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: themeDark.appBarTheme.backgroundColor,
-        title: Text('Fitness Goal', style: themeDark.textTheme.labelMedium),
+        backgroundColor: theme.appBarTheme.backgroundColor,
+        title: Text('Fitness Goal', style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -47,7 +49,7 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
                             Icon(Icons.scale),
                             Text('Weight Loss',
                                 textAlign: TextAlign.start,
-                                style: themeDark.textTheme.headlineLarge),
+                                style: theme.textTheme.headlineLarge),
                             SizedBox(width: 170),
                           ],
                         ),
@@ -89,7 +91,7 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
                             Icon(Icons.fitness_center),
                             Text('Muscle Gain',
                                 textAlign: TextAlign.start,
-                                style: themeDark.textTheme.headlineLarge),
+                                style: theme.textTheme.headlineLarge),
                             SizedBox(width: 170),
                           ],
                         ),
@@ -131,7 +133,7 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
                             Icon(Icons.accessibility_new),
                             Text('Stay Fit',
                                 textAlign: TextAlign.start,
-                                style: themeDark.textTheme.headlineLarge),
+                                style: theme.textTheme.headlineLarge),
                             SizedBox(width: 200),
                           ],
                         ),
@@ -173,7 +175,7 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
                             Icon(Icons.more_horiz),
                             Text('Other',
                                 textAlign: TextAlign.start,
-                                style: themeDark.textTheme.headlineLarge),
+                                style: theme.textTheme.headlineLarge),
                             SizedBox(width: 210),
                           ],
                         ),
@@ -213,7 +215,7 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
                   ),
                   child: Text(
                     'Cancel',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),
@@ -227,7 +229,7 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
                   ),
                   child: Text(
                     'Confirm',
-                    style: themeDark.textTheme.labelSmall,
+                    style: theme.textTheme.labelSmall,
                   ),
                 ),
               ),

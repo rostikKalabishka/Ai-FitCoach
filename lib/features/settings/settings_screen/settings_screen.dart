@@ -1,8 +1,7 @@
+import 'package:ai_fit_coach/router/router.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_calendar.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
-import '../settings.dart';
 
 @RoutePage()
 class SettingsScreen extends StatelessWidget {
@@ -10,9 +9,10 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final router = AutoRouter.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: ListView(children: [
         Stack(
           children: [
@@ -23,7 +23,7 @@ class SettingsScreen extends StatelessWidget {
                 ),
                 Text(
                   'Settings',
-                  style: themeDark.textTheme.labelMedium,
+                  style: theme.textTheme.labelMedium,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -36,10 +36,10 @@ class SettingsScreen extends StatelessWidget {
                         children: [
                           Text(
                             'Welcome user!',
-                            style: themeDark.textTheme.labelSmall,
+                            style: theme.textTheme.labelSmall,
                           ),
                           Text('AI FitCoach account',
-                              style: themeDark.textTheme.headlineSmall),
+                              style: theme.textTheme.headlineSmall),
                         ],
                       ),
                     ),
@@ -54,14 +54,17 @@ class SettingsScreen extends StatelessWidget {
                           children: [
                             Text(
                               '0 Days Streak',
-                              style: themeDark.textTheme.headlineMedium,
+                              style: theme.textTheme.headlineMedium,
                             ),
                             Text(
                               'Personal Best: 0',
-                              style: themeDark.textTheme.headlineSmall,
-                            )
+                              style: theme.textTheme.headlineSmall,
+                            ),
                           ],
-                        )
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
                       ],
                     )
                   ],
@@ -71,7 +74,7 @@ class SettingsScreen extends StatelessWidget {
                   height: 120,
                   width: 400,
                   decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 29, 29, 29),
+                      color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
                   child: Padding(
                     padding: const EdgeInsets.only(
@@ -82,8 +85,7 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => UserProfileScreen()));
+                            router.push(UserProfileRoute());
                           },
                           child: Row(
                             children: [
@@ -97,7 +99,7 @@ class SettingsScreen extends StatelessWidget {
                                 child: Icon(
                                   Icons.person_2,
                                   size: 20,
-                                  color: themeDark.iconTheme.color,
+                                  color: theme.iconTheme.color,
                                 ),
                               ),
                               SizedBox(
@@ -105,19 +107,17 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'User Profile',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
                         ),
                         Divider(
                           thickness: 1,
-                          color: Colors.black,
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => FitnessGoalScreen()));
+                            router.push(FitnessGoalRoute());
                           },
                           child: Row(
                             children: [
@@ -139,7 +139,7 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Fitness Goal',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -155,7 +155,7 @@ class SettingsScreen extends StatelessWidget {
                   height: 180,
                   width: 400,
                   decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 29, 29, 29),
+                      color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
                   child: Padding(
                     padding: const EdgeInsets.only(
@@ -166,8 +166,7 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => DifficultyLevelScreen()));
+                            router.push(DifficultyLevelRoute());
                           },
                           child: Row(
                             children: [
@@ -188,19 +187,17 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Difficulty Level',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
                         ),
                         Divider(
                           thickness: 1,
-                          color: Colors.black,
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => WorkoutTypesScreen()));
+                            router.push(WorkoutTypesRoute());
                           },
                           child: Row(
                             children: [
@@ -214,7 +211,7 @@ class SettingsScreen extends StatelessWidget {
                                 child: Icon(
                                   Icons.accessibility_new,
                                   size: 20,
-                                  color: themeDark.iconTheme.color,
+                                  color: theme.iconTheme.color,
                                 ),
                               ),
                               SizedBox(
@@ -222,20 +219,17 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Workout Types',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
                         ),
                         Divider(
                           thickness: 1,
-                          color: Colors.black,
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    AutomaticActivityTrackingScreen()));
+                            router.push(AutomaticActivityTrackingRoute());
                           },
                           child: Row(
                             children: [
@@ -256,7 +250,7 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Automatic Activity Tracking',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -272,7 +266,7 @@ class SettingsScreen extends StatelessWidget {
                   height: 120,
                   width: 400,
                   decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 29, 29, 29),
+                      color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
                   child: Padding(
                     padding: const EdgeInsets.only(
@@ -283,8 +277,7 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => CalorieGoalScreen()));
+                            router.push(CalorieGoalRoute());
                           },
                           child: Row(
                             children: [
@@ -305,19 +298,17 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Calorie Goal',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
                         ),
                         Divider(
                           thickness: 1,
-                          color: Colors.black,
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => WaterBalanceScreen()));
+                            router.push(WaterBalanceRoute());
                           },
                           child: Row(
                             children: [
@@ -331,7 +322,7 @@ class SettingsScreen extends StatelessWidget {
                                 child: Icon(
                                   Icons.water_drop,
                                   size: 20,
-                                  color: themeDark.iconTheme.color,
+                                  color: theme.iconTheme.color,
                                 ),
                               ),
                               SizedBox(
@@ -339,7 +330,7 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Water Balance',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -355,7 +346,7 @@ class SettingsScreen extends StatelessWidget {
                   height: 60,
                   width: 400,
                   decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 29, 29, 29),
+                      color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
                   child: Padding(
                     padding: const EdgeInsets.only(
@@ -366,9 +357,7 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    DoNotDisturbModeScreen()));
+                            router.push(DoNotDisturbModeRoute());
                           },
                           child: Row(
                             children: [
@@ -388,7 +377,7 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Do Not Disturb Mode',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -404,7 +393,7 @@ class SettingsScreen extends StatelessWidget {
                   height: 180,
                   width: 400,
                   decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 29, 29, 29),
+                      color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
                   child: Padding(
                     padding: const EdgeInsets.only(
@@ -415,9 +404,7 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    AccountManagementScreen()));
+                            router.push(AccountManagementRoute());
                           },
                           child: Row(
                             children: [
@@ -438,19 +425,17 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Account Management',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
                         ),
                         Divider(
                           thickness: 1,
-                          color: Colors.black,
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => PrivacyScreen()));
+                            router.push(PrivacyRoute());
                           },
                           child: Row(
                             children: [
@@ -464,7 +449,7 @@ class SettingsScreen extends StatelessWidget {
                                 child: Icon(
                                   Icons.security,
                                   size: 20,
-                                  color: themeDark.iconTheme.color,
+                                  color: theme.iconTheme.color,
                                 ),
                               ),
                               SizedBox(
@@ -472,20 +457,17 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Privacy',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
                         ),
                         Divider(
                           thickness: 1,
-                          color: Colors.black,
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    LanguageLocalizationScreen()));
+                            router.push(LanguageLocalizationRoute());
                           },
                           child: Row(
                             children: [
@@ -507,7 +489,7 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Language & Localization',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -523,7 +505,7 @@ class SettingsScreen extends StatelessWidget {
                   height: 180,
                   width: 400,
                   decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 29, 29, 29),
+                      color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
                   child: Padding(
                     padding: const EdgeInsets.only(
@@ -534,8 +516,7 @@ class SettingsScreen extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => PrivacyPolicyScreen()));
+                            router.push(PrivacyPolicyRoute());
                           },
                           child: Row(
                             children: [
@@ -555,19 +536,17 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Privacy Policy',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
                         ),
                         Divider(
                           thickness: 1,
-                          color: Colors.black,
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => RateUsScreen()));
+                            router.push(RateUsRoute());
                           },
                           child: Row(
                             children: [
@@ -582,7 +561,7 @@ class SettingsScreen extends StatelessWidget {
                                 child: Icon(
                                   Icons.thumb_up,
                                   size: 20,
-                                  color: themeDark.iconTheme.color,
+                                  color: theme.iconTheme.color,
                                 ),
                               ),
                               SizedBox(
@@ -590,20 +569,17 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Rate Us',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
                         ),
                         Divider(
                           thickness: 1,
-                          color: Colors.black,
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    DeleteYourAccountScreen()));
+                            router.push(DeleteYourAccountRoute());
                           },
                           child: Row(
                             children: [
@@ -625,7 +601,7 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Delete Your Account',
-                                style: themeDark.textTheme.headlineLarge,
+                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),

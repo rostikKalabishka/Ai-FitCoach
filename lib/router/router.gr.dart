@@ -11,6 +11,22 @@
 part of 'router.dart';
 
 /// generated route for
+/// [AccountManagementScreen]
+class AccountManagementRoute extends PageRouteInfo<void> {
+  const AccountManagementRoute({List<PageRouteInfo>? children})
+      : super(AccountManagementRoute.name, initialChildren: children);
+
+  static const String name = 'AccountManagementRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AccountManagementScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [AiChatScreen]
 class AiChatRoute extends PageRouteInfo<AiChatRouteArgs> {
   AiChatRoute({Key? key, String? chatId, List<PageRouteInfo>? children})
@@ -104,6 +120,86 @@ class AuthRouteArgs {
 }
 
 /// generated route for
+/// [AutomaticActivityTrackingScreen]
+class AutomaticActivityTrackingRoute extends PageRouteInfo<void> {
+  const AutomaticActivityTrackingRoute({List<PageRouteInfo>? children})
+      : super(AutomaticActivityTrackingRoute.name, initialChildren: children);
+
+  static const String name = 'AutomaticActivityTrackingRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AutomaticActivityTrackingScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [CalorieGoalScreen]
+class CalorieGoalRoute extends PageRouteInfo<void> {
+  const CalorieGoalRoute({List<PageRouteInfo>? children})
+      : super(CalorieGoalRoute.name, initialChildren: children);
+
+  static const String name = 'CalorieGoalRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CalorieGoalScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [CategoriesAdvancedScreen]
+class CategoriesAdvancedRoute extends PageRouteInfo<void> {
+  const CategoriesAdvancedRoute({List<PageRouteInfo>? children})
+      : super(CategoriesAdvancedRoute.name, initialChildren: children);
+
+  static const String name = 'CategoriesAdvancedRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CategoriesAdvancedScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [CategoriesMediumScreen]
+class CategoriesMediumRoute extends PageRouteInfo<void> {
+  const CategoriesMediumRoute({List<PageRouteInfo>? children})
+      : super(CategoriesMediumRoute.name, initialChildren: children);
+
+  static const String name = 'CategoriesMediumRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CategoriesMediumScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [CategoriesNewbiesScreen]
+class CategoriesNewbiesRoute extends PageRouteInfo<void> {
+  const CategoriesNewbiesRoute({List<PageRouteInfo>? children})
+      : super(CategoriesNewbiesRoute.name, initialChildren: children);
+
+  static const String name = 'CategoriesNewbiesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CategoriesNewbiesScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [ChallengesScreen]
 class ChallengesRoute extends PageRouteInfo<void> {
   const ChallengesRoute({List<PageRouteInfo>? children})
@@ -120,6 +216,102 @@ class ChallengesRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [DeleteYourAccountScreen]
+class DeleteYourAccountRoute extends PageRouteInfo<void> {
+  const DeleteYourAccountRoute({List<PageRouteInfo>? children})
+      : super(DeleteYourAccountRoute.name, initialChildren: children);
+
+  static const String name = 'DeleteYourAccountRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const DeleteYourAccountScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [DifficultyLevelScreen]
+class DifficultyLevelRoute extends PageRouteInfo<void> {
+  const DifficultyLevelRoute({List<PageRouteInfo>? children})
+      : super(DifficultyLevelRoute.name, initialChildren: children);
+
+  static const String name = 'DifficultyLevelRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const DifficultyLevelScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [DoNotDisturbModeScreen]
+class DoNotDisturbModeRoute extends PageRouteInfo<void> {
+  const DoNotDisturbModeRoute({List<PageRouteInfo>? children})
+      : super(DoNotDisturbModeRoute.name, initialChildren: children);
+
+  static const String name = 'DoNotDisturbModeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const DoNotDisturbModeScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [ExerciseChallengesScreen]
+class ExerciseChallengesRoute extends PageRouteInfo<void> {
+  const ExerciseChallengesRoute({List<PageRouteInfo>? children})
+      : super(ExerciseChallengesRoute.name, initialChildren: children);
+
+  static const String name = 'ExerciseChallengesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ExerciseChallengesScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [FitnessGoalScreen]
+class FitnessGoalRoute extends PageRouteInfo<void> {
+  const FitnessGoalRoute({List<PageRouteInfo>? children})
+      : super(FitnessGoalRoute.name, initialChildren: children);
+
+  static const String name = 'FitnessGoalRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const FitnessGoalScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [FoodChallengesScreen]
+class FoodChallengesRoute extends PageRouteInfo<void> {
+  const FoodChallengesRoute({List<PageRouteInfo>? children})
+      : super(FoodChallengesRoute.name, initialChildren: children);
+
+  static const String name = 'FoodChallengesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const FoodChallengesScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -131,6 +323,54 @@ class HomeRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const HomeScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [HydrationChallengesScreen]
+class HydrationChallengesRoute extends PageRouteInfo<void> {
+  const HydrationChallengesRoute({List<PageRouteInfo>? children})
+      : super(HydrationChallengesRoute.name, initialChildren: children);
+
+  static const String name = 'HydrationChallengesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const HydrationChallengesScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [JoinNowScreen]
+class JoinNowRoute extends PageRouteInfo<void> {
+  const JoinNowRoute({List<PageRouteInfo>? children})
+      : super(JoinNowRoute.name, initialChildren: children);
+
+  static const String name = 'JoinNowRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const JoinNowScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [LanguageLocalizationScreen]
+class LanguageLocalizationRoute extends PageRouteInfo<void> {
+  const LanguageLocalizationRoute({List<PageRouteInfo>? children})
+      : super(LanguageLocalizationRoute.name, initialChildren: children);
+
+  static const String name = 'LanguageLocalizationRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const LanguageLocalizationScreen();
     },
   );
 }
@@ -208,6 +448,22 @@ class MainRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MentalChallengesScreen]
+class MentalChallengesRoute extends PageRouteInfo<void> {
+  const MentalChallengesRoute({List<PageRouteInfo>? children})
+      : super(MentalChallengesRoute.name, initialChildren: children);
+
+  static const String name = 'MentalChallengesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const MentalChallengesScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [OnboardingScreen]
 class OnboardingRoute extends PageRouteInfo<void> {
   const OnboardingRoute({List<PageRouteInfo>? children})
@@ -219,6 +475,54 @@ class OnboardingRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const OnboardingScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [PrivacyPolicyScreen]
+class PrivacyPolicyRoute extends PageRouteInfo<void> {
+  const PrivacyPolicyRoute({List<PageRouteInfo>? children})
+      : super(PrivacyPolicyRoute.name, initialChildren: children);
+
+  static const String name = 'PrivacyPolicyRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const PrivacyPolicyScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [PrivacyScreen]
+class PrivacyRoute extends PageRouteInfo<void> {
+  const PrivacyRoute({List<PageRouteInfo>? children})
+      : super(PrivacyRoute.name, initialChildren: children);
+
+  static const String name = 'PrivacyRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const PrivacyScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [RateUsScreen]
+class RateUsRoute extends PageRouteInfo<void> {
+  const RateUsRoute({List<PageRouteInfo>? children})
+      : super(RateUsRoute.name, initialChildren: children);
+
+  static const String name = 'RateUsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const RateUsScreen();
     },
   );
 }
@@ -240,6 +544,22 @@ class SettingsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [SleepAndRelaxChallengesScreen]
+class SleepAndRelaxChallengesRoute extends PageRouteInfo<void> {
+  const SleepAndRelaxChallengesRoute({List<PageRouteInfo>? children})
+      : super(SleepAndRelaxChallengesRoute.name, initialChildren: children);
+
+  static const String name = 'SleepAndRelaxChallengesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SleepAndRelaxChallengesScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [UserParametersScreen]
 class UserParametersRoute extends PageRouteInfo<void> {
   const UserParametersRoute({List<PageRouteInfo>? children})
@@ -251,6 +571,38 @@ class UserParametersRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const UserParametersScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [UserProfileScreen]
+class UserProfileRoute extends PageRouteInfo<void> {
+  const UserProfileRoute({List<PageRouteInfo>? children})
+      : super(UserProfileRoute.name, initialChildren: children);
+
+  static const String name = 'UserProfileRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const UserProfileScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [WaterBalanceScreen]
+class WaterBalanceRoute extends PageRouteInfo<void> {
+  const WaterBalanceRoute({List<PageRouteInfo>? children})
+      : super(WaterBalanceRoute.name, initialChildren: children);
+
+  static const String name = 'WaterBalanceRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const WaterBalanceScreen();
     },
   );
 }
@@ -283,6 +635,22 @@ class WorkoutRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const WorkoutScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [WorkoutTypesScreen]
+class WorkoutTypesRoute extends PageRouteInfo<void> {
+  const WorkoutTypesRoute({List<PageRouteInfo>? children})
+      : super(WorkoutTypesRoute.name, initialChildren: children);
+
+  static const String name = 'WorkoutTypesRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const WorkoutTypesScreen();
     },
   );
 }

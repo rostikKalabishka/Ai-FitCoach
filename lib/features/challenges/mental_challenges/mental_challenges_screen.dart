@@ -1,16 +1,23 @@
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ui/widgets/custom_challenge_card.dart';
 
-class MentalChallenges extends StatelessWidget {
-  const MentalChallenges({super.key});
+@RoutePage()
+class MentalChallengesScreen extends StatefulWidget {
+  const MentalChallengesScreen({super.key});
 
   @override
+  State<MentalChallengesScreen> createState() => _MentalChallengesScreenState();
+}
+
+class _MentalChallengesScreenState extends State<MentalChallengesScreen> {
+  @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: ListView(children: [
         Column(
           children: [

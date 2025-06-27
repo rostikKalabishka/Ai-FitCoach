@@ -1,16 +1,23 @@
 import 'package:ai_fit_coach/features/challenges/join_now_screen/join_now_screen.dart';
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_challenge_card.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-class FoodChallenges extends StatelessWidget {
-  const FoodChallenges({super.key});
+@RoutePage()
+class FoodChallengesScreen extends StatefulWidget {
+  const FoodChallengesScreen({super.key});
 
   @override
+  State<FoodChallengesScreen> createState() => _FoodChallengesScreenState();
+}
+
+class _FoodChallengesScreenState extends State<FoodChallengesScreen> {
+  @override
   Widget build(BuildContext context) {
-    final themeDark = Theme.of(context);
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: themeDark.scaffoldBackgroundColor,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: ListView(children: [
         Column(
           children: [
