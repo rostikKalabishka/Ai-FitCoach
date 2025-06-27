@@ -1,10 +1,9 @@
-import 'dart:ui';
-
-import 'package:ai_fit_coach/blocs/user_bloc/user_bloc.dart';
+import 'package:ai_fit_coach/blocs/history_bloc/history_bloc.dart';
 import 'package:ai_fit_coach/common/api/model/message_model.dart';
 import 'package:ai_fit_coach/features/ai_chat/bloc/chat_bloc.dart';
-import 'package:ai_fit_coach/features/ai_chat/widgets/chat_screen.dart';
+import 'package:ai_fit_coach/features/ai_chat/widgets/widgets.dart';
 import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
+import 'package:ai_fit_coach/router/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,17 +22,11 @@ class _AiChatScreenState extends State<AiChatScreen> {
   late TextEditingController _textFieldController;
   late ScrollController _scrollController;
   late FocusNode focusNode;
+  late String userId;
 
   @override
   void initState() {
-    _textFieldController = TextEditingController();
-    _scrollController = ScrollController();
-    final String userId =
-        context.read<AuthenticationBloc>().state.user?.id ?? '';
-    focusNode = FocusNode();
-    context.read<ChatBloc>().add(
-        LoadChatEvent(chatId: widget.chatId ?? '', userCreatorChatId: userId));
-
+    _init();
     super.initState();
   }
 
@@ -52,19 +45,38 @@ class _AiChatScreenState extends State<AiChatScreen> {
     return BlocConsumer<ChatBloc, ChatState>(
       listener: (BuildContext context, state) {},
       builder: (BuildContext context, state) {
+        final theme = Theme.of(context);
+        final chatId = widget.chatId;
         return GestureDetector(
           onTap: () {
             focusNode.unfocus();
           },
           child: Scaffold(
+            drawer: HistoryDrawer(
+              currentChatId: chatId ?? '',
+            ),
             appBar: AppBar(
+              actions: [
+                IconButton(
+                    onPressed: chatId != null && chatId.isNotEmpty
+                        ? () {
+                            AutoRouter.of(context).pushAndPopUntil(
+                                AiChatRoute(chatId: ''),
+                                predicate: (_) => false);
+                          }
+                        : null,
+                    icon: Icon(Icons.edit)),
+              ],
               title: const Text(
                 'AiChat',
                 style: TextStyle(color: Colors.white),
               ),
             ),
             body: RefreshIndicator.adaptive(
-              onRefresh: () async {},
+              onRefresh: () async {
+                context.read<ChatBloc>().add(LoadChatEvent(
+                    chatId: widget.chatId ?? '', userCreatorChatId: userId));
+              },
               child: state is AiChatLoaded
                   ? Center(
                       child: SafeArea(
@@ -167,5 +179,17 @@ class _AiChatScreenState extends State<AiChatScreen> {
             SendMessageEvent(message: newMessage),
           );
     }
+  }
+
+  void _init() {
+    _textFieldController = TextEditingController();
+    _scrollController = ScrollController();
+    userId = context.read<AuthenticationBloc>().state.user?.id ?? '';
+    focusNode = FocusNode();
+
+    context.read<ChatBloc>().add(
+        LoadChatEvent(chatId: widget.chatId ?? '', userCreatorChatId: userId));
+
+    context.read<HistoryBloc>().add(LoadHistoryEvent(userId: userId));
   }
 }

@@ -36,4 +36,10 @@ class ChatRepository implements AbstractChatRepository {
   Stream<List<ChatModel>> getHistoryStream({required String userId}) {
     return _chatApiClient.getHistoryStream(userId: userId);
   }
+
+  @override
+  Future<List<ChatModel>> searchChat(
+      {required String query, required String userId}) async {
+    return _chatApiClient.searchChat(userId: userId, query: query);
+  }
 }

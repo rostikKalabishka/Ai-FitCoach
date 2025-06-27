@@ -9,3 +9,4 @@ export 'custom_workout_card.dart';
 export 'custom_subcategory_workout.dart';
 export 'text_widget.dart';
 export 'custom_circle_avatar.dart';
+export 'typer_with_bold_text.dart';
