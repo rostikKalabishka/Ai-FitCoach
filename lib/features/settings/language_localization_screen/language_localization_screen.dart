@@ -3,13 +3,91 @@ import 'package:flutter/material.dart';
 
 import '../../../ui/ui.dart';
 
+class LanguageOption {
+  final String name;
+  final String assetPath;
+
+  const LanguageOption({
+    required this.name,
+    required this.assetPath,
+  });
+}
+
 @RoutePage()
 class LanguageLocalizationScreen extends StatelessWidget {
   const LanguageLocalizationScreen({super.key});
 
+  final List<LanguageOption> languages = const [
+    LanguageOption(name: 'English', assetPath: 'assets/images/languages/en.jpg'),
+    LanguageOption(name: 'French', assetPath: 'assets/images/languages/fr.png'),
+    LanguageOption(name: 'German', assetPath: 'assets/images/languages/de.jpg'),
+    LanguageOption(name: 'Japanese', assetPath: 'assets/images/languages/jp.png'),
+    LanguageOption(name: 'Portuguese', assetPath: 'assets/images/languages/pt.webp'),
+    LanguageOption(name: 'Spanish', assetPath: 'assets/images/languages/es.png'),
+    LanguageOption(name: 'Ukrainian', assetPath: 'assets/images/languages/ua.png'),
+  ];
+
+  void _showLanguage(BuildContext context, ThemeData theme) {
+    showDialog(
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+            side: const BorderSide(color: Colors.white, width: 1),
+          ),
+          backgroundColor: Colors.black,
+          title: Center(
+            child: Text(
+              'Please select language',
+              style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+            ),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: List.generate(languages.length, (index) {
+              final lang = languages[index];
+              return Column(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                      print('Selected: ${lang.name}');
+                    },
+                    child: ListTile(
+                      leading: Image.asset(
+                        lang.assetPath,
+                        width: 32,
+                        height: 32,
+                        fit: BoxFit.contain,
+                      ),
+                      title: Text(
+                        lang.name,
+                        style: theme.textTheme.displaySmall,
+                      ),
+                    ),
+                  ),
+                  if (index != languages.length - 1)
+                    const Divider(thickness: 0.5),
+                ],
+              );
+            }),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('OK', style: theme.textTheme.displaySmall),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
@@ -22,211 +100,27 @@ class LanguageLocalizationScreen extends StatelessWidget {
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: GestureDetector(
-          onTap: () {
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.white, width: 1),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  backgroundColor: Colors.black,
-                  title: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Text(
-                        'Please select language',
-                        style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
-                      ),
-                    ),
-                  ),
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        child: InkWell(
-                          onTap: () {},
-                          child: ListTile(
-                            leading: Image.asset(
-                              'assets/images/languages/en.jpg',
-                              scale: 1,
-                              width: 32,
-                              height: 32,
-                              fit: BoxFit.contain,
-                            ),
-                            title: Text(
-                              'English',
-                              style: theme.textTheme.displaySmall,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Divider(
-                        thickness: 0.5,
-                      ),
-                      Container(
-                        child: InkWell(
-                          onTap: () {},
-                          child: ListTile(
-                            leading: Image.asset(
-                              'assets/images/languages/fr.png',
-                              scale: 1,
-                              width: 32,
-                              height: 32,
-                              fit: BoxFit.contain,
-                            ),
-                            title: Text(
-                              'French',
-                              style: theme.textTheme.displaySmall,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Divider(
-                        thickness: 0.5,
-                      ),
-                      Container(
-                        child: InkWell(
-                          onTap: () {},
-                          child: ListTile(
-                            leading: Image.asset(
-                              'assets/images/languages/de.jpg',
-                              scale: 1,
-                              width: 32,
-                              height: 32,
-                              fit: BoxFit.contain,
-                            ),
-                            title: Text(
-                              'German',
-                              style: theme.textTheme.displaySmall,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Divider(
-                        thickness: 0.5,
-                      ),
-                      Container(
-                        child: InkWell(
-                          onTap: () {},
-                          child: ListTile(
-                            leading: Image.asset(
-                              'assets/images/languages/jp.png',
-                              scale: 1,
-                              width: 32,
-                              height: 32,
-                              fit: BoxFit.contain,
-                            ),
-                            title: Text(
-                              'Japanese',
-                              style: theme.textTheme.displaySmall,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Divider(
-                        thickness: 0.5,
-                      ),
-                      Container(
-                        child: InkWell(
-                          onTap: () {},
-                          child: ListTile(
-                            leading: Image.asset(
-                              'assets/images/languages/pt.webp',
-                              scale: 1,
-                              width: 32,
-                              height: 32,
-                              fit: BoxFit.contain,
-                            ),
-                            title: Text(
-                              'Portuguese',
-                              style: theme.textTheme.displaySmall,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Divider(
-                        thickness: 0.5,
-                      ),
-                      Container(
-                        child: InkWell(
-                          onTap: () {},
-                          child: ListTile(
-                            leading: Image.asset(
-                              'assets/images/languages/es.png',
-                              scale: 1,
-                              width: 32,
-                              height: 32,
-                              fit: BoxFit.contain,
-                            ),
-                            title: Text(
-                              'Spanish',
-                              style: theme.textTheme.displaySmall,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Divider(
-                        thickness: 0.5,
-                      ),
-                      Container(
-                        child: InkWell(
-                          onTap: () {},
-                          child: ListTile(
-                            leading: Image.asset(
-                              'assets/images/languages/ua.png',
-                              scale: 0.1,
-                              width: 32,
-                              height: 32,
-                              fit: BoxFit.contain,
-                            ),
-                            title: Text(
-                              'Ukrainian',
-                              style: theme.textTheme.displaySmall,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Divider(
-                        thickness: 0.5,
-                      ),
-                    ],
-                  ),
-                  actions: [
-                        TextButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          child: Text(
-                            'OK',
-                            style: theme.textTheme.displaySmall,
-                          ),
-                        ),
-                      ],
-                );
-              },
-            );
-          },
+          onTap: () => _showLanguage(context, theme),
           child: AbsorbPointer(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 10, left: 10),
-                  child: TextField(
-                    readOnly: true,
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                      ),
-                      suffixIcon: Icon(Icons.language),
-                      hintText: 'Please select preferred language',
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                      ),
-                    ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                readOnly: true,
+                decoration: InputDecoration(
+                  hintText: 'Please select preferred language',
+                  suffixIcon: const Icon(Icons.language),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
                   ),
                 ),
               ),
-          
+            ),
+          ),
         ),
       ),
       bottomNavigationBar: Padding(

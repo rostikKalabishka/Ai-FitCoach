@@ -3,6 +3,16 @@ import 'package:flutter/material.dart';
 
 import '../../../ui/ui.dart';
 
+class _GoalOption {
+  final IconData icon;
+  final String label;
+
+  const _GoalOption({
+    required this.icon,
+    required this.label,
+  });
+}
+
 @RoutePage()
 class FitnessGoalScreen extends StatefulWidget {
   const FitnessGoalScreen({super.key});
@@ -12,14 +22,19 @@ class FitnessGoalScreen extends StatefulWidget {
 }
 
 class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
-  bool isSwitched = false;
-  bool isSwitched1 = false;
-  bool isSwitched2 = false;
-  bool isSwitched3 = false;
+  final List<_GoalOption> goals = [
+    _GoalOption(icon: Icons.scale, label: 'Weight Loss'),
+    _GoalOption(icon: Icons.fitness_center, label: 'Muscle Gain'),
+    _GoalOption(icon: Icons.accessibility_new, label: 'Stay Fit'),
+    _GoalOption(icon: Icons.more_horiz, label: 'Other'),
+  ];
+
+  final List<bool> switches = [false, false, false, false];
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
@@ -29,173 +44,22 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            Center(
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 60,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadiusDirectional.circular(16),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: 10,
-                          children: [
-                            Icon(Icons.scale),
-                            Text('Weight Loss',
-                                textAlign: TextAlign.start,
-                                style: theme.textTheme.headlineLarge),
-                            SizedBox(width: 170),
-                          ],
-                        ),
-                        Switch.adaptive(
-                          value: isSwitched,
-                          onChanged: (bool value) {
-                            setState(() {
-                              isSwitched = value;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+          children: List.generate(goals.length, (index) {
+            final goal = goals[index];
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: CustomFitnessGoalCard(
+                icon: goal.icon,
+                label: goal.label,
+                value: switches[index],
+                onChanged: (value) {
+                  setState(() {
+                    switches[index] = value;
+                  });
+                },
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 60,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadiusDirectional.circular(16),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: 10,
-                          children: [
-                            Icon(Icons.fitness_center),
-                            Text('Muscle Gain',
-                                textAlign: TextAlign.start,
-                                style: theme.textTheme.headlineLarge),
-                            SizedBox(width: 170),
-                          ],
-                        ),
-                        Switch.adaptive(
-                          value: isSwitched1,
-                          onChanged: (bool value) {
-                            setState(() {
-                              isSwitched1 = value;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 60,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadiusDirectional.circular(16),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: 10,
-                          children: [
-                            Icon(Icons.accessibility_new),
-                            Text('Stay Fit',
-                                textAlign: TextAlign.start,
-                                style: theme.textTheme.headlineLarge),
-                            SizedBox(width: 200),
-                          ],
-                        ),
-                        Switch.adaptive(
-                          value: isSwitched2,
-                          onChanged: (bool value) {
-                            setState(() {
-                              isSwitched2 = value;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 60,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadiusDirectional.circular(16),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: 10,
-                          children: [
-                            Icon(Icons.more_horiz),
-                            Text('Other',
-                                textAlign: TextAlign.start,
-                                style: theme.textTheme.headlineLarge),
-                            SizedBox(width: 210),
-                          ],
-                        ),
-                        Switch.adaptive(
-                          value: isSwitched3,
-                          onChanged: (bool value) {
-                            setState(() {
-                              isSwitched3 = value;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            )
-          ],
+            );
+          }),
         ),
       ),
       bottomNavigationBar: Padding(
@@ -210,6 +74,11 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
             CustomConfirmCancelButton(
               label: 'Confirm',
               onPressed: () {
+                final selectedGoals = <String>[];
+                for (int i = 0; i < goals.length; i++) {
+                  if (switches[i]) selectedGoals.add(goals[i].label);
+                }
+                print('Selected goals: $selectedGoals');
               },
             ),
           ],
@@ -218,3 +87,5 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
     );
   }
 }
+
+

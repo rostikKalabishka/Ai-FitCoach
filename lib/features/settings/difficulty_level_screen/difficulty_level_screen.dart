@@ -12,9 +12,13 @@ class DifficultyLevelScreen extends StatefulWidget {
 }
 
 class _DifficultyLevelScreenState extends State<DifficultyLevelScreen> {
-  bool isSwitched = false;
-  bool isSwitched1 = false;
-  bool isSwitched2 = false;
+  int? selectedIndex;
+
+  final List<DifficultyOption> options = const [
+    DifficultyOption(label: 'Beginner', icon: Icons.looks_one),
+    DifficultyOption(label: 'Intermediate', icon: Icons.looks_two),
+    DifficultyOption(label: 'Advanced', icon: Icons.looks_3),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,128 +32,22 @@ class _DifficultyLevelScreenState extends State<DifficultyLevelScreen> {
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            Center(
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 60,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(Icons.looks_one),
-                            SizedBox(width: 10),
-                            Text(
-                              'Beginner',
-                              style: theme.textTheme.headlineLarge,
-                            ),
-                          ],
-                        ),
-                        Switch.adaptive(
-                          value: isSwitched,
-                          onChanged: (bool value) {
-                            setState(() {
-                              isSwitched = value;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+          children: List.generate(options.length, (index) {
+            final option = options[index];
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: CustomDifficultySwitchCard(
+                icon: option.icon,
+                label: option.label,
+                value: selectedIndex == index,
+                onChanged: (bool newValue) {
+                  setState(() {
+                    selectedIndex = newValue ? index : null;
+                  });
+                },
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 60,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(Icons.looks_two),
-                            SizedBox(width: 10),
-                            Text(
-                              'Intermediate',
-                              style: theme.textTheme.headlineLarge,
-                            ),
-                          ],
-                        ),
-                        Switch.adaptive(
-                          value: isSwitched1,
-                          onChanged: (bool value) {
-                            setState(() {
-                              isSwitched1 = value;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 60,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(Icons.looks_one),
-                            SizedBox(width: 10),
-                            Text(
-                              'Advanced',
-                              style: theme.textTheme.headlineLarge,
-                            ),
-                          ],
-                        ),
-                        Switch.adaptive(
-                          value: isSwitched2,
-                          onChanged: (bool value) {
-                            setState(() {
-                              isSwitched2 = value;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
+            );
+          }),
         ),
       ),
       bottomNavigationBar: Padding(
@@ -164,6 +62,10 @@ class _DifficultyLevelScreenState extends State<DifficultyLevelScreen> {
             CustomConfirmCancelButton(
               label: 'Confirm',
               onPressed: () {
+                final selectedLabel = selectedIndex != null
+                    ? options[selectedIndex!].label
+                    : null;
+                print('Selected level: $selectedLabel');
               },
             ),
           ],
@@ -172,3 +74,4 @@ class _DifficultyLevelScreenState extends State<DifficultyLevelScreen> {
     );
   }
 }
+
