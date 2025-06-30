@@ -15,3 +15,8 @@ export 'custom_user_data_field.dart';
 export 'custom_account_data_field.dart';
 export 'custom_activity_tracking_container.dart';
 export 'confirmation_dialog.dart';
+export 'custom_difficulty_switch_card.dart';
+export 'custom_do_not_disturb_mode_card.dart';
+export 'custom_fitness_goal_card.dart';
+export 'custom_privacy_card.dart';
+export 'custom_workout_type_card.dart';

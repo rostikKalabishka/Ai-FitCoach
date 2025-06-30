@@ -3,6 +3,15 @@ import 'package:flutter/material.dart';
 
 import '../../../ui/ui.dart';
 
+class WorkoutTypeOption {
+  final IconData icon;
+  final String label;
+
+  const WorkoutTypeOption({
+    required this.icon,
+    required this.label,
+  });}
+
 @RoutePage()
 class WorkoutTypesScreen extends StatefulWidget {
   const WorkoutTypesScreen({super.key});
@@ -12,14 +21,19 @@ class WorkoutTypesScreen extends StatefulWidget {
 }
 
 class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
-  bool isSwitched = false;
-  bool isSwitched1 = false;
-  bool isSwitched2 = false;
-  bool isSwitched3 = false;
+  final List<bool> _switchStates = [false, false, false, false];
+
+  final List<WorkoutTypeOption> _options = const [
+    WorkoutTypeOption(icon: Icons.directions_run, label: 'Cardio'),
+    WorkoutTypeOption(icon: Icons.fitness_center, label: 'Strength'),
+    WorkoutTypeOption(icon: Icons.self_improvement, label: 'Yoga'),
+    WorkoutTypeOption(icon: Icons.flash_on, label: 'HIIT'),
+  ];
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
@@ -28,170 +42,26 @@ class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
       ),
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Center(
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 60,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(Icons.directions_run),
-                            SizedBox(width: 10),
-                            Text(
-                              'Cardio',
-                              style: theme.textTheme.headlineLarge,
-                            ),
-                          ],
-                        ),
-                        Switch.adaptive(
-                          value: isSwitched,
-                          onChanged: (bool value) {
-                            setState(() {
-                              isSwitched = value;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Column(
+            children: List.generate(_options.length, (index) {
+              final option = _options[index];
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: CustomWorkoutTypeCard(
+                  icon: option.icon,
+                  label: option.label,
+                  value: _switchStates[index],
+                  onChanged: (bool value) {
+                    setState(() {
+                      _switchStates[index] = value;
+                    });
+                  },
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 60,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(Icons.fitness_center),
-                            SizedBox(width: 10),
-                            Text(
-                              'Strength',
-                              style: theme.textTheme.headlineLarge,
-                            ),
-                          ],
-                        ),
-                        Switch.adaptive(
-                          value: isSwitched1,
-                          onChanged: (bool value) {
-                            setState(() {
-                              isSwitched1 = value;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 60,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(Icons.self_improvement),
-                            SizedBox(width: 10),
-                            Text(
-                              'Yoga',
-                              style: theme.textTheme.headlineLarge,
-                            ),
-                          ],
-                        ),
-                        Switch.adaptive(
-                          value: isSwitched2,
-                          onChanged: (bool value) {
-                            setState(() {
-                              isSwitched2 = value;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 60,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(Icons.flash_on),
-                            SizedBox(width: 10),
-                            Text(
-                              'HIIT',
-                              style: theme.textTheme.headlineLarge,
-                            ),
-                          ],
-                        ),
-                        Switch.adaptive(
-                          value: isSwitched3,
-                          onChanged: (bool value) {
-                            setState(() {
-                              isSwitched3 = value;
-                            });
-                          },
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
+              );
+            }),
+          ),
         ),
       ),
       bottomNavigationBar: Padding(
@@ -206,6 +76,13 @@ class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
             CustomConfirmCancelButton(
               label: 'Confirm',
               onPressed: () {
+                final selectedTypes = <String>[];
+                for (int i = 0; i < _options.length; i++) {
+                  if (_switchStates[i]) {
+                    selectedTypes.add(_options[i].label);
+                  }
+                }
+                print('Selected workout types: $selectedTypes');
               },
             ),
           ],
@@ -214,3 +91,4 @@ class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
     );
   }
 }
+

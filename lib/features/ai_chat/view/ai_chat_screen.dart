@@ -66,7 +66,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
                     icon: Icon(Icons.edit)),
               ],
               title: const Text(
-                'Ai Assistant',
+                'AI Assistant',
               ),
             ),
             body: RefreshIndicator.adaptive(
@@ -131,7 +131,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
                                           _sendMessage(context);
                                         },
                                         decoration: InputDecoration(
-                                          hintText: 'how can u help you?',
+                                          hintText: 'how can i help you?',
                                           border: InputBorder.none,
                                           enabledBorder: InputBorder.none,
                                           focusedBorder: InputBorder.none,
