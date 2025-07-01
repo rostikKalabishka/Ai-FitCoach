@@ -30,7 +30,7 @@ class FollowOnSocialNetworks extends StatelessWidget {
                   print('Something happened, please try again');
                 }
               },
-              icon: Icon(Icons.tiktok),
+              icon: Icon(FontAwesomeIcons.tiktok),
             ),
             IconButton(onPressed: () async {
                 final url = Uri.parse('https://www.facebook.com/');
@@ -39,7 +39,7 @@ class FollowOnSocialNetworks extends StatelessWidget {
                 } else {
                   print('Something happened, please try again');
                 }
-              }, icon: Icon(Icons.facebook)),
+              }, icon: Icon(FontAwesomeIcons.facebook)),
             IconButton(onPressed: () async {
                 final url = Uri.parse('https://x.com');
                 if (await canLaunchUrl(url)) {
@@ -48,14 +48,6 @@ class FollowOnSocialNetworks extends StatelessWidget {
                   print('Something happened, please try again');
                 }
               }, icon: Icon(FontAwesomeIcons.xTwitter)),
-            IconButton(onPressed: () async {
-                final url = Uri.parse('https://www.youtube.com');
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url, mode: LaunchMode.externalApplication);
-                } else {
-                  print('Something happened, please try again');
-                }
-              }, icon: Icon(FontAwesomeIcons.youtube)),
             IconButton(
               onPressed: () async {
                 final url = Uri.parse('https://www.instagram.com');
