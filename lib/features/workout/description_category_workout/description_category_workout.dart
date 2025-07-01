@@ -109,36 +109,15 @@ class DescriptionCategoryWorkout extends StatelessWidget {
                         imagePath: 'assets/images/challenges/exercise/2.png',
                         repsNumber: '15',
                       ),
-                      Divider(
-                        thickness: 0.5,
-                        color: Colors.grey,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
                       CustomSubcategoryWorkout(
                         title: 'Push Ups',
                         imagePath: 'assets/images/challenges/exercise/2.png',
                         repsNumber: '15',
                       ),
-                      Divider(
-                        thickness: 0.5,
-                        color: Colors.grey,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
                       CustomSubcategoryWorkout(
                         title: 'Push Ups',
                         imagePath: 'assets/images/challenges/exercise/2.png',
                         repsNumber: '15',
-                      ),
-                      Divider(
-                        thickness: 0.5,
-                        color: Colors.grey,
-                      ),
-                      SizedBox(
-                        height: 10,
                       ),
                     ],
                   ),
@@ -156,24 +135,10 @@ class DescriptionCategoryWorkout extends StatelessWidget {
                         imagePath: 'assets/images/challenges/exercise/2.png',
                         repsNumber: '15',
                       ),
-                      Divider(
-                        thickness: 0.5,
-                        color: Colors.grey,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
                       CustomSubcategoryWorkout(
                         title: 'Push Ups',
                         imagePath: 'assets/images/challenges/exercise/2.png',
                         repsNumber: '15',
-                      ),
-                      Divider(
-                        thickness: 0.5,
-                        color: Colors.grey,
-                      ),
-                      SizedBox(
-                        height: 10,
                       ),
                     ],
                   )
