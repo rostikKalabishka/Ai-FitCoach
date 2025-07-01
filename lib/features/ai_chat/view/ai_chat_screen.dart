@@ -40,126 +40,183 @@ class _AiChatScreenState extends State<AiChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ChatBloc, ChatState>(
-      builder: (BuildContext context, state) {
-        final theme = Theme.of(context);
-        final chatId = widget.chatId;
-        return GestureDetector(
-          onTap: () {
-            focusNode.unfocus();
-          },
-          child: Scaffold(
-            drawer: HistoryDrawer(
-              currentChatId: chatId ?? '',
-              userId: userId,
-            ),
-            appBar: AppBar(
-              actions: [
-                IconButton(
-                    onPressed: chatId != null && chatId.isNotEmpty
-                        ? () {
-                            AutoRouter.of(context).pushAndPopUntil(
-                                AiChatRoute(chatId: ''),
-                                predicate: (_) => false);
-                          }
-                        : null,
-                    icon: Icon(Icons.edit)),
-              ],
-              title: const Text(
-                'AI Assistant',
+    final theme = Theme.of(context);
+
+    return BlocListener<ChatBloc, ChatState>(
+      listener: (context, state) {
+        if (state is AiChatLoaded && state.chatModel.messages.isNotEmpty) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            _scrollController.animateTo(
+              _scrollController.position.maxScrollExtent,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeOut,
+            );
+          });
+        } else if (state is AiChatFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error: ${state.error}')),
+          );
+        }
+      },
+      child: BlocBuilder<ChatBloc, ChatState>(
+        builder: (context, state) {
+          return GestureDetector(
+            onTap: () {
+              focusNode.unfocus();
+            },
+            child: Scaffold(
+              drawer: HistoryDrawer(
+                currentChatId: state is AiChatLoaded ? state.chatModel.id : '',
+                userId: userId,
               ),
-            ),
-            body: RefreshIndicator.adaptive(
-              onRefresh: () async {
-                context.read<ChatBloc>().add(LoadChatEvent(
-                    chatId: widget.chatId ?? '', userCreatorChatId: userId));
-              },
-              child: state is AiChatLoaded
-                  ? Center(
-                      child: SafeArea(
-                        child: Column(
-                          children: [
-                            Flexible(
-                              child: ListView.builder(
-                                controller: _scrollController,
-                                itemBuilder: (context, index) {
-                                  final List<Message> messagesInChat =
-                                      state.chatModel.messages;
-                                  return ChatWidget(
-                                    isUser: messagesInChat[index].isUser,
-                                    message: messagesInChat[index].message,
+              appBar: AppBar(
+                actions: [
+                  IconButton(
+                      onPressed:
+                          state is AiChatLoaded && state.chatModel.id.isNotEmpty
+                              ? () {
+                                  AutoRouter.of(context).pushAndPopUntil(
+                                    AiChatRoute(),
+                                    predicate: (_) => false,
                                   );
-                                },
-                                itemCount: state.chatModel.messages.length,
-                              ),
-                            ),
-                            if (state.isTyping) ...[
-                              SpinKitThreeBounce(
-                                color: theme.colorScheme.secondary,
-                                size: 18,
-                              ),
-                            ],
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: theme.cardColor,
-                                borderRadius: const BorderRadius.only(
-                                  topLeft: Radius.circular(16.0),
-                                  topRight: Radius.circular(16.0),
-                                ),
-                                border: Border(
-                                  top: BorderSide(
-                                    color: theme.dividerColor,
-                                    width: 1.0,
+                                }
+                              : null,
+                      icon: const Icon(Icons.edit),
+                      tooltip: 'Create new chat'),
+                ],
+                title: Text(
+                  'AI Assistant',
+                  style: theme.textTheme.labelMedium,
+                ),
+              ),
+              body: RefreshIndicator.adaptive(
+                onRefresh: () async {
+                  if (userId.isNotEmpty) {
+                    context.read<ChatBloc>().add(
+                          LoadChatEvent(
+                            chatId: state is AiChatLoaded
+                                ? state.chatModel.id
+                                : widget.chatId ?? '',
+                            userCreatorChatId: userId,
+                          ),
+                        );
+                  }
+                },
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return state is AiChatLoaded
+                        ? Center(
+                            child: SafeArea(
+                              child: Column(
+                                children: [
+                                  Flexible(
+                                    child: ListView.builder(
+                                      controller: _scrollController,
+                                      itemBuilder: (context, index) {
+                                        final List<Message> messagesInChat =
+                                            state.chatModel.messages;
+                                        return ChatWidget(
+                                          isUser: messagesInChat[index].isUser,
+                                          message:
+                                              messagesInChat[index].message,
+                                        );
+                                      },
+                                      itemCount:
+                                          state.chatModel.messages.length,
+                                    ),
                                   ),
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: TextField(
-                                        style: theme.textTheme.headlineLarge
-                                            ?.copyWith(
-                                                fontWeight: FontWeight.normal),
-                                        focusNode: focusNode,
-                                        controller: _textFieldController,
-                                        onSubmitted: (value) {
-                                          _sendMessage(context);
-                                        },
-                                        decoration: InputDecoration(
-                                          hintText: 'how can i help you?',
-                                          border: InputBorder.none,
-                                          enabledBorder: InputBorder.none,
-                                          focusedBorder: InputBorder.none,
+                                  if (state.isTyping) ...[
+                                    SpinKitThreeBounce(
+                                      color: theme.colorScheme.secondary,
+                                      size: 18,
+                                    ),
+                                  ],
+                                  const SizedBox(height: 10),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: theme.cardColor,
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(16.0),
+                                        topRight: Radius.circular(16.0),
+                                      ),
+                                      border: Border(
+                                        top: BorderSide(
+                                          color: theme.dividerColor,
+                                          width: 1.0,
                                         ),
                                       ),
                                     ),
-                                    IconButton(
-                                        onPressed: () {
-                                          _sendMessage(context);
-                                        },
-                                        icon: const Icon(
-                                          Icons.send,
-                                        ))
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            child: TextField(
+                                              style: theme
+                                                  .textTheme.headlineLarge
+                                                  ?.copyWith(
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                              focusNode: focusNode,
+                                              controller: _textFieldController,
+                                              onSubmitted: (value) {
+                                                _sendMessage(context);
+                                              },
+                                              decoration: InputDecoration(
+                                                hintText: 'how can i help you?',
+                                                border: InputBorder.none,
+                                                enabledBorder: InputBorder.none,
+                                                focusedBorder: InputBorder.none,
+                                              ),
+                                            ),
+                                          ),
+                                          IconButton(
+                                            onPressed: () {
+                                              _sendMessage(context);
+                                            },
+                                            icon: const Icon(Icons.send),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        : state is AiChatFailure
+                            ? Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Error: ${state.error}'),
+                                    const SizedBox(height: 16),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        if (userId.isNotEmpty) {
+                                          context.read<ChatBloc>().add(
+                                                LoadChatEvent(
+                                                  chatId: widget.chatId ?? '',
+                                                  userCreatorChatId: userId,
+                                                ),
+                                              );
+                                        }
+                                      },
+                                      child: const Text('Retry'),
+                                    ),
                                   ],
                                 ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  : const Center(
-                      child: CircularProgressIndicator.adaptive(),
-                    ),
+                              )
+                            : const Center(
+                                child: CircularProgressIndicator.adaptive(),
+                              );
+                  },
+                ),
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 
@@ -168,12 +225,6 @@ class _AiChatScreenState extends State<AiChatScreen> {
 
     if (newMessage.isNotEmpty) {
       _textFieldController.clear();
-
-      _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeOut,
-      );
       context.read<ChatBloc>().add(
             SendMessageEvent(message: newMessage),
           );
@@ -183,12 +234,19 @@ class _AiChatScreenState extends State<AiChatScreen> {
   void _init() {
     _textFieldController = TextEditingController();
     _scrollController = ScrollController();
-    userId = context.read<AuthenticationBloc>().state.user?.id ?? '';
     focusNode = FocusNode();
+    userId = context.read<AuthenticationBloc>().state.user?.id ?? '';
 
-    context.read<ChatBloc>().add(
-        LoadChatEvent(chatId: widget.chatId ?? '', userCreatorChatId: userId));
-
-    context.read<HistoryBloc>().add(LoadHistoryEvent(userId: userId));
+    if (userId.isNotEmpty) {
+      context.read<ChatBloc>().add(
+            LoadChatEvent(
+                chatId: widget.chatId ?? '', userCreatorChatId: userId),
+          );
+      context.read<HistoryBloc>().add(LoadHistoryEvent(userId: userId));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('User not authenticated')),
+      );
+    }
   }
 }
