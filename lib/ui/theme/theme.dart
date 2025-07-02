@@ -10,6 +10,9 @@ final themeDark = ThemeData.dark().copyWith(
     onTertiary: Colors.grey,
     brightness: Brightness.dark,
   ),
+  dropdownMenuTheme: DropdownMenuThemeData(
+    textStyle: TextStyle(color: const Color.fromARGB(255, 255, 255, 255))
+  ),
   dividerTheme: DividerThemeData(color: Colors.white),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     selectedIconTheme: IconThemeData(color: Colors.white),
@@ -59,6 +62,8 @@ final themeLight = ThemeData.light().copyWith(
     onTertiary: Colors.grey,
     brightness: Brightness.light,
   ),
+  dropdownMenuTheme: DropdownMenuThemeData(
+    textStyle: TextStyle(color: Colors.black)),
   dividerTheme: DividerThemeData(color: Colors.white),
   iconTheme: const IconThemeData(color: Colors.black),
   appBarTheme: const AppBarTheme(

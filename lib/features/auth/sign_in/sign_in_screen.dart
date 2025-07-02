@@ -28,65 +28,71 @@ class _SignInScreenState extends State<SignInScreen> {
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(height: 40),
-              Center(
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.85,
-                  height: MediaQuery.of(context).size.width * 0.12,
-                  child: CustomTextfield(
-                    controller: emailController,
-                    hintText: 'Email',
-                    obscureText: false,
-                    keyboardType: TextInputType.emailAddress,
-                    prefixIcon: Icon(Icons.email_outlined),
-                    errorMsg: _errorMsg,
-                    validator: (val) => FormValidators.emailValidator(val),
+              Column(children: [
+                Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 16, vertical: 16)),
+                Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.85,
+                    height: MediaQuery.of(context).size.width * 0.12,
+                    child: CustomTextfield(
+                      controller: emailController,
+                      hintText: 'Email',
+                      obscureText: false,
+                      keyboardType: TextInputType.emailAddress,
+                      prefixIcon: Icon(Icons.email_outlined),
+                      errorMsg: _errorMsg,
+                      validator: (val) => FormValidators.emailValidator(val),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Center(
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.85,
-                  height: MediaQuery.of(context).size.width * 0.12,
-                  child: CustomTextfield(
-                    controller: passwordController,
-                    hintText: 'Password',
-                    obscureText: obscurePassword,
-                    keyboardType: TextInputType.visiblePassword,
-                    prefixIcon: Icon(Icons.lock_outline),
-                    errorMsg: _errorMsg,
-                    validator: (val) => FormValidators.passwordValidator(val),
-                    suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            obscurePassword = !obscurePassword;
-                          });
-                        },
-                        icon: Icon(obscurePassword
-                            ? Icons.visibility
-                            : Icons.visibility_off)),
+                Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 16, vertical: 16)),
+                Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.85,
+                    height: MediaQuery.of(context).size.width * 0.12,
+                    child: CustomTextfield(
+                      controller: passwordController,
+                      hintText: 'Password',
+                      obscureText: obscurePassword,
+                      keyboardType: TextInputType.visiblePassword,
+                      prefixIcon: Icon(Icons.lock_outline),
+                      errorMsg: _errorMsg,
+                      validator: (val) => FormValidators.passwordValidator(val),
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              obscurePassword = !obscurePassword;
+                            });
+                          },
+                          icon: Icon(obscurePassword
+                              ? Icons.visibility
+                              : Icons.visibility_off)),
+                    ),
                   ),
                 ),
-              ),
+              ]),
               Padding(
-                  padding: EdgeInsets.symmetric(vertical: 94)),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.85,
-                height: MediaQuery.of(context).size.width * 0.12,
-                child: ElevatedButton(
-                    onPressed: () {
-                      _signIn(context);
-                    },
-                    child: Text(
-                      'Sign In',
-                      style:
-                          theme.textTheme.displaySmall?.copyWith(fontSize: 18),
-                    )),
-              )
+                padding: const EdgeInsets.only(bottom: 58),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.85,
+                  height: MediaQuery.of(context).size.width * 0.12,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        _signIn(context);
+                      },
+                      child: Text(
+                        'Sign In',
+                        style:
+                            theme.textTheme.displaySmall?.copyWith(fontSize: 18),
+                      )),
+                ),
+              ),
             ],
           ),
         ));

@@ -48,50 +48,56 @@ class _LanguageLocalizationScreenState extends State<LanguageLocalizationScreen>
         centerTitle: true,
       ),
       backgroundColor: theme.scaffoldBackgroundColor,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-          child: DropdownButtonFormField<LanguageOption>(
-            value: _selectedLanguage,
-            decoration: InputDecoration(
-              hintText: 'Please select preferred language',
-              suffixIcon: const Icon(Icons.language),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(24),
-                borderSide: BorderSide(color: theme.colorScheme.onSurface),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: theme.colorScheme.onSurface),
-              ),
-            ),
-            items: languages.map((item) {
-              return DropdownMenuItem(
-                value: item,
-                child: Row(
-                  children: [
-                    const SizedBox(width: 16),
-                    Image.asset(
-                      item.assetPath,
-                      width: 24,
-                      height: 24,
-                      fit: BoxFit.contain,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child:
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                child: DropdownButtonFormField<LanguageOption>(
+                  value: _selectedLanguage,
+                  decoration: InputDecoration(
+                    hintText: 'Please select preferred language',
+                    suffixIcon: const Icon(Icons.language),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
                     ),
-                    const SizedBox(width: 8),
-                    Text(item.name),
-                  ],
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(32),
+                      borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(16),
+                      borderSide: BorderSide(color: theme.colorScheme.onSurface),
+                    ),
+                  ),
+              
+                  style: theme.dropdownMenuTheme.textStyle,
+                  dropdownColor: theme.scaffoldBackgroundColor,
+                  items: languages.map((item) {
+                    return DropdownMenuItem(
+                      value: item,
+                      child: Row(
+                        children: [
+                          const SizedBox(width: 16),
+                          Image.asset(
+                            item.assetPath,
+                            width: 24,
+                            height: 24,
+                            fit: BoxFit.contain,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(item.name,),
+                        ],
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (LanguageOption? newValue) {
+                    setState(() {
+                      _selectedLanguage = newValue;
+                    });
+                  },
                 ),
-              );
-            }).toList(),
-            onChanged: (LanguageOption? newValue) {
-              setState(() {
-                _selectedLanguage = newValue;
-              });
-            },
-          ),
+              ),
         ),
       ),
       bottomNavigationBar: Padding(
