@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:ai_fit_coach/features/auth/auth.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
 import 'package:ai_fit_coach/router/router.dart';
@@ -24,13 +26,26 @@ class WelcomeScreen extends StatelessWidget {
         return Scaffold(
           body: Stack(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(AppConst.welcomeBackground),
-                    fit: BoxFit.cover,
+              Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(AppConst.welcomeBackground),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                ),
+                  Positioned.fill(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+                      child: Container(
+                        color: Colors.black
+                            .withValues(alpha: 0),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SafeArea(
                 child: Padding(
@@ -38,28 +53,38 @@ class WelcomeScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(height: 90),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 56, vertical: 56),
+                      ),
                       Text(
                         'AI FitCoach',
-                        style: theme.textTheme.labelLarge,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 32),
                       ),
-                      SizedBox(height: 70),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 40, vertical: 40),
+                      ),
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Welcome,',
-                              style: theme.textTheme.displaySmall
-                                  ?.copyWith(fontSize: 24),
-                            ),
-                            Text(
-                              'glad to see you!',
-                              style: theme.textTheme.displaySmall
-                                  ?.copyWith(fontSize: 24),
-                            ),
-                          ],
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Welcome,',
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 24),
+                              ),
+                              Text(
+                                'glad to see you!',
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 24),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(height: 80),
@@ -67,96 +92,90 @@ class WelcomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SizedBox(
-                            height: 50,
-                            width: 150,
-                            child: ElevatedButton(
-                              style: ButtonStyle(
-                                  backgroundColor: theme.elevatedButtonTheme
-                                      .style!.backgroundColor),
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => AuthScreen(
-                                      initialIndex: 0,
+                            height: MediaQuery.of(context).size.width * 0.2,
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 16),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: theme.elevatedButtonTheme
+                                        .style!.backgroundColor),
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => AuthScreen(
+                                        initialIndex: 0,
+                                      ),
                                     ),
-                                  ),
-                                );
-                              },
-                              child: Text('Sign In',
-                                  style: theme.textTheme.labelSmall),
+                                  );
+                                },
+                                child: Text('Sign In',
+                                    style: theme.textTheme.displaySmall
+                                        ?.copyWith(fontSize: 18)),
+                              ),
                             ),
                           ),
-                          SizedBox(width: 30),
                           SizedBox(
-                            height: 50,
-                            width: 150,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => AuthScreen(
-                                      initialIndex: 1,
+                            height: MediaQuery.of(context).size.width * 0.2,
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 16),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => AuthScreen(
+                                        initialIndex: 1,
+                                      ),
                                     ),
-                                  ),
-                                );
-                              },
-                              child: Text('Sign Up',
-                                  style: theme.textTheme.labelSmall),
+                                  );
+                                },
+                                child: Text('Sign Up',
+                                    style: theme.textTheme.displaySmall
+                                        ?.copyWith(fontSize: 18)),
+                              ),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 40),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SizedBox(
-                            height: 60,
-                            width: 150,
-                            child: ElevatedButton(
-                              style: ButtonStyle(
-                                  backgroundColor: theme.elevatedButtonTheme
-                                      .style!.backgroundColor),
-                              onPressed: () {
-                                context
-                                    .read<AuthBloc>()
-                                    .add(SignInWithGoogleEvent());
-                              },
-                              child: Text('Continue with Google',
-                                  textAlign: TextAlign.center,
-                                  style: theme.textTheme.labelSmall),
-                            ),
-                          ),
-                          SizedBox(width: 30),
-                          SizedBox(
-                            height: 60,
-                            width: 150,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                context
-                                    .read<AuthBloc>()
-                                    .add(SignInWithFacebookEvent());
-                              },
-                              child: Text('Continue with Facebook',
-                                  textAlign: TextAlign.center,
-                                  style: theme.textTheme.labelSmall),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 40),
                       SizedBox(
-                        height: 60,
-                        width: 335,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            context
-                                .read<AuthBloc>()
-                                .add(SignInWithTwitterEvent());
-                          },
-                          child: Text('Continue with Twitter',
-                              textAlign: TextAlign.center,
-                              style: theme.textTheme.labelSmall),
+                        height: MediaQuery.of(context).size.width * 0.2,
+                        width: double.infinity,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 16),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              context
+                                  .read<AuthBloc>()
+                                  .add(SignInWithGoogleEvent());
+                            },
+                            child: Text('Continue with Google',
+                                textAlign: TextAlign.center,
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 18)),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.width * 0.2,
+                        width: double.infinity,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 16),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              context
+                                  .read<AuthBloc>()
+                                  .add(SignInWithFacebookEvent());
+                            },
+                            child: Text('Continue with Facebook',
+                                textAlign: TextAlign.center,
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 18)),
+                          ),
                         ),
                       ),
                     ],

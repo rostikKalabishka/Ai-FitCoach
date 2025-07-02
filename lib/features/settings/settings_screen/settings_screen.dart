@@ -3,6 +3,8 @@ import 'package:ai_fit_coach/ui/widgets/custom_calendar.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../../../repositories/user_repository/user.dart';
+
 @RoutePage()
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -45,7 +47,10 @@ class SettingsScreen extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Icon(Icons.local_fire_department, size: 35,),
+                        Icon(
+                          Icons.local_fire_department,
+                          size: 35,
+                        ),
                         SizedBox(
                           width: 10,
                         ),
@@ -107,7 +112,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'User Profile',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -139,7 +145,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Fitness Goal',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -187,7 +194,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Difficulty Level',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -219,7 +227,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Workout Types',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -250,7 +259,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Automatic Activity Tracking',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -298,7 +308,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Calorie Goal',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -330,7 +341,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Water Balance',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -377,7 +389,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Do Not Disturb Mode',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -425,7 +438,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Account Management',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -457,7 +471,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Privacy',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -489,7 +504,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Language & Localization',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -536,7 +552,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Privacy Policy',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -569,7 +586,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Rate Us',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -601,7 +619,8 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Delete Your Account',
-                                style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                                style: theme.textTheme.displaySmall
+                                    ?.copyWith(fontSize: 16),
                               ),
                             ],
                           ),
@@ -615,7 +634,18 @@ class SettingsScreen extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: 40,
+          height: 10,
+        ),
+        TextButton(
+            onPressed: () async {
+              await UserRepository().logOut();
+            },
+            child: Text(
+              'Log out',
+              style:  theme.textTheme.displaySmall?.copyWith(fontSize: 18, color: const Color.fromARGB(255, 109, 7, 0)),
+            )),
+            SizedBox(
+          height: 20,
         ),
       ]),
     );

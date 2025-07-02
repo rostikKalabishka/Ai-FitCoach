@@ -14,9 +14,14 @@ class LanguageOption {
 }
 
 @RoutePage()
-class LanguageLocalizationScreen extends StatelessWidget {
+class LanguageLocalizationScreen extends StatefulWidget {
   const LanguageLocalizationScreen({super.key});
 
+  @override
+  State<LanguageLocalizationScreen> createState() => _LanguageLocalizationScreenState();
+}
+
+class _LanguageLocalizationScreenState extends State<LanguageLocalizationScreen> {
   final List<LanguageOption> languages = const [
     LanguageOption(name: 'English', assetPath: 'assets/images/languages/en.jpg'),
     LanguageOption(name: 'French', assetPath: 'assets/images/languages/fr.png'),
@@ -27,62 +32,7 @@ class LanguageLocalizationScreen extends StatelessWidget {
     LanguageOption(name: 'Ukrainian', assetPath: 'assets/images/languages/ua.png'),
   ];
 
-  void _showLanguage(BuildContext context, ThemeData theme) {
-    showDialog(
-      context: context,
-      builder: (_) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-            side: const BorderSide(color: Colors.white, width: 1),
-          ),
-          backgroundColor: Colors.black,
-          title: Center(
-            child: Text(
-              'Please select language',
-              style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
-            ),
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: List.generate(languages.length, (index) {
-              final lang = languages[index];
-              return Column(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                      print('Selected: ${lang.name}');
-                    },
-                    child: ListTile(
-                      leading: Image.asset(
-                        lang.assetPath,
-                        width: 32,
-                        height: 32,
-                        fit: BoxFit.contain,
-                      ),
-                      title: Text(
-                        lang.name,
-                        style: theme.textTheme.displaySmall,
-                      ),
-                    ),
-                  ),
-                  if (index != languages.length - 1)
-                    const Divider(thickness: 0.5),
-                ],
-              );
-            }),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text('OK', style: theme.textTheme.displaySmall),
-            ),
-          ],
-        );
-      },
-    );
-  }
+  LanguageOption? _selectedLanguage;
 
   @override
   Widget build(BuildContext context) {
@@ -99,27 +49,48 @@ class LanguageLocalizationScreen extends StatelessWidget {
       ),
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
-        child: GestureDetector(
-          onTap: () => _showLanguage(context, theme),
-          child: AbsorbPointer(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                readOnly: true,
-                decoration: InputDecoration(
-                  hintText: 'Please select preferred language',
-                  suffixIcon: const Icon(Icons.language),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25),
-                    borderSide: BorderSide(color: theme.colorScheme.onSurface),
-                  ),
-                ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+          child: DropdownButtonFormField<LanguageOption>(
+            value: _selectedLanguage,
+            decoration: InputDecoration(
+              hintText: 'Please select preferred language',
+              suffixIcon: const Icon(Icons.language),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(24),
+                borderSide: BorderSide(color: theme.colorScheme.onSurface),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide(color: theme.colorScheme.onSurface),
               ),
             ),
+            items: languages.map((item) {
+              return DropdownMenuItem(
+                value: item,
+                child: Row(
+                  children: [
+                    const SizedBox(width: 16),
+                    Image.asset(
+                      item.assetPath,
+                      width: 24,
+                      height: 24,
+                      fit: BoxFit.contain,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(item.name),
+                  ],
+                ),
+              );
+            }).toList(),
+            onChanged: (LanguageOption? newValue) {
+              setState(() {
+                _selectedLanguage = newValue;
+              });
+            },
           ),
         ),
       ),
@@ -134,8 +105,7 @@ class LanguageLocalizationScreen extends StatelessWidget {
             ),
             CustomConfirmCancelButton(
               label: 'Confirm',
-              onPressed: () {
-              },
+              onPressed: () {},
             ),
           ],
         ),
