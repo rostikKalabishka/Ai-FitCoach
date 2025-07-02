@@ -1,5 +1,6 @@
 import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
 import 'package:ai_fit_coach/features/onboarding/model/model.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/router/router.dart';
 import 'package:ai_fit_coach/ui/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
@@ -35,9 +36,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final _size = MediaQuery.of(context).size;
+    final localizations = S.of(context);
 
     return Scaffold(
-      // backgroundColor: Colors.black,
       body: SafeArea(
         child: AnimatedOpacity(
           opacity: _formOpacity,
@@ -114,8 +115,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     handleOnboardingAction(context);
                   },
                   child: Text(
-                    _currentIndex == arr.length - 1 ? 'START' : 'NEXT',
-                    style: TextStyle(color: Colors.white),
+                    _currentIndex == arr.length - 1 ? 'Start' : 'Next',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),
               )
