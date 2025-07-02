@@ -72,9 +72,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 108,
-              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(vertical: 94)),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.85,
                 height: MediaQuery.of(context).size.width * 0.12,
@@ -84,7 +83,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     },
                     child: Text(
                       'Sign In',
-                      style: theme.textTheme.labelSmall,
+                      style:
+                          theme.textTheme.displaySmall?.copyWith(fontSize: 18),
                     )),
               )
             ],

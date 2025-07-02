@@ -33,7 +33,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 40),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16)),
               Center(
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.85,
@@ -48,7 +49,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       validator: (val) => FormValidators.emailValidator(val)),
                 ),
               ),
-              SizedBox(height: 30),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16)),
               Center(
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.85,
@@ -64,9 +66,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           FormValidators.usernameValidator(val)),
                 ),
               ),
-              SizedBox(
-                height: 30,
-              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16)),
               Center(
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.85,
@@ -91,9 +92,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 30,
-              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16)),
               Center(
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width * 0.85,
@@ -122,9 +122,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 30,
-              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16)),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.85,
                 height: MediaQuery.of(context).size.width * 0.12,
@@ -134,7 +133,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     },
                     child: Text(
                       'Sign Up',
-                      style: theme.textTheme.labelSmall,
+                      style:
+                          theme.textTheme.displaySmall?.copyWith(fontSize: 18),
                     )),
               )
             ],

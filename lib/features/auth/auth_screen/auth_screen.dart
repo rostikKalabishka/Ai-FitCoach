@@ -51,7 +51,9 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
               height: 250,
               width: 250,
               child: Image.asset(
-                AppConst.logo,
+                theme.brightness == Brightness.dark
+                    ? AppConst.logo
+                    : AppConst.logo2,
               ),
             ),
             TabBar(
@@ -60,13 +62,11 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                 tabs: [
                   Padding(
                     padding: EdgeInsets.all(12),
-                    child:
-                        Text('Sign In', style: theme.textTheme.labelSmall),
+                    child: Text('Sign In', style: theme.textTheme.labelSmall),
                   ),
                   Padding(
                     padding: EdgeInsets.all(12),
-                    child:
-                        Text('Sign Up', style: theme.textTheme.labelSmall),
+                    child: Text('Sign Up', style: theme.textTheme.labelSmall),
                   ),
                 ]),
             Expanded(

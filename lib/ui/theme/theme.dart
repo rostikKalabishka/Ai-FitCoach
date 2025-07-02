@@ -27,7 +27,7 @@ final themeDark = ThemeData.dark().copyWith(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       backgroundColor: WidgetStateColor.resolveWith(
-        (states) => const Color.fromARGB(255, 66, 66, 66),
+        (states) => const Color.fromARGB(255, 85, 0, 0),
       ),
     ),
   ),
@@ -75,7 +75,7 @@ final themeLight = ThemeData.light().copyWith(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
       backgroundColor: WidgetStateColor.resolveWith(
-        (states) => const Color(0xFFF0F0F0),
+        (states) => const Color.fromARGB(255, 85, 0, 0),
       ),
     ),
   ),
