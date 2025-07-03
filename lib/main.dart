@@ -20,6 +20,7 @@ Future<void> main() async {
   initDI(sharedPreferences: prefs);
 
   runApp(const AiFitCoachApp());
+
 }
 
 Future<SharedPreferences> _initPrefs() async {

@@ -6,7 +6,7 @@ class CustomChallengeCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final String imagePath;
-  final String price;
+  final double price;
   final VoidCallback onJoin;
   final VoidCallback? onInfoTap;
 

@@ -30,7 +30,7 @@ class _CategoriesWorkoutState extends State<CategoriesWorkout> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text("Name of workout, what you'll choose",
+        title: Text("Choosen workout",
             style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
