@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import '../../../ui/widgets/widgets.dart';
@@ -21,7 +22,7 @@ class _CategoriesMediumScreenState extends State<CategoriesMediumScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
-              'Number of existing workouts',
+              S.of(context).numberOfExistingWorkouts,
               style: theme.textTheme.headlineLarge,
             ),
           ),

@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,9 +45,9 @@ class _HistoryDrawerState extends State<HistoryDrawer> {
       context: context,
       builder: (context) {
         return ConfirmationDialog(
-          title: 'Edit the chat name',
-          confirmText: 'Save',
-          cancelText: 'Cancel',
+          title: S.of(context).editTheChatName,
+          confirmText: S.of(context).save,
+          cancelText: S.of(context).cancel,
           content: Padding(
             padding: const EdgeInsets.only(top: 12.0),
             child: Material(
@@ -54,8 +55,8 @@ class _HistoryDrawerState extends State<HistoryDrawer> {
               child: TextField(
                 controller: controller,
                 autofocus: true,
-                decoration: const InputDecoration(
-                  hintText: 'New name',
+                decoration: InputDecoration(
+                  hintText: S.of(context).newName,
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -96,13 +97,13 @@ class _HistoryDrawerState extends State<HistoryDrawer> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
-                            'Chat history',
+                            S.of(context).chatHistory,
                             style: theme.textTheme.labelMedium,
                           ),
                           const SizedBox(height: 12),
                           CustomTextfield(
                             controller: _searchHistoryController,
-                            hintText: 'Search chat',
+                            hintText: S.of(context).searchChat,
                             obscureText: false,
                             keyboardType: TextInputType.text,
                             onChanged: (value) {
@@ -178,7 +179,7 @@ class _HistoryDrawerState extends State<HistoryDrawer> {
                                         size: 18,
                                       ),
                                       Text(
-                                        'Edit the name',
+                                        S.of(context).editTheName,
                                         style: theme.textTheme.headlineLarge,
                                       ),
                                     ],
@@ -190,15 +191,13 @@ class _HistoryDrawerState extends State<HistoryDrawer> {
                                       spacing: 5,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      // mainAxisAlignment:
-                                      //     MainAxisAlignment.spaceAround,
                                       children: [
                                         Icon(
                                           Icons.delete,
                                           size: 18,
                                         ),
                                         Text(
-                                          'Delete chat',
+                                          S.of(context).deleteChat,
                                           style: theme.textTheme.headlineLarge,
                                         ),
                                       ]),

@@ -20,7 +20,7 @@ class UserRepository implements AbstractUserRepository {
       _userApiClient.login(email: email, password: password);
 
   @override
-  Future registration(
+  Future<UserModel> registration(
           {required UserModel userModel, required String password}) =>
       _userApiClient.registration(userModel: userModel, password: password);
 

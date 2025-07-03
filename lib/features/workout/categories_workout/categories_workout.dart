@@ -1,6 +1,6 @@
 import 'package:ai_fit_coach/features/workout/workout.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:flutter/material.dart';
-
 
 class CategoriesWorkout extends StatefulWidget {
   const CategoriesWorkout({super.key});
@@ -12,12 +12,6 @@ class CategoriesWorkout extends StatefulWidget {
 class _CategoriesWorkoutState extends State<CategoriesWorkout> {
   int selectedIndex = 0;
 
-  final List<String> sections = [
-    'Newbie',
-    'Medium',
-    'Advanced',
-  ];
-
   final List<Widget> screens = [
     CategoriesNewbiesScreen(),
     CategoriesMediumScreen(),
@@ -27,10 +21,15 @@ class _CategoriesWorkoutState extends State<CategoriesWorkout> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final List<String> sections = [
+      S.of(context).newbie,
+      S.of(context).medium,
+      S.of(context).advanced,
+    ];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text("Name of workout, what you'll choose",
+        title: Text(S.of(context).nameOfWorkoutWhatYoullChoose,
             style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),

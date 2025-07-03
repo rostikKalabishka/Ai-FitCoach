@@ -47,44 +47,48 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             children: [
               Expanded(
                 child: PageView.builder(
-                    controller: _pageController,
-                    itemCount: arr.length,
-                    onPageChanged: (index) {
-                      setState(() => _currentIndex = index);
-                    },
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: _size.height * 0.05,
-                            ),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(16),
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: Image.asset(arr[index].image,
-                                    fit: BoxFit.cover),
+                  controller: _pageController,
+                  itemCount: arr.length,
+                  onPageChanged: (index) {
+                    setState(() => _currentIndex = index);
+                  },
+                  itemBuilder: (context, index) {
+                    final model = arr[index];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16, horizontal: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(height: _size.height * 0.05),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Image.asset(
+                                model.image,
+                                fit: BoxFit.cover,
                               ),
                             ),
-                            const SizedBox(height: 20),
-                            Text(
-                              arr[index].title,
-                              textAlign: TextAlign.center,
-                              style: theme.textTheme.labelMedium,
-                            ),
-                            const SizedBox(height: 10),
-                            Text(arr[index].description,
-                                textAlign: TextAlign.center,
-                                style: theme.textTheme.headlineLarge),
-                            const SizedBox(height: 50),
-                          ],
-                        ),
-                      );
-                    }),
+                          ),
+                          const SizedBox(height: 20),
+                          Text(
+                            model.getTitle(localizations),
+                            textAlign: TextAlign.center,
+                            style: theme.textTheme.labelMedium,
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            model.getDescription(localizations),
+                            textAlign: TextAlign.center,
+                            style: theme.textTheme.headlineLarge,
+                          ),
+                          const SizedBox(height: 50),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
               SizedBox(height: 20),
               Row(
@@ -115,7 +119,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     handleOnboardingAction(context);
                   },
                   child: Text(
-                    _currentIndex == arr.length - 1 ? 'Start' : 'Next',
+                    _currentIndex == arr.length - 1
+                        ? localizations.start
+                        : localizations.next,
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),

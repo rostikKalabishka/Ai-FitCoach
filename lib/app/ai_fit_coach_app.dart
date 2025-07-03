@@ -1,6 +1,7 @@
 import 'package:ai_fit_coach/app/app_initializer.dart';
 import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
+
 import 'package:ai_fit_coach/router/router.dart';
 import 'package:ai_fit_coach/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -22,13 +23,14 @@ class _AiFitCoachAppState extends State<AiFitCoachApp> {
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
           return MaterialApp.router(
-            localizationsDelegates: [
+            localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: S.delegate.supportedLocales,
+            locale: state.locale,
             title: 'AI FitCoach',
             theme: state.isDark ? themeDark : themeLight,
             debugShowCheckedModeBanner: false,

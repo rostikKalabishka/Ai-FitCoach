@@ -1,11 +1,14 @@
 import 'package:ai_fit_coach/common/lib/form_validator.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+  const SignInScreen({
+    super.key,
+  });
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
@@ -40,7 +43,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     height: MediaQuery.of(context).size.width * 0.12,
                     child: CustomTextfield(
                       controller: emailController,
-                      hintText: 'Email',
+                      hintText: S.of(context).email,
                       obscureText: false,
                       keyboardType: TextInputType.emailAddress,
                       prefixIcon: Icon(Icons.email_outlined),
@@ -58,7 +61,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     height: MediaQuery.of(context).size.width * 0.12,
                     child: CustomTextfield(
                       controller: passwordController,
-                      hintText: 'Password',
+                      hintText: S.of(context).password,
                       obscureText: obscurePassword,
                       keyboardType: TextInputType.visiblePassword,
                       prefixIcon: Icon(Icons.lock_outline),
@@ -87,9 +90,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         _signIn(context);
                       },
                       child: Text(
-                        'Sign In',
-                        style:
-                            theme.textTheme.displaySmall?.copyWith(fontSize: 18),
+                        S.of(context).signIn,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 18),
                       )),
                 ),
               ),

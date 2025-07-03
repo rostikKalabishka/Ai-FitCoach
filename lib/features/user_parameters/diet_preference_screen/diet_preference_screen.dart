@@ -1,6 +1,7 @@
 import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/navigation_back_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/selection_button.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class DietPreferencePage extends StatefulWidget {
@@ -39,8 +40,8 @@ class _DietPreferencePageState extends State<DietPreferencePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text(
-          'What type of diet do you prefer?',
+        title: Text(
+          S.of(context).whatTypeOfDietDoYouPrefer,
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.black,
@@ -56,53 +57,45 @@ class _DietPreferencePageState extends State<DietPreferencePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SelectionButton(
-                    text: 'Low-Carb',
-                    isSelected: _selectedDiet == 'Low-Carb',
-                    onTap: () => _toggleDiet('Low-Carb'),
-                    selectedColor: Colors.blue,
-                  ),
+                      text: S.of(context).lowcarb,
+                      isSelected: _selectedDiet == 'Low-Carb',
+                      onTap: () => _toggleDiet('Low-Carb'),
+                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
                   SelectionButton(
-                    text: 'High-Protein',
-                    isSelected: _selectedDiet == 'High-Protein',
-                    onTap: () => _toggleDiet('High-Protein'),
-                    selectedColor: Colors.blue,
-                  ),
+                      text: S.of(context).highprotein,
+                      isSelected: _selectedDiet == 'High-Protein',
+                      onTap: () => _toggleDiet('High-Protein'),
+                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
                   SelectionButton(
-                    text: 'Gluten-Free',
-                    isSelected: _selectedDiet == 'Gluten-Free',
-                    onTap: () => _toggleDiet('Gluten-Free'),
-                    selectedColor: Colors.blue,
-                  ),
+                      text: S.of(context).glutenfree,
+                      isSelected: _selectedDiet == 'Gluten-Free',
+                      onTap: () => _toggleDiet('Gluten-Free'),
+                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
                   SelectionButton(
-                    text: 'Pescatarian',
-                    isSelected: _selectedDiet == 'Pescatarian',
-                    onTap: () => _toggleDiet('Pescatarian'),
-                    selectedColor: Colors.blue,
-                  ),
+                      text: 'Piscatorial',
+                      isSelected: _selectedDiet == 'Pescatarian',
+                      onTap: () => _toggleDiet('Pescatarian'),
+                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
                   SelectionButton(
-                    text: 'Keto',
-                    isSelected: _selectedDiet == 'Keto',
-                    onTap: () => _toggleDiet('Keto'),
-                    selectedColor: Colors.blue,
-                  ),
+                      text: S.of(context).keto,
+                      isSelected: _selectedDiet == 'Keto',
+                      onTap: () => _toggleDiet('Keto'),
+                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
                   SelectionButton(
-                    text: 'Vegan',
-                    isSelected: _selectedDiet == 'Vegan',
-                    onTap: () => _toggleDiet('Vegan'),
-                    selectedColor: Colors.blue,
-                  ),
+                      text: S.of(context).vegan,
+                      isSelected: _selectedDiet == 'Vegan',
+                      onTap: () => _toggleDiet('Vegan'),
+                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
                   SelectionButton(
-                    text: 'Vegetarian',
-                    isSelected: _selectedDiet == 'Vegetarian',
-                    onTap: () => _toggleDiet('Vegetarian'),
-                    selectedColor: Colors.blue,
-                  ),
+                      text: S.of(context).vegetarian,
+                      isSelected: _selectedDiet == 'Vegetarian',
+                      onTap: () => _toggleDiet('Vegetarian'),
+                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
                   SelectionButton(
-                    text: 'All-food diet',
-                    isSelected: _selectedDiet == 'All-food diet',
-                    onTap: () => _toggleDiet('All-food diet'),
-                    selectedColor: Colors.blue,
-                  ),
+                      text: S.of(context).allfoodDiet,
+                      isSelected: _selectedDiet == 'All-food diet',
+                      onTap: () => _toggleDiet('All-food diet'),
+                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
                 ],
               ),
             ),

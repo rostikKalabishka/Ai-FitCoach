@@ -59,6 +59,7 @@ class _UserParametersScreenState extends State<UserParametersScreen> {
         }
       },
       builder: (BuildContext context, state) {
+        final theme = Theme.of(context);
         return Scaffold(
           backgroundColor: Colors.black,
           body: Form(
@@ -165,7 +166,7 @@ class _UserParametersScreenState extends State<UserParametersScreen> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: _currentPage == index
-                              ? Colors.blue
+                              ? theme.colorScheme.secondary
                               : Colors.white,
                         ),
                       );

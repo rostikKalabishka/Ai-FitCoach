@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class WorkoutScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('Workout', style: theme.textTheme.labelMedium),
+        title: Text(S.of(context).workout, style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -25,7 +26,7 @@ class WorkoutScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
-                'FOR YOU',
+                S.of(context).forYou,
                 style: theme.textTheme.headlineLarge,
               ),
             ),
@@ -63,7 +64,7 @@ class WorkoutScreen extends StatelessWidget {
               padding: const EdgeInsets.only(
                   right: 16, left: 16, bottom: 8, top: 16),
               child: Text(
-                'ALL CATEGORIES',
+                S.of(context).allCategories,
                 style: theme.textTheme.headlineLarge,
               ),
             ),

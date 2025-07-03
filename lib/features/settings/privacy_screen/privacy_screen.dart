@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,25 +19,25 @@ class PrivacyOption {
 class PrivacyScreen extends StatelessWidget {
   const PrivacyScreen({super.key});
 
-  final List<PrivacyOption> _options = const [
-    PrivacyOption(
-      icon: FontAwesomeIcons.locationArrow,
-      label: 'Location Access',
-    ),
-    PrivacyOption(
-      icon: FontAwesomeIcons.shareNodes,
-      label: 'Share Progress',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    final List<PrivacyOption> options = [
+      PrivacyOption(
+        icon: FontAwesomeIcons.locationArrow,
+        label: S.of(context).locationAccess,
+      ),
+      PrivacyOption(
+        icon: FontAwesomeIcons.shareNodes,
+        label: S.of(context).shareProgress,
+      ),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('Privacy', style: theme.textTheme.labelMedium),
+        title: Text(S.of(context).privacy, style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -44,8 +45,8 @@ class PrivacyScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
           child: Column(
-            children: List.generate(_options.length, (index) {
-              final option = _options[index];
+            children: List.generate(options.length, (index) {
+              final option = options[index];
               return Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: CustomPrivacyCard(
@@ -66,13 +67,12 @@ class PrivacyScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomConfirmCancelButton(
-              label: 'Cancel',
+              label: S.of(context).cancel,
               onPressed: () => Navigator.pop(context),
             ),
             CustomConfirmCancelButton(
-              label: 'Confirm',
-              onPressed: () {
-              },
+              label: S.of(context).confirm,
+              onPressed: () {},
             ),
           ],
         ),
@@ -80,4 +80,3 @@ class PrivacyScreen extends StatelessWidget {
     );
   }
 }
-

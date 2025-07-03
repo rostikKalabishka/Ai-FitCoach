@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,8 @@ class CalorieGoalScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('Calorie Goal', style: theme.textTheme.labelMedium),
+        title:
+            Text(S.of(context).calorieGoal, style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -27,7 +29,7 @@ class CalorieGoalScreen extends StatelessWidget {
                 borderSide: BorderSide(color: theme.colorScheme.onSurface),
               ),
               suffixIcon: Icon(Icons.timelapse),
-              hintText: 'Set Daily Limit',
+              hintText: S.of(context).setDailyLimit,
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25),
                 borderSide: BorderSide(color: theme.colorScheme.onSurface),
@@ -42,13 +44,12 @@ class CalorieGoalScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomConfirmCancelButton(
-              label: 'Cancel',
+              label: S.of(context).cancel,
               onPressed: () => Navigator.pop(context),
             ),
             CustomConfirmCancelButton(
-              label: 'Confirm',
-              onPressed: () {
-              },
+              label: S.of(context).confirm,
+              onPressed: () {},
             ),
           ],
         ),

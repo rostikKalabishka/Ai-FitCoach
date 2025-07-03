@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/router/router.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
@@ -51,7 +52,8 @@ class _ChallengesScreenState extends State<ChallengesScreen>
         return Scaffold(
           appBar: AppBar(
             backgroundColor: theme.appBarTheme.backgroundColor,
-            title: Text('Challenges', style: theme.textTheme.labelMedium),
+            title: Text(S.of(context).challenges,
+                style: theme.textTheme.labelMedium),
             centerTitle: true,
           ),
           backgroundColor: theme.scaffoldBackgroundColor,
@@ -63,16 +65,16 @@ class _ChallengesScreenState extends State<ChallengesScreen>
                 child: Row(
                   children: [
                     const SizedBox(width: 8),
-                    _buildTab('Food', 0),
-                    _buildTab('Exercise', 1),
-                    _buildTab('Sleep and Relax', 2),
-                    _buildTab('Hydration', 3),
-                    _buildTab('Mental', 4),
+                    _buildTab(S.of(context).food, 0),
+                    _buildTab(S.of(context).exercise, 1),
+                    _buildTab(S.of(context).sleepAndRelax, 2),
+                    _buildTab(S.of(context).hydration, 3),
+                    _buildTab(S.of(context).mental, 4),
                     const SizedBox(width: 8),
                   ],
                 ),
               ),
-                            const SizedBox(height: 8),
+              const SizedBox(height: 8),
               Expanded(
                 child: TabBarView(
                   controller: tabController,
@@ -108,7 +110,9 @@ class _ChallengesScreenState extends State<ChallengesScreen>
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: isSelected ? const Color.fromARGB(255, 87, 48, 69) : theme.colorScheme.onTertiary,
+              color: isSelected
+                  ? const Color.fromARGB(255, 87, 48, 69)
+                  : theme.colorScheme.onTertiary,
               width: 3,
             ),
           ),
@@ -116,7 +120,8 @@ class _ChallengesScreenState extends State<ChallengesScreen>
         child: Text(
           title,
           style: theme.textTheme.headlineLarge?.copyWith(
-            color: isSelected ? theme.textTheme.headlineLarge?.color : Colors.grey,
+            color:
+                isSelected ? theme.textTheme.headlineLarge?.color : Colors.grey,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),

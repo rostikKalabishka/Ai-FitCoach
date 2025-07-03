@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'abstract_settings_repository.dart';
@@ -7,6 +9,8 @@ class SettingsRepository implements AbstractSettingsRepository {
   static const _isDarkThemeSelectedKey = 'dark_theme_selected';
   static const _isOnboardingShownKey = 'onboarding_show';
   static const _isUserParametersScreenShownKey = 'user_parameters_screen_show';
+  static const _languagePrefsKey = 'languagePrefs';
+
   const SettingsRepository({required this.sharedPreferences});
   @override
   bool isDarkThemeSelected() {
@@ -61,5 +65,19 @@ class SettingsRepository implements AbstractSettingsRepository {
     } catch (e) {
       rethrow;
     }
+  }
+
+  Locale getLocale() {
+    final savedLanguageCode = sharedPreferences.getString(_languagePrefsKey);
+    if (savedLanguageCode != null && savedLanguageCode.isNotEmpty) {
+      return Locale(savedLanguageCode);
+    }
+
+    final deviceLocale = PlatformDispatcher.instance.locale;
+    return deviceLocale;
+  }
+
+  Future<void> setLocale(Locale locale) async {
+    await sharedPreferences.setString(_languagePrefsKey, locale.languageCode);
   }
 }

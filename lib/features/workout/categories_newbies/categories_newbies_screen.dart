@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import '../../../ui/widgets/widgets.dart';
@@ -8,7 +9,8 @@ class CategoriesNewbiesScreen extends StatefulWidget {
   const CategoriesNewbiesScreen({super.key});
 
   @override
-  State<CategoriesNewbiesScreen> createState() => _CategoriesNewbiesScreenState();
+  State<CategoriesNewbiesScreen> createState() =>
+      _CategoriesNewbiesScreenState();
 }
 
 class _CategoriesNewbiesScreenState extends State<CategoriesNewbiesScreen> {
@@ -22,7 +24,7 @@ class _CategoriesNewbiesScreenState extends State<CategoriesNewbiesScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
-              'Number of existing workouts',
+              S.of(context).numberOfExistingWorkouts,
               style: theme.textTheme.headlineLarge,
             ),
           ),
@@ -35,7 +37,8 @@ class _CategoriesNewbiesScreenState extends State<CategoriesNewbiesScreen> {
                 subtitle: 'number of existing workouts',
                 imageUrl: 'assets/images/challenges/exercise/1.png',
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => DescriptionCategoryWorkout()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => DescriptionCategoryWorkout()));
                 },
               ),
             ),

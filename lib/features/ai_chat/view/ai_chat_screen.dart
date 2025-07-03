@@ -3,6 +3,7 @@ import 'package:ai_fit_coach/common/api/model/message_model.dart';
 import 'package:ai_fit_coach/features/ai_chat/bloc/chat_bloc.dart';
 import 'package:ai_fit_coach/features/ai_chat/widgets/widgets.dart';
 import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/router/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
           });
         } else if (state is AiChatFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Error: ${state.error}')),
+            SnackBar(content: Text(S.of(context).errorN(state.error))),
           );
         }
       },
@@ -82,10 +83,10 @@ class _AiChatScreenState extends State<AiChatScreen> {
                                 }
                               : null,
                       icon: const Icon(Icons.edit),
-                      tooltip: 'Create new chat'),
+                      tooltip: S.of(context).createNewChat),
                 ],
                 title: Text(
-                  'AI Assistant',
+                  S.of(context).aiAssistant,
                   style: theme.textTheme.labelMedium,
                 ),
               ),
@@ -163,7 +164,9 @@ class _AiChatScreenState extends State<AiChatScreen> {
                                                 _sendMessage(context);
                                               },
                                               decoration: InputDecoration(
-                                                hintText: 'how can i help you?',
+                                                hintText: S
+                                                    .of(context)
+                                                    .howCanIHelpYou,
                                                 border: InputBorder.none,
                                                 enabledBorder: InputBorder.none,
                                                 focusedBorder: InputBorder.none,
@@ -189,7 +192,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text('Error: ${state.error}'),
+                                    Text(S.of(context).errorN(state.error)),
                                     const SizedBox(height: 16),
                                     ElevatedButton(
                                       onPressed: () {
@@ -202,7 +205,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
                                               );
                                         }
                                       },
-                                      child: const Text('Retry'),
+                                      child: Text(S.of(context).retry),
                                     ),
                                   ],
                                 ),
@@ -245,7 +248,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
       context.read<HistoryBloc>().add(LoadHistoryEvent(userId: userId));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('User not authenticated')),
+        SnackBar(content: Text(S.of(context).userNotAuthenticated)),
       );
     }
   }

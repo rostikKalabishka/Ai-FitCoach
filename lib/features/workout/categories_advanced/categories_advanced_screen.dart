@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_workout_card.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,8 @@ class CategoriesAdvancedScreen extends StatefulWidget {
   const CategoriesAdvancedScreen({super.key});
 
   @override
-  State<CategoriesAdvancedScreen> createState() => _CategoriesAdvancedScreenState();
+  State<CategoriesAdvancedScreen> createState() =>
+      _CategoriesAdvancedScreenState();
 }
 
 class _CategoriesAdvancedScreenState extends State<CategoriesAdvancedScreen> {
@@ -21,7 +23,7 @@ class _CategoriesAdvancedScreenState extends State<CategoriesAdvancedScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
-              'Number of existing workouts',
+              S.of(context).numberOfExistingWorkouts,
               style: theme.textTheme.headlineLarge,
             ),
           ),

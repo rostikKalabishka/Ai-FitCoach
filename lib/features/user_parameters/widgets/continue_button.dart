@@ -1,6 +1,7 @@
 import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
 import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,10 +42,11 @@ class ContinueButton extends StatelessWidget {
                           );
                         }
                       : null,
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 85, 0, 0)),
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
-                child: const Text('CONTINUE',
+                child: Text(S.of(context).continueText,
                     style: TextStyle(color: Colors.white, fontSize: 24)),
               ),
             ),
