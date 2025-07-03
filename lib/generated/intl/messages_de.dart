@@ -322,6 +322,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "intermediate": MessageLookupByLibrary.simpleMessage("Fortgeschritten"),
     "japanese": MessageLookupByLibrary.simpleMessage("Japanisch"),
+    "joinNow": MessageLookupByLibrary.simpleMessage("JETZT ANMELDEN!"),
     "keepFit": MessageLookupByLibrary.simpleMessage("Fit bleiben"),
     "keto": MessageLookupByLibrary.simpleMessage("Keto"),
     "languageLocalization": MessageLookupByLibrary.simpleMessage(

@@ -2258,6 +2258,11 @@ class S {
       args: [],
     );
   }
+
+  /// `JOIN NOW!`
+  String get joinNow {
+    return Intl.message('JOIN NOW!', name: 'joinNow', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

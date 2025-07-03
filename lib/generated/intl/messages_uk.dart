@@ -330,6 +330,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "intermediate": MessageLookupByLibrary.simpleMessage("Середній"),
     "japanese": MessageLookupByLibrary.simpleMessage("Японська"),
+    "joinNow": MessageLookupByLibrary.simpleMessage("ПРИЄДНУЙТЕСЯ!"),
     "keepFit": MessageLookupByLibrary.simpleMessage("Підтримувати форму"),
     "keto": MessageLookupByLibrary.simpleMessage("Кето"),
     "languageLocalization": MessageLookupByLibrary.simpleMessage(
@@ -508,7 +509,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "3. Поширення твоєї інформації",
     ),
     "signIn": MessageLookupByLibrary.simpleMessage("Увійти"),
-    "signUp": MessageLookupByLibrary.simpleMessage("Зареєструватися"),
+    "signUp": MessageLookupByLibrary.simpleMessage("Реєстрація"),
     "sleepAndRelax": MessageLookupByLibrary.simpleMessage("Сон і відпочинок"),
     "sodaIsMyBestFriend": MessageLookupByLibrary.simpleMessage(
       "Газована вода — мій найкращий друг",
