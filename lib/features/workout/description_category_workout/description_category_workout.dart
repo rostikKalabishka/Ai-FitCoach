@@ -2,8 +2,24 @@ import 'package:flutter/material.dart';
 
 import '../../../ui/ui.dart';
 
-class DescriptionCategoryWorkout extends StatelessWidget {
+class DescriptionCategoryWorkout extends StatefulWidget {
   const DescriptionCategoryWorkout({super.key});
+
+  @override
+  State<DescriptionCategoryWorkout> createState() =>
+      _DescriptionCategoryWorkoutState();
+}
+
+class _DescriptionCategoryWorkoutState
+    extends State<DescriptionCategoryWorkout> {
+  int selectedIndex = 0;
+
+  final List<String> sections = [
+    'All',
+    'Newbie',
+    'Medium',
+    'Advanced',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +54,7 @@ class DescriptionCategoryWorkout extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 310),
                   child: Container(
-                    height: 160,
+                    height: 190,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         color: theme.colorScheme.tertiary,
@@ -48,7 +64,45 @@ class DescriptionCategoryWorkout extends StatelessWidget {
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(24),
+                          padding: const EdgeInsets.only(
+                              bottom: 8, left: 16, top: 16),
+                          child: SizedBox(
+                            height: 30,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: sections.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                final isSelected = index == selectedIndex;
+                                return GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      selectedIndex = index;
+                                    });
+                                  },
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 1),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16),
+                                    decoration: BoxDecoration(
+                                      color: isSelected
+                                          ? const Color.fromARGB(255, 85, 0, 0)
+                                          : const Color.fromARGB(
+                                              255, 39, 39, 39),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Text(sections[index],
+                                        style:
+                                            themeDark.textTheme.headlineMedium),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 16, bottom: 24),
                           child: Text(
                             'HIIT (High Intensity)',
                             style: theme.textTheme.displaySmall?.copyWith(

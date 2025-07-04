@@ -23,43 +23,6 @@ class WorkoutScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Text(
-                'FOR YOU',
-                style: theme.textTheme.headlineLarge,
-              ),
-            ),
-            Center(
-              child: Container(
-                height: 110,
-                width: MediaQuery.of(context).size.width * 0.97,
-                child: WorkoutCard(
-                  title: 'HIIT (High Intensity)',
-                  subtitle: 'number of existing workouts',
-                  imageUrl: 'assets/images/challenges/exercise/1.png',
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => CategoriesWorkout()));
-                  },
-                ),
-              ),
-            ),
-            Divider(
-              thickness: 0.5,
-            ),
-            Center(
-              child: Container(
-                height: 110,
-                width: MediaQuery.of(context).size.width * 0.97,
-                child: WorkoutCard(
-                  title: 'Calisthenics',
-                  subtitle: 'number of existing workouts',
-                  imageUrl: 'assets/images/challenges/exercise/2.png',
-                  onTap: () {},
-                ),
-              ),
-            ),
-            Padding(
               padding: const EdgeInsets.only(
                   right: 16, left: 16, bottom: 8, top: 16),
               child: Text(
@@ -75,7 +38,9 @@ class WorkoutScreen extends StatelessWidget {
                   title: 'Gym Workouts',
                   subtitle: 'number of existing workouts',
                   imageUrl: 'assets/images/challenges/exercise/3.png',
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => DescriptionCategoryWorkout()));
+                  },
                 ),
               ),
             ),

@@ -3,7 +3,7 @@ import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
 
-const String parentDocId = 'сhallenges';
+const String parentDocId = 'challenges';
 
 Future<void> saveChallengeItemInSubcollection(
     ChallengeItem item, String subcollectionName) async {
