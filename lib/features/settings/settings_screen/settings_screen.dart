@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/router/router.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_calendar.dart';
 import 'package:auto_route/auto_route.dart';
@@ -24,7 +25,7 @@ class SettingsScreen extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  'Settings',
+                  S.of(context).settings,
                   style: theme.textTheme.labelMedium,
                 ),
                 Row(
@@ -37,10 +38,10 @@ class SettingsScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Welcome user!',
+                            S.of(context).welcomeUser("User"),
                             style: theme.textTheme.labelSmall,
                           ),
-                          Text('AI FitCoach account',
+                          Text(S.of(context).appNameAccount('AI FitCoach'),
                               style: theme.textTheme.headlineSmall),
                         ],
                       ),
@@ -58,11 +59,11 @@ class SettingsScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '0 Days Streak',
+                              S.of(context).numberDaysStreak(0),
                               style: theme.textTheme.headlineMedium,
                             ),
                             Text(
-                              'Personal Best: 0',
+                              S.of(context).personalBestNumber(0),
                               style: theme.textTheme.headlineSmall,
                             ),
                           ],
@@ -111,7 +112,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'User Profile',
+                                S.of(context).userProfile,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -144,7 +145,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Fitness Goal',
+                                S.of(context).fitnessGoal,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -193,7 +194,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Difficulty Level',
+                                S.of(context).difficultyLevel,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -226,7 +227,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Workout Types',
+                                S.of(context).workoutTypes,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -258,7 +259,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Automatic Activity Tracking',
+                                S.of(context).automaticActivityTracking,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -307,7 +308,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Calorie Goal',
+                                S.of(context).calorieGoal,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -340,7 +341,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Water Balance',
+                                S.of(context).waterBalance,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -388,7 +389,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Do Not Disturb Mode',
+                                S.of(context).doNotDisturbMode,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -437,7 +438,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Account Management',
+                                S.of(context).accountManagement,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -470,7 +471,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Privacy',
+                                S.of(context).privacy,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -503,7 +504,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Language & Localization',
+                                S.of(context).languageLocalization,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -551,7 +552,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Privacy Policy',
+                                S.of(context).privacyPolicy,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -585,7 +586,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Rate Us',
+                                S.of(context).rateUs,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -618,7 +619,7 @@ class SettingsScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
-                                'Delete Your Account',
+                                S.of(context).deleteYourAccount,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 16),
                               ),
@@ -641,10 +642,11 @@ class SettingsScreen extends StatelessWidget {
               await UserRepository().logOut();
             },
             child: Text(
-              'Log out',
-              style:  theme.textTheme.displaySmall?.copyWith(fontSize: 18, color: const Color.fromARGB(255, 109, 7, 0)),
+              S.of(context).logOut,
+              style: theme.textTheme.displaySmall?.copyWith(
+                  fontSize: 18, color: const Color.fromARGB(255, 109, 7, 0)),
             )),
-            SizedBox(
+        SizedBox(
           height: 20,
         ),
       ]),

@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,8 @@ class _WaterBalanceScreenState extends State<WaterBalanceScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('Water Balance', style: theme.textTheme.labelMedium),
+        title: Text(S.of(context).waterBalance,
+            style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -47,7 +49,7 @@ class _WaterBalanceScreenState extends State<WaterBalanceScreen> {
                             Icon(Icons.notifications_active),
                             SizedBox(width: 10),
                             Text(
-                              'Daily Reminders',
+                              S.of(context).dailyReminders,
                               style: theme.textTheme.headlineLarge,
                             ),
                           ],
@@ -88,7 +90,7 @@ class _WaterBalanceScreenState extends State<WaterBalanceScreen> {
                             Icon(Icons.opacity),
                             SizedBox(width: 10),
                             Text(
-                              'Water Intake Goals',
+                              S.of(context).waterIntakeGoals,
                               style: theme.textTheme.headlineLarge,
                             ),
                           ],
@@ -116,13 +118,12 @@ class _WaterBalanceScreenState extends State<WaterBalanceScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomConfirmCancelButton(
-              label: 'Cancel',
+              label: S.of(context).cancel,
               onPressed: () => Navigator.pop(context),
             ),
             CustomConfirmCancelButton(
-              label: 'Confirm',
-              onPressed: () {
-              },
+              label: S.of(context).confirm,
+              onPressed: () {},
             ),
           ],
         ),

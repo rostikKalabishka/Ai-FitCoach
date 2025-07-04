@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -22,23 +23,24 @@ class FitnessGoalScreen extends StatefulWidget {
 }
 
 class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
-  final List<_GoalOption> goals = [
-    _GoalOption(icon: Icons.scale, label: 'Weight Loss'),
-    _GoalOption(icon: Icons.fitness_center, label: 'Muscle Gain'),
-    _GoalOption(icon: Icons.accessibility_new, label: 'Stay Fit'),
-    _GoalOption(icon: Icons.more_horiz, label: 'Other'),
-  ];
-
   final List<bool> switches = [false, false, false, false];
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    final List<_GoalOption> goals = [
+      _GoalOption(icon: Icons.scale, label: S.of(context).weightLoss),
+      _GoalOption(icon: Icons.fitness_center, label: S.of(context).muscleGain),
+      _GoalOption(icon: Icons.accessibility_new, label: S.of(context).stayFit),
+      _GoalOption(icon: Icons.more_horiz, label: S.of(context).other),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('Fitness Goal', style: theme.textTheme.labelMedium),
+        title:
+            Text(S.of(context).fitnessGoal, style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -68,11 +70,11 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomConfirmCancelButton(
-              label: 'Cancel',
+              label: S.of(context).cancel,
               onPressed: () => Navigator.pop(context),
             ),
             CustomConfirmCancelButton(
-              label: 'Confirm',
+              label: S.of(context).confirm,
               onPressed: () {
                 final selectedGoals = <String>[];
                 for (int i = 0; i < goals.length; i++) {
@@ -87,5 +89,3 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
     );
   }
 }
-
-

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:ai_fit_coach/features/auth/auth.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/router/router.dart';
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:auto_route/auto_route.dart';
@@ -40,8 +41,7 @@ class WelcomeScreen extends StatelessWidget {
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
                       child: Container(
-                        color: Colors.black
-                            .withValues(alpha: 0),
+                        color: Colors.black.withValues(alpha: 0),
                       ),
                     ),
                   ),
@@ -74,12 +74,7 @@ class WelcomeScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Welcome,',
-                                style: theme.textTheme.displaySmall
-                                    ?.copyWith(fontSize: 24),
-                              ),
-                              Text(
-                                'glad to see you!',
+                                S.of(context).welcomeGladToSeeYou,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 24),
                               ),
@@ -110,7 +105,7 @@ class WelcomeScreen extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                child: Text('Sign In',
+                                child: Text(S.of(context).signIn,
                                     style: theme.textTheme.displaySmall
                                         ?.copyWith(fontSize: 18)),
                               ),
@@ -132,7 +127,7 @@ class WelcomeScreen extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                child: Text('Sign Up',
+                                child: Text(S.of(context).signUp,
                                     style: theme.textTheme.displaySmall
                                         ?.copyWith(fontSize: 18)),
                               ),
@@ -152,7 +147,7 @@ class WelcomeScreen extends StatelessWidget {
                                   .read<AuthBloc>()
                                   .add(SignInWithGoogleEvent());
                             },
-                            child: Text('Continue with Google',
+                            child: Text(S.of(context).continueWithGoogle,
                                 textAlign: TextAlign.center,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 18)),
@@ -171,7 +166,7 @@ class WelcomeScreen extends StatelessWidget {
                                   .read<AuthBloc>()
                                   .add(SignInWithFacebookEvent());
                             },
-                            child: Text('Continue with Facebook',
+                            child: Text(S.of(context).continueWithFacebook,
                                 textAlign: TextAlign.center,
                                 style: theme.textTheme.displaySmall
                                     ?.copyWith(fontSize: 18)),

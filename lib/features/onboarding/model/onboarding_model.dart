@@ -1,42 +1,76 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
 
 class OnboardingModel {
-  final String description;
-  final String title;
+  final String descriptionKey;
+  final String titleKey;
   final String image;
 
-  const OnboardingModel(
-      {required this.description, required this.title, required this.image});
+  const OnboardingModel({
+    required this.descriptionKey,
+    required this.titleKey,
+    required this.image,
+  });
+
+  String getTitle(S s) {
+    switch (titleKey) {
+      case 'onboarding1_title':
+        return s.onboarding1_title;
+      case 'onboarding2_title':
+        return s.onboarding2_title;
+      case 'onboarding3_title':
+        return s.onboarding3_title;
+      case 'onboarding4_title':
+        return s.onboarding4_title;
+      case 'onboarding5_title':
+        return s.onboarding5_title;
+      default:
+        return '';
+    }
+  }
+
+  String getDescription(S s) {
+    switch (descriptionKey) {
+      case 'onboarding1_description':
+        return s.onboarding1_description;
+      case 'onboarding2_description':
+        return s.onboarding2_description;
+      case 'onboarding3_description':
+        return s.onboarding3_description;
+      case 'onboarding4_description':
+        return s.onboarding4_description;
+      case 'onboarding5_description':
+        return s.onboarding5_description;
+      default:
+        return '';
+    }
+  }
 
   static List<OnboardingModel> onboardingList = [
     OnboardingModel(
-      title: 'Train Anywhere!',
-      description:
-          'Train at home or at the gym — your choice! Follow our ready-made workout and meal plans to lose weight, build muscle, tone your glutes, and sculpt your body.',
+      titleKey: 'onboarding1_title',
+      descriptionKey: 'onboarding1_description',
       image: AppConst.onboardingStep1Image,
     ),
     OnboardingModel(
-      title: 'Build Your Own Workout Plan',
-      description:
-          'Create a workout routine tailored just for you with the help of our comprehensive exercise database — fully free and customizable.',
+      titleKey: 'onboarding2_title',
+      descriptionKey: 'onboarding2_description',
       image: AppConst.onboardingStep2Image,
     ),
     OnboardingModel(
-      title: 'Join the Fitness Community',
-      description:
-          'Become part of an active fitness community. Share your achievements in the Sports Feed, ask questions, and connect with like-minded members. The more engaged the community, the more fun your fitness journey becomes!',
+      titleKey: 'onboarding3_title',
+      descriptionKey: 'onboarding3_description',
       image: AppConst.onboardingStep3Image,
     ),
     OnboardingModel(
-      title: 'Track Your Progress',
-      description:
-          'Monitor your achievements and stay motivated! Track your weight, body measurements, workout history, and personal records — all in one place.',
+      titleKey: 'onboarding4_title',
+      descriptionKey: 'onboarding4_description',
       image: AppConst.onboardingStep4Image,
     ),
     OnboardingModel(
-      title: 'Smart Reminders & Notifications',
-      description:
-          'Never miss a workout! Stay on track with personalized reminders and helpful tips to keep your motivation high.',
+      titleKey: 'onboarding5_title',
+      descriptionKey: 'onboarding5_description',
       image: AppConst.onboardingStep5Image,
     ),
   ];

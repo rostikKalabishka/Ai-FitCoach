@@ -1,4 +1,5 @@
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/router/router.dart';
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:auto_route/auto_route.dart';
@@ -62,11 +63,13 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                 tabs: [
                   Padding(
                     padding: EdgeInsets.all(12),
-                    child: Text('Sign In', style: theme.textTheme.labelSmall),
+                    child: Text(S.of(context).signIn,
+                        style: theme.textTheme.labelSmall),
                   ),
                   Padding(
                     padding: EdgeInsets.all(12),
-                    child: Text('Sign Up', style: theme.textTheme.labelSmall),
+                    child: Text(S.of(context).signUp,
+                        style: theme.textTheme.labelSmall),
                   ),
                 ]),
             Expanded(

@@ -16,6 +16,7 @@ class UserModel extends Equatable {
     required this.id,
     required this.userData,
   });
+  bool get isEmpty => this == UserModel.emptyUser;
 
   static const emptyUser = UserModel(
     email: '',

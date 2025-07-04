@@ -1,4 +1,5 @@
 import 'package:ai_fit_coach/features/user_parameters/widgets/widgets.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/ui/ui.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,7 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Body parameters',
+        title: Text(S.of(context).bodyParameters,
             style: TextStyle(color: Colors.white, fontSize: 20)),
         backgroundColor: Colors.black,
         leading: NavigationBackButton(pageController: widget.pageController),
@@ -49,7 +50,7 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   PlatformAdaptivePicker(
-                    label: 'YOUR WEIGHT:',
+                    label: S.of(context).yourWeight,
                     minValue: 0,
                     maxValue: 500,
                     initialValue: _weight.toInt(),
@@ -62,7 +63,7 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
                     },
                   ),
                   PlatformAdaptivePicker(
-                    label: 'YOUR HEIGHT:',
+                    label: S.of(context).yourHeight,
                     minValue: 0,
                     maxValue: 300,
                     initialValue: _height.toInt(),
@@ -75,7 +76,7 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
                     },
                   ),
                   PlatformAdaptivePicker(
-                    label: 'YOUR AGE:',
+                    label: S.of(context).yourAge,
                     minValue: 0,
                     maxValue: 200,
                     initialValue: _age,

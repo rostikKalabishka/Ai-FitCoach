@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
         title: Text(
-          'Privacy Policy',
+          S.of(context).privacyPolicy,
           style: theme.textTheme.labelMedium,
         ),
         centerTitle: true,
@@ -24,23 +25,25 @@ class PrivacyPolicyScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(8),
         children: [
-          ...buildSection(theme, text1),
+          ...SettingsData.buildSection(context, theme, 'privacyPolicy'),
           const Divider(thickness: 0.5),
-          ...buildSection(theme, text2),
+          ...SettingsData.buildSection(context, theme, 'informationWeCollect'),
           const Divider(thickness: 0.5),
-          ...buildSection(theme, text3),
+          ...SettingsData.buildSection(context, theme, 'howWeUseInfo'),
           const Divider(thickness: 0.5),
-          ...buildSection(theme, text4),
+          ...SettingsData.buildSection(context, theme, 'sharingInfo'),
           const Divider(thickness: 0.5),
-          ...buildSection(theme, text5),
+          ...SettingsData.buildSection(context, theme, 'thirdPartyServices'),
           const Divider(thickness: 0.5),
-          ...buildSection(theme, text6),
+          ...SettingsData.buildSection(context, theme, 'dataSecurity'),
           const Divider(thickness: 0.5),
-          ...buildSection(theme, text7),
+          ...SettingsData.buildSection(context, theme, 'yourRights'),
           const Divider(thickness: 0.5),
-          ...buildSection(theme, text8),
+          ...SettingsData.buildSection(context, theme, 'childrenPrivacy'),
           const Divider(thickness: 0.5),
-          ...buildSection(theme, text9),
+          ...SettingsData.buildSection(context, theme, 'changesToPolicy'),
+          const Divider(thickness: 0.5),
+          ...SettingsData.buildSection(context, theme, 'contactUs'),
         ],
       ),
       bottomNavigationBar: Padding(
@@ -49,13 +52,12 @@ class PrivacyPolicyScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomConfirmCancelButton(
-              label: 'Cancel',
+              label: S.of(context).cancel,
               onPressed: () => Navigator.pop(context),
             ),
             CustomConfirmCancelButton(
-              label: 'Confirm',
-              onPressed: () {
-              },
+              label: S.of(context).confirm,
+              onPressed: () {},
             ),
           ],
         ),
@@ -63,5 +65,3 @@ class PrivacyPolicyScreen extends StatelessWidget {
     );
   }
 }
-
-

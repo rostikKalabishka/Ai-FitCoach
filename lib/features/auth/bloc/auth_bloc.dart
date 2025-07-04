@@ -34,7 +34,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final newUser = await _userRepository.registration(
           password: event.password, userModel: userModel);
 
-      await _userRepository.setUserData(newUser).then(emit(AuthSuccess()));
+      await _userRepository.setUserData(newUser);
+      emit(AuthSuccess());
     } catch (e) {
       emit(AuthFailure(error: e));
     }

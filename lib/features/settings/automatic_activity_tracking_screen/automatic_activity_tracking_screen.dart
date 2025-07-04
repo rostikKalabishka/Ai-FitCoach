@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('Automatic Activity Tracking',
+        title: Text(S.of(context).automaticActivityTracking,
             style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
@@ -23,8 +24,8 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
           children: [
             CustomActivityTrackingContainer(
               theme: theme,
-              title: 'Step Count',
-              subtitle: 'Settings',
+              title: S.of(context).stepCount,
+              subtitle: S.of(context).settings,
               selectedIcon: Icon(Icons.directions_walk_outlined),
             ),
             SizedBox(
@@ -32,8 +33,8 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
             ),
             CustomActivityTrackingContainer(
               theme: theme,
-              title: 'GPS Tracking',
-              subtitle: 'Settings',
+              title: S.of(context).gpsTracking,
+              subtitle: S.of(context).settings,
               selectedIcon: Icon(Icons.gps_fixed),
             ),
             SizedBox(
@@ -41,8 +42,8 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
             ),
             CustomActivityTrackingContainer(
               theme: theme,
-              title: 'Heart Rate',
-              subtitle: 'Settings',
+              title: S.of(context).heartRate,
+              subtitle: S.of(context).settings,
               selectedIcon: Icon(Icons.monitor_heart),
             ),
           ],
@@ -54,11 +55,11 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomConfirmCancelButton(
-              label: 'Cancel',
+              label: S.of(context).cancel,
               onPressed: () => Navigator.pop(context),
             ),
             CustomConfirmCancelButton(
-              label: 'Confirm',
+              label: S.of(context).confirm,
               onPressed: () {},
             ),
           ],
@@ -67,5 +68,3 @@ class AutomaticActivityTrackingScreen extends StatelessWidget {
     );
   }
 }
-
-

@@ -23,6 +23,8 @@ class UserData extends Equatable {
   final List<String> trainingDays; // Тренувальні дні
   final bool termsAccepted; // Згода з умовами
 
+  bool get isEmpty => this == emptyUserData;
+
   const UserData({
     this.weight = 0,
     this.height = 0,

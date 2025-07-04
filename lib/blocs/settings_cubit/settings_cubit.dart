@@ -1,3 +1,4 @@
+// settings_cubit.dart
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
@@ -12,42 +13,29 @@ class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit({required AbstractSettingsRepository settingsRepository})
       : _settingsRepository = settingsRepository,
         super(const SettingsState()) {
-    _checkSelectedTheme();
-    _checkShowOnboarding();
-    _checkUserParametersScreen();
+    _initialize();
   }
 
   final AbstractSettingsRepository _settingsRepository;
 
-  void _checkShowOnboarding() {
+  Future<void> _initialize() async {
     try {
       final isShowOnboarding = _settingsRepository.isOnboardingShown();
-      emit(state.copyWith(isOnboardingShowing: isShowOnboarding));
-    } catch (e) {
-      log(e.toString());
-    }
-  }
-
-  void _checkUserParametersScreen() {
-    try {
       final isUserParametersScreenShown =
           _settingsRepository.isUserParametersScreenShown();
-      emit(state.copyWith(
-          isUserParametersScreenShown: isUserParametersScreenShown));
-    } catch (e) {
-      log(e.toString());
-    }
-  }
-
-  void _checkSelectedTheme() {
-    try {
       final brightness = _settingsRepository.isDarkThemeSelected()
           ? Brightness.dark
           : Brightness.light;
+      final savedLocale = await _settingsRepository.getLocale();
 
-      emit(state.copyWith(brightness: brightness));
+      emit(state.copyWith(
+        isOnboardingShowing: isShowOnboarding,
+        isUserParametersScreenShown: isUserParametersScreenShown,
+        brightness: brightness,
+        locale: savedLocale,
+      ));
     } catch (e) {
-      log(e.toString());
+      log('Initialization error: $e');
     }
   }
 
@@ -56,7 +44,7 @@ class SettingsCubit extends Cubit<SettingsState> {
       await _settingsRepository.setOnboardingShown();
       emit(state.copyWith(isOnboardingShowing: true));
     } catch (e) {
-      log(e.toString());
+      log('setOnboardingShown error: $e');
     }
   }
 
@@ -65,7 +53,16 @@ class SettingsCubit extends Cubit<SettingsState> {
       await _settingsRepository.setUserParametersScreenShown();
       emit(state.copyWith(isUserParametersScreenShown: true));
     } catch (e) {
-      log(e.toString());
+      log('setUserParametersScreen error: $e');
+    }
+  }
+
+  Future<void> changeLocale(Locale locale) async {
+    try {
+      await _settingsRepository.setLocale(locale);
+      emit(state.copyWith(locale: locale));
+    } catch (e) {
+      log('changeLocale error: $e');
     }
   }
 
@@ -75,7 +72,7 @@ class SettingsCubit extends Cubit<SettingsState> {
       await _settingsRepository
           .setDarkThemeSelected(brightness == Brightness.dark);
     } catch (e) {
-      log(e.toString());
+      log('setThemeBrightness error: $e');
     }
   }
 }

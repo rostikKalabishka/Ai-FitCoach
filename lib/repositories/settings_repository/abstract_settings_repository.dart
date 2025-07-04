@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 abstract interface class AbstractSettingsRepository {
   bool isDarkThemeSelected();
   Future<void> setDarkThemeSelected(bool selected);
@@ -7,4 +9,8 @@ abstract interface class AbstractSettingsRepository {
 
   bool isUserParametersScreenShown();
   Future<void> setUserParametersScreenShown();
+
+  Locale getLocale();
+
+  Future<void> setLocale(Locale locale);
 }

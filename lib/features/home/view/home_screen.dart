@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/router/router.dart';
 import 'package:ai_fit_coach/ui/widgets/widgets.dart';
 import 'package:auto_route/auto_route.dart';
@@ -32,29 +33,29 @@ class HomeScreen extends StatelessWidget {
                 },
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
-                    label: 'Home',
+                    label: S.of(context).home,
                     icon: Icon(
                       Icons.home,
                     ),
                   ),
                   BottomNavigationBarItem(
-                    label: 'Challenges',
+                    label: S.of(context).challenges,
                     icon: Icon(
                       Icons.local_fire_department,
                     ),
                   ),
                   BottomNavigationBarItem(
-                    label: 'Workout',
+                    label: S.of(context).workout,
                     icon: Icon(
                       Icons.fitness_center,
                     ),
                   ),
                   BottomNavigationBarItem(
-                    label: 'AI assistant',
+                    label: S.of(context).aiAssistant,
                     icon: Icon(Icons.smart_toy),
                   ),
                   BottomNavigationBarItem(
-                    label: 'Settings',
+                    label: S.of(context).settings,
                     icon: Icon(Icons.settings),
                   ),
                 ],

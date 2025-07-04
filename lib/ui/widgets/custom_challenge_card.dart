@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CustomChallengeCard extends StatelessWidget {
@@ -61,68 +61,58 @@ class CustomChallengeCard extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Text(
+                  title,
+                  style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
+                  softWrap: true,
+                ),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 16,
                   children: [
-                    RichText(
-                      text: TextSpan(
-                        style: theme.textTheme.displaySmall,
-                        children: [
-                          TextSpan(
-                              text: '$title ',
-                              style: theme.textTheme.displaySmall?.copyWith(fontSize: 16)),
-                        ],
-                      ),
+                    Text(
+                      '\$$price',
+                      style: theme.textTheme.displaySmall,
+                      softWrap: true,
                     ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Text('\$ $price',
-                            style: theme.textTheme.displaySmall),
-                        const SizedBox(width: 16),
-                        RichText(
-                          text: TextSpan(
-                            style: theme.textTheme.displaySmall,
-                            children: [
-                              TextSpan(
-                                  text: subtitle,
-                                  style: theme.textTheme.displaySmall),
-                            ],
-                          ),
-                        )
-                      ],
+                    Text(
+                      subtitle,
+                      style: theme.textTheme.displaySmall,
+                      softWrap: true,
                     ),
                   ],
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                  child: Row(
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 85, 0, 0),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(32),
-                          ),
-                        ),
-                        onPressed: onJoin,
-                        child: Text(
-                          'JOIN NOW!',
-                          style: theme.textTheme.displaySmall,
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 85, 0, 0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(32),
                         ),
                       ),
-                      IconButton(
-                        icon: const Icon(Icons.info_outline),
-                        onPressed: onInfoTap,
-                        color: Colors.white,
+                      onPressed: onJoin,
+                      child: Text(
+                        S.of(context).joinNow,
+                        style: theme.textTheme.displaySmall,
+                        //  softWrap: true,
+                        textAlign: TextAlign.center,
                       ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(width: 8),
+                    IconButton(
+                      icon: const Icon(Icons.info_outline),
+                      onPressed: onInfoTap,
+                      color: Colors.white,
+                    ),
+                  ],
                 ),
               ],
             ),

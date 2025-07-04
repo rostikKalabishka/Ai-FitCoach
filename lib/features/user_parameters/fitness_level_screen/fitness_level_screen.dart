@@ -1,6 +1,7 @@
 import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
 
 import 'package:ai_fit_coach/features/user_parameters/widgets/widgets.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,15 +26,15 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
   String _getFitnessLevelString(int level) {
     switch (level) {
       case 0:
-        return 'Beginner';
+        return S.of(context).beginner;
       case 1:
-        return 'Amateur';
+        return S.of(context).amateur;
       case 2:
-        return 'Medium';
+        return S.of(context).medium;
       case 3:
-        return 'Expert';
+        return S.of(context).expert;
       default:
-        return 'Beginner';
+        return S.of(context).beginner;
     }
   }
 
@@ -43,8 +44,8 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text(
-          'What is your level of physical fitness?',
+        title: Text(
+          S.of(context).whatIsYourLevelOfPhysicalFitness,
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.black,
@@ -64,11 +65,13 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
                     SliderTheme(
                       data: SliderTheme.of(context).copyWith(
                         trackHeight: 4.0,
-                        activeTrackColor: Colors.blue,
+                        activeTrackColor: const Color.fromARGB(255, 85, 0, 0),
                         inactiveTrackColor: Colors.grey,
-                        thumbColor: Colors.blue,
-                        overlayColor: Colors.blue.withAlpha(50),
-                        valueIndicatorColor: Colors.blue,
+                        thumbColor: const Color.fromARGB(255, 85, 0, 0),
+                        overlayColor:
+                            const Color.fromARGB(255, 85, 0, 0).withAlpha(50),
+                        valueIndicatorColor:
+                            const Color.fromARGB(255, 85, 0, 0),
                         tickMarkShape:
                             const RoundSliderTickMarkShape(tickMarkRadius: 8.0),
                         activeTickMarkColor: Colors.white,
@@ -91,8 +94,9 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
                       ),
                     ),
                     Text(
-                      'Level: ${_getFitnessLevelString(_fitnessLevel)}',
-                      style: const TextStyle(color: Colors.white, fontSize: 24),
+                      S.of(context).levelFitnessLevel(
+                          _getFitnessLevelString(_fitnessLevel)),
+                      style: TextStyle(color: Colors.white, fontSize: 24),
                     ),
                   ],
                 ),

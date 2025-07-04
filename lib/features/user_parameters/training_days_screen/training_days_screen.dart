@@ -1,6 +1,7 @@
 import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/navigation_back_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/selection_button.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class TrainingDaysPage extends StatefulWidget {
@@ -38,8 +39,8 @@ class _TrainingDaysState extends State<TrainingDaysPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text(
-          'Choose your training days',
+        title: Text(
+          S.of(context).chooseYourTrainingDays,
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.black,
@@ -54,42 +55,51 @@ class _TrainingDaysState extends State<TrainingDaysPage> {
                 spacing: 20,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'For best fitness results choose to train every other day 2 to 5 times a week',
+                  Text(
+                    S
+                        .of(context)
+                        .forBestFitnessResultsChooseToTrainEveryOtherDay,
                     style: TextStyle(color: Colors.white),
                   ),
                   SelectionButton(
-                    text: 'Monday',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).monday,
                     isSelected: _selectedDays.contains('Monday'),
                     onTap: () => _toggleDay('Monday'),
                   ),
                   SelectionButton(
-                    text: 'Tuesday',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).tuesday,
                     isSelected: _selectedDays.contains('Tuesday'),
                     onTap: () => _toggleDay('Tuesday'),
                   ),
                   SelectionButton(
-                    text: 'Wednesday',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).wednesday,
                     isSelected: _selectedDays.contains('Wednesday'),
                     onTap: () => _toggleDay('Wednesday'),
                   ),
                   SelectionButton(
-                    text: 'Thursday',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).thursday,
                     isSelected: _selectedDays.contains('Thursday'),
                     onTap: () => _toggleDay('Thursday'),
                   ),
                   SelectionButton(
-                    text: 'Friday',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).friday,
                     isSelected: _selectedDays.contains('Friday'),
                     onTap: () => _toggleDay('Friday'),
                   ),
                   SelectionButton(
-                    text: 'Saturday',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).saturday,
                     isSelected: _selectedDays.contains('Saturday'),
                     onTap: () => _toggleDay('Saturday'),
                   ),
                   SelectionButton(
-                    text: 'Sunday',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).sunday,
                     isSelected: _selectedDays.contains('Sunday'),
                     onTap: () => _toggleDay('Sunday'),
                   ),

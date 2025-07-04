@@ -1,4 +1,5 @@
 import 'package:ai_fit_coach/features/user_parameters/widgets/widgets.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:flutter/material.dart';
 
@@ -27,8 +28,8 @@ class _TermsPageState extends State<TermsPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text(
-          'Terms',
+        title: Text(
+          S.of(context).terms,
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.black,
@@ -44,7 +45,7 @@ class _TermsPageState extends State<TermsPage> {
                 children: [
                   Image.asset(AppConst.privacy),
                   Text(
-                    'Do you agree with our terms and policies?',
+                    S.of(context).doYouAgreeWithOurTermsAndPolicies,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
@@ -52,12 +53,12 @@ class _TermsPageState extends State<TermsPage> {
                     textAlign: TextAlign.center,
                   ),
                   CheckboxListTile(
-                    title: const Text(
-                        'I agree to the Terms of Use and Subscription Terms. I am also aware of the Privacy Notice',
+                    title: Text(
+                        S.of(context).iAgreeToTheTermsOfUseAndSubscriptionTerms,
                         style: TextStyle(color: Colors.white)),
                     value: _termsAccepted,
                     checkColor: Colors.black,
-                    activeColor: Colors.blue,
+                    activeColor: Color.fromARGB(255, 85, 0, 0),
                     onChanged: (value) {
                       setState(() {
                         _termsAccepted = value ?? false;
