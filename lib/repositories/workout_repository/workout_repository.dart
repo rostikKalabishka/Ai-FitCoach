@@ -357,3 +357,20 @@ Future<void> balanceAndStability() async {
     print('Saving error $e');
   }
 }
+
+Future<List<WorkoutItem>> getWorkoutItemsFromSubcollection(String subcollectionName) async {
+  try {
+    final snapshot = await FirebaseFirestore.instance
+        .collection('workout')
+        .doc(parentDocId)
+        .collection(subcollectionName)
+        .get();
+
+    return snapshot.docs
+        .map((doc) => WorkoutItem.fromJson(doc.data()))
+        .toList();
+  } catch (e) {
+    print('Error fetching items from $subcollectionName: $e');
+    rethrow;
+  }
+}

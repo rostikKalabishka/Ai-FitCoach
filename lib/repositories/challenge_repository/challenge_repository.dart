@@ -123,3 +123,20 @@ Future<void> mentalChallenges() async {
     print('Saving error $e');
   }
 }
+
+Future<List<ChallengeItem>> getChallengeItemsFromSubcollection(String subcollectionName) async {
+  try {
+    final snapshot = await FirebaseFirestore.instance
+        .collection('challenges')
+        .doc(parentDocId)
+        .collection(subcollectionName)
+        .get();
+
+    return snapshot.docs
+        .map((doc) => ChallengeItem.fromJson(doc.data()))
+        .toList();
+  } catch (e) {
+    print('Error fetching items from $subcollectionName: $e');
+    rethrow;
+  }
+}

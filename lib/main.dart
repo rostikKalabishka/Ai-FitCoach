@@ -1,7 +1,6 @@
 import 'package:ai_fit_coach/app/ai_fit_coach_app.dart';
 import 'package:ai_fit_coach/config/firebase_options.dart';
 import 'package:ai_fit_coach/common/di/di.dart';
-import 'package:ai_fit_coach/repositories/workout_repository/workout_repository.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -21,24 +20,6 @@ Future<void> main() async {
   initDI(sharedPreferences: prefs);
 
   runApp(const AiFitCoachApp());
-
-  await gymWorkout();
-  await absAndCore();
-  await microWorkout();
-  await homeWorkout();
-  await wallPilates();
-  await stretchingAndFlexibility();
-  await yoga();
-  await walkingWorkout();
-  await runningWorkout();
-  await treadmillWorkout();
-  await kegelAndPelvicFloor();
-  await backPainRelief();
-  await seniorWorkout();
-  await whellchairWorkout();
-  await bodyweightOnly();
-  await danceWorkout();
-  await balanceAndStability();
 
 }
 
