@@ -1,6 +1,7 @@
 import 'package:ai_fit_coach/app/ai_fit_coach_app.dart';
 import 'package:ai_fit_coach/config/firebase_options.dart';
 import 'package:ai_fit_coach/common/di/di.dart';
+import 'package:ai_fit_coach/repositories/challenge_repository/challenge_repository.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ Future<void> main() async {
   final prefs = await _initPrefs();
 
   initDI(sharedPreferences: prefs);
+
+// await foodChallenges();
 
   runApp(const AiFitCoachApp());
 

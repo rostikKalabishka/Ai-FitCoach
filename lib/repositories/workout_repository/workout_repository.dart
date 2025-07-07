@@ -1,8 +1,11 @@
 import 'package:ai_fit_coach/common/api/model/workout/workout_item.dart';
+import 'package:ai_fit_coach/repositories/workout_repository/abstract_workout_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
 
-const String parentDocId = 'workout';
+  const String parentDocId = 'workout';
+
+class WorkoutRepository implements AbstractWorkoutRepository{
 
 Future<void> saveWorkoutItemInSubcollection(
     WorkoutItem item, String subcollectionName) async {
@@ -18,70 +21,87 @@ Future<void> saveWorkoutItemInSubcollection(
   await docRef.set(newItem.toJson());
 }
 
+@override
 Future<void> saveGymWorkoutItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'gymWorkout');
 }
 
+@override
 Future<void> saveAbsAndCoreItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'absAndCore');
 }
 
+@override
 Future<void> saveMicroWorkoutItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'microWorkout');
 }
 
+@override
 Future<void> saveHomeWorkoutItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'homeWorkout');
 }
 
+@override
 Future<void> saveWallPilatesItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'wallPilates');
 }
 
+@override
 Future<void> saveStretchingAndFlexibilityItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'stretchingAndFlexibility');
 }
 
+@override
 Future<void> saveYogaItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'yoga');
 }
 
+@override
 Future<void> saveWalkingWorkoutItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'walkingWorkout');
 }
 
+@override
 Future<void> saveRunningWorkoutItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'runningWorkout');
 }
 
+@override
 Future<void> saveTreadmillWorkoutItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'treadmillWorkout');
 }
 
+@override
 Future<void> saveKegelAndPelvicFloorItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'kegelAndPelvicFloor');
 }
 
+@override
 Future<void> saveBackPainReliefItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'backPainRelief');
 }
 
+@override
 Future<void> saveSeniorWorkoutItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'seniorWorkout');
 }
 
+@override
 Future<void> saveWhellchairWorkoutItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'whellchairWorkout');
 }
 
+@override
 Future<void> saveBodyweightOnlyItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'bodyweightOnly');
 }
 
+@override
 Future<void> saveDanceWorkoutItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'danceWorkout');
 }
 
+@override
 Future<void> saveBalanceAndStabilityItem(WorkoutItem item) async {
   await saveWorkoutItemInSubcollection(item, 'balanceAndStability');
 }
@@ -358,14 +378,15 @@ Future<void> balanceAndStability() async {
   }
 }
 
-Future<List<WorkoutItem>> getWorkoutItemsFromSubcollection(String subcollectionName) async {
+@override
+Future<List<WorkoutItem>> getWorkoutItemsFromSubcollection(
+  String subcollectionName) async {
   try {
     final snapshot = await FirebaseFirestore.instance
         .collection('workout')
         .doc(parentDocId)
         .collection(subcollectionName)
         .get();
-
     return snapshot.docs
         .map((doc) => WorkoutItem.fromJson(doc.data()))
         .toList();
@@ -373,4 +394,5 @@ Future<List<WorkoutItem>> getWorkoutItemsFromSubcollection(String subcollectionN
     print('Error fetching items from $subcollectionName: $e');
     rethrow;
   }
+}
 }

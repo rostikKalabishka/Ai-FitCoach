@@ -34,7 +34,7 @@ class CustomChallengeCard extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(24),
+                  topLeft: Radius.circular(16),
                   topRight: Radius.circular(24),
                 ),
                 child: Image.asset(
