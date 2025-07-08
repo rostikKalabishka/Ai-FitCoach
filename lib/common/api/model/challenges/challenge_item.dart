@@ -10,6 +10,7 @@ class ChallengeItem extends Equatable {
   final String subtitle;
   final double price;
   final String imageUrl;
+  final String? description;
 
   const ChallengeItem({
     required this.id,
@@ -17,6 +18,7 @@ class ChallengeItem extends Equatable {
     required this.subtitle,
     required this.price,
     required this.imageUrl,
+    required this.description,
   });
 
   ChallengeItem copyWith({
@@ -25,6 +27,7 @@ class ChallengeItem extends Equatable {
     String? subtitle,
     double? price,
     String? imageUrl,
+    String? description,
   }) {
     return ChallengeItem(
       id: id ?? this.id,
@@ -32,6 +35,7 @@ class ChallengeItem extends Equatable {
       subtitle: subtitle ?? this.subtitle,
       price: price ?? this.price,
       imageUrl: imageUrl ?? this.imageUrl,
+      description: imageUrl ?? this.description,
     );
   }
 
@@ -41,6 +45,6 @@ class ChallengeItem extends Equatable {
   Map<String, dynamic> toJson() => _$ChallengeItemToJson(this);
 
   @override
-  List<Object?> get props => [id, title, subtitle, price, imageUrl];
+  List<Object?> get props => [id, title, subtitle, price, imageUrl, description];
 }
 

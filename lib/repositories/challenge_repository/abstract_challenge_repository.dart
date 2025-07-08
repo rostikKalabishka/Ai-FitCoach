@@ -12,5 +12,7 @@ Future<void> saveChallengeHydrationItem(ChallengeItem item);
 
 Future<void> saveChallengeMentalItem(ChallengeItem item);
 
+Future<List<ChallengeItem>> getChallengeItemsFromCollection();
+
 Future<List<ChallengeItem>> getChallengeItemsFromSubcollection(String subcollectionName);
 }

@@ -34,9 +34,9 @@ class ListBloc extends Bloc<ListEvent, ListState> {
       final listFoodRecommendationItem =
           await _foodRecommendationRepository.getFoodRecommendationItems();
       final listChallengeItem = await _challengeRepository
-          .getChallengeItemsFromSubcollection('food');
+          .getChallengeItemsFromCollection();
       final listWorkoutItem = await _workoutRepository
-          .getWorkoutItemsFromSubcollection('absAndCore');
+          .getWorkoutItemsFromCollection();
       emit(ListHomeLoaded(
           trendingChallengeList: listChallengeItem,
           trendingWorkoutList: listWorkoutItem,

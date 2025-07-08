@@ -35,5 +35,7 @@ abstract interface class AbstractWorkoutRepository {
 
   Future<void> saveBalanceAndStabilityItem(WorkoutItem item);
 
+  Future<List<WorkoutItem>> getWorkoutItemsFromCollection();
+
   Future<List<WorkoutItem>> getWorkoutItemsFromSubcollection(String subcollectionName);
 }

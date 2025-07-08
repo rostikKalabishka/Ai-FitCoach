@@ -46,90 +46,90 @@ class ChallengeRepository implements AbstractChallengeRepository {
     await saveChallengeItemInSubcollection(item, 'mental');
   }
 
-  Future<void> foodChallenges() async {
-    final item = ChallengeItem(
-      id: '',
-      title: "Eat Breakfast Every Morning",
-      subtitle: '7 Days challenge',
-      price: 4.69,
-      imageUrl: AppConst.challengeFood5Image,
-    );
+  // Future<void> foodChallenges() async {
+  //   final item = ChallengeItem(
+  //     id: '',
+  //     title: "Eat Breakfast Every Morning",
+  //     subtitle: '7 Days challenge',
+  //     price: 4.69,
+  //     imageUrl: AppConst.challengeFood5Image,
+  //   );
 
-    try {
-      await saveChallengeFoodItem(item);
-      print('saveChallengeFoodItem saved successfully');
-    } catch (e) {
-      print('Saving error $e');
-    }
-  }
+  //   try {
+  //     await saveChallengeFoodItem(item);
+  //     print('saveChallengeFoodItem saved successfully');
+  //   } catch (e) {
+  //     print('Saving error $e');
+  //   }
+  // }
 
-  Future<void> exerciseChallenges() async {
-    final item = ChallengeItem(
-      id: '',
-      title: '',
-      subtitle: '',
-      price: 0,
-      imageUrl: AppConst.challengeExercise5Image,
-    );
+  // Future<void> exerciseChallenges() async {
+  //   final item = ChallengeItem(
+  //     id: '',
+  //     title: '',
+  //     subtitle: '',
+  //     price: 0,
+  //     imageUrl: AppConst.challengeExercise5Image,
+  //   );
 
-    try {
-      await saveChallengeExerciseItem(item);
-      print('saveChallengeExerciseItem saved successfully');
-    } catch (e) {
-      print('Saving error $e');
-    }
-  }
+  //   try {
+  //     await saveChallengeExerciseItem(item);
+  //     print('saveChallengeExerciseItem saved successfully');
+  //   } catch (e) {
+  //     print('Saving error $e');
+  //   }
+  // }
 
-  Future<void> sleepAndRelaxChallenges() async {
-    final item = ChallengeItem(
-      id: '',
-      title: '',
-      subtitle: '',
-      price: 0,
-      imageUrl: AppConst.challengeSleepAndRelax5Image,
-    );
+  // Future<void> sleepAndRelaxChallenges() async {
+  //   final item = ChallengeItem(
+  //     id: '',
+  //     title: '',
+  //     subtitle: '',
+  //     price: 0,
+  //     imageUrl: AppConst.challengeSleepAndRelax5Image,
+  //   );
 
-    try {
-      await saveChallengeSleepAndRelaxItem(item);
-      print('saveChallengeSleepAndRelaxItem saved successfully');
-    } catch (e) {
-      print('Saving error $e');
-    }
-  }
+  //   try {
+  //     await saveChallengeSleepAndRelaxItem(item);
+  //     print('saveChallengeSleepAndRelaxItem saved successfully');
+  //   } catch (e) {
+  //     print('Saving error $e');
+  //   }
+  // }
 
-  Future<void> hydrationChallenges() async {
-    final item = ChallengeItem(
-      id: '',
-      title: '',
-      subtitle: '',
-      price: 0,
-      imageUrl: AppConst.challengeHydration5Image,
-    );
+  // Future<void> hydrationChallenges() async {
+  //   final item = ChallengeItem(
+  //     id: '',
+  //     title: '',
+  //     subtitle: '',
+  //     price: 0,
+  //     imageUrl: AppConst.challengeHydration5Image,
+  //   );
 
-    try {
-      await saveChallengeHydrationItem(item);
-      print('saveChallengeHydrationItem saved successfully');
-    } catch (e) {
-      print('Saving error $e');
-    }
-  }
+  //   try {
+  //     await saveChallengeHydrationItem(item);
+  //     print('saveChallengeHydrationItem saved successfully');
+  //   } catch (e) {
+  //     print('Saving error $e');
+  //   }
+  // }
 
-  Future<void> mentalChallenges() async {
-    final item = ChallengeItem(
-      id: '',
-      title: '',
-      subtitle: '',
-      price: 0,
-      imageUrl: AppConst.challengeMental5Image,
-    );
+  // Future<void> mentalChallenges() async {
+  //   final item = ChallengeItem(
+  //     id: '',
+  //     title: '',
+  //     subtitle: '',
+  //     price: 0,
+  //     imageUrl: AppConst.challengeMental5Image,
+  //   );
 
-    try {
-      await saveChallengeMentalItem(item);
-      print('saveChallengeMentalItem saved successfully');
-    } catch (e) {
-      print('Saving error $e');
-    }
-  }
+  //   try {
+  //     await saveChallengeMentalItem(item);
+  //     print('saveChallengeMentalItem saved successfully');
+  //   } catch (e) {
+  //     print('Saving error $e');
+  //   }
+  // }
 
 @override
   Future<List<ChallengeItem>> getChallengeItemsFromSubcollection(
@@ -148,4 +148,55 @@ class ChallengeRepository implements AbstractChallengeRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<List<ChallengeItem>> getChallengeItemsFromCollection() async {
+    try {
+      final snapshot = await FirebaseFirestore.instance
+          .collection("trendingChallenges")
+          .get();
+      return snapshot.docs
+          .map((doc) => ChallengeItem.fromJson(doc.data()))
+          .toList();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
 }
+
+// save method for trendingfood homepage challenges
+
+  // Future<void> saveChallengeItemInCollection(
+  //     ChallengeItem item) async {
+  //   final generatedId = Uuid().v4();
+  //   final newItem = item.copyWith(id: generatedId);
+  //   final docRef = FirebaseFirestore.instance
+  //       .collection('trendingChallenges')
+  //       .doc(generatedId);
+  //   await docRef.set(newItem.toJson());
+  // }
+
+// @override
+// Future<void> trendingfoodChallenges() async {
+//     final item = ChallengeItem(
+//       id: '',
+//       title: 'Gratitude Journal',
+//       subtitle: '7-Day challenge',
+//       price: 0,
+//       imageUrl: '',
+//       description: 'Each day, write down 3 things you’re grateful for. Reflect on positives and build emotional resilience through intentional focus.'
+//     );
+
+//     try {
+//       await saveChallengeTrendingFoodItem(item);
+//       print('saveChallengeTrendingFoodItem saved successfully');
+//     } catch (e) {
+//       print('Saving error $e');
+//     }
+//   }
+
+// @override
+//   Future<void> saveChallengeTrendingFoodItem(ChallengeItem item) async {
+//     await saveChallengeItemInCollection(item);
+//   }

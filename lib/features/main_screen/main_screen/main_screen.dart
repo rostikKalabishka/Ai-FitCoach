@@ -66,7 +66,7 @@ context.read<ListBloc>().add(LoadListEvent());
                               title: trendingWorkout.title,
                               subtitle: '',
                               description:
-                                  'Build serious size and strength in your biceps, triceps, and forearms with this intense arm-blasting workout. Designed to maximize hypertrophy and definition, this session targets all angles of your arm muscles through a mix of isolation and compound movements. Expect supersets, slow negatives, and high volume to fully fatigue your arms and spark growth. ',
+                                  trendingWorkout.subtitle,
                               imagePath: AppConst.challengeFood1Image,
                               onJoin: () {},
                             ),
@@ -102,7 +102,7 @@ context.read<ListBloc>().add(LoadListEvent());
                               title: foodRecommandation.title,
                               subtitle: foodRecommandation.foodCategory,
                               description:
-                                  'Salmon & Avocado Grain Bowl — a nutrient-packed meal combining omega-3-rich grilled salmon, creamy avocado, fiber-loaded quinoa, and fresh greens. Topped with a drizzle of lemon-tahini dressing, this bowl supports brain function, balances blood sugar, and keeps you full and energized. Ideal for a nourishing lunch or dinner that satisfies without slowing you down.',
+                                  foodRecommandation.description,
                               imagePath: AppConst.challengeFood1Image,
                               onJoin: () {},
                             ),
@@ -138,7 +138,7 @@ context.read<ListBloc>().add(LoadListEvent());
                               title: trendingChallenges.title,
                               subtitle: trendingChallenges.subtitle,
                               description:
-                                  'Screens overload the brain with stimuli. A short break resets your attention span, reduces anxiety, and helps you feel calmer.',
+                                  trendingChallenges.description!,
                               imagePath: AppConst.challengeFood1Image,
                               onJoin: () {},
                             ),
