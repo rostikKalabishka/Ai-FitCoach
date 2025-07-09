@@ -1,5 +1,6 @@
 import 'package:ai_fit_coach/features/main_screen/follow_on_social_networks.dart';
 import 'package:ai_fit_coach/features/main_screen/main_screen/bloc/list_bloc.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
