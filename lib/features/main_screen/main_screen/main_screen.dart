@@ -29,7 +29,7 @@ context.read<ListBloc>().add(LoadListEvent());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('Home', style: theme.textTheme.labelMedium),
+        title: Text(S.of(context).home, style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
       backgroundColor: theme.scaffoldBackgroundColor,

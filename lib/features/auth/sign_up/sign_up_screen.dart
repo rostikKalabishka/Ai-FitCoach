@@ -1,12 +1,15 @@
 import 'package:ai_fit_coach/common/lib/form_validator.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_textfield.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+  const SignUpScreen({
+    super.key,
+  });
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -41,7 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: MediaQuery.of(context).size.width * 0.12,
                   child: CustomTextfield(
                       controller: emailController,
-                      hintText: 'Email',
+                      hintText: S.of(context).email,
                       obscureText: false,
                       keyboardType: TextInputType.emailAddress,
                       prefixIcon: Icon(Icons.email_outlined),
@@ -57,7 +60,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: MediaQuery.of(context).size.width * 0.12,
                   child: CustomTextfield(
                       controller: nameController,
-                      hintText: 'Username',
+                      hintText: S.of(context).username,
                       obscureText: false,
                       keyboardType: TextInputType.name,
                       prefixIcon: Icon(Icons.person),
@@ -74,7 +77,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: MediaQuery.of(context).size.width * 0.12,
                   child: CustomTextfield(
                     controller: passwordController,
-                    hintText: 'Password',
+                    hintText: S.of(context).password,
                     obscureText: obscurePassword,
                     keyboardType: TextInputType.visiblePassword,
                     prefixIcon: Icon(Icons.lock_outline),
@@ -100,7 +103,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: MediaQuery.of(context).size.width * 0.12,
                   child: CustomTextfield(
                     controller: confirmYourPassword,
-                    hintText: 'Confirm your password',
+                    hintText: S.of(context).confirmYourPassword,
                     obscureText: obscuredConfirmedPassword,
                     keyboardType: TextInputType.visiblePassword,
                     prefixIcon: Icon(Icons.lock),
@@ -132,7 +135,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       _signUp(context);
                     },
                     child: Text(
-                      'Sign Up',
+                      S.of(context).signUp,
                       style:
                           theme.textTheme.displaySmall?.copyWith(fontSize: 18),
                     )),

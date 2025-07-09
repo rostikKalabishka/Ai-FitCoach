@@ -2,6 +2,7 @@ import 'package:ai_fit_coach/common/api/model/user_motivation.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/navigation_back_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/selection_button.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class MotivationPage extends StatefulWidget {
@@ -49,8 +50,8 @@ class _MotivationPageState extends State<MotivationPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text(
-          'What motivates you?',
+        title: Text(
+          S.of(context).whatMotivatesYou,
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.black,
@@ -65,8 +66,8 @@ class _MotivationPageState extends State<MotivationPage> {
                 spacing: 20,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Choose your motivations',
+                  Text(
+                    S.of(context).chooseYourMotivations,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -74,7 +75,8 @@ class _MotivationPageState extends State<MotivationPage> {
                     ),
                   ),
                   SelectionButton(
-                    text: 'Reducing stress',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).reducingStress,
                     isSelected: _stressReduction,
                     onTap: () {
                       setState(() {
@@ -84,7 +86,7 @@ class _MotivationPageState extends State<MotivationPage> {
                     },
                   ),
                   SelectionButton(
-                    text: 'Preparing for the event',
+                    text: S.of(context).preparingForTheEvent,
                     isSelected: _eventTraining,
                     onTap: () {
                       setState(() {
@@ -94,7 +96,8 @@ class _MotivationPageState extends State<MotivationPage> {
                     },
                   ),
                   SelectionButton(
-                    text: 'Rehabilitation',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).rehabilitation,
                     isSelected: _rehabilitation,
                     onTap: () {
                       setState(() {
@@ -104,7 +107,8 @@ class _MotivationPageState extends State<MotivationPage> {
                     },
                   ),
                   SelectionButton(
-                    text: 'Improving health',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).improvingHealth,
                     isSelected: _improveHealth,
                     onTap: () {
                       setState(() {
@@ -114,7 +118,8 @@ class _MotivationPageState extends State<MotivationPage> {
                     },
                   ),
                   SelectionButton(
-                    text: 'Building strength',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).buildingStrength,
                     isSelected: _buildStrength,
                     onTap: () {
                       setState(() {
@@ -124,7 +129,8 @@ class _MotivationPageState extends State<MotivationPage> {
                     },
                   ),
                   SelectionButton(
-                    text: 'Improving immunity',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).improvingImmunity,
                     isSelected: _boostImmune,
                     onTap: () {
                       setState(() {
@@ -134,7 +140,8 @@ class _MotivationPageState extends State<MotivationPage> {
                     },
                   ),
                   SelectionButton(
-                    text: 'Increase in libido',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).increaseInLibido,
                     isSelected: _boostLibido,
                     onTap: () {
                       setState(() {

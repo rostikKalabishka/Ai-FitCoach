@@ -1,6 +1,7 @@
 import 'package:ai_fit_coach/common/api/model/user_data.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/widgets.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class GoalSelectionPage extends StatefulWidget {
@@ -24,11 +25,11 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
   String _getGoalString(Goal goal) {
     switch (goal) {
       case Goal.loseWeight:
-        return 'Lose weight';
+        return S.of(context).loseWeight;
       case Goal.gainMuscle:
-        return 'Gain muscle mass';
+        return S.of(context).gainMuscleMass;
       case Goal.keepFit:
-        return 'Keep fit';
+        return S.of(context).keepFit;
     }
   }
 
@@ -37,8 +38,8 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text(
-          'What is your main goal?',
+        title: Text(
+          S.of(context).whatIsYourMainGoal,
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.black,
@@ -54,9 +55,10 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 60),
-                  _buildGoalButton(Goal.loseWeight, 'Lose weight'),
-                  _buildGoalButton(Goal.gainMuscle, 'Gain muscle mass'),
-                  _buildGoalButton(Goal.keepFit, 'Keep fit'),
+                  _buildGoalButton(Goal.loseWeight, S.of(context).loseWeight),
+                  _buildGoalButton(
+                      Goal.gainMuscle, S.of(context).gainMuscleMass),
+                  _buildGoalButton(Goal.keepFit, S.of(context).keepFit),
                 ],
               ),
             ),
@@ -75,7 +77,8 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Material(
-        color: isSelected ? Colors.blue : Colors.grey[800],
+        color:
+            isSelected ? const Color.fromARGB(255, 85, 0, 0) : Colors.grey[800],
         borderRadius: BorderRadius.circular(8),
         child: InkWell(
           borderRadius: BorderRadius.circular(8),

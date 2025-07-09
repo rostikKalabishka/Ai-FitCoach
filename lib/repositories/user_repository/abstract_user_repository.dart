@@ -1,7 +1,8 @@
 import '../../common/api/model/model.dart';
 
 abstract interface class AbstractUserRepository {
-  Future registration({required UserModel userModel, required String password});
+  Future<UserModel> registration(
+      {required UserModel userModel, required String password});
 
   Future<void> login({required String email, required String password});
 

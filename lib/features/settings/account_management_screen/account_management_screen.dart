@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_confirm_cancel_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -16,18 +17,20 @@ class AccountManagementScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('Account Management', style: theme.textTheme.labelMedium),
+        title: Text(S.of(context).accountManagement,
+            style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
         child: Column(
-          children: const [
-            CustomAccountDataField(hint: 'Email', icon: Icons.email),
+          children: [
+            CustomAccountDataField(
+                hint: S.of(context).email, icon: Icons.email),
             SizedBox(height: 20),
             CustomAccountDataField(
-              hint: 'Reserved email',
+              hint: S.of(context).reservedEmail,
               icon: FontAwesomeIcons.envelopeCircleCheck,
               iconSize: 21,
             ),
@@ -58,13 +61,12 @@ class AccountManagementScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomConfirmCancelButton(
-              label: 'Cancel',
+              label: S.of(context).cancel,
               onPressed: () => Navigator.pop(context),
             ),
             CustomConfirmCancelButton(
-              label: 'Confirm',
-              onPressed: () {
-              },
+              label: S.of(context).confirm,
+              onPressed: () {},
             ),
           ],
         ),

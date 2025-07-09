@@ -1,4 +1,5 @@
 import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,7 +26,8 @@ class _DoNotDisturbModeScreenState extends State<DoNotDisturbModeScreen> {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: theme.appBarTheme.backgroundColor,
-            title: Text('Do Not Disturb Mode', style: theme.textTheme.labelMedium),
+            title: Text(S.of(context).doNotDisturbMode,
+                style: theme.textTheme.labelMedium),
             centerTitle: true,
           ),
           backgroundColor: theme.scaffoldBackgroundColor,
@@ -36,17 +38,20 @@ class _DoNotDisturbModeScreenState extends State<DoNotDisturbModeScreen> {
                   const SizedBox(height: 10),
                   CustomDoNotDisturbModeCard(
                     icon: Icons.wb_sunny,
-                    label: 'Switch theme mode',
+                    label: S.of(context).switchThemeMode,
                     value: state.isDark,
                     onChanged: (value) {
-                      final brightness = value ? Brightness.dark : Brightness.light;
-                      context.read<SettingsCubit>().setThemeBrightness(brightness);
+                      final brightness =
+                          value ? Brightness.dark : Brightness.light;
+                      context
+                          .read<SettingsCubit>()
+                          .setThemeBrightness(brightness);
                     },
                   ),
                   const SizedBox(height: 10),
                   CustomDoNotDisturbModeCard(
                     icon: Icons.notifications_off,
-                    label: 'Mute Notifications',
+                    label: S.of(context).muteNotifications,
                     value: isMuted,
                     onChanged: (value) {
                       setState(() {
@@ -64,11 +69,11 @@ class _DoNotDisturbModeScreenState extends State<DoNotDisturbModeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomConfirmCancelButton(
-                  label: 'Cancel',
+                  label: S.of(context).cancel,
                   onPressed: () => Navigator.pop(context),
                 ),
                 CustomConfirmCancelButton(
-                  label: 'Confirm',
+                  label: S.of(context).confirm,
                   onPressed: () {
                     print('Mute Notifications: $isMuted');
                   },

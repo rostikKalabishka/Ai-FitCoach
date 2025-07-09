@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_confirm_cancel_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,8 @@ class UserProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('User Profile', style: theme.textTheme.labelMedium),
+        title:
+            Text(S.of(context).userProfile, style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -24,35 +26,47 @@ class UserProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            const CustomUserDataField(hint: 'Name', icon: Icons.account_circle),
-            const SizedBox(height: 20),
-            const CustomUserDataField(hint: 'Age', icon: Icons.calendar_today),
-            const SizedBox(height: 20),
-            const CustomUserDataField(hint: 'Height', icon: Icons.straighten),
-            const SizedBox(height: 20),
-            const CustomUserDataField(hint: 'Weight', icon: Icons.monitor_weight),
-            const SizedBox(height: 20),
+            CustomUserDataField(
+                hint: S.of(context).name, icon: Icons.account_circle),
+            SizedBox(height: 20),
+            CustomUserDataField(
+                hint: S.of(context).age, icon: Icons.calendar_today),
+            SizedBox(height: 20),
+            CustomUserDataField(
+                hint: S.of(context).height, icon: Icons.straighten),
+            SizedBox(height: 20),
+            CustomUserDataField(
+                hint: S.of(context).weight, icon: Icons.monitor_weight),
+            SizedBox(height: 20),
             CustomUserDataDialog(
-              hint: 'Gender',
+              hint: S.of(context).gender,
               icon: Icons.wc,
-              dialogTitle: 'Please select your gender',
-              options: const [
-                DialogOption(label: 'Male', icon: Icons.male),
-                DialogOption(label: 'Female', icon: Icons.female),
-                DialogOption(label: 'Other', icon: Icons.person),
+              dialogTitle: S.of(context).pleaseSelectYourGender,
+              options: [
+                DialogOption(label: S.of(context).male, icon: Icons.male),
+                DialogOption(label: S.of(context).female, icon: Icons.female),
+                DialogOption(label: S.of(context).other, icon: Icons.person),
               ],
             ),
             const SizedBox(height: 20),
             CustomUserDataDialog(
-              hint: 'Activity Level',
+              hint: S.of(context).activityLevel,
               icon: Icons.directions_run,
-              dialogTitle: 'Please select your activity level',
-              options: const [
-                DialogOption(label: 'Sedentary', icon: Icons.chair),
-                DialogOption(label: 'Lightly Active', icon: Icons.directions_walk),
-                DialogOption(label: 'Moderately Active', icon: Icons.directions_run),
-                DialogOption(label: 'Very Active', icon: Icons.sports_gymnastics),
-                DialogOption(label: 'Extremely Active', icon: Icons.military_tech),
+              dialogTitle: S.of(context).pleaseSelectYourActivityLevel,
+              options: [
+                DialogOption(label: S.of(context).sedentary, icon: Icons.chair),
+                DialogOption(
+                    label: S.of(context).lightlyActive,
+                    icon: Icons.directions_walk),
+                DialogOption(
+                    label: S.of(context).moderatelyActive,
+                    icon: Icons.directions_run),
+                DialogOption(
+                    label: S.of(context).veryActive,
+                    icon: Icons.sports_gymnastics),
+                DialogOption(
+                    label: S.of(context).extremelyActive,
+                    icon: Icons.military_tech),
               ],
             ),
           ],
@@ -64,13 +78,12 @@ class UserProfileScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             CustomConfirmCancelButton(
-              label: 'Cancel',
+              label: S.of(context).cancel,
               onPressed: () => Navigator.pop(context),
             ),
             CustomConfirmCancelButton(
-              label: 'Confirm',
-              onPressed: () {
-              },
+              label: S.of(context).confirm,
+              onPressed: () {},
             ),
           ],
         ),
@@ -78,4 +91,3 @@ class UserProfileScreen extends StatelessWidget {
     );
   }
 }
-

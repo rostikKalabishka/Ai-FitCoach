@@ -102,8 +102,12 @@ class _LoaderScreenState extends State<LoaderScreen>
       final settingsState =
           context.read<SettingsCubit>().state.isUserParametersScreenShown;
       if (settingsState == false) {
-        debugPrint("Navigating to UserParameters");
-        router.replaceAll([UserParametersRoute()]);
+        final currentUser = state.user;
+        if (!settingsState ||
+            (currentUser != null && currentUser.userData.isEmpty)) {
+          debugPrint("Navigating to UserParametersRoute");
+          router.replaceAll([const UserParametersRoute()]);
+        }
       } else {
         debugPrint("Navigating to HomeRoute");
         router.replaceAll([HomeRoute()]);

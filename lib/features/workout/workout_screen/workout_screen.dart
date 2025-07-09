@@ -27,7 +27,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text('Workout', style: theme.textTheme.labelMedium),
+        title: Text(S.of(context).workout, style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
       backgroundColor: theme.scaffoldBackgroundColor,

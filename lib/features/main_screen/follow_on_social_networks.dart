@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,11 +15,13 @@ class FollowOnSocialNetworks extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            'Follow AI FitCoach on',
+            S.of(context).followOnName("AI FitCoach"),
             style: theme.textTheme.labelSmall,
           ),
         ),
-        SizedBox(height: 8,),
+        SizedBox(
+          height: 8,
+        ),
         Row(
           children: [
             IconButton(
@@ -27,49 +30,57 @@ class FollowOnSocialNetworks extends StatelessWidget {
                 if (await canLaunchUrl(url)) {
                   await launchUrl(url, mode: LaunchMode.externalApplication);
                 } else {
-                  print('Something happened, please try again');
+                  print(S.of(context).somethingHappenedPleaseTryAgain);
                 }
               },
               icon: Icon(FontAwesomeIcons.tiktok),
             ),
-            IconButton(onPressed: () async {
-                final url = Uri.parse('https://www.facebook.com/');
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url, mode: LaunchMode.externalApplication);
-                } else {
-                  print('Something happened, please try again');
-                }
-              }, icon: Icon(FontAwesomeIcons.facebook)),
-            IconButton(onPressed: () async {
-                final url = Uri.parse('https://x.com');
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url, mode: LaunchMode.externalApplication);
-                } else {
-                  print('Something happened, please try again');
-                }
-              }, icon: Icon(FontAwesomeIcons.xTwitter)),
+            IconButton(
+                onPressed: () async {
+                  final url = Uri.parse('https://www.facebook.com/');
+                  if (await canLaunchUrl(url)) {
+                    await launchUrl(url, mode: LaunchMode.externalApplication);
+                  } else {
+                    print(S.of(context).somethingHappenedPleaseTryAgain);
+                  }
+                },
+                icon: Icon(FontAwesomeIcons.facebook)),
+            IconButton(
+                onPressed: () async {
+                  final url = Uri.parse('https://x.com');
+                  if (await canLaunchUrl(url)) {
+                    await launchUrl(url, mode: LaunchMode.externalApplication);
+                  } else {
+                    print(S.of(context).somethingHappenedPleaseTryAgain);
+                  }
+                },
+                icon: Icon(FontAwesomeIcons.xTwitter)),
             IconButton(
               onPressed: () async {
                 final url = Uri.parse('https://www.instagram.com');
                 if (await canLaunchUrl(url)) {
                   await launchUrl(url, mode: LaunchMode.externalApplication);
                 } else {
-                  print('Something happened, please try again');
+                  print(S.of(context).somethingHappenedPleaseTryAgain);
                 }
               },
               icon: Icon(FontAwesomeIcons.instagram),
             ),
-            IconButton(onPressed: () async {
-                final url = Uri.parse('https://www.whatsapp.com');
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url, mode: LaunchMode.externalApplication);
-                } else {
-                  print('Something happened, please try again');
-                }
-              }, icon: Icon(FontAwesomeIcons.whatsapp)),
+            IconButton(
+                onPressed: () async {
+                  final url = Uri.parse('https://www.whatsapp.com');
+                  if (await canLaunchUrl(url)) {
+                    await launchUrl(url, mode: LaunchMode.externalApplication);
+                  } else {
+                    print(S.of(context).somethingHappenedPleaseTryAgain);
+                  }
+                },
+                icon: Icon(FontAwesomeIcons.whatsapp)),
           ],
         ),
-        SizedBox(height: 20,),
+        SizedBox(
+          height: 20,
+        ),
       ],
     );
   }

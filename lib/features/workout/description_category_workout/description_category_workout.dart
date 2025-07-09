@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ui/ui.dart';
@@ -104,7 +105,7 @@ class _DescriptionCategoryWorkoutState
                         Padding(
                           padding: const EdgeInsets.only(top: 16, bottom: 24),
                           child: Text(
-                            'HIIT (High Intensity)',
+                            S.of(context).hiitHighIntensity,
                             style: theme.textTheme.displaySmall?.copyWith(
                               fontSize: 24,
                               color: theme.colorScheme.onSurface,
@@ -130,7 +131,7 @@ class _DescriptionCategoryWorkoutState
                                   ),
                                 ),
                                 onPressed: () {},
-                                child: Text('START WORKOUT',
+                                child: Text(S.of(context).startWorkout,
                                     style: theme.textTheme.displaySmall
                                         ?.copyWith(fontSize: 18)),
                               ),

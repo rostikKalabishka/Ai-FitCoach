@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CustomMainScreenCard extends StatelessWidget {
@@ -45,17 +46,14 @@ class CustomMainScreenCard extends StatelessWidget {
           children: [
             Text(
               subtitle,
-              style: theme.textTheme.headlineLarge
-                  ?.copyWith(color: Colors.white),
+              style:
+                  theme.textTheme.headlineLarge?.copyWith(color: Colors.white),
             ),
             const SizedBox(height: 16),
             FractionallySizedBox(
               widthFactor: 1,
               child: Text(
                 title,
-                style: theme.textTheme.labelMedium
-                    ?.copyWith(color: Colors.white),
-                maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 softWrap: true,
               ),
@@ -63,9 +61,6 @@ class CustomMainScreenCard extends StatelessWidget {
             const SizedBox(height: 40),
             Text(
               description,
-              style: theme.textTheme.headlineMedium
-                  ?.copyWith(color: Colors.white),
-              maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
             const Spacer(),
@@ -80,7 +75,7 @@ class CustomMainScreenCard extends StatelessWidget {
                   ),
                 ),
                 onPressed: onJoin,
-                child: Text('Start',
+                child: Text(S.of(context).start,
                     style: theme.textTheme.labelSmall
                         ?.copyWith(color: Colors.white)),
               ),

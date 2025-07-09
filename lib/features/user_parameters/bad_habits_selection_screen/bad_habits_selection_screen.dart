@@ -1,6 +1,7 @@
 import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/navigation_back_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/selection_button.dart';
+import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class BadHabitsSelectionPage extends StatefulWidget {
@@ -38,8 +39,8 @@ class _BadHabitsSelectionPageState extends State<BadHabitsSelectionPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text(
-          'Choose your bad habits',
+        title: Text(
+          S.of(context).chooseYourBadHabits,
           style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: Colors.black,
@@ -55,44 +56,51 @@ class _BadHabitsSelectionPageState extends State<BadHabitsSelectionPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SelectionButton(
-                    text: 'Unable to rest enough',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).unableToRestEnough,
                     isSelected:
                         _selectedHabits.contains('Unable to rest enough'),
                     onTap: () => _toggleHabit('Unable to rest enough'),
                   ),
                   SelectionButton(
-                    text: 'Sometimes I drink alcohol',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).sometimesIDrinkAlcohol,
                     isSelected:
                         _selectedHabits.contains('Sometimes I drink alcohol'),
                     onTap: () => _toggleHabit('Sometimes I drink alcohol'),
                   ),
                   SelectionButton(
-                    text: 'I consume a lot of salty food',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).iConsumeALotOfSaltyFood,
                     isSelected: _selectedHabits
                         .contains('I consume a lot of salty food'),
                     onTap: () => _toggleHabit('I consume a lot of salty food'),
                   ),
                   SelectionButton(
-                    text: 'I eat midnight snacks',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).iEatMidnightSnacks,
                     isSelected:
                         _selectedHabits.contains('I eat midnight snacks'),
                     onTap: () => _toggleHabit('I eat midnight snacks'),
                   ),
                   SelectionButton(
-                    text: 'I love sweet candies and chocolate',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).iLoveSweetCandiesAndChocolate,
                     isSelected: _selectedHabits
                         .contains('I love sweet candies and chocolate'),
                     onTap: () =>
                         _toggleHabit('I love sweet candies and chocolate'),
                   ),
                   SelectionButton(
-                    text: 'Soda is my best friend',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).sodaIsMyBestFriend,
                     isSelected:
                         _selectedHabits.contains('Soda is my best friend'),
                     onTap: () => _toggleHabit('Soda is my best friend'),
                   ),
                   SelectionButton(
-                    text: 'None of the above',
+                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    text: S.of(context).noneOfTheAbove,
                     isSelected: _selectedHabits.contains('None of the above'),
                     onTap: () => _toggleHabit('None of the above'),
                   ),
