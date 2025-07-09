@@ -51,22 +51,16 @@ class CustomMainScreenCard extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             FractionallySizedBox(
-              widthFactor: 0.5,
+              widthFactor: 1,
               child: Text(
                 title,
-                style:
-                    theme.textTheme.labelMedium?.copyWith(color: Colors.white),
-                maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 softWrap: true,
               ),
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 40),
             Text(
               description,
-              style:
-                  theme.textTheme.headlineMedium?.copyWith(color: Colors.white),
-              maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
             const Spacer(),

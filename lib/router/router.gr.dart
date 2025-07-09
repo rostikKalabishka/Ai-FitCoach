@@ -152,54 +152,6 @@ class CalorieGoalRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [CategoriesAdvancedScreen]
-class CategoriesAdvancedRoute extends PageRouteInfo<void> {
-  const CategoriesAdvancedRoute({List<PageRouteInfo>? children})
-      : super(CategoriesAdvancedRoute.name, initialChildren: children);
-
-  static const String name = 'CategoriesAdvancedRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const CategoriesAdvancedScreen();
-    },
-  );
-}
-
-/// generated route for
-/// [CategoriesMediumScreen]
-class CategoriesMediumRoute extends PageRouteInfo<void> {
-  const CategoriesMediumRoute({List<PageRouteInfo>? children})
-      : super(CategoriesMediumRoute.name, initialChildren: children);
-
-  static const String name = 'CategoriesMediumRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const CategoriesMediumScreen();
-    },
-  );
-}
-
-/// generated route for
-/// [CategoriesNewbiesScreen]
-class CategoriesNewbiesRoute extends PageRouteInfo<void> {
-  const CategoriesNewbiesRoute({List<PageRouteInfo>? children})
-      : super(CategoriesNewbiesRoute.name, initialChildren: children);
-
-  static const String name = 'CategoriesNewbiesRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const CategoriesNewbiesScreen();
-    },
-  );
-}
-
-/// generated route for
 /// [ChallengesScreen]
 class ChallengesRoute extends PageRouteInfo<void> {
   const ChallengesRoute({List<PageRouteInfo>? children})
