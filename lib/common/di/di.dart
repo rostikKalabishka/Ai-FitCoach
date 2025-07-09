@@ -4,14 +4,26 @@ import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
 import 'package:ai_fit_coach/blocs/user_bloc/user_bloc.dart';
 import 'package:ai_fit_coach/features/ai_chat/bloc/chat_bloc.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
+import 'package:ai_fit_coach/features/challenges/bloc/challenge_bloc.dart';
 import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
+import 'package:ai_fit_coach/features/main_screen/main_screen/bloc/list_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
+
 import 'package:ai_fit_coach/repositories/health_repository/health.dart';
+
+import 'package:ai_fit_coach/features/workout/bloc/workout_bloc.dart';
+import 'package:ai_fit_coach/repositories/food_recommendation_repository/abstract_food_recommendation_repository.dart';
+import 'package:ai_fit_coach/repositories/food_recommendation_repository/food_recommendation_repository.dart';
+
 import 'package:ai_fit_coach/repositories/user_repository/user.dart';
+import 'package:ai_fit_coach/repositories/workout_repository/abstract_workout_repository.dart';
+import 'package:ai_fit_coach/repositories/workout_repository/workout_repository.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../repositories/challenge_repository/abstract_challenge_repository.dart';
+import '../../repositories/challenge_repository/challenge_repository.dart';
 import '../../repositories/chat_repository/chat.dart';
 import '../../repositories/settings_repository/settings.dart';
 
@@ -26,6 +38,15 @@ void initDI({required SharedPreferences sharedPreferences}) {
   getIt.registerLazySingleton<AbstractChatRepository>(() => ChatRepository());
   getIt.registerLazySingleton<AbstractHealthRepository>(
       () => HealthRepository());
+
+  getIt.registerLazySingleton<AbstractWorkoutRepository>(
+      () => WorkoutRepository());
+
+  getIt.registerLazySingleton<AbstractChallengeRepository>(
+      () => ChallengeRepository());
+
+  getIt.registerLazySingleton<AbstractFoodRecommendationRepository>(
+      () => FoodRecommendationRepository());
 
   getIt.registerLazySingleton<SettingsCubit>(
     () => SettingsCubit(
@@ -72,6 +93,27 @@ void initDI({required SharedPreferences sharedPreferences}) {
   getIt.registerLazySingleton<HealthBloc>(
     () => HealthBloc(
       abstractHealthRepository: getIt<AbstractHealthRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<WorkoutBloc>(
+    () => WorkoutBloc(
+      workoutRepository: getIt<AbstractWorkoutRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<ChallengeBloc>(
+    () => ChallengeBloc(
+      challengeRepository: getIt<AbstractChallengeRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<ListBloc>(
+    () => ListBloc(
+      challengeRepository: getIt<AbstractChallengeRepository>(),
+      workoutRepository: getIt<AbstractWorkoutRepository>(),
+      foodRecommendationRepository:
+          getIt<AbstractFoodRecommendationRepository>(),
     ),
   );
 }
