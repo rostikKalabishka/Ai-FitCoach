@@ -1,6 +1,5 @@
 import 'package:ai_fit_coach/common/api/model/challenges/challenge_item.dart';
 import 'package:ai_fit_coach/repositories/challenge_repository/abstract_challenge_repository.dart';
-import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
 
@@ -45,91 +44,6 @@ class ChallengeRepository implements AbstractChallengeRepository {
   Future<void> saveChallengeMentalItem(ChallengeItem item) async {
     await saveChallengeItemInSubcollection(item, 'mental');
   }
-
-  // Future<void> foodChallenges() async {
-  //   final item = ChallengeItem(
-  //     id: '',
-  //     title: "Eat Breakfast Every Morning",
-  //     subtitle: '7 Days challenge',
-  //     price: 4.69,
-  //     imageUrl: AppConst.challengeFood5Image,
-  //   );
-
-  //   try {
-  //     await saveChallengeFoodItem(item);
-  //     print('saveChallengeFoodItem saved successfully');
-  //   } catch (e) {
-  //     print('Saving error $e');
-  //   }
-  // }
-
-  // Future<void> exerciseChallenges() async {
-  //   final item = ChallengeItem(
-  //     id: '',
-  //     title: '',
-  //     subtitle: '',
-  //     price: 0,
-  //     imageUrl: AppConst.challengeExercise5Image,
-  //   );
-
-  //   try {
-  //     await saveChallengeExerciseItem(item);
-  //     print('saveChallengeExerciseItem saved successfully');
-  //   } catch (e) {
-  //     print('Saving error $e');
-  //   }
-  // }
-
-  // Future<void> sleepAndRelaxChallenges() async {
-  //   final item = ChallengeItem(
-  //     id: '',
-  //     title: '',
-  //     subtitle: '',
-  //     price: 0,
-  //     imageUrl: AppConst.challengeSleepAndRelax5Image,
-  //   );
-
-  //   try {
-  //     await saveChallengeSleepAndRelaxItem(item);
-  //     print('saveChallengeSleepAndRelaxItem saved successfully');
-  //   } catch (e) {
-  //     print('Saving error $e');
-  //   }
-  // }
-
-  // Future<void> hydrationChallenges() async {
-  //   final item = ChallengeItem(
-  //     id: '',
-  //     title: '',
-  //     subtitle: '',
-  //     price: 0,
-  //     imageUrl: AppConst.challengeHydration5Image,
-  //   );
-
-  //   try {
-  //     await saveChallengeHydrationItem(item);
-  //     print('saveChallengeHydrationItem saved successfully');
-  //   } catch (e) {
-  //     print('Saving error $e');
-  //   }
-  // }
-
-  // Future<void> mentalChallenges() async {
-  //   final item = ChallengeItem(
-  //     id: '',
-  //     title: '',
-  //     subtitle: '',
-  //     price: 0,
-  //     imageUrl: AppConst.challengeMental5Image,
-  //   );
-
-  //   try {
-  //     await saveChallengeMentalItem(item);
-  //     print('saveChallengeMentalItem saved successfully');
-  //   } catch (e) {
-  //     print('Saving error $e');
-  //   }
-  // }
 
 @override
   Future<List<ChallengeItem>> getChallengeItemsFromSubcollection(
