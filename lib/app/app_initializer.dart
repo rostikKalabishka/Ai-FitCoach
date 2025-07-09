@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/blocs/health/health_bloc.dart';
 import 'package:ai_fit_coach/blocs/history_bloc/history_bloc.dart';
 import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
 import 'package:ai_fit_coach/blocs/user_bloc/user_bloc.dart';
@@ -38,6 +39,9 @@ class AppInitializer extends StatelessWidget {
           ),
           BlocProvider(
             create: (_) => getIt<HistoryBloc>(),
+          ),
+          BlocProvider(
+            create: (_) => getIt<HealthBloc>()..add(HealthLoadInfoEvent()),
           )
         ],
         child: child,
