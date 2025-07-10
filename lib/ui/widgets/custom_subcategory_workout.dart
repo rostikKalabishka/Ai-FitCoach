@@ -17,7 +17,7 @@ class CustomSubcategoryWorkout extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
-        height: 120,
+        height: MediaQuery.of(context).size.height * 0.13,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(color: theme.colorScheme.tertiary),
         child: Column(
@@ -34,8 +34,8 @@ class CustomSubcategoryWorkout extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                       child: Image.asset(
                         imagePath,
-                        height: 80,
-                        width: 80,
+                        height: MediaQuery.of(context).size.height * 0.09,
+                        width: MediaQuery.of(context).size.width * 0.2,
                         fit: BoxFit.cover,
                       ),
                     ),

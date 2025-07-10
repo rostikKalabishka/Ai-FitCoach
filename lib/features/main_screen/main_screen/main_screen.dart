@@ -68,7 +68,7 @@ context.read<ListBloc>().add(LoadListEvent());
                               subtitle: '',
                               description:
                                   trendingWorkout.subtitle,
-                              imagePath: AppConst.challengeFood1Image,
+                              imagePath: trendingWorkout.imageUrl,
                               onJoin: () {},
                             ),
                           );
@@ -104,7 +104,7 @@ context.read<ListBloc>().add(LoadListEvent());
                               subtitle: foodRecommandation.foodCategory,
                               description:
                                   foodRecommandation.description,
-                              imagePath: AppConst.challengeFood1Image,
+                              imagePath: foodRecommandation.imageUrl,
                               onJoin: () {},
                             ),
                           );
@@ -140,7 +140,7 @@ context.read<ListBloc>().add(LoadListEvent());
                               subtitle: trendingChallenges.subtitle,
                               description:
                                   trendingChallenges.description!,
-                              imagePath: AppConst.challengeFood1Image,
+                              imagePath: trendingChallenges.imageUrl,
                               onJoin: () {},
                             ),
                           );
