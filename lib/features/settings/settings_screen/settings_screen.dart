@@ -77,8 +77,8 @@ class SettingsScreen extends StatelessWidget {
                 ),
                 CustomCalendar(),
                 Container(
-                  height: 120,
-                  width: 400,
+height: MediaQuery.of(context).size.height * 0.14,
+          width: MediaQuery.of(context).size.width * 0.95,
                   decoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
@@ -95,17 +95,20 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color.fromARGB(255, 233, 236, 4),
-                                ),
-                                child: Icon(
-                                  Icons.person_2,
-                                  size: 20,
-                                  color: theme.iconTheme.color,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: const Color.fromARGB(255, 233, 236, 4),
+                                  ),
+                                  child: Icon(
+                                    Icons.person_2,
+                                    size: 20,
+                                    color: theme.iconTheme.color,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -128,17 +131,20 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color:
-                                      const Color.fromARGB(255, 33, 243, 103),
-                                ),
-                                child: Icon(
-                                  Icons.star_outline_sharp,
-                                  size: 20,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color:
+                                        const Color.fromARGB(255, 33, 243, 103),
+                                  ),
+                                  child: Icon(
+                                    Icons.star_outline_sharp,
+                                    size: 20,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -160,8 +166,8 @@ class SettingsScreen extends StatelessWidget {
                   height: 20,
                 ),
                 Container(
-                  height: 180,
-                  width: 400,
+height: MediaQuery.of(context).size.height * 0.21,
+          width: MediaQuery.of(context).size.width * 0.95,
                   decoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
@@ -178,18 +184,21 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color:
-                                        const Color.fromARGB(255, 252, 114, 1),
-                                  ),
-                                  child: Icon(
-                                    Icons.stairs,
-                                    size: 20,
-                                  )),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color:
+                                          const Color.fromARGB(255, 252, 114, 1),
+                                    ),
+                                    child: Icon(
+                                      Icons.stairs,
+                                      size: 20,
+                                    )),
+                              ),
                               SizedBox(
                                 width: 10,
                               ),
@@ -210,17 +219,20 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color.fromARGB(255, 4, 77, 236),
-                                ),
-                                child: Icon(
-                                  Icons.accessibility_new,
-                                  size: 20,
-                                  color: theme.iconTheme.color,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: const Color.fromARGB(255, 4, 77, 236),
+                                  ),
+                                  child: Icon(
+                                    Icons.accessibility_new,
+                                    size: 20,
+                                    color: theme.iconTheme.color,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -243,16 +255,19 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color.fromARGB(255, 8, 232, 240),
-                                ),
-                                child: Icon(
-                                  Icons.directions_run,
-                                  size: 20,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: const Color.fromARGB(255, 8, 232, 240),
+                                  ),
+                                  child: Icon(
+                                    Icons.directions_run,
+                                    size: 20,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -274,8 +289,8 @@ class SettingsScreen extends StatelessWidget {
                   height: 20,
                 ),
                 Container(
-                  height: 120,
-                  width: 400,
+          height: MediaQuery.of(context).size.height * 0.14,
+          width: MediaQuery.of(context).size.width * 0.95,
                   decoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
@@ -292,18 +307,21 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color:
-                                        const Color.fromARGB(255, 181, 1, 252),
-                                  ),
-                                  child: Icon(
-                                    Icons.local_fire_department,
-                                    size: 20,
-                                  )),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color:
+                                          const Color.fromARGB(255, 181, 1, 252),
+                                    ),
+                                    child: Icon(
+                                      Icons.local_fire_department,
+                                      size: 20,
+                                    )),
+                              ),
                               SizedBox(
                                 width: 10,
                               ),
@@ -324,17 +342,20 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color.fromARGB(255, 236, 4, 54),
-                                ),
-                                child: Icon(
-                                  Icons.water_drop,
-                                  size: 20,
-                                  color: theme.iconTheme.color,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: const Color.fromARGB(255, 236, 4, 54),
+                                  ),
+                                  child: Icon(
+                                    Icons.water_drop,
+                                    size: 20,
+                                    color: theme.iconTheme.color,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -356,8 +377,8 @@ class SettingsScreen extends StatelessWidget {
                   height: 20,
                 ),
                 Container(
-                  height: 60,
-                  width: 400,
+height: MediaQuery.of(context).size.height * 0.07,
+          width: MediaQuery.of(context).size.width * 0.95,
                   decoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
@@ -374,17 +395,20 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: const Color.fromARGB(255, 252, 1, 1),
-                                  ),
-                                  child: Icon(
-                                    Icons.do_not_disturb_on,
-                                    size: 20,
-                                  )),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: const Color.fromARGB(255, 252, 1, 1),
+                                    ),
+                                    child: Icon(
+                                      Icons.do_not_disturb_on,
+                                      size: 20,
+                                    )),
+                              ),
                               SizedBox(
                                 width: 10,
                               ),
@@ -404,8 +428,8 @@ class SettingsScreen extends StatelessWidget {
                   height: 20,
                 ),
                 Container(
-                  height: 180,
-                  width: 400,
+height: MediaQuery.of(context).size.height * 0.21,
+          width: MediaQuery.of(context).size.width * 0.95,
                   decoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
@@ -422,18 +446,21 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color:
-                                        const Color.fromARGB(255, 116, 84, 59),
-                                  ),
-                                  child: Icon(
-                                    Icons.manage_accounts,
-                                    size: 20,
-                                  )),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color:
+                                          const Color.fromARGB(255, 116, 84, 59),
+                                    ),
+                                    child: Icon(
+                                      Icons.manage_accounts,
+                                      size: 20,
+                                    )),
+                              ),
                               SizedBox(
                                 width: 10,
                               ),
@@ -454,17 +481,20 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color.fromARGB(255, 63, 84, 131),
-                                ),
-                                child: Icon(
-                                  Icons.security,
-                                  size: 20,
-                                  color: theme.iconTheme.color,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: const Color.fromARGB(255, 63, 84, 131),
+                                  ),
+                                  child: Icon(
+                                    Icons.security,
+                                    size: 20,
+                                    color: theme.iconTheme.color,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -487,17 +517,20 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color:
-                                      const Color.fromARGB(255, 88, 201, 112),
-                                ),
-                                child: Icon(
-                                  Icons.language,
-                                  size: 20,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color:
+                                        const Color.fromARGB(255, 88, 201, 112),
+                                  ),
+                                  child: Icon(
+                                    Icons.language,
+                                    size: 20,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -519,8 +552,8 @@ class SettingsScreen extends StatelessWidget {
                   height: 20,
                 ),
                 Container(
-                  height: 180,
-                  width: 400,
+height: MediaQuery.of(context).size.height * 0.21,
+          width: MediaQuery.of(context).size.width * 0.95,
                   decoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
@@ -537,17 +570,20 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: const Color.fromARGB(255, 92, 40, 1),
-                                  ),
-                                  child: Icon(
-                                    Icons.privacy_tip,
-                                    size: 20,
-                                  )),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                    height: 30,
+                                    width: 30,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: const Color.fromARGB(255, 92, 40, 1),
+                                    ),
+                                    child: Icon(
+                                      Icons.privacy_tip,
+                                      size: 20,
+                                    )),
+                              ),
                               SizedBox(
                                 width: 10,
                               ),
@@ -568,18 +604,21 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color:
-                                      const Color.fromARGB(255, 206, 101, 101),
-                                ),
-                                child: Icon(
-                                  Icons.thumb_up,
-                                  size: 20,
-                                  color: theme.iconTheme.color,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color:
+                                        const Color.fromARGB(255, 206, 101, 101),
+                                  ),
+                                  child: Icon(
+                                    Icons.thumb_up,
+                                    size: 20,
+                                    color: theme.iconTheme.color,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -602,17 +641,20 @@ class SettingsScreen extends StatelessWidget {
                           },
                           child: Row(
                             children: [
-                              Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color:
-                                      const Color.fromARGB(255, 176, 201, 88),
-                                ),
-                                child: Icon(
-                                  Icons.delete_forever,
-                                  size: 20,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color:
+                                        const Color.fromARGB(255, 176, 201, 88),
+                                  ),
+                                  child: Icon(
+                                    Icons.delete_forever,
+                                    size: 20,
+                                  ),
                                 ),
                               ),
                               SizedBox(

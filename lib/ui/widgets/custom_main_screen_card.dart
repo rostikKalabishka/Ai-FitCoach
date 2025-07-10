@@ -1,4 +1,5 @@
 import 'package:ai_fit_coach/generated/l10n.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomMainScreenCard extends StatelessWidget {
@@ -27,7 +28,7 @@ class CustomMainScreenCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(32),
         image: DecorationImage(
-          image: AssetImage(imagePath),
+          image: CachedNetworkImageProvider(imagePath),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
             Colors.black.withValues(alpha: .3),
@@ -47,7 +48,7 @@ class CustomMainScreenCard extends StatelessWidget {
             Text(
               subtitle,
               style:
-                  theme.textTheme.headlineLarge?.copyWith(color: Colors.white),
+                  theme.textTheme.headlineLarge?.copyWith(color: Colors.white, fontSize: 18),
             ),
             const SizedBox(height: 16),
             FractionallySizedBox(
@@ -56,16 +57,19 @@ class CustomMainScreenCard extends StatelessWidget {
                 title,
                 overflow: TextOverflow.ellipsis,
                 softWrap: true,
+                style:
+                  theme.textTheme.headlineLarge?.copyWith(color: Colors.white, fontSize: 24),
               ),
             ),
             const SizedBox(height: 40),
             Text(
               description,
               overflow: TextOverflow.ellipsis,
+              maxLines: 3,
             ),
             const Spacer(),
             SizedBox(
-              height: 40,
+              height: MediaQuery.of(context).size.height * 0.04,
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(

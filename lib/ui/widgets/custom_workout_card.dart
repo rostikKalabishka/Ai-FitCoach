@@ -34,8 +34,8 @@ class WorkoutCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
                   imageUrl,
-                  width: 80,
-                  height: 80,
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  height: MediaQuery.of(context).size.height * 0.09,
                   fit: BoxFit.cover,
                 ),
               ),

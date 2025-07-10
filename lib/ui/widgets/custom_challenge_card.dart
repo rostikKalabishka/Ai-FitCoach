@@ -39,7 +39,7 @@ class CustomChallengeCard extends StatelessWidget {
                 ),
                 child: Image.asset(
                   imagePath,
-                  height: 200,
+                  height: MediaQuery.of(context).size.height * 0.2,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
@@ -61,58 +61,68 @@ class CustomChallengeCard extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            padding: const EdgeInsets.only(top: 16, bottom: 8, right: 16, left: 16),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   title,
                   style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                   softWrap: true,
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(width: 16),
                 Wrap(
                   spacing: 16,
                   children: [
                     Text(
-                      '\$$price',
-                      style: theme.textTheme.displaySmall,
-                      softWrap: true,
-                    ),
-                    Text(
                       subtitle,
-                      style: theme.textTheme.displaySmall,
+                      style: theme.textTheme.displaySmall?.copyWith(fontSize: 14),
                       softWrap: true,
                     ),
                   ],
                 ),
-                const SizedBox(height: 12),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 85, 0, 0),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(32),
-                        ),
-                      ),
-                      onPressed: onJoin,
-                      child: Text(
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8, right: 16, left: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 85, 0, 0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32),
+                    ),
+                  ),
+                  onPressed: onJoin,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
                         S.of(context).joinNow,
-                        style: theme.textTheme.displaySmall,
+                        style: theme.textTheme.displaySmall?.copyWith(fontSize: 16),
                         //  softWrap: true,
                         textAlign: TextAlign.center,
                       ),
+                      SizedBox(width: 8),
+                      Text(
+                      'Only for \$$price!',
+                      style: theme.textTheme.displaySmall?.copyWith(fontSize: 12),
+                      softWrap: true,
                     ),
-                    const SizedBox(width: 8),
-                    IconButton(
-                      icon: const Icon(Icons.info_outline),
-                      onPressed: onInfoTap,
-                      color: Colors.white,
-                    ),
-                  ],
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 8),
+                IconButton(
+                  icon: const Icon(Icons.info_outline),
+                  onPressed: onInfoTap,
+                  color: Colors.white,
                 ),
               ],
             ),
