@@ -2259,9 +2259,9 @@ class S {
     );
   }
 
-  /// `JOIN NOW!`
+  /// `Join Now!`
   String get joinNow {
-    return Intl.message('JOIN NOW!', name: 'joinNow', desc: '', args: []);
+    return Intl.message('Join Now!', name: 'joinNow', desc: '', args: []);
   }
 }
 

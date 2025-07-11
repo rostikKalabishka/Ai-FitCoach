@@ -77,8 +77,8 @@ class SettingsScreen extends StatelessWidget {
                 ),
                 CustomCalendar(),
                 Container(
-height: MediaQuery.of(context).size.height * 0.14,
-          width: MediaQuery.of(context).size.width * 0.95,
+                  height: MediaQuery.of(context).size.height * 0.14,
+                  width: MediaQuery.of(context).size.width * 0.95,
                   decoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
@@ -102,7 +102,8 @@ height: MediaQuery.of(context).size.height * 0.14,
                                   width: 30,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: const Color.fromARGB(255, 233, 236, 4),
+                                    color:
+                                        const Color.fromARGB(255, 233, 236, 4),
                                   ),
                                   child: Icon(
                                     Icons.person_2,
@@ -166,8 +167,8 @@ height: MediaQuery.of(context).size.height * 0.14,
                   height: 20,
                 ),
                 Container(
-height: MediaQuery.of(context).size.height * 0.21,
-          width: MediaQuery.of(context).size.width * 0.95,
+                  height: MediaQuery.of(context).size.height * 0.21,
+                  width: MediaQuery.of(context).size.width * 0.95,
                   decoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
@@ -191,8 +192,8 @@ height: MediaQuery.of(context).size.height * 0.21,
                                     width: 30,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color:
-                                          const Color.fromARGB(255, 252, 114, 1),
+                                      color: const Color.fromARGB(
+                                          255, 252, 114, 1),
                                     ),
                                     child: Icon(
                                       Icons.stairs,
@@ -226,7 +227,8 @@ height: MediaQuery.of(context).size.height * 0.21,
                                   width: 30,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: const Color.fromARGB(255, 4, 77, 236),
+                                    color:
+                                        const Color.fromARGB(255, 4, 77, 236),
                                   ),
                                   child: Icon(
                                     Icons.accessibility_new,
@@ -262,7 +264,8 @@ height: MediaQuery.of(context).size.height * 0.21,
                                   width: 30,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: const Color.fromARGB(255, 8, 232, 240),
+                                    color:
+                                        const Color.fromARGB(255, 8, 232, 240),
                                   ),
                                   child: Icon(
                                     Icons.directions_run,
@@ -289,8 +292,8 @@ height: MediaQuery.of(context).size.height * 0.21,
                   height: 20,
                 ),
                 Container(
-          height: MediaQuery.of(context).size.height * 0.14,
-          width: MediaQuery.of(context).size.width * 0.95,
+                  height: MediaQuery.of(context).size.height * 0.14,
+                  width: MediaQuery.of(context).size.width * 0.95,
                   decoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
@@ -314,8 +317,8 @@ height: MediaQuery.of(context).size.height * 0.21,
                                     width: 30,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color:
-                                          const Color.fromARGB(255, 181, 1, 252),
+                                      color: const Color.fromARGB(
+                                          255, 181, 1, 252),
                                     ),
                                     child: Icon(
                                       Icons.local_fire_department,
@@ -349,7 +352,8 @@ height: MediaQuery.of(context).size.height * 0.21,
                                   width: 30,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: const Color.fromARGB(255, 236, 4, 54),
+                                    color:
+                                        const Color.fromARGB(255, 236, 4, 54),
                                   ),
                                   child: Icon(
                                     Icons.water_drop,
@@ -377,8 +381,8 @@ height: MediaQuery.of(context).size.height * 0.21,
                   height: 20,
                 ),
                 Container(
-height: MediaQuery.of(context).size.height * 0.07,
-          width: MediaQuery.of(context).size.width * 0.95,
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  width: MediaQuery.of(context).size.width * 0.95,
                   decoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
@@ -402,7 +406,8 @@ height: MediaQuery.of(context).size.height * 0.07,
                                     width: 30,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: const Color.fromARGB(255, 252, 1, 1),
+                                      color:
+                                          const Color.fromARGB(255, 252, 1, 1),
                                     ),
                                     child: Icon(
                                       Icons.do_not_disturb_on,
@@ -428,8 +433,8 @@ height: MediaQuery.of(context).size.height * 0.07,
                   height: 20,
                 ),
                 Container(
-height: MediaQuery.of(context).size.height * 0.21,
-          width: MediaQuery.of(context).size.width * 0.95,
+                  height: MediaQuery.of(context).size.height * 0.21,
+                  width: MediaQuery.of(context).size.width * 0.95,
                   decoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
@@ -453,8 +458,8 @@ height: MediaQuery.of(context).size.height * 0.21,
                                     width: 30,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color:
-                                          const Color.fromARGB(255, 116, 84, 59),
+                                      color: const Color.fromARGB(
+                                          255, 116, 84, 59),
                                     ),
                                     child: Icon(
                                       Icons.manage_accounts,
@@ -488,7 +493,8 @@ height: MediaQuery.of(context).size.height * 0.21,
                                   width: 30,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: const Color.fromARGB(255, 63, 84, 131),
+                                    color:
+                                        const Color.fromARGB(255, 63, 84, 131),
                                   ),
                                   child: Icon(
                                     Icons.security,
@@ -552,8 +558,8 @@ height: MediaQuery.of(context).size.height * 0.21,
                   height: 20,
                 ),
                 Container(
-height: MediaQuery.of(context).size.height * 0.21,
-          width: MediaQuery.of(context).size.width * 0.95,
+                  height: MediaQuery.of(context).size.height * 0.21,
+                  width: MediaQuery.of(context).size.width * 0.95,
                   decoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       borderRadius: BorderRadiusDirectional.circular(16)),
@@ -577,7 +583,8 @@ height: MediaQuery.of(context).size.height * 0.21,
                                     width: 30,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: const Color.fromARGB(255, 92, 40, 1),
+                                      color:
+                                          const Color.fromARGB(255, 92, 40, 1),
                                     ),
                                     child: Icon(
                                       Icons.privacy_tip,
@@ -611,8 +618,8 @@ height: MediaQuery.of(context).size.height * 0.21,
                                   width: 30,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color:
-                                        const Color.fromARGB(255, 206, 101, 101),
+                                    color: const Color.fromARGB(
+                                        255, 206, 101, 101),
                                   ),
                                   child: Icon(
                                     Icons.thumb_up,

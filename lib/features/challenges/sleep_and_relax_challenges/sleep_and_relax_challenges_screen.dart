@@ -1,85 +1,66 @@
-import 'package:ai_fit_coach/ui/theme/app_const.dart';
+import 'package:ai_fit_coach/features/challenges/bloc/challenge_bloc.dart';
+import 'package:ai_fit_coach/features/challenges/challenges.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../ui/widgets/custom_challenge_card.dart';
 
 @RoutePage()
 class SleepAndRelaxChallengesScreen extends StatefulWidget {
-  const SleepAndRelaxChallengesScreen({super.key});
+  const SleepAndRelaxChallengesScreen({super.key, required this.categoryType});
+  final String categoryType;
 
   @override
-  State<SleepAndRelaxChallengesScreen> createState() => _SleepAndRelaxChallengesScreenState();
+  State<SleepAndRelaxChallengesScreen> createState() =>
+      _SleepAndRelaxChallengesScreenState();
 }
 
-class _SleepAndRelaxChallengesScreenState extends State<SleepAndRelaxChallengesScreen> {
+class _SleepAndRelaxChallengesScreenState
+    extends State<SleepAndRelaxChallengesScreen> {
+  @override
+  void initState() {
+    context
+        .read<ChallengeBloc>()
+        .add(LoadListChallengeItemEvent(categoryType: widget.categoryType));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      body: ListView(children: [
-        Column(
-          children: [
-            SizedBox(height: 10),
-            CustomChallengeCard(
-              title: 'No Screens Before Bed',
-              subtitle: '5 Days challenge',
-              imagePath: AppConst.challengeSleepAndRelax1Image,
-              price: 3.99,
-              onJoin: () {},
-              onInfoTap: () {},
-            ),
-            SizedBox(
-              height: 13,
-            ),
-            CustomChallengeCard(
-              title: 'Bedtime Wind-Down Ritual',
-              subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeSleepAndRelax2Image,
-              price: 4.69,
-              onJoin: () {},
-              onInfoTap: () {},
-            ),
-            SizedBox(
-              height: 13,
-            ),
-            CustomChallengeCard(
-              title: 'Wake Up at the Same Time',
-              subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeSleepAndRelax3Image,
-              price: 3.99,
-              onJoin: () {},
-              onInfoTap: () {},
-            ),
-            SizedBox(
-              height: 13,
-            ),
-            CustomChallengeCard(
-              title: 'Try 5-Minute Breathing',
-              subtitle: '5 Days challenge',
-              imagePath: AppConst.challengeSleepAndRelax4Image,
-              price: 4.59,
-              onJoin: () {},
-              onInfoTap: () {},
-            ),
-            SizedBox(
-              height: 13,
-            ),
-            CustomChallengeCard(
-              title: "Digital Sunset",
-              subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeSleepAndRelax5Image,
-              price: 9.99,
-              onJoin: () {},
-              onInfoTap: () {},
-            ),
-            SizedBox(
-              height: 13,
-            ),
-          ],
-        ),
-      ]),
+      body: BlocBuilder<ChallengeBloc, ChallengeState>(
+        builder: (context, state) {
+          if (state is ChallengeLoaded) {
+            return ListView.separated(
+              separatorBuilder: (context, index) {
+                return SizedBox(height: 13);
+              },
+              itemCount: state.listChallengeSectorItem.length,
+              itemBuilder: (context, index) {
+                final foodChallenge = state.listChallengeSectorItem[index];
+                return CustomChallengeCard(
+                  title: foodChallenge.title,
+                  subtitle: foodChallenge.subtitle,
+                  imagePath: foodChallenge.imageUrl,
+                  price: foodChallenge.price,
+                  onJoin: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => JoinNowScreen()));
+                  },
+                  onInfoTap: () {},
+                );
+              },
+            );
+          } else {
+            return Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
+          }
+        },
+      ),
     );
   }
 }
