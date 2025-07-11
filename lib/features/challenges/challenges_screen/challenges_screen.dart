@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/common/api/model/challenges/challenge_item.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/router/router.dart';
 import 'package:auto_route/annotations.dart';
@@ -20,6 +21,21 @@ class _ChallengesScreenState extends State<ChallengesScreen>
   late TabController tabController;
   int initialIndex = 0;
 
+String _categoryType (CategoryType categoryType) {
+  switch (categoryType) {
+    case CategoryType.exercise: 
+    return 'exercise';
+    case CategoryType.food: 
+    return 'food';
+    case CategoryType.sleepAndRelax: 
+    return 'sleepAndRelax';
+    case CategoryType.mental: 
+    return 'mental';
+    case CategoryType.hydration: 
+    return 'hydration';
+  }
+}
+
   @override
   void initState() {
     super.initState();
@@ -39,14 +55,13 @@ class _ChallengesScreenState extends State<ChallengesScreen>
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
     return AutoTabsRouter(
       routes: [
-        FoodChallengesRoute(),
-        ExerciseChallengesRoute(),
-        SleepAndRelaxChallengesRoute(),
-        HydrationChallengesRoute(),
-        MentalChallengesRoute(),
+        FoodChallengesRoute(categoryType: 'food'),
+        ExerciseChallengesRoute(categoryType: 'exercise'),
+        SleepAndRelaxChallengesRoute(categoryType: 'sleepAndRelax'),
+        HydrationChallengesRoute(categoryType: 'hydration'),
+        MentalChallengesRoute(categoryType: 'mental'),
       ],
       builder: (context, child) {
         return Scaffold(
@@ -79,11 +94,11 @@ class _ChallengesScreenState extends State<ChallengesScreen>
                 child: TabBarView(
                   controller: tabController,
                   children: [
-                    FoodChallengesScreen(),
-                    ExerciseChallengesScreen(),
-                    SleepAndRelaxChallengesScreen(),
-                    HydrationChallengesScreen(),
-                    MentalChallengesScreen(),
+                    FoodChallengesScreen(categoryType: _categoryType(CategoryType.food)),
+                    ExerciseChallengesScreen(categoryType: _categoryType(CategoryType.exercise)),
+                    SleepAndRelaxChallengesScreen(categoryType: _categoryType(CategoryType.sleepAndRelax)),
+                    HydrationChallengesScreen(categoryType: _categoryType(CategoryType.hydration)),
+                    MentalChallengesScreen(categoryType: _categoryType(CategoryType.mental)),
                   ],
                 ),
               ),
