@@ -919,10 +919,10 @@ class S {
     );
   }
 
-  /// `START WORKOUT`
+  /// `Start Workout`
   String get startWorkout {
     return Intl.message(
-      'START WORKOUT',
+      'Start Workout',
       name: 'startWorkout',
       desc: '',
       args: [],
@@ -2259,9 +2259,9 @@ class S {
     );
   }
 
-  /// `Join Now!`
+  /// `Join Now`
   String get joinNow {
-    return Intl.message('Join Now!', name: 'joinNow', desc: '', args: []);
+    return Intl.message('Join Now', name: 'joinNow', desc: '', args: []);
   }
 }
 

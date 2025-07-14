@@ -25,7 +25,7 @@ class CustomChallengeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
@@ -96,6 +96,7 @@ class CustomChallengeCard extends StatelessWidget {
                                   ),
                                 ],
                               ),
+                              SizedBox(height: 24,),
                               Padding(
                                 padding: const EdgeInsets.only(top: 8),
                                 child: Text(
@@ -106,6 +107,12 @@ class CustomChallengeCard extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
+                              SizedBox(height: 8),
+                            Text(
+                              'Only for \$ $price!',
+                              style: theme.textTheme.displaySmall
+                                  ?.copyWith(fontSize: 14),
+                            ),
                             ],
                           ),
                         ),
@@ -114,19 +121,20 @@ class CustomChallengeCard extends StatelessWidget {
                 Positioned(
                   left: 0,
                   right: 0,
-                  bottom: 1,
+                  bottom: 4,
                   child: Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.04,
                       width: double.infinity,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 85, 0, 0),
+                          backgroundColor: theme.colorScheme.primary,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(32),
+                            borderRadius: BorderRadius.circular(16),
                           ),
-                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          padding: const EdgeInsets.symmetric(vertical: 8),
                         ),
                         onPressed: onJoin,
                         child: Row(
@@ -137,13 +145,7 @@ class CustomChallengeCard extends StatelessWidget {
                             Text(
                               S.of(context).joinNow,
                               style: theme.textTheme.displaySmall
-                                  ?.copyWith(fontSize: 20),
-                            ),
-
-                            Text(
-                              'Only for \$$price!',
-                              style: theme.textTheme.displaySmall
-                                  ?.copyWith(fontSize: 16),
+                                  ?.copyWith(fontSize: 18,),
                             ),
                           ],
                         ),

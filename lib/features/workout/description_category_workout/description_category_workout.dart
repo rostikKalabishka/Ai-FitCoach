@@ -87,7 +87,7 @@ class _DescriptionCategoryWorkoutState
                                         horizontal: 16),
                                     decoration: BoxDecoration(
                                       color: isSelected
-                                          ? const Color.fromARGB(255, 85, 0, 0)
+                                          ? theme.colorScheme.primary
                                           : const Color.fromARGB(
                                               255, 39, 39, 39),
                                       borderRadius: BorderRadius.circular(20),
@@ -125,7 +125,7 @@ class _DescriptionCategoryWorkoutState
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
-                                      const Color.fromARGB(255, 39, 1, 21),
+                                      theme.colorScheme.primary,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(16),
                                   ),

@@ -51,7 +51,7 @@ class _MainScreenState extends State<MainScreen> {
                     height: 10,
                   ),
                   SizedBox(
-                    height: 250,
+                    height: MediaQuery.of(context).size.height * 0.27,
                     width: double.infinity,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
@@ -123,7 +123,7 @@ class _MainScreenState extends State<MainScreen> {
                     height: 10,
                   ),
                   SizedBox(
-                    height: 250,
+                    height: MediaQuery.of(context).size.height * 0.27,
                     width: double.infinity,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
