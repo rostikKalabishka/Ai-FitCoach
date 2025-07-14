@@ -21,7 +21,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
     }
     try {
       final listWorkoutItem = await _workoutRepository
-          .getWorkoutItemsFromSubcollection('absAndCore');
+          .getWorkoutItemInCollection();
       emit(WorkoutLoaded(listWorkoutItem: listWorkoutItem));
     } catch (e) {
       emit(WorkoutFailure(error: e));

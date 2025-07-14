@@ -77,7 +77,7 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 85, 0, 0),
+                    backgroundColor: theme.colorScheme.primary,
                     padding: const EdgeInsets.symmetric(vertical: 8),
                   ),
                   child: Column(
