@@ -44,7 +44,7 @@ class _MentalChallengesScreenState extends State<MentalChallengesScreen> {
                   price: foodChallenge.price,
                   onJoin: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => JoinNowScreen()));
+                        builder: (context) => JoinNowScreen(challengeItem: foodChallenge)));
                   },
                   onInfoTap: () {},
                 );

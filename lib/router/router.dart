@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/common/api/model/challenges/challenge_item.dart';
 import 'package:ai_fit_coach/features/ai_chat/view/ai_chat_screen.dart';
 import 'package:ai_fit_coach/features/auth/auth_screen/auth_screen.dart';
 import 'package:ai_fit_coach/features/challenges/challenges.dart';

@@ -16,14 +16,14 @@ class SettingsCard6 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.21,
+      height: MediaQuery.of(context).size.height * 0.18,
       width: MediaQuery.of(context).size.width * 0.95,
       decoration: BoxDecoration(
           color: theme.cardTheme.color,
           borderRadius: BorderRadiusDirectional.circular(16)),
       child: Padding(
         padding: const EdgeInsets.only(
-            top: 5, left: 10, bottom: 5, right: 10),
+            top: 2, left: 10, bottom: 2, right: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,103 +33,126 @@ class SettingsCard6 extends StatelessWidget {
                 router.push(PrivacyPolicyRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color:
-                              const Color.fromARGB(255, 92, 40, 1),
-                        ),
-                        child: Icon(
-                          Icons.privacy_tip,
-                          size: 20,
-                        )),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadiusDirectional.circular(6),
+                              shape: BoxShape.rectangle,
+                              color:
+                                  const Color.fromARGB(255, 92, 40, 1),
+                            ),
+                            child: Icon(
+                              Icons.privacy_tip,
+                              size: 20,
+                            )),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        S.of(context).privacyPolicy,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).privacyPolicy,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
-            Divider(
-              thickness: 1,
-            ),
+            CustomDivider(),
             InkWell(
               onTap: () {
                 router.push(RateUsRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: const Color.fromARGB(
-                            255, 206, 101, 101),
+                  Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadiusDirectional.circular(6),
+                            shape: BoxShape.rectangle,
+                            color: const Color.fromARGB(
+                                255, 206, 101, 101),
+                          ),
+                          child: Icon(
+                            Icons.thumb_up,
+                            size: 20,
+                            color: theme.iconTheme.color,
+                          ),
+                        ),
                       ),
-                      child: Icon(
-                        Icons.thumb_up,
-                        size: 20,
-                        color: theme.iconTheme.color,
+                      SizedBox(
+                        width: 10,
                       ),
-                    ),
+                      Text(
+                        S.of(context).rateUs,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).rateUs,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
-            Divider(
-              thickness: 1,
-            ),
+            CustomDivider(),
             InkWell(
               onTap: () {
                 router.push(DeleteYourAccountRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color:
-                            const Color.fromARGB(255, 176, 201, 88),
+                  Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadiusDirectional.circular(6),
+                            shape: BoxShape.rectangle,
+                            color:
+                                const Color.fromARGB(255, 176, 201, 88),
+                          ),
+                          child: Icon(
+                            Icons.delete_forever,
+                            size: 20,
+                          ),
+                        ),
                       ),
-                      child: Icon(
-                        Icons.delete_forever,
-                        size: 20,
+                      SizedBox(
+                        width: 10,
                       ),
-                    ),
+                      Text(
+                        S.of(context).deleteYourAccount,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).deleteYourAccount,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
@@ -153,14 +176,14 @@ class SettingsCard5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.21,
+      height: MediaQuery.of(context).size.height * 0.18,
       width: MediaQuery.of(context).size.width * 0.95,
       decoration: BoxDecoration(
           color: theme.cardTheme.color,
           borderRadius: BorderRadiusDirectional.circular(16)),
       child: Padding(
         padding: const EdgeInsets.only(
-            top: 5, left: 10, bottom: 5, right: 10),
+            top: 2, left: 10, bottom: 2, right: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -170,103 +193,126 @@ class SettingsCard5 extends StatelessWidget {
                 router.push(AccountManagementRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: const Color.fromARGB(
-                              255, 116, 84, 59),
-                        ),
-                        child: Icon(
-                          Icons.manage_accounts,
-                          size: 20,
-                        )),
+                  Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadiusDirectional.circular(6),
+                              shape: BoxShape.rectangle,
+                              color: const Color.fromARGB(
+                                  255, 116, 84, 59),
+                            ),
+                            child: Icon(
+                              Icons.manage_accounts,
+                              size: 20,
+                            )),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        S.of(context).accountManagement,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).accountManagement,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
-            Divider(
-              thickness: 1,
-            ),
+            CustomDivider(),
             InkWell(
               onTap: () {
                 router.push(PrivacyRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color:
-                            const Color.fromARGB(255, 63, 84, 131),
+                  Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadiusDirectional.circular(6),
+                            shape: BoxShape.rectangle,
+                            color:
+                                const Color.fromARGB(255, 63, 84, 131),
+                          ),
+                          child: Icon(
+                            Icons.security,
+                            size: 20,
+                            color: theme.iconTheme.color,
+                          ),
+                        ),
                       ),
-                      child: Icon(
-                        Icons.security,
-                        size: 20,
-                        color: theme.iconTheme.color,
+                      SizedBox(
+                        width: 10,
                       ),
-                    ),
+                      Text(
+                        S.of(context).privacy,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).privacy,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
-            Divider(
-              thickness: 1,
-            ),
+            CustomDivider(),
             InkWell(
               onTap: () {
                 router.push(LanguageLocalizationRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color:
-                            const Color.fromARGB(255, 88, 201, 112),
+                  Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadiusDirectional.circular(6),
+                            shape: BoxShape.rectangle,
+                            color:
+                                const Color.fromARGB(255, 88, 201, 112),
+                          ),
+                          child: Icon(
+                            Icons.language,
+                            size: 20,
+                          ),
+                        ),
                       ),
-                      child: Icon(
-                        Icons.language,
-                        size: 20,
+                      SizedBox(
+                        width: 10,
                       ),
-                    ),
+                      Text(
+                        S.of(context).languageLocalization,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).languageLocalization,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
@@ -290,14 +336,14 @@ class SettingsCard4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.07,
+      height: MediaQuery.of(context).size.height * 0.06,
       width: MediaQuery.of(context).size.width * 0.95,
       decoration: BoxDecoration(
           color: theme.cardTheme.color,
           borderRadius: BorderRadiusDirectional.circular(16)),
       child: Padding(
         padding: const EdgeInsets.only(
-            top: 5, left: 10, bottom: 5, right: 10),
+            top: 2, left: 10, bottom: 2, right: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -307,30 +353,39 @@ class SettingsCard4 extends StatelessWidget {
                 router.push(DoNotDisturbModeRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color:
-                              const Color.fromARGB(255, 252, 1, 1),
-                        ),
-                        child: Icon(
-                          Icons.do_not_disturb_on,
-                          size: 20,
-                        )),
+                  Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadiusDirectional.circular(6),
+                              shape: BoxShape.rectangle,
+                              color:
+                                  const Color.fromARGB(255, 252, 1, 1),
+                            ),
+                            child: Icon(
+                              Icons.do_not_disturb_on,
+                              size: 20,
+                            )),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        S.of(context).doNotDisturbMode,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).doNotDisturbMode,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
@@ -354,14 +409,14 @@ class SettingsCard3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.14,
+      height: MediaQuery.of(context).size.height * 0.12,
       width: MediaQuery.of(context).size.width * 0.95,
       decoration: BoxDecoration(
           color: theme.cardTheme.color,
           borderRadius: BorderRadiusDirectional.circular(16)),
       child: Padding(
         padding: const EdgeInsets.only(
-            top: 5, left: 10, bottom: 5, right: 10),
+            top: 2, left: 10, bottom: 2, right: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -371,67 +426,83 @@ class SettingsCard3 extends StatelessWidget {
                 router.push(CalorieGoalRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: const Color.fromARGB(
-                              255, 181, 1, 252),
-                        ),
-                        child: Icon(
-                          Icons.local_fire_department,
-                          size: 20,
-                        )),
+                  Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadiusDirectional.circular(6),
+                              shape: BoxShape.rectangle,
+                              color: const Color.fromARGB(
+                                  255, 181, 1, 252),
+                            ),
+                            child: Icon(
+                              Icons.local_fire_department,
+                              size: 20,
+                            )),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        S.of(context).calorieGoal,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).calorieGoal,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
-            Divider(
-              thickness: 1,
-            ),
+            CustomDivider(),
             InkWell(
               onTap: () {
                 router.push(WaterBalanceRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color:
-                            const Color.fromARGB(255, 236, 4, 54),
+                  Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadiusDirectional.circular(6),
+                            shape: BoxShape.rectangle,
+                            color:
+                                const Color.fromARGB(255, 236, 4, 54),
+                          ),
+                          child: Icon(
+                            Icons.water_drop,
+                            size: 20,
+                            color: theme.iconTheme.color,
+                          ),
+                        ),
                       ),
-                      child: Icon(
-                        Icons.water_drop,
-                        size: 20,
-                        color: theme.iconTheme.color,
+                      SizedBox(
+                        width: 10,
                       ),
-                    ),
+                      Text(
+                        S.of(context).waterBalance,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).waterBalance,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
@@ -455,14 +526,14 @@ class SettingsCard2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.21,
+      height: MediaQuery.of(context).size.height * 0.18,
       width: MediaQuery.of(context).size.width * 0.95,
       decoration: BoxDecoration(
           color: theme.cardTheme.color,
           borderRadius: BorderRadiusDirectional.circular(16)),
       child: Padding(
         padding: const EdgeInsets.only(
-            top: 5, left: 10, bottom: 5, right: 10),
+            top: 2, left: 10, bottom: 2, right: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -472,103 +543,126 @@ class SettingsCard2 extends StatelessWidget {
                 router.push(DifficultyLevelRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: const Color.fromARGB(
-                              255, 252, 114, 1),
-                        ),
-                        child: Icon(
-                          Icons.stairs,
-                          size: 20,
-                        )),
+                  Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadiusDirectional.circular(6),
+                              shape: BoxShape.rectangle,
+                              color: const Color.fromARGB(
+                                  255, 252, 114, 1),
+                            ),
+                            child: Icon(
+                              Icons.stairs,
+                              size: 20,
+                            )),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        S.of(context).difficultyLevel,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).difficultyLevel,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
-            Divider(
-              thickness: 1,
-            ),
+            CustomDivider(),
             InkWell(
               onTap: () {
                 router.push(WorkoutTypesRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color:
-                            const Color.fromARGB(255, 4, 77, 236),
+                  Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadiusDirectional.circular(6),
+                            shape: BoxShape.rectangle,
+                            color:
+                                const Color.fromARGB(255, 4, 77, 236),
+                          ),
+                          child: Icon(
+                            Icons.accessibility_new,
+                            size: 20,
+                            color: theme.iconTheme.color,
+                          ),
+                        ),
                       ),
-                      child: Icon(
-                        Icons.accessibility_new,
-                        size: 20,
-                        color: theme.iconTheme.color,
+                      SizedBox(
+                        width: 10,
                       ),
-                    ),
+                      Text(
+                        S.of(context).workoutTypes,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).workoutTypes,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
-            Divider(
-              thickness: 1,
-            ),
+            CustomDivider(),
             InkWell(
               onTap: () {
                 router.push(AutomaticActivityTrackingRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color:
-                            const Color.fromARGB(255, 8, 232, 240),
+                  Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadiusDirectional.circular(6),
+                            shape: BoxShape.rectangle,
+                            color:
+                                const Color.fromARGB(255, 8, 232, 240),
+                          ),
+                          child: Icon(
+                            Icons.directions_run,
+                            size: 20,
+                          ),
+                        ),
                       ),
-                      child: Icon(
-                        Icons.directions_run,
-                        size: 20,
+                      SizedBox(
+                        width: 10,
                       ),
-                    ),
+                      Text(
+                        S.of(context).automaticActivityTracking,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).automaticActivityTracking,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
@@ -592,14 +686,14 @@ class SettingsCard1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.14,
+      height: MediaQuery.of(context).size.height * 0.12,
       width: MediaQuery.of(context).size.width * 0.95,
       decoration: BoxDecoration(
           color: theme.cardTheme.color,
           borderRadius: BorderRadiusDirectional.circular(16)),
       child: Padding(
         padding: const EdgeInsets.only(
-            top: 5, left: 10, bottom: 5, right: 10),
+            top: 2, left: 10, bottom: 2, right: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -609,73 +703,105 @@ class SettingsCard1 extends StatelessWidget {
                 router.push(UserProfileRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color:
-                            const Color.fromARGB(255, 233, 236, 4),
+                  Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadiusDirectional.circular(6),
+                            shape: BoxShape.rectangle,
+                            color:
+                                const Color.fromARGB(255, 233, 236, 4),
+                          ),
+                          child: Icon(
+                            Icons.person_2,
+                            size: 20,
+                            color: theme.iconTheme.color,
+                          ),
+                        ),
                       ),
-                      child: Icon(
-                        Icons.person_2,
-                        size: 20,
-                        color: theme.iconTheme.color,
+                      SizedBox(
+                        width: 10,
                       ),
-                    ),
+                      Text(
+                        S.of(context).userProfile,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).userProfile,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
-            Divider(
-              thickness: 1,
-            ),
+            CustomDivider(),
             InkWell(
               onTap: () {
                 router.push(FitnessGoalRoute());
               },
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color:
-                            const Color.fromARGB(255, 33, 243, 103),
+                  Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadiusDirectional.circular(6),
+                            shape: BoxShape.rectangle,
+                            color:
+                                const Color.fromARGB(255, 33, 243, 103),
+                          ),
+                          child: Icon(
+                            Icons.star_outline_sharp,
+                            size: 20,
+                          ),
+                        ),
                       ),
-                      child: Icon(
-                        Icons.star_outline_sharp,
-                        size: 20,
+                      SizedBox(
+                        width: 10,
                       ),
-                    ),
+                      Text(
+                        S.of(context).fitnessGoal,
+                        style: theme.textTheme.displaySmall
+                            ?.copyWith(fontSize: 16),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    S.of(context).fitnessGoal,
-                    style: theme.textTheme.displaySmall
-                        ?.copyWith(fontSize: 16),
-                  ),
+                  Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CustomDivider extends StatelessWidget {
+  const CustomDivider({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 44),
+      child: Divider(
+        thickness: 1,
       ),
     );
   }

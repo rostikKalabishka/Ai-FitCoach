@@ -56,12 +56,12 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                           width: MediaQuery.of(context).size.width * 0.97,
                           child: WorkoutCard(
                             title: workout.title,
-                            subtitle: 'exercise: number',
+                            subtitle: 'duration: ${workout.subtitle} minutes', 
                             imageUrl: workout.imageUrl,
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
-                                      DescriptionCategoryWorkout()));
+                                      DescriptionCategoryWorkout(workoutItem: workout)));
                             },
                           ),
                         ),
