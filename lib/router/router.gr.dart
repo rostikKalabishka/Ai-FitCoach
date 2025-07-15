@@ -407,18 +407,49 @@ class HydrationChallengesRouteArgs {
 
 /// generated route for
 /// [JoinNowScreen]
-class JoinNowRoute extends PageRouteInfo<void> {
-  const JoinNowRoute({List<PageRouteInfo>? children})
-      : super(JoinNowRoute.name, initialChildren: children);
+class JoinNowRoute extends PageRouteInfo<JoinNowRouteArgs> {
+  JoinNowRoute({
+    Key? key,
+    required ChallengeItem challengeItem,
+    List<PageRouteInfo>? children,
+  }) : super(
+          JoinNowRoute.name,
+          args: JoinNowRouteArgs(key: key, challengeItem: challengeItem),
+          initialChildren: children,
+        );
 
   static const String name = 'JoinNowRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const JoinNowScreen();
+      final args = data.argsAs<JoinNowRouteArgs>();
+      return JoinNowScreen(key: args.key, challengeItem: args.challengeItem);
     },
   );
+}
+
+class JoinNowRouteArgs {
+  const JoinNowRouteArgs({this.key, required this.challengeItem});
+
+  final Key? key;
+
+  final ChallengeItem challengeItem;
+
+  @override
+  String toString() {
+    return 'JoinNowRouteArgs{key: $key, challengeItem: $challengeItem}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! JoinNowRouteArgs) return false;
+    return key == other.key && challengeItem == other.challengeItem;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ challengeItem.hashCode;
 }
 
 /// generated route for
