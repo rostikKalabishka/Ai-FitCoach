@@ -444,6 +444,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "4. サードパーティサービス",
     ),
     "thursday": MessageLookupByLibrary.simpleMessage("木曜日"),
+    "trending": MessageLookupByLibrary.simpleMessage("Trending"),
     "trendingChallenges": MessageLookupByLibrary.simpleMessage("トレンドのチャレンジ"),
     "trendingWorkout": MessageLookupByLibrary.simpleMessage("トレンドのワークアウト"),
     "tuesday": MessageLookupByLibrary.simpleMessage("火曜日"),

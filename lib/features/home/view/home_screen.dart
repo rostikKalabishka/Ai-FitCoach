@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                 },
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
-                    label: S.of(context).home,
+                    label: S.of(context).trending,
                     icon: Icon(
                       Icons.trending_up_outlined,
                     ),
