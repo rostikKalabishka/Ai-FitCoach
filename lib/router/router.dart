@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 import '../features/auth/welcome/welcome_screen.dart';
 
-import '../features/main_screen/main_screen.dart';
+import '../features/trending_screen/main_screen.dart';
 import '../features/onboarding/onboarding.dart';
 
 import '../features/settings/settings.dart';
@@ -48,8 +48,8 @@ class AppRouter extends RootStackRouter {
             path: 'settings',
           ),
           AutoRoute(
-            page: MainRoute.page,
-            path: 'main_screen',
+            page: TrendingRoute.page,
+            path: 'trending_screen',
           ),
           AutoRoute(
               page: ChallengesRoute.page,

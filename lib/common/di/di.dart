@@ -5,7 +5,7 @@ import 'package:ai_fit_coach/features/ai_chat/bloc/chat_bloc.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
 import 'package:ai_fit_coach/features/challenges/bloc/challenge_bloc.dart';
 import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
-import 'package:ai_fit_coach/features/main_screen/main_screen/bloc/list_bloc.dart';
+import 'package:ai_fit_coach/features/trending_screen/trending_screen/bloc/list_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
 import 'package:ai_fit_coach/features/workout/bloc/workout_bloc.dart';
 import 'package:ai_fit_coach/repositories/food_recommendation_repository/abstract_food_recommendation_repository.dart';

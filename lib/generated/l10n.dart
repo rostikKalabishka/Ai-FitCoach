@@ -241,7 +241,7 @@ class S {
 
   /// `Home`
   String get home {
-    return Intl.message('Home', name: 'home', desc: '', args: []);
+    return Intl.message('Trending', name: 'trending', desc: '', args: []);
   }
 
   /// `Challenges`
