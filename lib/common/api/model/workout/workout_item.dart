@@ -31,6 +31,8 @@ class WorkoutItem extends Equatable {
   factory WorkoutItem.fromJson(Map<String, dynamic> json) =>
       _$WorkoutItemFromJson(json);
 
+  factory WorkoutItem.empty() => WorkoutItem(title: '', subtitle: '', imageUrl: '', id: '');
+
   @override
   List<Object?> get props => [id, title, subtitle, imageUrl];
 }

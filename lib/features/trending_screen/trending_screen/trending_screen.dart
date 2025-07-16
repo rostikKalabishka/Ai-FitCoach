@@ -1,5 +1,9 @@
-import 'package:ai_fit_coach/features/main_screen/follow_on_social_networks.dart';
-import 'package:ai_fit_coach/features/main_screen/main_screen/bloc/list_bloc.dart';
+import 'package:ai_fit_coach/common/api/model/challenges/challenge_item.dart';
+import 'package:ai_fit_coach/common/api/model/home/food_recommendation_item.dart';
+import 'package:ai_fit_coach/common/api/model/workout/workout_item.dart';
+import 'package:ai_fit_coach/features/trending_screen/follow_on_social_networks.dart';
+import 'package:ai_fit_coach/features/trending_screen/trending_screen/bloc/list_bloc.dart';
+import 'package:ai_fit_coach/features/trending_screen/trending_subscreen.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -8,14 +12,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../ui/widgets/custom_main_screen_card.dart';
 
 @RoutePage()
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class TrendingScreen extends StatefulWidget {
+  const TrendingScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<TrendingScreen> createState() => _TrendingScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _TrendingScreenState extends State<TrendingScreen> {
   @override
   void initState() {
     context.read<ListBloc>().add(LoadListEvent());
@@ -67,7 +71,14 @@ class _MainScreenState extends State<MainScreen> {
                               subtitle: '',
                               description: trendingWorkout.subtitle,
                               imagePath: trendingWorkout.imageUrl,
-                              onJoin: () {},
+                              onJoin: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => TrendingSubScreen(
+                                          trendingWorkout,
+                                          ChallengeItem.empty(),
+                                          FoodRecommendationItem.empty(),
+                                        )));
+                              },
                             ),
                           );
                         }),
@@ -103,7 +114,13 @@ class _MainScreenState extends State<MainScreen> {
                               subtitle: foodRecommandation.foodCategory,
                               description: foodRecommandation.description,
                               imagePath: foodRecommandation.imageUrl,
-                              onJoin: () {},
+                              onJoin: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => TrendingSubScreen(
+                                        WorkoutItem.empty(),
+                                        ChallengeItem.empty(),
+                                        foodRecommandation)));
+                              },
                             ),
                           );
                         }),
@@ -139,7 +156,13 @@ class _MainScreenState extends State<MainScreen> {
                               subtitle: trendingChallenges.subtitle,
                               description: trendingChallenges.description!,
                               imagePath: trendingChallenges.imageUrl,
-                              onJoin: () {},
+                              onJoin: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => TrendingSubScreen(
+                                        WorkoutItem.empty(),
+                                        trendingChallenges,
+                                        FoodRecommendationItem.empty())));
+                              },
                             ),
                           );
                         }),

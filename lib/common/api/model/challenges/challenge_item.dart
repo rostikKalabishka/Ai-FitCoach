@@ -50,6 +50,8 @@ class ChallengeItem extends Equatable {
 
   Map<String, dynamic> toJson() => _$ChallengeItemToJson(this);
 
+  factory ChallengeItem.empty() => ChallengeItem(title: '', subtitle: '', imageUrl: '', id: '', price: 0, description: '', categoryType: '');
+
   @override
   List<Object?> get props => [id, title, subtitle, price, imageUrl, description, categoryType];
 }

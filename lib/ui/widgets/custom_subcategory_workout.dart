@@ -47,7 +47,8 @@ class CustomSubcategoryWorkout extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          title,
+                          title, 
+                          maxLines: 2,
                           style: Theme.of(context)
                               .textTheme
                               .displaySmall
@@ -67,7 +68,6 @@ class CustomSubcategoryWorkout extends StatelessWidget {
                     )
                   ],
                 ),
-                Icon(Icons.arrow_forward_ios),
               ],
             ),
             SizedBox(

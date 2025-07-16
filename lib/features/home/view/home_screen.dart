@@ -13,9 +13,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: [
-        MainRoute(),
-        ChallengesRoute(),
+        TrendingRoute(),
         WorkoutRoute(),
+        ChallengesRoute(),
         AiChatRoute(),
         SettingsRoute(),
       ],
@@ -35,19 +35,19 @@ class HomeScreen extends StatelessWidget {
                   BottomNavigationBarItem(
                     label: S.of(context).home,
                     icon: Icon(
-                      Icons.home,
-                    ),
-                  ),
-                  BottomNavigationBarItem(
-                    label: S.of(context).challenges,
-                    icon: Icon(
-                      Icons.local_fire_department,
+                      Icons.trending_up_outlined,
                     ),
                   ),
                   BottomNavigationBarItem(
                     label: S.of(context).workout,
                     icon: Icon(
                       Icons.fitness_center,
+                    ),
+                  ),
+                  BottomNavigationBarItem(
+                    label: S.of(context).challenges,
+                    icon: Icon(
+                      Icons.local_fire_department,
                     ),
                   ),
                   BottomNavigationBarItem(
