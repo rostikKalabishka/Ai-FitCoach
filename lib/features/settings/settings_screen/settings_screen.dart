@@ -19,6 +19,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final router = AutoRouter.of(context);
     final theme = Theme.of(context);
+    const int stepsCountNormal = 10000;
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: ListView(children: [
@@ -111,19 +112,53 @@ class SettingsScreen extends StatelessWidget {
         ),
         BlocBuilder<HealthBloc, HealthState>(builder: (context, state) {
           if (state is HealthLoaded) {
-            return Row(
-              children: [
-                StepScore(
-                  percent: state.steps / 100000,
-                  fillColors: Colors.blueAccent,
-                  lineColor: Colors.red,
-                  freeColor: Colors.purple,
-                  lineWidth: 2,
+            final percent = state.steps / stepsCountNormal;
+            final stepColor = getStepColor(state.steps);
+            return Padding(
+              padding:
+                  EdgeInsetsGeometry.symmetric(horizontal: 10, vertical: 8),
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.08,
+                width: MediaQuery.of(context).size.width * 0.95,
+                decoration: BoxDecoration(
+                    color: theme.cardTheme.color,
+                    borderRadius: BorderRadiusDirectional.circular(16)),
+                padding: const EdgeInsets.only(
+                    top: 5, left: 10, bottom: 5, right: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text('Walking',
+                            style: theme.textTheme.displaySmall
+                                ?.copyWith(fontSize: 20)),
+                        Text('${state.steps} / $stepsCountNormal steps',
+                            style: theme.textTheme.displaySmall
+                                ?.copyWith(fontSize: 16))
+                      ],
+                    ),
+                    SizedBox(
+                      height: 70,
+                      width: 70,
+                      child: StepScore(
+                        percent: percent,
+                        fillColors: Colors.grey,
+                        lineColor: stepColor,
+                        freeColor: stepColor.withValues(alpha: 0.3),
+                        lineWidth: 3,
+                        child: Text('${(percent * 100).toStringAsFixed(0)}%',
+                            style: theme.textTheme.displaySmall
+                                ?.copyWith(fontSize: 16)),
+                      ),
+                    ),
+                  ],
                 ),
-                Text('${state.steps} / 10000')
-              ],
+              ),
             );
-            // Text(state.steps.toString());
           } else {
             return SizedBox.shrink();
           }
@@ -142,5 +177,19 @@ class SettingsScreen extends StatelessWidget {
         ),
       ]),
     );
+  }
+}
+
+Color getStepColor(int steps) {
+  if (steps < 3000) {
+    return Colors.red;
+  } else if (steps < 5000) {
+    return Colors.orange;
+  } else if (steps < 8000) {
+    return Colors.amber;
+  } else if (steps < 10000) {
+    return Colors.green;
+  } else {
+    return Colors.lightGreenAccent;
   }
 }

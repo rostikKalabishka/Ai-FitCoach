@@ -31,7 +31,7 @@ class StepScore extends StatelessWidget {
             freeColor: freeColor,
             lineColor: lineColor,
             lineWidth: lineWidth,
-            percent: (percent * 0.1)),
+            percent: (percent)),
       ),
       Container(
         padding: EdgeInsets.all(padding ?? 0),
