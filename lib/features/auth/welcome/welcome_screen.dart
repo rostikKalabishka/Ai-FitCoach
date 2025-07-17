@@ -8,6 +8,7 @@ import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 @RoutePage()
 class WelcomeScreen extends StatelessWidget {
@@ -39,9 +40,9 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   Positioned.fill(
                     child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+                      filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
                       child: Container(
-                        color: Colors.black.withValues(alpha: 0),
+                        color: Colors.black.withValues(alpha: 0.3),
                       ),
                     ),
                   ),
@@ -55,7 +56,7 @@ class WelcomeScreen extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 56, vertical: 56),
+                            horizontal: 48, vertical: 48),
                       ),
                       Text(
                         'AI FitCoach',
@@ -64,7 +65,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 40, vertical: 40),
+                            horizontal: 32, vertical: 32),
                       ),
                       Align(
                         alignment: Alignment.centerLeft,
@@ -83,57 +84,91 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 80),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SizedBox(
-                            height: MediaQuery.of(context).size.width * 0.2,
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 8, vertical: 16),
-                              child: ElevatedButton(
-                                style: ButtonStyle(
-                                    backgroundColor: theme.elevatedButtonTheme
-                                        .style!.backgroundColor),
-                                onPressed: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) => AuthScreen(
-                                        initialIndex: 0,
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: Text(S.of(context).signIn,
+                      SizedBox(
+                        height: MediaQuery.of(context).size.width * 0.2,
+                        width: double.infinity,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 16),
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor: theme.elevatedButtonTheme
+                                    .style!.backgroundColor),
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => AuthScreen(
+                                    initialIndex: 0,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Row(
+                              spacing: 8,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(Icons.lock_open, color: Colors.white, size: 20,),
+                                Text(S.of(context).signIn,
                                     style: theme.textTheme.displaySmall
                                         ?.copyWith(fontSize: 18)),
-                              ),
+                              ],
                             ),
                           ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.width * 0.2,
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 8, vertical: 16),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) => AuthScreen(
-                                        initialIndex: 1,
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: Text(S.of(context).signUp,
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.width * 0.2,
+                        width: double.infinity,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 16),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => AuthScreen(
+                                    initialIndex: 1,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Row(
+                              spacing: 8,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(Icons.person_add, color: Colors.white, size: 20,),
+                                Text(S.of(context).signUp,
                                     style: theme.textTheme.displaySmall
                                         ?.copyWith(fontSize: 18)),
-                              ),
+                              ],
                             ),
                           ),
-                        ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                height:  1,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                              child: Text('OR'),
+                            ),
+                            Expanded(
+                              child: Container(
+                               height:  1,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.width * 0.2,
@@ -147,10 +182,18 @@ class WelcomeScreen extends StatelessWidget {
                                   .read<AuthBloc>()
                                   .add(SignInWithGoogleEvent());
                             },
-                            child: Text(S.of(context).continueWithGoogle,
-                                textAlign: TextAlign.center,
-                                style: theme.textTheme.displaySmall
-                                    ?.copyWith(fontSize: 18)),
+                            child: Row(
+                              spacing: 8,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(FontAwesomeIcons.google, color: Colors.white, size: 20,),
+                                Text(S.of(context).continueWithGoogle,
+                                    textAlign: TextAlign.center,
+                                    style: theme.textTheme.displaySmall
+                                        ?.copyWith(fontSize: 18)),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -166,10 +209,18 @@ class WelcomeScreen extends StatelessWidget {
                                   .read<AuthBloc>()
                                   .add(SignInWithFacebookEvent());
                             },
-                            child: Text(S.of(context).continueWithFacebook,
-                                textAlign: TextAlign.center,
-                                style: theme.textTheme.displaySmall
-                                    ?.copyWith(fontSize: 18)),
+                            child: Row(
+                              spacing: 8,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(FontAwesomeIcons.facebook, color: Colors.white, size: 20,),
+                                Text(S.of(context).continueWithFacebook,
+                                    textAlign: TextAlign.center,
+                                    style: theme.textTheme.displaySmall
+                                        ?.copyWith(fontSize: 18)),
+                              ],
+                            ),
                           ),
                         ),
                       ),
