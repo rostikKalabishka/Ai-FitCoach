@@ -3,45 +3,40 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'workout_subitem.g.dart';
 
-enum WorkoutCategoryType { all, newbie, medium, advanced }
-
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class WorkoutSubitem extends Equatable {
   final String imageUrl;
   final String exerciseName;
-  final int exerciseReps;
-  final int exerciseDuration;
-  final String workoutCategoryType;
+  final String exerciseReps;
   final String id;
   final String workoutId;
+  final String categoryType;
 
   const WorkoutSubitem({
     required this.imageUrl,
     required this.exerciseName,
     required this.exerciseReps,
-    required this.exerciseDuration,
-    required this.workoutCategoryType,
     required this.id,
     required this.workoutId,
+    required this.categoryType,
   });
 
   WorkoutSubitem copyWith({
     String? imageUrl,
     String? exerciseName,
-    int? exerciseReps,
-    int? exerciseDuration,
+    String? exerciseReps,
     String? workoutCategoryType,
     String? id,
     String? workoutId,
+    String? categoryType
   }) {
     return WorkoutSubitem(
       imageUrl: imageUrl ?? this.imageUrl,
       exerciseName: exerciseName ?? this.exerciseName,
       exerciseReps: exerciseReps ?? this.exerciseReps,
-      exerciseDuration: exerciseDuration ?? this.exerciseDuration,
-      workoutCategoryType: workoutCategoryType ?? this.workoutCategoryType,
       workoutId: workoutId ?? this.workoutId,
       id: id ?? this.id,
+      categoryType: categoryType ?? this.categoryType
     );
   }
 
@@ -55,9 +50,8 @@ class WorkoutSubitem extends Equatable {
         imageUrl,
         exerciseName,
         exerciseReps,
-        exerciseDuration,
-        workoutCategoryType,
         workoutId,
-        id
+        id,
+        categoryType,
       ];
 }

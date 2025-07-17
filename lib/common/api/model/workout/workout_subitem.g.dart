@@ -10,11 +10,10 @@ WorkoutSubitem _$WorkoutSubitemFromJson(Map<String, dynamic> json) =>
     WorkoutSubitem(
       imageUrl: json['image_url'] as String,
       exerciseName: json['exercise_name'] as String,
-      exerciseReps: (json['exercise_reps'] as num).toInt(),
-      exerciseDuration: (json['exercise_duration'] as num).toInt(),
-      workoutCategoryType: json['workout_category_type'] as String,
+      exerciseReps: json['exercise_reps'] as String,
       id: json['id'] as String,
       workoutId: json['workout_id'] as String,
+      categoryType: json['category_type'] as String,
     );
 
 Map<String, dynamic> _$WorkoutSubitemToJson(WorkoutSubitem instance) =>
@@ -22,8 +21,7 @@ Map<String, dynamic> _$WorkoutSubitemToJson(WorkoutSubitem instance) =>
       'image_url': instance.imageUrl,
       'exercise_name': instance.exerciseName,
       'exercise_reps': instance.exerciseReps,
-      'exercise_duration': instance.exerciseDuration,
-      'workout_category_type': instance.workoutCategoryType,
       'id': instance.id,
       'workout_id': instance.workoutId,
+      'category_type': instance.categoryType,
     };
