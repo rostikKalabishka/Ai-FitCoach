@@ -49,7 +49,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
               SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -57,6 +57,7 @@ class WelcomeScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 56, vertical: 56),
                       ),
+                      SizedBox(height: 20),
                       Text(
                         'AI FitCoach',
                         style: theme.textTheme.displaySmall
@@ -84,7 +85,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 80),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SizedBox(
                             height: MediaQuery.of(context).size.width * 0.2,

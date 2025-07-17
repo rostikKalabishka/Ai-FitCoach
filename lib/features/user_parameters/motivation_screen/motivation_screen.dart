@@ -47,14 +47,13 @@ class _MotivationPageState extends State<MotivationPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
           S.of(context).whatMotivatesYou,
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(fontSize: 20),
         ),
-        backgroundColor: Colors.black,
         leading: NavigationBackButton(pageController: widget.pageController),
       ),
       body: Column(
@@ -63,17 +62,11 @@ class _MotivationPageState extends State<MotivationPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Column(
-                spacing: 20,
+                spacing: 10,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    S.of(context).chooseYourMotivations,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
+                  Text(S.of(context).chooseYourMotivations,
+                      style: theme.textTheme.labelSmall),
                   SelectionButton(
                     selectedColor: const Color.fromARGB(255, 85, 0, 0),
                     text: S.of(context).reducingStress,
@@ -157,6 +150,9 @@ class _MotivationPageState extends State<MotivationPage> {
           ContinueButton(
             isNextEnabled: _isNextEnabled,
             pageController: widget.pageController,
+          ),
+          SizedBox(
+            height: 20,
           ),
         ],
       ),

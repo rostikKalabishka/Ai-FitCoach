@@ -38,15 +38,13 @@ class _ChooseActivitiesPageState extends State<ChooseActivitiesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
           S.of(context).chooseUpTo3ActivitiesYourInterestedIn,
           maxLines: 2,
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(fontSize: 20),
         ),
-        backgroundColor: Colors.black,
         leading: NavigationBackButton(pageController: widget.pageController),
       ),
       body: Column(
@@ -105,10 +103,17 @@ class _ChooseActivitiesPageState extends State<ChooseActivitiesPage> {
               ),
             ),
           ),
-          ContinueButton(
-            isNextEnabled: _isNextEnabled,
-            pageController: widget.pageController,
-          ),
+          Column(
+            children: [
+              ContinueButton(
+                isNextEnabled: _isNextEnabled,
+                pageController: widget.pageController,
+              ),
+              SizedBox(
+                height: 20,
+              )
+            ],
+          )
         ],
       ),
     );

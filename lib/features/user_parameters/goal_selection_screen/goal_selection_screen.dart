@@ -36,13 +36,11 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
           S.of(context).whatIsYourMainGoal,
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(fontSize: 20),
         ),
-        backgroundColor: Colors.black,
       ),
       body: Column(
         spacing: 20,
@@ -63,10 +61,15 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
               ),
             ),
           ),
-          ContinueButton(
-            isNextEnabled: _isNextEnabled,
-            pageController: widget.pageController,
-          ),
+          Column(children: [
+            ContinueButton(
+              isNextEnabled: _isNextEnabled,
+              pageController: widget.pageController,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+          ]),
         ],
       ),
     );

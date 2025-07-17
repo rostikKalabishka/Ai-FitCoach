@@ -33,11 +33,11 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text(S.of(context).bodyParameters,
-            style: TextStyle(color: Colors.white, fontSize: 20)),
-        backgroundColor: Colors.black,
+        title: Text(
+          S.of(context).bodyParameters,
+          style: TextStyle(fontSize: 20),
+        ),
         leading: NavigationBackButton(pageController: widget.pageController),
       ),
       body: Column(
@@ -95,6 +95,9 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
           ContinueButton(
             isNextEnabled: _isNextEnabled,
             pageController: widget.pageController,
+          ),
+          SizedBox(
+            height: 20,
           ),
         ],
       ),

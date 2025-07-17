@@ -14,8 +14,7 @@ final themeDark = ThemeData.dark().copyWith(
     color: const Color.fromARGB(255, 39, 1, 21),
   ),
   dropdownMenuTheme: DropdownMenuThemeData(
-    textStyle: TextStyle(color: const Color.fromARGB(255, 255, 255, 255))
-  ),
+      textStyle: TextStyle(color: const Color.fromARGB(255, 255, 255, 255))),
   dividerTheme: DividerThemeData(color: Colors.white),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     selectedIconTheme: IconThemeData(color: Colors.white),
@@ -32,9 +31,12 @@ final themeDark = ThemeData.dark().copyWith(
   scaffoldBackgroundColor: Colors.black,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
-      backgroundColor: WidgetStateColor.resolveWith(
-        (states) => const Color.fromARGB(255, 85, 0, 0),
-      ),
+      backgroundColor: WidgetStateColor.resolveWith((states) {
+        if (states.contains(WidgetState.disabled)) {
+          return const Color.fromARGB(255, 68, 68, 68);
+        }
+        return const Color.fromARGB(255, 85, 0, 0);
+      }),
     ),
   ),
   textTheme: const TextTheme(
@@ -68,8 +70,8 @@ final themeLight = ThemeData.light().copyWith(
   cardTheme: CardThemeData(
     color: const Color.fromARGB(255, 39, 1, 21),
   ),
-  dropdownMenuTheme: DropdownMenuThemeData(
-    textStyle: TextStyle(color: Colors.black)),
+  dropdownMenuTheme:
+      DropdownMenuThemeData(textStyle: TextStyle(color: Colors.black)),
   dividerTheme: DividerThemeData(color: Colors.white),
   iconTheme: const IconThemeData(color: Colors.black),
   appBarTheme: const AppBarTheme(
@@ -85,9 +87,12 @@ final themeLight = ThemeData.light().copyWith(
   scaffoldBackgroundColor: Colors.white,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
-      backgroundColor: WidgetStateColor.resolveWith(
-        (states) => const Color.fromARGB(255, 85, 0, 0),
-      ),
+      backgroundColor: WidgetStateColor.resolveWith((states) {
+        if (states.contains(WidgetState.disabled)) {
+          return const Color.fromARGB(255, 68, 68, 68);
+        }
+        return const Color.fromARGB(255, 85, 0, 0); // активна кнопка
+      }),
     ),
   ),
   textTheme: const TextTheme(

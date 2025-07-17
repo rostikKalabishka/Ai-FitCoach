@@ -38,13 +38,11 @@ class _DietPreferencePageState extends State<DietPreferencePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
           S.of(context).whatTypeOfDietDoYouPrefer,
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(fontSize: 20),
         ),
-        backgroundColor: Colors.black,
         leading: NavigationBackButton(pageController: widget.pageController),
       ),
       body: Column(
@@ -103,6 +101,9 @@ class _DietPreferencePageState extends State<DietPreferencePage> {
           ContinueButton(
             isNextEnabled: _isNextEnabled,
             pageController: widget.pageController,
+          ),
+          SizedBox(
+            height: 20,
           ),
         ],
       ),

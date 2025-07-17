@@ -41,14 +41,14 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<UserParametersBloc>();
+    //final isDark = Theme.of(context).brightness == Brightness.dark;
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
           S.of(context).whatIsYourLevelOfPhysicalFitness,
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(fontSize: 20),
         ),
-        backgroundColor: Colors.black,
         leading: NavigationBackButton(pageController: widget.pageController),
       ),
       body: Column(
@@ -74,7 +74,8 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
                             const Color.fromARGB(255, 85, 0, 0),
                         tickMarkShape:
                             const RoundSliderTickMarkShape(tickMarkRadius: 8.0),
-                        activeTickMarkColor: Colors.white,
+                        activeTickMarkColor:
+                            const Color.fromARGB(255, 85, 0, 0),
                         inactiveTickMarkColor: Colors.grey.withAlpha(135),
                       ),
                       child: Slider(
@@ -96,7 +97,7 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
                     Text(
                       S.of(context).levelFitnessLevel(
                           _getFitnessLevelString(_fitnessLevel)),
-                      style: TextStyle(color: Colors.white, fontSize: 24),
+                      style: theme.textTheme.labelMedium,
                     ),
                   ],
                 ),
@@ -107,6 +108,9 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
             isNextEnabled: _isNextEnabled,
             pageController: widget.pageController,
           ),
+          SizedBox(
+            height: 20,
+          )
         ],
       ),
     );

@@ -40,7 +40,7 @@ class _PlatformAdaptivePickerState extends State<PlatformAdaptivePicker> {
       children: [
         Text(
           widget.label,
-          style: const TextStyle(color: Colors.white),
+          style: theme.textTheme.headlineLarge,
         ),
         const SizedBox(height: 10),
         if (theme.isAndroid)
@@ -50,9 +50,8 @@ class _PlatformAdaptivePickerState extends State<PlatformAdaptivePicker> {
             maxValue: widget.maxValue,
             itemHeight: 50,
             axis: Axis.vertical,
-            textStyle: const TextStyle(color: Colors.white, fontSize: 20),
-            selectedTextStyle:
-                const TextStyle(color: Colors.blue, fontSize: 24),
+            textStyle: TextStyle(fontSize: 20),
+            selectedTextStyle: TextStyle(fontSize: 24),
             onChanged: (value) {
               setState(() {
                 _currentValue = value;
@@ -71,17 +70,16 @@ class _PlatformAdaptivePickerState extends State<PlatformAdaptivePicker> {
                 });
                 widget.onChanged(_currentValue);
               },
+              scrollController: FixedExtentScrollController(
+                  initialItem: widget.initialValue - widget.minValue),
               children: List<Widget>.generate(
                 widget.maxValue - widget.minValue + 1,
                 (index) => Center(
                   child: Text(
                     '${widget.minValue + index}',
-                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
               ),
-              scrollController: FixedExtentScrollController(
-                  initialItem: widget.initialValue - widget.minValue),
             ),
           )
       ],
