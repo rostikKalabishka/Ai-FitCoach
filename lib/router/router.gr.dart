@@ -217,18 +217,56 @@ class DoNotDisturbModeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ExerciseChallengesScreen]
-class ExerciseChallengesRoute extends PageRouteInfo<void> {
-  const ExerciseChallengesRoute({List<PageRouteInfo>? children})
-      : super(ExerciseChallengesRoute.name, initialChildren: children);
+class ExerciseChallengesRoute
+    extends PageRouteInfo<ExerciseChallengesRouteArgs> {
+  ExerciseChallengesRoute({
+    Key? key,
+    required String categoryType,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ExerciseChallengesRoute.name,
+          args: ExerciseChallengesRouteArgs(
+            key: key,
+            categoryType: categoryType,
+          ),
+          initialChildren: children,
+        );
 
   static const String name = 'ExerciseChallengesRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const ExerciseChallengesScreen();
+      final args = data.argsAs<ExerciseChallengesRouteArgs>();
+      return ExerciseChallengesScreen(
+        key: args.key,
+        categoryType: args.categoryType,
+      );
     },
   );
+}
+
+class ExerciseChallengesRouteArgs {
+  const ExerciseChallengesRouteArgs({this.key, required this.categoryType});
+
+  final Key? key;
+
+  final String categoryType;
+
+  @override
+  String toString() {
+    return 'ExerciseChallengesRouteArgs{key: $key, categoryType: $categoryType}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! ExerciseChallengesRouteArgs) return false;
+    return key == other.key && categoryType == other.categoryType;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ categoryType.hashCode;
 }
 
 /// generated route for
@@ -249,18 +287,52 @@ class FitnessGoalRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [FoodChallengesScreen]
-class FoodChallengesRoute extends PageRouteInfo<void> {
-  const FoodChallengesRoute({List<PageRouteInfo>? children})
-      : super(FoodChallengesRoute.name, initialChildren: children);
+class FoodChallengesRoute extends PageRouteInfo<FoodChallengesRouteArgs> {
+  FoodChallengesRoute({
+    Key? key,
+    required String categoryType,
+    List<PageRouteInfo>? children,
+  }) : super(
+          FoodChallengesRoute.name,
+          args: FoodChallengesRouteArgs(key: key, categoryType: categoryType),
+          initialChildren: children,
+        );
 
   static const String name = 'FoodChallengesRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const FoodChallengesScreen();
+      final args = data.argsAs<FoodChallengesRouteArgs>();
+      return FoodChallengesScreen(
+        key: args.key,
+        categoryType: args.categoryType,
+      );
     },
   );
+}
+
+class FoodChallengesRouteArgs {
+  const FoodChallengesRouteArgs({this.key, required this.categoryType});
+
+  final Key? key;
+
+  final String categoryType;
+
+  @override
+  String toString() {
+    return 'FoodChallengesRouteArgs{key: $key, categoryType: $categoryType}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! FoodChallengesRouteArgs) return false;
+    return key == other.key && categoryType == other.categoryType;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ categoryType.hashCode;
 }
 
 /// generated route for
@@ -281,34 +353,103 @@ class HomeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [HydrationChallengesScreen]
-class HydrationChallengesRoute extends PageRouteInfo<void> {
-  const HydrationChallengesRoute({List<PageRouteInfo>? children})
-      : super(HydrationChallengesRoute.name, initialChildren: children);
+class HydrationChallengesRoute
+    extends PageRouteInfo<HydrationChallengesRouteArgs> {
+  HydrationChallengesRoute({
+    Key? key,
+    required String categoryType,
+    List<PageRouteInfo>? children,
+  }) : super(
+          HydrationChallengesRoute.name,
+          args: HydrationChallengesRouteArgs(
+            key: key,
+            categoryType: categoryType,
+          ),
+          initialChildren: children,
+        );
 
   static const String name = 'HydrationChallengesRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const HydrationChallengesScreen();
+      final args = data.argsAs<HydrationChallengesRouteArgs>();
+      return HydrationChallengesScreen(
+        key: args.key,
+        categoryType: args.categoryType,
+      );
     },
   );
 }
 
+class HydrationChallengesRouteArgs {
+  const HydrationChallengesRouteArgs({this.key, required this.categoryType});
+
+  final Key? key;
+
+  final String categoryType;
+
+  @override
+  String toString() {
+    return 'HydrationChallengesRouteArgs{key: $key, categoryType: $categoryType}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! HydrationChallengesRouteArgs) return false;
+    return key == other.key && categoryType == other.categoryType;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ categoryType.hashCode;
+}
+
 /// generated route for
 /// [JoinNowScreen]
-class JoinNowRoute extends PageRouteInfo<void> {
-  const JoinNowRoute({List<PageRouteInfo>? children})
-      : super(JoinNowRoute.name, initialChildren: children);
+class JoinNowRoute extends PageRouteInfo<JoinNowRouteArgs> {
+  JoinNowRoute({
+    Key? key,
+    required ChallengeItem challengeItem,
+    List<PageRouteInfo>? children,
+  }) : super(
+          JoinNowRoute.name,
+          args: JoinNowRouteArgs(key: key, challengeItem: challengeItem),
+          initialChildren: children,
+        );
 
   static const String name = 'JoinNowRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const JoinNowScreen();
+      final args = data.argsAs<JoinNowRouteArgs>();
+      return JoinNowScreen(key: args.key, challengeItem: args.challengeItem);
     },
   );
+}
+
+class JoinNowRouteArgs {
+  const JoinNowRouteArgs({this.key, required this.challengeItem});
+
+  final Key? key;
+
+  final ChallengeItem challengeItem;
+
+  @override
+  String toString() {
+    return 'JoinNowRouteArgs{key: $key, challengeItem: $challengeItem}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! JoinNowRouteArgs) return false;
+    return key == other.key && challengeItem == other.challengeItem;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ challengeItem.hashCode;
 }
 
 /// generated route for
@@ -384,35 +525,53 @@ class LoaderRouteArgs {
 }
 
 /// generated route for
-/// [MainScreen]
-class MainRoute extends PageRouteInfo<void> {
-  const MainRoute({List<PageRouteInfo>? children})
-      : super(MainRoute.name, initialChildren: children);
-
-  static const String name = 'MainRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const MainScreen();
-    },
-  );
-}
-
-/// generated route for
 /// [MentalChallengesScreen]
-class MentalChallengesRoute extends PageRouteInfo<void> {
-  const MentalChallengesRoute({List<PageRouteInfo>? children})
-      : super(MentalChallengesRoute.name, initialChildren: children);
+class MentalChallengesRoute extends PageRouteInfo<MentalChallengesRouteArgs> {
+  MentalChallengesRoute({
+    Key? key,
+    required String categoryType,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MentalChallengesRoute.name,
+          args: MentalChallengesRouteArgs(key: key, categoryType: categoryType),
+          initialChildren: children,
+        );
 
   static const String name = 'MentalChallengesRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const MentalChallengesScreen();
+      final args = data.argsAs<MentalChallengesRouteArgs>();
+      return MentalChallengesScreen(
+        key: args.key,
+        categoryType: args.categoryType,
+      );
     },
   );
+}
+
+class MentalChallengesRouteArgs {
+  const MentalChallengesRouteArgs({this.key, required this.categoryType});
+
+  final Key? key;
+
+  final String categoryType;
+
+  @override
+  String toString() {
+    return 'MentalChallengesRouteArgs{key: $key, categoryType: $categoryType}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! MentalChallengesRouteArgs) return false;
+    return key == other.key && categoryType == other.categoryType;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ categoryType.hashCode;
 }
 
 /// generated route for
@@ -497,16 +656,73 @@ class SettingsRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [SleepAndRelaxChallengesScreen]
-class SleepAndRelaxChallengesRoute extends PageRouteInfo<void> {
-  const SleepAndRelaxChallengesRoute({List<PageRouteInfo>? children})
-      : super(SleepAndRelaxChallengesRoute.name, initialChildren: children);
+class SleepAndRelaxChallengesRoute
+    extends PageRouteInfo<SleepAndRelaxChallengesRouteArgs> {
+  SleepAndRelaxChallengesRoute({
+    Key? key,
+    required String categoryType,
+    List<PageRouteInfo>? children,
+  }) : super(
+          SleepAndRelaxChallengesRoute.name,
+          args: SleepAndRelaxChallengesRouteArgs(
+            key: key,
+            categoryType: categoryType,
+          ),
+          initialChildren: children,
+        );
 
   static const String name = 'SleepAndRelaxChallengesRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const SleepAndRelaxChallengesScreen();
+      final args = data.argsAs<SleepAndRelaxChallengesRouteArgs>();
+      return SleepAndRelaxChallengesScreen(
+        key: args.key,
+        categoryType: args.categoryType,
+      );
+    },
+  );
+}
+
+class SleepAndRelaxChallengesRouteArgs {
+  const SleepAndRelaxChallengesRouteArgs({
+    this.key,
+    required this.categoryType,
+  });
+
+  final Key? key;
+
+  final String categoryType;
+
+  @override
+  String toString() {
+    return 'SleepAndRelaxChallengesRouteArgs{key: $key, categoryType: $categoryType}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! SleepAndRelaxChallengesRouteArgs) return false;
+    return key == other.key && categoryType == other.categoryType;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ categoryType.hashCode;
+}
+
+/// generated route for
+/// [TrendingScreen]
+class TrendingRoute extends PageRouteInfo<void> {
+  const TrendingRoute({List<PageRouteInfo>? children})
+      : super(TrendingRoute.name, initialChildren: children);
+
+  static const String name = 'TrendingRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TrendingScreen();
     },
   );
 }

@@ -14,6 +14,7 @@ ChallengeItem _$ChallengeItemFromJson(Map<String, dynamic> json) =>
       price: (json['price'] as num).toDouble(),
       imageUrl: json['image_url'] as String,
       description: json['description'] as String?,
+      categoryType: json['category_type'] as String?,
     );
 
 Map<String, dynamic> _$ChallengeItemToJson(ChallengeItem instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$ChallengeItemToJson(ChallengeItem instance) =>
       'price': instance.price,
       'image_url': instance.imageUrl,
       'description': instance.description,
+      'category_type': instance.categoryType,
     };

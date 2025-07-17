@@ -1,10 +1,14 @@
+import 'package:ai_fit_coach/common/api/model/workout/workout_item.dart';
+import 'package:ai_fit_coach/common/api/model/workout/workout_subitem.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ui/ui.dart';
 
 class DescriptionCategoryWorkout extends StatefulWidget {
-  const DescriptionCategoryWorkout({super.key});
+  const DescriptionCategoryWorkout({super.key, required this.workoutItem});
+  final WorkoutItem workoutItem;
 
   @override
   State<DescriptionCategoryWorkout> createState() =>
@@ -22,8 +26,22 @@ class _DescriptionCategoryWorkoutState
     'Advanced',
   ];
 
+  String _workoutCategoryType(WorkoutCategoryType workoutCategoryType) {
+    switch (workoutCategoryType) {
+      case WorkoutCategoryType.all:
+        return 'all';
+      case WorkoutCategoryType.newbie:
+        return 'newbie';
+      case WorkoutCategoryType.medium:
+        return 'medium';
+      case WorkoutCategoryType.advanced:
+        return 'advanced';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final workoutItem = widget.workoutItem;
     final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -36,20 +54,23 @@ class _DescriptionCategoryWorkoutState
                 Container(
                     height: 350,
                     width: MediaQuery.of(context).size.width,
-                    child: Image.asset(
-                      'assets/images/challenges/exercise/2.png',
+                    child: Image(
+                      image: CachedNetworkImageProvider(
+                        workoutItem.imageUrl,
+                      ),
                       fit: BoxFit.cover,
                     )),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
                   child: IconButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
                       icon: Icon(
                         Icons.arrow_back,
-                        color: Colors.black,
+                        color: Colors.red,
+                        size: 28,
                       )),
                 ),
                 Padding(
@@ -87,7 +108,7 @@ class _DescriptionCategoryWorkoutState
                                         horizontal: 16),
                                     decoration: BoxDecoration(
                                       color: isSelected
-                                          ? const Color.fromARGB(255, 85, 0, 0)
+                                          ? theme.colorScheme.primary
                                           : const Color.fromARGB(
                                               255, 39, 39, 39),
                                       borderRadius: BorderRadius.circular(20),
@@ -102,15 +123,29 @@ class _DescriptionCategoryWorkoutState
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 16, bottom: 24),
-                          child: Text(
-                            S.of(context).hiitHighIntensity,
-                            style: theme.textTheme.displaySmall?.copyWith(
-                              fontSize: 24,
-                              color: theme.colorScheme.onSurface,
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 12),
+                              child: Text(
+                                workoutItem.title,
+                                style: theme.textTheme.displaySmall?.copyWith(
+                                  fontSize: 24,
+                                  color: theme.colorScheme.onSurface,
+                                ),
+                              ),
                             ),
-                          ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 12),
+                              child: Text(
+                                'duration: ${workoutItem.subtitle} minutes',
+                                style: theme.textTheme.displaySmall?.copyWith(
+                                  fontSize: 16,
+                                  color: theme.colorScheme.onSurface,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -124,8 +159,7 @@ class _DescriptionCategoryWorkoutState
                               width: MediaQuery.of(context).size.width * 0.7,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      const Color.fromARGB(255, 39, 1, 21),
+                                  backgroundColor: theme.colorScheme.primary,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(16),
                                   ),

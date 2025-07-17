@@ -313,7 +313,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "intermediate": MessageLookupByLibrary.simpleMessage("Intermediate"),
     "japanese": MessageLookupByLibrary.simpleMessage("Japanese"),
-    "joinNow": MessageLookupByLibrary.simpleMessage("JOIN NOW!"),
+    "joinNow": MessageLookupByLibrary.simpleMessage("Join Now"),
     "keepFit": MessageLookupByLibrary.simpleMessage("Keep fit"),
     "keto": MessageLookupByLibrary.simpleMessage("Keto"),
     "languageLocalization": MessageLookupByLibrary.simpleMessage(
@@ -493,7 +493,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "spanish": MessageLookupByLibrary.simpleMessage("Spanish"),
     "start": MessageLookupByLibrary.simpleMessage("Start"),
-    "startWorkout": MessageLookupByLibrary.simpleMessage("START WORKOUT"),
+    "startWorkout": MessageLookupByLibrary.simpleMessage("Start Workout"),
     "stayFit": MessageLookupByLibrary.simpleMessage("Stay Fit"),
     "stepCount": MessageLookupByLibrary.simpleMessage("Step Count"),
     "strength": MessageLookupByLibrary.simpleMessage("Strength"),

@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 final themeDark = ThemeData.dark().copyWith(
   colorScheme: ColorScheme.fromSeed(
     seedColor: Colors.black,
-    primary: const Color.fromARGB(255, 39, 1, 21),
+    primary: const Color.fromARGB(255, 85, 0, 0),
     secondary: const Color.fromARGB(255, 255, 153, 0),
     tertiary: Colors.black,
     onTertiary: Colors.grey,
     brightness: Brightness.dark,
+  ),
+  cardTheme: CardThemeData(
+    color: const Color.fromARGB(255, 39, 1, 21),
   ),
   dropdownMenuTheme: DropdownMenuThemeData(
     textStyle: TextStyle(color: const Color.fromARGB(255, 255, 255, 255))
@@ -56,11 +59,14 @@ final themeLight = ThemeData.light().copyWith(
   primaryColor: Colors.grey[400],
   colorScheme: ColorScheme.fromSeed(
     seedColor: Colors.white,
-    primary: const Color.fromARGB(255, 44, 0, 24),
+    primary: const Color.fromARGB(255, 85, 0, 0),
     secondary: const Color.fromARGB(255, 255, 153, 0),
     tertiary: Colors.white,
     onTertiary: Colors.grey,
     brightness: Brightness.light,
+  ),
+  cardTheme: CardThemeData(
+    color: const Color.fromARGB(255, 39, 1, 21),
   ),
   dropdownMenuTheme: DropdownMenuThemeData(
     textStyle: TextStyle(color: Colors.black)),

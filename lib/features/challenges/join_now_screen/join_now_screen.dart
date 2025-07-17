@@ -1,10 +1,13 @@
+import 'package:ai_fit_coach/common/api/model/challenges/challenge_item.dart';
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
 class JoinNowScreen extends StatefulWidget {
-  const JoinNowScreen({super.key});
+  const JoinNowScreen({super.key, required this.challengeItem});
+  final ChallengeItem challengeItem;
 
   @override
   State<JoinNowScreen> createState() => _JoinNowScreenState();
@@ -14,6 +17,7 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final challengeItem = widget.challengeItem;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -26,48 +30,64 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(32),
-                    child: Image.asset(
-                      AppConst.challengeFood1Image,
+                    child: Image(
+                      image: CachedNetworkImageProvider(challengeItem.imageUrl),
                       height: 400,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),
                   ),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(Icons.arrow_back),
-                    color: Colors.black,
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Colors.red,
+                          size: 28,
+                        )),
                   ),
                 ],
               ),
               const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Text(
-                      'Name of the challenge',
-                      style: theme.textTheme.labelSmall,
-                    ),
-                  ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Icon(
-                        Icons.local_fire_department,
-                        color: Colors.deepOrange,
-                      ),
-                      const SizedBox(width: 5),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Text(
-                          '7 Days',
-                          style: theme.textTheme.headlineMedium,
+                          challengeItem.title,
+                          style: theme.textTheme.labelSmall,
                         ),
-                      )
+                      ),
                     ],
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.local_fire_department,
+                          color: Colors.deepOrange,
+                        ),
+                        const SizedBox(width: 5),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Text(
+                            challengeItem.subtitle,
+                            style: theme.textTheme.headlineMedium,
+                          ),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
@@ -77,7 +97,7 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 85, 0, 0),
+                    backgroundColor: theme.colorScheme.primary,
                     padding: const EdgeInsets.symmetric(vertical: 8),
                   ),
                   child: Column(
@@ -88,7 +108,7 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                         style: theme.textTheme.displaySmall,
                       ),
                       Text(
-                        'Only 3.99 US \$',
+                        'Only for \$ ${challengeItem.price}',
                         style: theme.textTheme.displaySmall,
                       ),
                     ],

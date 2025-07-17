@@ -21,7 +21,7 @@ class ChallengeBloc extends Bloc<ChallengeEvent, ChallengeState> {
     }
     try {
       final listChallengeSectorItem = await _challengeRepository
-          .getChallengeItemsFromSubcollection('food');
+          .getChallengesItemsInCollection(event.categoryType);
       emit(ChallengeLoaded(listChallengeSectorItem: listChallengeSectorItem));
     } catch (e) {
       emit(ChallengeFailure(error: e));

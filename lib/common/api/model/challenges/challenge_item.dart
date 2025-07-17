@@ -3,6 +3,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'challenge_item.g.dart';
 
+enum CategoryType {food, exercise, sleepAndRelax, hydration, mental}
+
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class ChallengeItem extends Equatable {
   final String id;
@@ -11,6 +13,7 @@ class ChallengeItem extends Equatable {
   final double price;
   final String imageUrl;
   final String? description;
+  final String? categoryType;
 
   const ChallengeItem({
     required this.id,
@@ -19,6 +22,7 @@ class ChallengeItem extends Equatable {
     required this.price,
     required this.imageUrl,
     required this.description,
+    required this.categoryType
   });
 
   ChallengeItem copyWith({
@@ -28,6 +32,7 @@ class ChallengeItem extends Equatable {
     double? price,
     String? imageUrl,
     String? description,
+    String? categoryType,
   }) {
     return ChallengeItem(
       id: id ?? this.id,
@@ -36,6 +41,7 @@ class ChallengeItem extends Equatable {
       price: price ?? this.price,
       imageUrl: imageUrl ?? this.imageUrl,
       description: imageUrl ?? this.description,
+      categoryType: categoryType ?? this.categoryType,
     );
   }
 
@@ -44,7 +50,9 @@ class ChallengeItem extends Equatable {
 
   Map<String, dynamic> toJson() => _$ChallengeItemToJson(this);
 
+  factory ChallengeItem.empty() => ChallengeItem(title: '', subtitle: '', imageUrl: '', id: '', price: 0, description: '', categoryType: '');
+
   @override
-  List<Object?> get props => [id, title, subtitle, price, imageUrl, description];
+  List<Object?> get props => [id, title, subtitle, price, imageUrl, description, categoryType];
 }
 

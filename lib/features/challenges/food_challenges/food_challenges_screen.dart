@@ -7,7 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class FoodChallengesScreen extends StatefulWidget {
-  const FoodChallengesScreen({super.key});
+  const FoodChallengesScreen({super.key, required this.categoryType});
+  final String categoryType;
 
   @override
   State<FoodChallengesScreen> createState() => _FoodChallengesScreenState();
@@ -16,7 +17,7 @@ class FoodChallengesScreen extends StatefulWidget {
 class _FoodChallengesScreenState extends State<FoodChallengesScreen> {
   @override
   void initState() {
-    context.read<ChallengeBloc>().add(LoadListChallengeItemEvent());
+    context.read<ChallengeBloc>().add(LoadListChallengeItemEvent(categoryType: widget.categoryType));
     super.initState();
   }
 
@@ -42,7 +43,7 @@ class _FoodChallengesScreenState extends State<FoodChallengesScreen> {
                   price: foodChallenge.price,
                   onJoin: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => JoinNowScreen()));
+                        builder: (context) => JoinNowScreen(challengeItem: foodChallenge)));
                   },
                   onInfoTap: () {},
                 );

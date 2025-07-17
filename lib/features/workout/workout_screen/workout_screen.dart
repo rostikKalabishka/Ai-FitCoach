@@ -56,12 +56,12 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                           width: MediaQuery.of(context).size.width * 0.97,
                           child: WorkoutCard(
                             title: workout.title,
-                            subtitle: workout.subtitle,
-                            imageUrl: 'assets/images/challenges/exercise/3.png',
+                            subtitle: 'duration: ${workout.subtitle} minutes', 
+                            imageUrl: workout.imageUrl,
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
-                                      DescriptionCategoryWorkout()));
+                                      DescriptionCategoryWorkout(workoutItem: workout)));
                             },
                           ),
                         ),
@@ -69,7 +69,10 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                     },
                     itemCount: state.listWorkoutItem.length,
                     separatorBuilder: (context, index) {
-                      return Divider(thickness: 0.5);
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Divider(thickness: 0.5),
+                      );
                     },
                   ),
                 ),

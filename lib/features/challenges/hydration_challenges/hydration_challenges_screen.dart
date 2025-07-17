@@ -1,85 +1,62 @@
-import 'package:ai_fit_coach/ui/theme/app_const.dart';
+import 'package:ai_fit_coach/features/challenges/bloc/challenge_bloc.dart';
+import 'package:ai_fit_coach/features/challenges/challenges.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../ui/widgets/custom_challenge_card.dart';
 
 @RoutePage()
 class HydrationChallengesScreen extends StatefulWidget {
-  const HydrationChallengesScreen({super.key});
+  const HydrationChallengesScreen({super.key, required this.categoryType});
+  final String categoryType;
 
   @override
   State<HydrationChallengesScreen> createState() => _HydrationChallengesScreenState();
 }
 
 class _HydrationChallengesScreenState extends State<HydrationChallengesScreen> {
+ @override
+  void initState() {
+    context.read<ChallengeBloc>().add(LoadListChallengeItemEvent(categoryType: widget.categoryType));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      body: ListView(children: [
-        Column(
-          children: [
-            SizedBox(height: 10),
-            CustomChallengeCard(
-              title: 'Drink a Water Before Meal',
-              subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeHydration1Image,
-              price: 3.99,
-              onJoin: () {},
-              onInfoTap: () {},
-            ),
-            SizedBox(
-              height: 13,
-            ),
-            CustomChallengeCard(
-              title: '2 Liters a Day',
-              subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeHydration2Image,
-              price: 4.69,
-              onJoin: () {},
-              onInfoTap: () {},
-            ),
-            SizedBox(
-              height: 13,
-            ),
-            CustomChallengeCard(
-              title: 'Morning Hydration Ritual',
-              subtitle: '5 Days challenge',
-              imagePath: AppConst.challengeHydration3Image,
-              price: 3.99,
-              onJoin: () {},
-              onInfoTap: () {},
-            ),
-            SizedBox(
-              height: 13,
-            ),
-            CustomChallengeCard(
-              title: 'Replace One Soda with Water',
-              subtitle: '7 Days challenge',
-              imagePath: AppConst.challengeHydration4Image,
-              price: 4.59,
-              onJoin: () {},
-              onInfoTap: () {},
-            ),
-            SizedBox(
-              height: 13,
-            ),
-            CustomChallengeCard(
-              title: "Evening with Herbal Tea",
-              subtitle: '5 Days challenge',
-              imagePath: AppConst.challengeHydration5Image,
-              price: 9.99,
-              onJoin: () {},
-              onInfoTap: () {},
-            ),
-            SizedBox(
-              height: 13,
-            ),
-          ],
-        ),
-      ]),
+      body: BlocBuilder<ChallengeBloc, ChallengeState>(
+        builder: (context, state) {
+          if (state is ChallengeLoaded) {
+            return ListView.separated(
+              separatorBuilder: (context, index) {
+                return SizedBox(height: 13);
+              },
+              itemCount: state.listChallengeSectorItem.length,
+              itemBuilder: (context, index) {
+                final foodChallenge = state.listChallengeSectorItem[index];
+                return CustomChallengeCard(
+                  title: foodChallenge.title,
+                  subtitle: foodChallenge.subtitle,
+                  imagePath: foodChallenge.imageUrl,
+                  price: foodChallenge.price,
+                  onJoin: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => JoinNowScreen(challengeItem: foodChallenge)));
+                  },
+                  onInfoTap: () {},
+                );
+              },
+            );
+          } else {
+            return Center(
+              child: CircularProgressIndicator.adaptive(),
+            );
+          }
+        },
+      ),
     );
   }
 }

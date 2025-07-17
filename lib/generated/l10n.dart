@@ -241,7 +241,7 @@ class S {
 
   /// `Home`
   String get home {
-    return Intl.message('Home', name: 'home', desc: '', args: []);
+    return Intl.message('Trending', name: 'trending', desc: '', args: []);
   }
 
   /// `Challenges`
@@ -919,10 +919,10 @@ class S {
     );
   }
 
-  /// `START WORKOUT`
+  /// `Start Workout`
   String get startWorkout {
     return Intl.message(
-      'START WORKOUT',
+      'Start Workout',
       name: 'startWorkout',
       desc: '',
       args: [],
@@ -2259,9 +2259,9 @@ class S {
     );
   }
 
-  /// `JOIN NOW!`
+  /// `Join Now`
   String get joinNow {
-    return Intl.message('JOIN NOW!', name: 'joinNow', desc: '', args: []);
+    return Intl.message('Join Now', name: 'joinNow', desc: '', args: []);
   }
 }
 

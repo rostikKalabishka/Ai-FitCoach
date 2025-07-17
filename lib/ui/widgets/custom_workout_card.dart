@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutCard extends StatelessWidget {
@@ -19,7 +20,7 @@ class WorkoutCard extends StatelessWidget {
     final theme = Theme.of(context);
     return Card(
       elevation: 2,
-      color: theme.colorScheme.primary,
+      color: theme.cardTheme.color,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
       ),
@@ -32,22 +33,26 @@ class WorkoutCard extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image.asset(
-                  imageUrl,
-                  width: 80,
-                  height: 80,
+                child: Image(image: CachedNetworkImageProvider(imageUrl),
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  height: MediaQuery.of(context).size.height * 0.09,
                   fit: BoxFit.cover,
                 ),
               ),
-              const SizedBox(width: 16),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title, style: theme.textTheme.displaySmall?.copyWith(fontSize: 16)),
-                    const SizedBox(height: 4),
-                    Text(subtitle, style: theme.textTheme.displaySmall),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(title, style: theme.textTheme.displaySmall?.copyWith(fontSize: 16)),
+                    ),
+                    SizedBox(height: 4,),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(subtitle, style: theme.textTheme.displaySmall?.copyWith(fontSize: 12)),
+                    ),
                   ],
                 ),
               ),

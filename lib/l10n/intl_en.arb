@@ -109,7 +109,7 @@
   "newbie": "Newbie",
   "advanced": "Advanced",
   "nameOfWorkoutWhatYoullChoose": "Name of workout, what you'll choose",
-  "startWorkout": "START WORKOUT",
+  "startWorkout": "Start Workout",
   "hiitHighIntensity": "HIIT (High Intensity)",
   "forYou": "FOR YOU",
   "accountManagement": "Account Management",
@@ -260,5 +260,5 @@
   "hydration": "Hydration",
   "mental": "Mental",
   "allCategories": "ALL CATEGORIES",
-  "joinNow": "JOIN NOW!"
+  "joinNow": "Join Now"
 }

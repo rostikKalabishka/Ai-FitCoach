@@ -40,6 +40,8 @@ class FoodRecommendationItem extends Equatable {
   factory FoodRecommendationItem.fromJson(Map<String, dynamic> json) =>
       _$FoodRecommendationItemFromJson(json);
 
+factory FoodRecommendationItem.empty() => FoodRecommendationItem(title: '', imageUrl: '', id: '', description: '', foodCategory: '');
+
   @override
   List<Object?> get props => [id, foodCategory, title, description, imageUrl];
 }
