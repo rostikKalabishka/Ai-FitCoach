@@ -7,9 +7,14 @@ import 'package:flutter/material.dart';
 import '../../../repositories/user_repository/user.dart';
 
 @RoutePage()
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     final router = AutoRouter.of(context);
@@ -51,6 +56,7 @@ class SettingsScreen extends StatelessWidget {
                         Icon(
                           Icons.local_fire_department,
                           size: 35,
+                        color: theme.colorScheme.secondary,
                         ),
                         SizedBox(
                           width: 10,

@@ -69,8 +69,8 @@ class _DescriptionCategoryWorkoutState
                             },
                             icon: Icon(
                               Icons.arrow_back,
-                              color: Colors.red,
-                              size: 28,
+                              color: theme.bottomNavigationBarTheme.unselectedItemColor,
+                              size: 32,
                             )),
                       ),
                       Padding(

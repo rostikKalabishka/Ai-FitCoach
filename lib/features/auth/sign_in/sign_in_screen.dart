@@ -46,7 +46,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       hintText: S.of(context).email,
                       obscureText: false,
                       keyboardType: TextInputType.emailAddress,
-                      prefixIcon: Icon(Icons.email_outlined),
+                      prefixIcon: Icon(Icons.email_outlined, color: theme.colorScheme.primary,),
                       errorMsg: _errorMsg,
                       validator: (val) => FormValidators.emailValidator(val),
                     ),
@@ -64,7 +64,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       hintText: S.of(context).password,
                       obscureText: obscurePassword,
                       keyboardType: TextInputType.visiblePassword,
-                      prefixIcon: Icon(Icons.lock_outline),
+                      prefixIcon: Icon(Icons.lock_outline, color: theme.colorScheme.primary,),
                       errorMsg: _errorMsg,
                       validator: (val) => FormValidators.passwordValidator(val),
                       suffixIcon: IconButton(
@@ -73,6 +73,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               obscurePassword = !obscurePassword;
                             });
                           },
+                          color: theme.colorScheme.primary,
                           icon: Icon(obscurePassword
                               ? Icons.visibility
                               : Icons.visibility_off)),
