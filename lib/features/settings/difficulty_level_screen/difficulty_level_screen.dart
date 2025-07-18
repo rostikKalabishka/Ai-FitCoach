@@ -52,27 +52,6 @@ class _DifficultyLevelScreenState extends State<DifficultyLevelScreen> {
           }),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CustomConfirmCancelButton(
-              label: S.of(context).cancel,
-              onPressed: () => Navigator.pop(context),
-            ),
-            CustomConfirmCancelButton(
-              label: S.of(context).confirm,
-              onPressed: () {
-                final selectedLabel = selectedIndex != null
-                    ? options[selectedIndex!].label
-                    : null;
-                print('Selected level: $selectedLabel');
-              },
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

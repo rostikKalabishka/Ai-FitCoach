@@ -172,7 +172,7 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               child: Text(
                 description,
-                style: theme.textTheme.bodyLarge,
+                style: theme.textTheme.headlineLarge?.copyWith(fontSize: 16, fontWeight: FontWeight.normal),
               ),
             ),
             Padding(

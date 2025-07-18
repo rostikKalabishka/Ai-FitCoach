@@ -64,28 +64,6 @@ class _FitnessGoalScreenState extends State<FitnessGoalScreen> {
           }),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CustomConfirmCancelButton(
-              label: S.of(context).cancel,
-              onPressed: () => Navigator.pop(context),
-            ),
-            CustomConfirmCancelButton(
-              label: S.of(context).confirm,
-              onPressed: () {
-                final selectedGoals = <String>[];
-                for (int i = 0; i < goals.length; i++) {
-                  if (switches[i]) selectedGoals.add(goals[i].label);
-                }
-                print('Selected goals: $selectedGoals');
-              },
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

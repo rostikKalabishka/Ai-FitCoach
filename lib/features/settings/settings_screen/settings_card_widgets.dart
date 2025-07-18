@@ -22,8 +22,7 @@ class SettingsCard6 extends StatelessWidget {
           color: theme.cardTheme.color,
           borderRadius: BorderRadiusDirectional.circular(16)),
       child: Padding(
-        padding: const EdgeInsets.only(
-            top: 2, left: 10, bottom: 2, right: 10),
+        padding: const EdgeInsets.only(top: 2, left: 10, bottom: 2, right: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,8 +46,7 @@ class SettingsCard6 extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadiusDirectional.circular(6),
                               shape: BoxShape.rectangle,
-                              color:
-                                  const Color.fromARGB(255, 92, 40, 1),
+                              color: const Color.fromARGB(255, 92, 40, 1),
                             ),
                             child: Icon(
                               Icons.privacy_tip,
@@ -60,12 +58,18 @@ class SettingsCard6 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).privacyPolicy,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
@@ -79,7 +83,7 @@ class SettingsCard6 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
@@ -89,8 +93,7 @@ class SettingsCard6 extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadiusDirectional.circular(6),
                             shape: BoxShape.rectangle,
-                            color: const Color.fromARGB(
-                                255, 206, 101, 101),
+                            color: const Color.fromARGB(255, 206, 101, 101),
                           ),
                           child: Icon(
                             Icons.thumb_up,
@@ -104,12 +107,18 @@ class SettingsCard6 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).rateUs,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
@@ -123,7 +132,7 @@ class SettingsCard6 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
@@ -133,8 +142,7 @@ class SettingsCard6 extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadiusDirectional.circular(6),
                             shape: BoxShape.rectangle,
-                            color:
-                                const Color.fromARGB(255, 176, 201, 88),
+                            color: const Color.fromARGB(255, 176, 201, 88),
                           ),
                           child: Icon(
                             Icons.delete_forever,
@@ -147,12 +155,18 @@ class SettingsCard6 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).deleteYourAccount,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
@@ -182,8 +196,7 @@ class SettingsCard5 extends StatelessWidget {
           color: theme.cardTheme.color,
           borderRadius: BorderRadiusDirectional.circular(16)),
       child: Padding(
-        padding: const EdgeInsets.only(
-            top: 2, left: 10, bottom: 2, right: 10),
+        padding: const EdgeInsets.only(top: 2, left: 10, bottom: 2, right: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -197,7 +210,7 @@ class SettingsCard5 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
@@ -207,8 +220,7 @@ class SettingsCard5 extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadiusDirectional.circular(6),
                               shape: BoxShape.rectangle,
-                              color: const Color.fromARGB(
-                                  255, 116, 84, 59),
+                              color: const Color.fromARGB(255, 116, 84, 59),
                             ),
                             child: Icon(
                               Icons.manage_accounts,
@@ -220,12 +232,18 @@ class SettingsCard5 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).accountManagement,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
@@ -239,7 +257,7 @@ class SettingsCard5 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
@@ -249,8 +267,7 @@ class SettingsCard5 extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadiusDirectional.circular(6),
                             shape: BoxShape.rectangle,
-                            color:
-                                const Color.fromARGB(255, 63, 84, 131),
+                            color: const Color.fromARGB(255, 63, 84, 131),
                           ),
                           child: Icon(
                             Icons.security,
@@ -264,12 +281,18 @@ class SettingsCard5 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).privacy,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
@@ -283,7 +306,7 @@ class SettingsCard5 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
@@ -293,8 +316,7 @@ class SettingsCard5 extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadiusDirectional.circular(6),
                             shape: BoxShape.rectangle,
-                            color:
-                                const Color.fromARGB(255, 88, 201, 112),
+                            color: const Color.fromARGB(255, 88, 201, 112),
                           ),
                           child: Icon(
                             Icons.language,
@@ -307,12 +329,18 @@ class SettingsCard5 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).languageLocalization,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
@@ -342,8 +370,7 @@ class SettingsCard4 extends StatelessWidget {
           color: theme.cardTheme.color,
           borderRadius: BorderRadiusDirectional.circular(16)),
       child: Padding(
-        padding: const EdgeInsets.only(
-            top: 2, left: 10, bottom: 2, right: 10),
+        padding: const EdgeInsets.only(top: 2, left: 10, bottom: 2, right: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -357,7 +384,7 @@ class SettingsCard4 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
@@ -367,8 +394,7 @@ class SettingsCard4 extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadiusDirectional.circular(6),
                               shape: BoxShape.rectangle,
-                              color:
-                                  const Color.fromARGB(255, 252, 1, 1),
+                              color: const Color.fromARGB(255, 252, 1, 1),
                             ),
                             child: Icon(
                               Icons.do_not_disturb_on,
@@ -380,12 +406,18 @@ class SettingsCard4 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).doNotDisturbMode,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
@@ -415,8 +447,7 @@ class SettingsCard3 extends StatelessWidget {
           color: theme.cardTheme.color,
           borderRadius: BorderRadiusDirectional.circular(16)),
       child: Padding(
-        padding: const EdgeInsets.only(
-            top: 2, left: 10, bottom: 2, right: 10),
+        padding: const EdgeInsets.only(top: 2, left: 10, bottom: 2, right: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -430,7 +461,7 @@ class SettingsCard3 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
@@ -440,8 +471,7 @@ class SettingsCard3 extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadiusDirectional.circular(6),
                               shape: BoxShape.rectangle,
-                              color: const Color.fromARGB(
-                                  255, 181, 1, 252),
+                              color: const Color.fromARGB(255, 181, 1, 252),
                             ),
                             child: Icon(
                               Icons.local_fire_department,
@@ -453,12 +483,18 @@ class SettingsCard3 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).calorieGoal,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
@@ -472,7 +508,7 @@ class SettingsCard3 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
@@ -482,8 +518,7 @@ class SettingsCard3 extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadiusDirectional.circular(6),
                             shape: BoxShape.rectangle,
-                            color:
-                                const Color.fromARGB(255, 236, 4, 54),
+                            color: const Color.fromARGB(255, 236, 4, 54),
                           ),
                           child: Icon(
                             Icons.water_drop,
@@ -497,12 +532,18 @@ class SettingsCard3 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).waterBalance,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
@@ -532,8 +573,7 @@ class SettingsCard2 extends StatelessWidget {
           color: theme.cardTheme.color,
           borderRadius: BorderRadiusDirectional.circular(16)),
       child: Padding(
-        padding: const EdgeInsets.only(
-            top: 2, left: 10, bottom: 2, right: 10),
+        padding: const EdgeInsets.only(top: 2, left: 10, bottom: 2, right: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -547,7 +587,7 @@ class SettingsCard2 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
@@ -557,8 +597,7 @@ class SettingsCard2 extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadiusDirectional.circular(6),
                               shape: BoxShape.rectangle,
-                              color: const Color.fromARGB(
-                                  255, 252, 114, 1),
+                              color: const Color.fromARGB(255, 252, 114, 1),
                             ),
                             child: Icon(
                               Icons.stairs,
@@ -570,12 +609,18 @@ class SettingsCard2 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).difficultyLevel,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
@@ -589,7 +634,7 @@ class SettingsCard2 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
@@ -599,8 +644,7 @@ class SettingsCard2 extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadiusDirectional.circular(6),
                             shape: BoxShape.rectangle,
-                            color:
-                                const Color.fromARGB(255, 4, 77, 236),
+                            color: const Color.fromARGB(255, 4, 77, 236),
                           ),
                           child: Icon(
                             Icons.accessibility_new,
@@ -614,12 +658,18 @@ class SettingsCard2 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).workoutTypes,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
@@ -633,7 +683,7 @@ class SettingsCard2 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
@@ -643,8 +693,7 @@ class SettingsCard2 extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadiusDirectional.circular(6),
                             shape: BoxShape.rectangle,
-                            color:
-                                const Color.fromARGB(255, 8, 232, 240),
+                            color: const Color.fromARGB(255, 8, 232, 240),
                           ),
                           child: Icon(
                             Icons.directions_run,
@@ -657,12 +706,18 @@ class SettingsCard2 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).automaticActivityTracking,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
@@ -692,8 +747,7 @@ class SettingsCard1 extends StatelessWidget {
           color: theme.cardTheme.color,
           borderRadius: BorderRadiusDirectional.circular(16)),
       child: Padding(
-        padding: const EdgeInsets.only(
-            top: 2, left: 10, bottom: 2, right: 10),
+        padding: const EdgeInsets.only(top: 2, left: 10, bottom: 2, right: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -707,7 +761,7 @@ class SettingsCard1 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
@@ -717,8 +771,7 @@ class SettingsCard1 extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadiusDirectional.circular(6),
                             shape: BoxShape.rectangle,
-                            color:
-                                const Color.fromARGB(255, 233, 236, 4),
+                            color: const Color.fromARGB(255, 233, 236, 4),
                           ),
                           child: Icon(
                             Icons.person_2,
@@ -732,12 +785,18 @@ class SettingsCard1 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).userProfile,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
@@ -751,7 +810,7 @@ class SettingsCard1 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(left: 4),
@@ -761,8 +820,7 @@ class SettingsCard1 extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadiusDirectional.circular(6),
                             shape: BoxShape.rectangle,
-                            color:
-                                const Color.fromARGB(255, 33, 243, 103),
+                            color: const Color.fromARGB(255, 33, 243, 103),
                           ),
                           child: Icon(
                             Icons.star_outline_sharp,
@@ -775,12 +833,18 @@ class SettingsCard1 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).fitnessGoal,
+                        maxLines: 2, 
+                        overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
                       ),
                     ],
                   ),
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  Icon(
+                    Icons.arrow_forward_ios,
+                    size: 16,
+                    color: Colors.white,
+                  )
                 ],
               ),
             ),
