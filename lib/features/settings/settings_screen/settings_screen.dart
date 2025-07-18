@@ -62,7 +62,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         Icon(
                           Icons.local_fire_department,
                           size: 35,
-                        color: theme.colorScheme.secondary,
+                          color: theme.colorScheme.secondary,
                         ),
                         SizedBox(
                           width: 10,
@@ -88,6 +88,63 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ],
                 ),
                 CustomCalendar(),
+                BlocBuilder<HealthBloc, HealthState>(builder: (context, state) {
+                  if (state is HealthLoaded) {
+                    final percent = state.steps / stepsCountNormal;
+                    final stepColor = getStepColor(state.steps);
+                    return Padding(
+                      padding: EdgeInsetsGeometry.symmetric(
+                          horizontal: 10, vertical: 8),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height * 0.08,
+                        width: MediaQuery.of(context).size.width * 0.95,
+                        decoration: BoxDecoration(
+                            color: theme.cardTheme.color,
+                            borderRadius: BorderRadiusDirectional.circular(16)),
+                        padding: const EdgeInsets.only(
+                            top: 5, left: 10, bottom: 5, right: 10),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text('Walking',
+                                    style: theme.textTheme.displaySmall
+                                        ?.copyWith(fontSize: 20)),
+                                Text('${state.steps} / $stepsCountNormal steps',
+                                    style: theme.textTheme.displaySmall
+                                        ?.copyWith(fontSize: 16))
+                              ],
+                            ),
+                            SizedBox(
+                              height: 70,
+                              width: 70,
+                              child: StepScore(
+                                percent: percent,
+                                fillColors: Colors.grey,
+                                lineColor: stepColor,
+                                freeColor: stepColor.withValues(alpha: 0.3),
+                                lineWidth: 3,
+                                child: Text(
+                                    '${(percent * 100).toStringAsFixed(0)}%',
+                                    style: theme.textTheme.displaySmall
+                                        ?.copyWith(fontSize: 16)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  } else {
+                    return SizedBox.shrink();
+                  }
+                }),
+                SizedBox(
+                  height: 20,
+                ),
                 SettingsCard1(theme: theme, router: router),
                 SizedBox(
                   height: 20,
@@ -116,67 +173,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
         SizedBox(
           height: 10,
         ),
-        BlocBuilder<HealthBloc, HealthState>(builder: (context, state) {
-          if (state is HealthLoaded) {
-            final percent = state.steps / stepsCountNormal;
-            final stepColor = getStepColor(state.steps);
-            return Padding(
-              padding:
-                  EdgeInsetsGeometry.symmetric(horizontal: 10, vertical: 8),
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.08,
-                width: MediaQuery.of(context).size.width * 0.95,
-                decoration: BoxDecoration(
-                    color: theme.cardTheme.color,
-                    borderRadius: BorderRadiusDirectional.circular(16)),
-                padding: const EdgeInsets.only(
-                    top: 5, left: 10, bottom: 5, right: 10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text('Walking',
-                            style: theme.textTheme.displaySmall
-                                ?.copyWith(fontSize: 20)),
-                        Text('${state.steps} / $stepsCountNormal steps',
-                            style: theme.textTheme.displaySmall
-                                ?.copyWith(fontSize: 16))
-                      ],
-                    ),
-                    SizedBox(
-                      height: 70,
-                      width: 70,
-                      child: StepScore(
-                        percent: percent,
-                        fillColors: Colors.grey,
-                        lineColor: stepColor,
-                        freeColor: stepColor.withValues(alpha: 0.3),
-                        lineWidth: 3,
-                        child: Text('${(percent * 100).toStringAsFixed(0)}%',
-                            style: theme.textTheme.displaySmall
-                                ?.copyWith(fontSize: 16)),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          } else {
-            return SizedBox.shrink();
-          }
-        }),
         TextButton(
             onPressed: () async {
               await UserRepository().logOut();
             },
             child: Text(
               S.of(context).logOut,
-              style: theme.textTheme.displaySmall?.copyWith(
-                  fontSize: 18, color: const Color.fromARGB(255, 109, 7, 0)),
+              style: theme.textTheme.displaySmall
+                  ?.copyWith(fontSize: 18, color: theme.colorScheme.primary),
             )),
         SizedBox(
           height: 20,
