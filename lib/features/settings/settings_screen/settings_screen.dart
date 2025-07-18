@@ -96,13 +96,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       padding: EdgeInsetsGeometry.symmetric(
                           horizontal: 10, vertical: 8),
                       child: Container(
-                        height: MediaQuery.of(context).size.height * 0.08,
+                        height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width * 0.95,
                         decoration: BoxDecoration(
                             color: theme.cardTheme.color,
                             borderRadius: BorderRadiusDirectional.circular(16)),
                         padding: const EdgeInsets.only(
-                            top: 5, left: 10, bottom: 5, right: 10),
+                            top: 5, left: 20, bottom: 5, right: 10),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

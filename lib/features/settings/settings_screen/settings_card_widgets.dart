@@ -58,7 +58,6 @@ class SettingsCard6 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).privacyPolicy,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
@@ -107,7 +106,6 @@ class SettingsCard6 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).rateUs,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
@@ -155,7 +153,6 @@ class SettingsCard6 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).deleteYourAccount,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
@@ -232,7 +229,6 @@ class SettingsCard5 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).accountManagement,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
@@ -281,7 +277,6 @@ class SettingsCard5 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).privacy,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
@@ -329,7 +324,6 @@ class SettingsCard5 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).languageLocalization,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
@@ -406,7 +400,6 @@ class SettingsCard4 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).doNotDisturbMode,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
@@ -483,7 +476,6 @@ class SettingsCard3 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).calorieGoal,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
@@ -532,7 +524,6 @@ class SettingsCard3 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).waterBalance,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
@@ -609,7 +600,6 @@ class SettingsCard2 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).difficultyLevel,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
@@ -658,7 +648,6 @@ class SettingsCard2 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).workoutTypes,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
@@ -682,36 +671,40 @@ class SettingsCard2 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 4),
-                        child: Container(
-                          height: 30,
-                          width: 30,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadiusDirectional.circular(6),
-                            shape: BoxShape.rectangle,
-                            color: const Color.fromARGB(255, 8, 232, 240),
-                          ),
-                          child: Icon(
-                            Icons.directions_run,
-                            size: 20,
+                  Flexible(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 4),
+                          child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadiusDirectional.circular(6),
+                              shape: BoxShape.rectangle,
+                              color: const Color.fromARGB(255, 8, 232, 240),
+                            ),
+                            child: Icon(
+                              Icons.directions_run,
+                              size: 20,
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        S.of(context).automaticActivityTracking,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: theme.textTheme.displaySmall
-                            ?.copyWith(fontSize: 16),
-                      ),
-                    ],
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Flexible(
+                          child: Text(
+                            S.of(context).automaticActivityTracking,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: theme.textTheme.displaySmall
+                                ?.copyWith(fontSize: 16),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
@@ -785,7 +778,6 @@ class SettingsCard1 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).userProfile,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
@@ -833,7 +825,6 @@ class SettingsCard1 extends StatelessWidget {
                       ),
                       Text(
                         S.of(context).fitnessGoal,
-                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: theme.textTheme.displaySmall
                             ?.copyWith(fontSize: 16),
