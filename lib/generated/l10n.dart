@@ -241,7 +241,7 @@ class S {
 
   /// `Home`
   String get home {
-    return Intl.message('Trending', name: 'trending', desc: '', args: []);
+    return Intl.message('Home', name: 'home', desc: '', args: []);
   }
 
   /// `Challenges`
@@ -2262,6 +2262,11 @@ class S {
   /// `Join Now`
   String get joinNow {
     return Intl.message('Join Now', name: 'joinNow', desc: '', args: []);
+  }
+
+  /// `Trending`
+  String get trending {
+    return Intl.message('Trending', name: 'trending', desc: '', args: []);
   }
 }
 

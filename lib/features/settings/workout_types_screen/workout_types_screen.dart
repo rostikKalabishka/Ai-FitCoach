@@ -69,30 +69,6 @@ class _WorkoutTypesScreenState extends State<WorkoutTypesScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CustomConfirmCancelButton(
-              label: S.of(context).cancel,
-              onPressed: () => Navigator.pop(context),
-            ),
-            CustomConfirmCancelButton(
-              label: S.of(context).confirm,
-              onPressed: () {
-                final selectedTypes = <String>[];
-                for (int i = 0; i < options.length; i++) {
-                  if (_switchStates[i]) {
-                    selectedTypes.add(options[i].label);
-                  }
-                }
-                print('Selected workout types: $selectedTypes');
-              },
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

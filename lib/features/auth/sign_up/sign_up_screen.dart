@@ -47,7 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       hintText: S.of(context).email,
                       obscureText: false,
                       keyboardType: TextInputType.emailAddress,
-                      prefixIcon: Icon(Icons.email_outlined),
+                      prefixIcon: Icon(Icons.email_outlined, color: theme.colorScheme.primary,),
                       errorMsg: _errorMsg,
                       validator: (val) => FormValidators.emailValidator(val)),
                 ),
@@ -63,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       hintText: S.of(context).username,
                       obscureText: false,
                       keyboardType: TextInputType.name,
-                      prefixIcon: Icon(Icons.person),
+                      prefixIcon: Icon(Icons.person, color: theme.colorScheme.primary,),
                       errorMsg: _errorMsg,
                       validator: (val) =>
                           FormValidators.usernameValidator(val)),
@@ -80,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     hintText: S.of(context).password,
                     obscureText: obscurePassword,
                     keyboardType: TextInputType.visiblePassword,
-                    prefixIcon: Icon(Icons.lock_outline),
+                    prefixIcon: Icon(Icons.lock_outline, color: theme.colorScheme.primary,),
                     errorMsg: _errorMsg,
                     validator: (val) => FormValidators.passwordValidator(val),
                     suffixIcon: IconButton(
@@ -89,6 +89,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             obscurePassword = !obscurePassword;
                           });
                         },
+                        color: theme.colorScheme.primary,
                         icon: Icon(obscurePassword
                             ? Icons.visibility
                             : Icons.visibility_off)),
@@ -106,7 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     hintText: S.of(context).confirmYourPassword,
                     obscureText: obscuredConfirmedPassword,
                     keyboardType: TextInputType.visiblePassword,
-                    prefixIcon: Icon(Icons.lock),
+                    prefixIcon: Icon(Icons.lock, color: theme.colorScheme.primary,),
                     errorMsg: _errorMsg,
                     validator: (val) => FormValidators.confirmPasswordValidator(
                         val, passwordController.text),
@@ -119,6 +120,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },
                           );
                         },
+                        color: theme.colorScheme.primary,
                         icon: Icon(obscuredConfirmedPassword
                             ? Icons.visibility
                             : Icons.visibility_off)),

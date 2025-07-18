@@ -58,6 +58,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
               ),
             ),
             TabBar(
+              indicatorColor: theme.bottomNavigationBarTheme.unselectedItemColor,
                 controller: tabController,
                 indicatorSize: TabBarIndicatorSize.tab,
                 tabs: [
