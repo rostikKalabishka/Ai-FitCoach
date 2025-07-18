@@ -126,7 +126,7 @@ String _categoryType (CategoryType categoryType) {
           border: Border(
             bottom: BorderSide(
               color: isSelected
-                  ? const Color.fromARGB(255, 87, 48, 69)
+                  ? theme.bottomNavigationBarTheme.unselectedItemColor!
                   : theme.colorScheme.onTertiary,
               width: 3,
             ),

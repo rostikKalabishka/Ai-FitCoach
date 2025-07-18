@@ -23,7 +23,7 @@ class CustomMainScreenCard extends StatelessWidget {
     final theme = Theme.of(context);
     return Center(
         child: Container(
-      height: 250,
+      height: MediaQuery.of(context).size.height * 0.35,
       width: MediaQuery.of(context).size.width * 0.95,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(32),
@@ -61,7 +61,7 @@ class CustomMainScreenCard extends StatelessWidget {
                   theme.textTheme.headlineLarge?.copyWith(color: Colors.white, fontSize: 24),
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 32),
             Text(
               description,
               overflow: TextOverflow.ellipsis,

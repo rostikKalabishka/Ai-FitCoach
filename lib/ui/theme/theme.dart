@@ -4,21 +4,21 @@ import 'package:flutter/material.dart';
 final themeDark = ThemeData.dark().copyWith(
   colorScheme: ColorScheme.fromSeed(
     seedColor: Colors.black,
-    primary: const Color.fromARGB(255, 85, 0, 0),
-    secondary: const Color.fromARGB(255, 255, 153, 0),
+    primary: const Color.fromARGB(255, 11, 29, 81),
+    secondary: Colors.deepOrange,
     tertiary: Colors.black,
     onTertiary: Colors.grey,
     brightness: Brightness.dark,
   ),
   cardTheme: CardThemeData(
-    color: const Color.fromARGB(255, 39, 1, 21),
+    color: const Color.fromARGB(255, 26, 33, 48),
   ),
   dropdownMenuTheme: DropdownMenuThemeData(
       textStyle: TextStyle(color: const Color.fromARGB(255, 255, 255, 255))),
   dividerTheme: DividerThemeData(color: Colors.white),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     selectedIconTheme: IconThemeData(color: Colors.white),
-    unselectedItemColor: const Color.fromARGB(255, 87, 48, 69),
+    unselectedItemColor: const Color.fromARGB(255, 131, 180, 255),
     selectedItemColor: Colors.white,
   ),
   iconTheme: const IconThemeData(color: Colors.white),
@@ -35,7 +35,7 @@ final themeDark = ThemeData.dark().copyWith(
         if (states.contains(WidgetState.disabled)) {
           return const Color.fromARGB(255, 68, 68, 68);
         }
-        return const Color.fromARGB(255, 85, 0, 0);
+        return Color.fromARGB(255, 11, 29, 81);
       }),
     ),
   ),
@@ -61,14 +61,14 @@ final themeLight = ThemeData.light().copyWith(
   primaryColor: Colors.grey[400],
   colorScheme: ColorScheme.fromSeed(
     seedColor: Colors.white,
-    primary: const Color.fromARGB(255, 85, 0, 0),
-    secondary: const Color.fromARGB(255, 255, 153, 0),
+    primary: const Color.fromARGB(255, 11, 29, 81),
+    secondary: Colors.deepOrange,
     tertiary: Colors.white,
     onTertiary: Colors.grey,
     brightness: Brightness.light,
   ),
   cardTheme: CardThemeData(
-    color: const Color.fromARGB(255, 39, 1, 21),
+    color: const Color.fromARGB(255, 26, 33, 48),
   ),
   dropdownMenuTheme:
       DropdownMenuThemeData(textStyle: TextStyle(color: Colors.black)),
@@ -81,7 +81,7 @@ final themeLight = ThemeData.light().copyWith(
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     selectedIconTheme: IconThemeData(color: const Color.fromARGB(255, 0, 0, 0)),
-    unselectedItemColor: const Color.fromARGB(255, 136, 0, 0),
+    unselectedItemColor: const Color.fromARGB(255, 131, 180, 255),
     selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
   ),
   scaffoldBackgroundColor: Colors.white,
@@ -91,7 +91,7 @@ final themeLight = ThemeData.light().copyWith(
         if (states.contains(WidgetState.disabled)) {
           return const Color.fromARGB(255, 68, 68, 68);
         }
-        return const Color.fromARGB(255, 85, 0, 0); // активна кнопка
+        return Color.fromARGB(255, 11, 29, 81);
       }),
     ),
   ),

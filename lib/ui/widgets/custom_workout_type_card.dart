@@ -22,8 +22,8 @@ class CustomWorkoutTypeCard extends StatelessWidget {
         onTap: () => onChanged(!value),
         borderRadius: BorderRadius.circular(16),
         child: Container(
-          height: 100,
-          width: 400,
+height: MediaQuery.of(context).size.height * 0.07,
+          width: MediaQuery.of(context).size.width * 0.95,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
           ),

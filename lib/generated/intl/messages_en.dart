@@ -513,6 +513,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "4. Third-Party Services",
     ),
     "thursday": MessageLookupByLibrary.simpleMessage("Thursday"),
+    "trending": MessageLookupByLibrary.simpleMessage("Trending"),
     "trendingChallenges": MessageLookupByLibrary.simpleMessage(
       "Trending challenges",
     ),

@@ -32,7 +32,7 @@ class _TrendingScreenState extends State<TrendingScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: theme.appBarTheme.backgroundColor,
-        title: Text(S.of(context).home, style: theme.textTheme.labelMedium),
+        title: Text(S.of(context).trending, style: theme.textTheme.labelMedium),
         centerTitle: true,
       ),
       backgroundColor: theme.scaffoldBackgroundColor,

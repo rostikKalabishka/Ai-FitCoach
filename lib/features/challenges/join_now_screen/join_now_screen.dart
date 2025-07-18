@@ -46,8 +46,8 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                         },
                         icon: Icon(
                           Icons.arrow_back,
-                          color: Colors.red,
-                          size: 28,
+                          color: theme.bottomNavigationBarTheme.unselectedItemColor,
+                          size: 32,
                         )),
                   ),
                 ],
@@ -74,9 +74,9 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Row(
                       children: [
-                        const Icon(
+                         Icon(
                           Icons.local_fire_department,
-                          color: Colors.deepOrange,
+                          color: theme.colorScheme.secondary,
                         ),
                         const SizedBox(width: 5),
                         Padding(

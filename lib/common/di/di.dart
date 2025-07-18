@@ -1,4 +1,7 @@
 import 'package:ai_fit_coach/blocs/health_bloc/health_bloc.dart';
+
+import 'package:ai_fit_coach/blocs/bloc/workout_exercise_bloc.dart';
+
 import 'package:ai_fit_coach/blocs/history_bloc/history_bloc.dart';
 import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
 import 'package:ai_fit_coach/blocs/user_bloc/user_bloc.dart';
@@ -114,6 +117,12 @@ void initDI({required SharedPreferences sharedPreferences}) {
       workoutRepository: getIt<AbstractWorkoutRepository>(),
       foodRecommendationRepository:
           getIt<AbstractFoodRecommendationRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<WorkoutExerciseBloc>(
+    () => WorkoutExerciseBloc(
+      workoutRepository: getIt<AbstractWorkoutRepository>(),
     ),
   );
 }

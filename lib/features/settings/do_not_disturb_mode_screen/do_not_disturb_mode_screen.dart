@@ -63,24 +63,6 @@ class _DoNotDisturbModeScreenState extends State<DoNotDisturbModeScreen> {
               ),
             ),
           ),
-          bottomNavigationBar: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 32),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomConfirmCancelButton(
-                  label: S.of(context).cancel,
-                  onPressed: () => Navigator.pop(context),
-                ),
-                CustomConfirmCancelButton(
-                  label: S.of(context).confirm,
-                  onPressed: () {
-                    print('Mute Notifications: $isMuted');
-                  },
-                ),
-              ],
-            ),
-          ),
         );
       },
     );
