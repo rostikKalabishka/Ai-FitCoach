@@ -61,7 +61,6 @@ class _UserParametersScreenState extends State<UserParametersScreen> {
       builder: (BuildContext context, state) {
         final theme = Theme.of(context);
         return Scaffold(
-          backgroundColor: Colors.black,
           body: Form(
             key: _formKey,
             child: Stack(
@@ -154,7 +153,7 @@ class _UserParametersScreenState extends State<UserParametersScreen> {
                 Positioned(
                   left: 0,
                   right: 0,
-                  bottom: 50,
+                  bottom: 70,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(9, (index) {
@@ -166,8 +165,8 @@ class _UserParametersScreenState extends State<UserParametersScreen> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: _currentPage == index
-                              ? theme.colorScheme.secondary
-                              : Colors.white,
+                              ? theme.colorScheme.primary
+                              : Colors.grey,
                         ),
                       );
                     }),

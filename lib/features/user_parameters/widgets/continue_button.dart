@@ -21,6 +21,9 @@ class ContinueButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<UserParametersBloc>();
+    final theme = Theme.of(context);
+    final isEnabled = isNextEnabled || isSubmitEnabled;
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
@@ -31,7 +34,6 @@ class ContinueButton extends StatelessWidget {
                   ? () {
                       bloc.add(SubmitParameters(
                           context.read<AuthenticationBloc>().state.user!.id));
-
                       context.read<SettingsCubit>().setUserParametersScreen();
                     }
                   : isNextEnabled
@@ -43,11 +45,15 @@ class ContinueButton extends StatelessWidget {
                         }
                       : null,
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 85, 0, 0)),
+                backgroundColor:
+                    isEnabled ? theme.colorScheme.primary : theme.disabledColor,
+              ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Text(S.of(context).continueText,
-                    style: TextStyle(color: Colors.white, fontSize: 24)),
+                child: Text(
+                  S.of(context).continueText,
+                  style: theme.textTheme.displaySmall?.copyWith(fontSize: 24),
+                ),
               ),
             ),
           ),

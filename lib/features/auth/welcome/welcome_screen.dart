@@ -50,7 +50,7 @@ class WelcomeScreen extends StatelessWidget {
               ),
               SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -108,7 +108,11 @@ class WelcomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(Icons.lock_open, color: Colors.white, size: 20,),
+                                Icon(
+                                  Icons.lock_open,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
                                 Text(S.of(context).signIn,
                                     style: theme.textTheme.displaySmall
                                         ?.copyWith(fontSize: 18)),
@@ -138,7 +142,11 @@ class WelcomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(Icons.person_add, color: Colors.white, size: 20,),
+                                Icon(
+                                  Icons.person_add,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
                                 Text(S.of(context).signUp,
                                     style: theme.textTheme.displaySmall
                                         ?.copyWith(fontSize: 18)),
@@ -148,22 +156,24 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 8),
                         child: Row(
                           children: [
                             Expanded(
                               child: Container(
-                                height:  1,
+                                height: 1,
                                 color: Colors.white,
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
                               child: Text('OR'),
                             ),
                             Expanded(
                               child: Container(
-                               height:  1,
+                                height: 1,
                                 color: Colors.white,
                               ),
                             )
@@ -187,7 +197,11 @@ class WelcomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(FontAwesomeIcons.google, color: Colors.white, size: 20,),
+                                Icon(
+                                  FontAwesomeIcons.google,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
                                 Text(S.of(context).continueWithGoogle,
                                     textAlign: TextAlign.center,
                                     style: theme.textTheme.displaySmall
@@ -214,7 +228,11 @@ class WelcomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(FontAwesomeIcons.facebook, color: Colors.white, size: 20,),
+                                Icon(
+                                  FontAwesomeIcons.facebook,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
                                 Text(S.of(context).continueWithFacebook,
                                     textAlign: TextAlign.center,
                                     style: theme.textTheme.displaySmall

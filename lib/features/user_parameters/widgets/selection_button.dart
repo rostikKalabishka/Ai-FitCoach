@@ -16,6 +16,7 @@ class SelectionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Material(
@@ -30,7 +31,8 @@ class SelectionButton extends StatelessWidget {
             child: Center(
               child: Text(
                 text,
-                style: const TextStyle(color: Colors.white, fontSize: 16),
+                style: theme.textTheme.headlineLarge
+                    ?.copyWith(color: Colors.white),
               ),
             ),
           ),
