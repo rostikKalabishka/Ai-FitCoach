@@ -25,14 +25,13 @@ class _TermsPageState extends State<TermsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
           S.of(context).terms,
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(fontSize: 20),
         ),
-        backgroundColor: Colors.black,
         leading: NavigationBackButton(pageController: widget.pageController),
       ),
       body: Column(
@@ -41,23 +40,20 @@ class _TermsPageState extends State<TermsPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               child: Column(
-                spacing: 20,
+                spacing: 10,
                 children: [
                   Image.asset(AppConst.privacy),
                   Text(
                     S.of(context).doYouAgreeWithOurTermsAndPolicies,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                    ),
+                    style: theme.textTheme.labelMedium,
                     textAlign: TextAlign.center,
                   ),
                   CheckboxListTile(
                     title: Text(
-                        S.of(context).iAgreeToTheTermsOfUseAndSubscriptionTerms,
-                        style: TextStyle(color: Colors.white)),
+                      S.of(context).iAgreeToTheTermsOfUseAndSubscriptionTerms,
+                      style: TextStyle(fontSize: 11),
+                    ),
                     value: _termsAccepted,
-                    checkColor: Colors.black,
                     activeColor: Color.fromARGB(255, 85, 0, 0),
                     onChanged: (value) {
                       setState(() {
@@ -74,6 +70,9 @@ class _TermsPageState extends State<TermsPage> {
           ContinueButton(
             pageController: widget.pageController,
             isSubmitEnabled: _isSubmitEnabled,
+          ),
+          SizedBox(
+            height: 20,
           )
         ],
       ),

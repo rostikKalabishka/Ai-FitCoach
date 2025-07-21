@@ -54,37 +54,39 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   },
                   itemBuilder: (context, index) {
                     final model = arr[index];
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 16, horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(height: _size.height * 0.05),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(16),
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: Image.asset(
-                                model.image,
-                                fit: BoxFit.cover,
+                    return SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 16, horizontal: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(height: _size.height * 0.05),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(16),
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: Image.asset(
+                                  model.image,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
-                          const SizedBox(height: 20),
-                          Text(
-                            model.getTitle(localizations),
-                            textAlign: TextAlign.center,
-                            style: theme.textTheme.labelMedium,
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            model.getDescription(localizations),
-                            textAlign: TextAlign.center,
-                            style: theme.textTheme.headlineLarge,
-                          ),
-                          const SizedBox(height: 50),
-                        ],
+                            const SizedBox(height: 20),
+                            Text(
+                              model.getTitle(localizations),
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.labelMedium,
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              model.getDescription(localizations),
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.headlineLarge,
+                            ),
+                            const SizedBox(height: 50),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -101,13 +103,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: _currentIndex == index
-                          ? theme.colorScheme.secondary
+                          ? theme.colorScheme.primary
                           : Colors.grey,
                     ),
                   );
                 }),
               ),
-              SizedBox(height: 20),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 16, horizontal: 16),

@@ -1,4 +1,7 @@
+import 'package:ai_fit_coach/blocs/health_bloc/health_bloc.dart';
+
 import 'package:ai_fit_coach/blocs/bloc/workout_exercise_bloc.dart';
+
 import 'package:ai_fit_coach/blocs/history_bloc/history_bloc.dart';
 import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
 import 'package:ai_fit_coach/blocs/user_bloc/user_bloc.dart';
@@ -8,13 +11,18 @@ import 'package:ai_fit_coach/features/challenges/bloc/challenge_bloc.dart';
 import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 import 'package:ai_fit_coach/features/trending_screen/trending_screen/bloc/list_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
+
+import 'package:ai_fit_coach/repositories/health_repository/health.dart';
+
 import 'package:ai_fit_coach/features/workout/bloc/workout_bloc.dart';
 import 'package:ai_fit_coach/repositories/food_recommendation_repository/abstract_food_recommendation_repository.dart';
 import 'package:ai_fit_coach/repositories/food_recommendation_repository/food_recommendation_repository.dart';
+
 import 'package:ai_fit_coach/repositories/user_repository/user.dart';
 import 'package:ai_fit_coach/repositories/workout_repository/abstract_workout_repository.dart';
 import 'package:ai_fit_coach/repositories/workout_repository/workout_repository.dart';
 import 'package:get_it/get_it.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../repositories/challenge_repository/abstract_challenge_repository.dart';
@@ -31,6 +39,8 @@ void initDI({required SharedPreferences sharedPreferences}) {
   getIt.registerLazySingleton<AbstractUserRepository>(() => UserRepository());
 
   getIt.registerLazySingleton<AbstractChatRepository>(() => ChatRepository());
+  getIt.registerLazySingleton<AbstractHealthRepository>(
+      () => HealthRepository());
 
   getIt.registerLazySingleton<AbstractWorkoutRepository>(
       () => WorkoutRepository());
@@ -80,6 +90,12 @@ void initDI({required SharedPreferences sharedPreferences}) {
   getIt.registerLazySingleton<HistoryBloc>(
     () => HistoryBloc(
       chatRepository: getIt<AbstractChatRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<HealthBloc>(
+    () => HealthBloc(
+      abstractHealthRepository: getIt<AbstractHealthRepository>(),
     ),
   );
 
