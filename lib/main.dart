@@ -24,7 +24,7 @@ Future<void> main() async {
 
   // await exerciseDescription();
 
-  await FirebaseApi().initNotifications();
+  await NotificationsApi().initNotifications();
 
   runApp(const AiFitCoachApp());
 }

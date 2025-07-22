@@ -2,8 +2,6 @@ import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../../../ui/ui.dart';
-
 @RoutePage()
 class WaterBalanceScreen extends StatefulWidget {
   const WaterBalanceScreen({super.key});

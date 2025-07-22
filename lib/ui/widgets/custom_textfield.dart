@@ -10,7 +10,6 @@ class CustomTextfield extends StatelessWidget {
   final Widget? prefixIcon;
   final String? Function(String?)? validator;
   final FocusNode? focusNode;
-  final String? errorMsg;
   final String? Function(String?)? onChanged;
 
   const CustomTextfield({
@@ -24,7 +23,6 @@ class CustomTextfield extends StatelessWidget {
     this.prefixIcon,
     this.validator,
     this.focusNode,
-    this.errorMsg,
     this.onChanged,
   });
 
@@ -47,7 +45,7 @@ class CustomTextfield extends StatelessWidget {
         prefixIcon: prefixIcon,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(24),
-          borderSide: BorderSide(color: Colors.white24),
+          borderSide: const BorderSide(color: Colors.white24),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
@@ -57,7 +55,6 @@ class CustomTextfield extends StatelessWidget {
         filled: true,
         hintText: hintText,
         hintStyle: TextStyle(color: Colors.grey.shade500, fontSize: 16),
-        errorText: errorMsg,
       ),
     );
   }

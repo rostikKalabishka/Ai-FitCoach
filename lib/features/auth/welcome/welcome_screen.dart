@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:ai_fit_coach/features/auth/auth.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
@@ -8,7 +7,6 @@ import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 @RoutePage()
 class WelcomeScreen extends StatelessWidget {
@@ -197,11 +195,7 @@ class WelcomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(
-                                  FontAwesomeIcons.google,
-                                  color: Colors.white,
-                                  size: 20,
-                                ),
+                                Image.asset('assets/images/welcome/google.png', scale: 10,),
                                 Text(S.of(context).continueWithGoogle,
                                     textAlign: TextAlign.center,
                                     style: theme.textTheme.displaySmall
@@ -228,11 +222,7 @@ class WelcomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(
-                                  FontAwesomeIcons.facebook,
-                                  color: Colors.white,
-                                  size: 20,
-                                ),
+                               Image.asset('assets/images/welcome/facebook.png', scale: 22,),
                                 Text(S.of(context).continueWithFacebook,
                                     textAlign: TextAlign.center,
                                     style: theme.textTheme.displaySmall

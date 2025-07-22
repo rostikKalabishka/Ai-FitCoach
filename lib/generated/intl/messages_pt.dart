@@ -399,6 +399,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "other": MessageLookupByLibrary.simpleMessage("Outro"),
     "password": MessageLookupByLibrary.simpleMessage("Senha"),
     "personalBestNumber": m9,
+    "piscatorial": MessageLookupByLibrary.simpleMessage("Piscatório"),
     "pleaseSelectPreferredLanguage": MessageLookupByLibrary.simpleMessage(
       "Por favor, selecione o idioma preferido",
     ),

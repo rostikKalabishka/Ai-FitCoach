@@ -8,7 +8,7 @@ Future<void> handleBackgroundMessage(RemoteMessage message) async {
   print('payload: ${message.data}');
 }
 
-class FirebaseApi {
+class NotificationsApi {
   final _firebaseMessaging = FirebaseMessaging.instance;
 
   Future initPushNotifications() async {
