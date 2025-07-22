@@ -75,6 +75,7 @@ final themeLight = ThemeData.light().copyWith(
   dividerTheme: DividerThemeData(color: Colors.white),
   iconTheme: const IconThemeData(color: Colors.black),
   appBarTheme: const AppBarTheme(
+    surfaceTintColor: Colors.transparent,
     elevation: 0,
     backgroundColor: Colors.white,
     iconTheme: IconThemeData(color: Colors.black),

@@ -36,8 +36,10 @@ class _BadHabitsSelectionPageState extends State<BadHabitsSelectionPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           S.of(context).chooseYourBadHabits,
           style: TextStyle(fontSize: 20),
@@ -54,35 +56,35 @@ class _BadHabitsSelectionPageState extends State<BadHabitsSelectionPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).unableToRestEnough,
                     isSelected:
                         _selectedHabits.contains('Unable to rest enough'),
                     onTap: () => _toggleHabit('Unable to rest enough'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).sometimesIDrinkAlcohol,
                     isSelected:
                         _selectedHabits.contains('Sometimes I drink alcohol'),
                     onTap: () => _toggleHabit('Sometimes I drink alcohol'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).iConsumeALotOfSaltyFood,
                     isSelected: _selectedHabits
                         .contains('I consume a lot of salty food'),
                     onTap: () => _toggleHabit('I consume a lot of salty food'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).iEatMidnightSnacks,
                     isSelected:
                         _selectedHabits.contains('I eat midnight snacks'),
                     onTap: () => _toggleHabit('I eat midnight snacks'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).iLoveSweetCandiesAndChocolate,
                     isSelected: _selectedHabits
                         .contains('I love sweet candies and chocolate'),
@@ -90,14 +92,14 @@ class _BadHabitsSelectionPageState extends State<BadHabitsSelectionPage> {
                         _toggleHabit('I love sweet candies and chocolate'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).sodaIsMyBestFriend,
                     isSelected:
                         _selectedHabits.contains('Soda is my best friend'),
                     onTap: () => _toggleHabit('Soda is my best friend'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).noneOfTheAbove,
                     isSelected: _selectedHabits.contains('None of the above'),
                     onTap: () => _toggleHabit('None of the above'),

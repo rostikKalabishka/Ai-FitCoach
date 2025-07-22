@@ -37,8 +37,10 @@ class _DietPreferencePageState extends State<DietPreferencePage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           S.of(context).whatTypeOfDietDoYouPrefer,
           style: TextStyle(fontSize: 20),
@@ -58,42 +60,42 @@ class _DietPreferencePageState extends State<DietPreferencePage> {
                       text: S.of(context).lowcarb,
                       isSelected: _selectedDiet == 'Low-Carb',
                       onTap: () => _toggleDiet('Low-Carb'),
-                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
+                      selectedColor: theme.colorScheme.primary),
                   SelectionButton(
                       text: S.of(context).highprotein,
                       isSelected: _selectedDiet == 'High-Protein',
                       onTap: () => _toggleDiet('High-Protein'),
-                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
+                      selectedColor: theme.colorScheme.primary),
                   SelectionButton(
                       text: S.of(context).glutenfree,
                       isSelected: _selectedDiet == 'Gluten-Free',
                       onTap: () => _toggleDiet('Gluten-Free'),
-                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
+                      selectedColor: theme.colorScheme.primary),
                   SelectionButton(
-                      text: 'Piscatorial',
+                      text: S.of(context).piscatorial,
                       isSelected: _selectedDiet == 'Pescatarian',
                       onTap: () => _toggleDiet('Pescatarian'),
-                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
+                      selectedColor: theme.colorScheme.primary),
                   SelectionButton(
                       text: S.of(context).keto,
                       isSelected: _selectedDiet == 'Keto',
                       onTap: () => _toggleDiet('Keto'),
-                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
+                      selectedColor: theme.colorScheme.primary),
                   SelectionButton(
                       text: S.of(context).vegan,
                       isSelected: _selectedDiet == 'Vegan',
                       onTap: () => _toggleDiet('Vegan'),
-                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
+                      selectedColor: theme.colorScheme.primary),
                   SelectionButton(
                       text: S.of(context).vegetarian,
                       isSelected: _selectedDiet == 'Vegetarian',
                       onTap: () => _toggleDiet('Vegetarian'),
-                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
+                      selectedColor: theme.colorScheme.primary),
                   SelectionButton(
                       text: S.of(context).allfoodDiet,
                       isSelected: _selectedDiet == 'All-food diet',
                       onTap: () => _toggleDiet('All-food diet'),
-                      selectedColor: const Color.fromARGB(255, 85, 0, 0)),
+                      selectedColor: theme.colorScheme.primary),
                 ],
               ),
             ),

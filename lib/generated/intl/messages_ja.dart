@@ -325,6 +325,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "other": MessageLookupByLibrary.simpleMessage("その他"),
     "password": MessageLookupByLibrary.simpleMessage("パスワード"),
     "personalBestNumber": m9,
+    "piscatorial": MessageLookupByLibrary.simpleMessage("ピスカトーレ"),
     "pleaseSelectPreferredLanguage": MessageLookupByLibrary.simpleMessage(
       "希望する言語を選択してください",
     ),

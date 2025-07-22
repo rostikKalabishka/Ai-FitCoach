@@ -28,6 +28,7 @@ class _TermsPageState extends State<TermsPage> {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           S.of(context).terms,
           style: TextStyle(fontSize: 20),
@@ -54,7 +55,7 @@ class _TermsPageState extends State<TermsPage> {
                       style: TextStyle(fontSize: 11),
                     ),
                     value: _termsAccepted,
-                    activeColor: Color.fromARGB(255, 85, 0, 0),
+                    activeColor: theme.colorScheme.primary,
                     onChanged: (value) {
                       setState(() {
                         _termsAccepted = value ?? false;

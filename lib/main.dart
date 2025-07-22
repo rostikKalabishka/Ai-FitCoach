@@ -1,7 +1,7 @@
 import 'package:ai_fit_coach/app/ai_fit_coach_app.dart';
 import 'package:ai_fit_coach/config/firebase_options.dart';
 import 'package:ai_fit_coach/common/di/di.dart';
-import 'package:ai_fit_coach/repositories/workout_repository/workout_repository.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

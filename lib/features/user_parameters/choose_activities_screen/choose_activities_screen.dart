@@ -37,8 +37,10 @@ class _ChooseActivitiesPageState extends State<ChooseActivitiesPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           S.of(context).chooseUpTo3ActivitiesYourInterestedIn,
           maxLines: 2,
@@ -60,41 +62,41 @@ class _ChooseActivitiesPageState extends State<ChooseActivitiesPage> {
                     text: S.of(context).dancing,
                     isSelected: _selectedActivities.contains('Dancing'),
                     onTap: () => _toggleActivity('Dancing'),
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).swimmingWaterActivities,
                     isSelected: _selectedActivities
                         .contains('Swimming & Water Activities'),
                     onTap: () => _toggleActivity('Swimming & Water Activities'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).cycling,
                     isSelected: _selectedActivities.contains('Cycling'),
                     onTap: () => _toggleActivity('Cycling'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).walking,
                     isSelected: _selectedActivities.contains('Walking'),
                     onTap: () => _toggleActivity('Walking'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).running,
                     isSelected: _selectedActivities.contains('Running'),
                     onTap: () => _toggleActivity('Running'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).fitnessAtHome,
                     isSelected: _selectedActivities.contains('Fitness at home'),
                     onTap: () => _toggleActivity('Fitness at home'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).yoga,
                     isSelected: _selectedActivities.contains('Yoga'),
                     onTap: () => _toggleActivity('Yoga'),

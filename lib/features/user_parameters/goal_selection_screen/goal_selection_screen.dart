@@ -35,8 +35,10 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           S.of(context).whatIsYourMainGoal,
           style: TextStyle(fontSize: 20),
@@ -53,10 +55,12 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 60),
-                  _buildGoalButton(Goal.loseWeight, S.of(context).loseWeight),
-                  _buildGoalButton(
-                      Goal.gainMuscle, S.of(context).gainMuscleMass),
-                  _buildGoalButton(Goal.keepFit, S.of(context).keepFit),
+                  _buildGoalButton(Goal.loseWeight, S.of(context).loseWeight,
+                      theme.colorScheme.primary),
+                  _buildGoalButton(Goal.gainMuscle,
+                      S.of(context).gainMuscleMass, theme.colorScheme.primary),
+                  _buildGoalButton(Goal.keepFit, S.of(context).keepFit,
+                      theme.colorScheme.primary),
                 ],
               ),
             ),
@@ -75,13 +79,12 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
     );
   }
 
-  Widget _buildGoalButton(Goal goal, String text) {
+  Widget _buildGoalButton(Goal goal, String text, Color selectedColor) {
     final isSelected = _selectedGoal == goal;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Material(
-        color:
-            isSelected ? const Color.fromARGB(255, 85, 0, 0) : Colors.grey[800],
+        color: isSelected ? selectedColor : Colors.grey[800],
         borderRadius: BorderRadius.circular(8),
         child: InkWell(
           borderRadius: BorderRadius.circular(8),

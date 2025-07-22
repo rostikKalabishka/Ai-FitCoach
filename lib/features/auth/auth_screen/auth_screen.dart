@@ -1,10 +1,8 @@
-import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
-import 'package:ai_fit_coach/router/router.dart';
+
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../auth.dart';
 
@@ -30,59 +28,52 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) {
-        if (state is AuthSuccess) {
-          AutoRouter.of(context)
-              .pushAndPopUntil(LoaderRoute(), predicate: (_) => false);
-        }
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: theme.appBarTheme.backgroundColor,
-        ),
-        backgroundColor: theme.scaffoldBackgroundColor,
-        body: Column(
-          children: [
-            Text(
-              'AI FitCoach',
-              style: theme.textTheme.labelLarge,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: theme.appBarTheme.backgroundColor,
+      ),
+      backgroundColor: theme.scaffoldBackgroundColor,
+      body: Column(
+        children: [
+          Text(
+            'AI FitCoach',
+            style: theme.textTheme.labelLarge,
+          ),
+          SizedBox(
+            height: 250,
+            width: 250,
+            child: Image.asset(
+              theme.brightness == Brightness.dark
+                  ? AppConst.logo
+                  : AppConst.logo2,
             ),
-            SizedBox(
-              height: 250,
-              width: 250,
-              child: Image.asset(
-                theme.brightness == Brightness.dark
-                    ? AppConst.logo
-                    : AppConst.logo2,
-              ),
-            ),
-            TabBar(
-              indicatorColor: theme.bottomNavigationBarTheme.unselectedItemColor,
-                controller: tabController,
-                indicatorSize: TabBarIndicatorSize.tab,
-                tabs: [
-                  Padding(
-                    padding: EdgeInsets.all(12),
-                    child: Text(S.of(context).signIn,
-                        style: theme.textTheme.labelSmall),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(12),
-                    child: Text(S.of(context).signUp,
-                        style: theme.textTheme.labelSmall),
-                  ),
-                ]),
-            Expanded(
-                child: TabBarView(
+          ),
+          TabBar(
+              indicatorColor:
+                  theme.bottomNavigationBarTheme.unselectedItemColor,
               controller: tabController,
-              children: [
-                SignInScreen(),
-                SignUpScreen(),
-              ],
-            ))
-          ],
-        ),
+              indicatorSize: TabBarIndicatorSize.tab,
+              tabs: [
+                Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Text(S.of(context).signIn,
+                      style: theme.textTheme.labelSmall),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Text(S.of(context).signUp,
+                      style: theme.textTheme.labelSmall),
+                ),
+              ]),
+          Expanded(
+              child: TabBarView(
+            controller: tabController,
+            children: [
+              SignInScreen(),
+              SignUpScreen(),
+            ],
+          ))
+        ],
       ),
     );
   }

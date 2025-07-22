@@ -405,6 +405,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "other": MessageLookupByLibrary.simpleMessage("Інше"),
     "password": MessageLookupByLibrary.simpleMessage("Пароль"),
     "personalBestNumber": m9,
+    "piscatorial": MessageLookupByLibrary.simpleMessage("Піскаторний"),
     "pleaseSelectPreferredLanguage": MessageLookupByLibrary.simpleMessage(
       "Будь ласка, вибери бажану мову",
     ),

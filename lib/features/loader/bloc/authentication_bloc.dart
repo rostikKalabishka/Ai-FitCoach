@@ -21,20 +21,22 @@ class AuthenticationBloc
       log('User subscription received: $user');
       add(AuthenticationUserChanged(user));
     });
-    on<AuthenticationUserChanged>((event, emit) {
-      final UserModel user = event.user;
-      try {
-        if (user != UserModel.emptyUser) {
-          print('User authenticated: $user');
-          emit(AuthenticationState.authenticated(user));
-        } else {
-          emit(const AuthenticationState.unauthenticated());
+    on<AuthenticationUserChanged>(
+      (event, emit) {
+        final UserModel user = event.user;
+        try {
+          if (user != UserModel.emptyUser) {
+            print('User authenticated: $user');
+            emit(AuthenticationState.authenticated(user));
+          } else {
+            emit(const AuthenticationState.unauthenticated());
+          }
+        } catch (e) {
+          log(e.toString());
+          rethrow;
         }
-      } catch (e) {
-        log(e.toString());
-        rethrow;
-      }
-    });
+      },
+    );
   }
 
   @override

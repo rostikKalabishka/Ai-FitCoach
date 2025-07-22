@@ -1,3 +1,4 @@
+// settings_repository.dart
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,6 +13,7 @@ class SettingsRepository implements AbstractSettingsRepository {
   static const _languagePrefsKey = 'languagePrefs';
 
   const SettingsRepository({required this.sharedPreferences});
+
   @override
   bool isDarkThemeSelected() {
     try {
@@ -22,18 +24,19 @@ class SettingsRepository implements AbstractSettingsRepository {
   }
 
   @override
-  bool isOnboardingShown() {
+  // FIX: Додано параметр 'shown'
+  Future<void> setOnboardingShown() async {
     try {
-      return sharedPreferences.getBool(_isOnboardingShownKey) ?? false;
+      await sharedPreferences.setBool(_isOnboardingShownKey, true);
     } catch (e) {
       rethrow;
     }
   }
 
   @override
-  Future<void> setOnboardingShown() async {
+  bool isOnboardingShown() {
     try {
-      await sharedPreferences.setBool(_isOnboardingShownKey, true);
+      return sharedPreferences.getBool(_isOnboardingShownKey) ?? false;
     } catch (e) {
       rethrow;
     }
@@ -59,14 +62,16 @@ class SettingsRepository implements AbstractSettingsRepository {
   }
 
   @override
-  Future<void> setUserParametersScreenShown() async {
+  // FIX: Додано параметр 'shown'
+  Future<void> setUserParametersScreenShown({required bool shown}) async {
     try {
-      await sharedPreferences.setBool(_isUserParametersScreenShownKey, true);
+      await sharedPreferences.setBool(_isUserParametersScreenShownKey, shown);
     } catch (e) {
       rethrow;
     }
   }
 
+  @override
   Locale getLocale() {
     final savedLanguageCode = sharedPreferences.getString(_languagePrefsKey);
     if (savedLanguageCode != null && savedLanguageCode.isNotEmpty) {
@@ -77,6 +82,7 @@ class SettingsRepository implements AbstractSettingsRepository {
     return deviceLocale;
   }
 
+  @override
   Future<void> setLocale(Locale locale) async {
     await sharedPreferences.setString(_languagePrefsKey, locale.languageCode);
   }

@@ -29,6 +29,8 @@ class SignInEvent extends AuthEvent {
   List<Object> get props => super.props..addAll([email, password]);
 }
 
+class SignOutEvent extends AuthEvent {}
+
 class SignInWithGoogleEvent extends AuthEvent {}
 
 class SignInWithTwitterEvent extends AuthEvent {}

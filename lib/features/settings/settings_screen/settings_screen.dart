@@ -1,15 +1,15 @@
 import 'package:ai_fit_coach/blocs/health_bloc/health_bloc.dart';
+import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
 
 import 'package:ai_fit_coach/features/settings/settings_screen/settings_card_widgets.dart';
 
 import 'package:ai_fit_coach/generated/l10n.dart';
+import 'package:ai_fit_coach/router/router.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_calendar.dart';
 import 'package:ai_fit_coach/ui/widgets/step_score.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../repositories/user_repository/user.dart';
 
 @RoutePage()
 class SettingsScreen extends StatefulWidget {
@@ -173,15 +173,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
         SizedBox(
           height: 10,
         ),
-        TextButton(
-            onPressed: () async {
-              await UserRepository().logOut();
-            },
-            child: Text(
-              S.of(context).logOut,
-              style: theme.textTheme.displaySmall
-                  ?.copyWith(fontSize: 18, color: theme.colorScheme.primary),
-            )),
+        BlocListener<AuthBloc, AuthState>(
+          listener: (BuildContext context, AuthState state) {
+            if (state is AuthSuccess) {
+              AutoRouter.of(context).pushAndPopUntil(
+                  LoaderRoute(isDefaultMethod: false),
+                  predicate: (route) => false);
+            }
+          },
+          child: TextButton(
+              onPressed: () async {
+                context.read<AuthBloc>().add(SignOutEvent());
+              },
+              child: Text(
+                S.of(context).logOut,
+                style: theme.textTheme.displaySmall
+                    ?.copyWith(fontSize: 18, color: theme.colorScheme.primary),
+              )),
+        ),
         SizedBox(
           height: 20,
         ),

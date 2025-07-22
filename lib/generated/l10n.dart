@@ -2264,6 +2264,11 @@ class S {
     return Intl.message('Join Now', name: 'joinNow', desc: '', args: []);
   }
 
+  /// `Piscatorial`
+  String get piscatorial {
+    return Intl.message('Piscatorial', name: 'piscatorial', desc: '', args: []);
+  }
+
   /// `Trending`
   String get trending {
     return Intl.message('Trending', name: 'trending', desc: '', args: []);

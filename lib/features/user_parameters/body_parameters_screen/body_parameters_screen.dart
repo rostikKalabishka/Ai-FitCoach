@@ -32,8 +32,12 @@ class _BodyParametersPageState extends State<BodyParametersPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: AppBar(
+        backgroundColor: theme.scaffoldBackgroundColor,
+        centerTitle: true,
         title: Text(
           S.of(context).bodyParameters,
           style: TextStyle(fontSize: 20),

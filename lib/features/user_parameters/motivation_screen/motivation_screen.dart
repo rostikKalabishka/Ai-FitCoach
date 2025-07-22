@@ -50,6 +50,7 @@ class _MotivationPageState extends State<MotivationPage> {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           S.of(context).whatMotivatesYou,
           style: TextStyle(fontSize: 20),
@@ -68,7 +69,7 @@ class _MotivationPageState extends State<MotivationPage> {
                   Text(S.of(context).chooseYourMotivations,
                       style: theme.textTheme.labelSmall),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).reducingStress,
                     isSelected: _stressReduction,
                     onTap: () {
@@ -79,6 +80,7 @@ class _MotivationPageState extends State<MotivationPage> {
                     },
                   ),
                   SelectionButton(
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).preparingForTheEvent,
                     isSelected: _eventTraining,
                     onTap: () {
@@ -89,7 +91,7 @@ class _MotivationPageState extends State<MotivationPage> {
                     },
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).rehabilitation,
                     isSelected: _rehabilitation,
                     onTap: () {
@@ -100,7 +102,7 @@ class _MotivationPageState extends State<MotivationPage> {
                     },
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).improvingHealth,
                     isSelected: _improveHealth,
                     onTap: () {
@@ -111,7 +113,7 @@ class _MotivationPageState extends State<MotivationPage> {
                     },
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).buildingStrength,
                     isSelected: _buildStrength,
                     onTap: () {
@@ -122,7 +124,7 @@ class _MotivationPageState extends State<MotivationPage> {
                     },
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).improvingImmunity,
                     isSelected: _boostImmune,
                     onTap: () {
@@ -133,7 +135,7 @@ class _MotivationPageState extends State<MotivationPage> {
                     },
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).increaseInLibido,
                     isSelected: _boostLibido,
                     onTap: () {
