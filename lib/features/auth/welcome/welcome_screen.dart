@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:ai_fit_coach/features/auth/auth.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';

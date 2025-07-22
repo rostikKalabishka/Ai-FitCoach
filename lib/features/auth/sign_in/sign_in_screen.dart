@@ -8,9 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInScreen extends StatefulWidget {
-  const SignInScreen({
-    super.key,
-  });
+  const SignInScreen({super.key});
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
@@ -19,112 +17,108 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  String? _errorMsg;
   bool obscurePassword = true;
-  IconData iconPassword = Icons.visibility_off;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return BlocListener<AuthBloc, AuthState>(
-      listener: (BuildContext context, AuthState state) {
-        if (state is AuthSuccess) {
-          AutoRouter.of(context).pushAndPopUntil(
-              LoaderRoute(isDefaultMethod: true),
-              predicate: (_) => false);
-        } else if (state is AuthFailure) {}
-      },
-      child: Scaffold(
+        listener: (BuildContext context, AuthState state) {
+          if (state is AuthSuccess) {
+            AutoRouter.of(context).pushAndPopUntil(
+                LoaderRoute(isDefaultMethod: true),
+                predicate: (_) => false);
+          } else if (state is AuthFailure) {}
+        },
+        child: Scaffold(
           backgroundColor: theme.scaffoldBackgroundColor,
-          body: Form(
-            key: _formKey,
+          resizeToAvoidBottomInset: true,
+          body: SafeArea(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(children: [
-                  Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 16)),
-                  Center(
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.85,
-                      height: MediaQuery.of(context).size.width * 0.12,
-                      child: CustomTextfield(
-                        controller: emailController,
-                        hintText: S.of(context).email,
-                        obscureText: false,
-                        keyboardType: TextInputType.emailAddress,
-                        prefixIcon: Icon(
-                          Icons.email_outlined,
-                          color: theme.colorScheme.primary,
-                        ),
-                        errorMsg: _errorMsg,
-                        validator: (val) => FormValidators.emailValidator(val),
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 22,
+                          ),
+                          CustomTextfield(
+                            controller: emailController,
+                            hintText: S.of(context).email,
+                            obscureText: false,
+                            keyboardType: TextInputType.emailAddress,
+                            prefixIcon: Icon(Icons.email_outlined,
+                                color: theme.colorScheme.primary),
+                            validator: (val) =>
+                                FormValidators.emailValidator(val),
+                          ),
+                          const SizedBox(height: 18),
+                          CustomTextfield(
+                            controller: passwordController,
+                            hintText: S.of(context).password,
+                            obscureText: obscurePassword,
+                            keyboardType: TextInputType.visiblePassword,
+                            prefixIcon: Icon(Icons.lock_outline,
+                                color: theme.colorScheme.primary),
+                            validator: (val) =>
+                                FormValidators.passwordValidator(val),
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  obscurePassword = !obscurePassword;
+                                });
+                              },
+                              icon: Icon(
+                                obscurePassword
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: theme.colorScheme.primary,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 16)),
-                  Center(
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.85,
-                      height: MediaQuery.of(context).size.width * 0.12,
-                      child: CustomTextfield(
-                        controller: passwordController,
-                        hintText: S.of(context).password,
-                        obscureText: obscurePassword,
-                        keyboardType: TextInputType.visiblePassword,
-                        prefixIcon: Icon(
-                          Icons.lock_outline,
-                          color: theme.colorScheme.primary,
-                        ),
-                        errorMsg: _errorMsg,
-                        validator: (val) =>
-                            FormValidators.passwordValidator(val),
-                        suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                obscurePassword = !obscurePassword;
-                              });
-                            },
-                            color: theme.colorScheme.primary,
-                            icon: Icon(obscurePassword
-                                ? Icons.visibility
-                                : Icons.visibility_off)),
-                      ),
-                    ),
-                  ),
-                ]),
+                ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 58),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                   child: SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.85,
                     height: MediaQuery.of(context).size.width * 0.12,
+                    width: double.infinity,
                     child: ElevatedButton(
-                        onPressed: () {
-                          _signIn(context);
-                        },
+                      onPressed: () => _signIn(context),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
                         child: Text(
                           S.of(context).signIn,
                           style: theme.textTheme.displaySmall
                               ?.copyWith(fontSize: 18),
-                        )),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],
             ),
-          )),
-    );
+          ),
+        ));
   }
 
   void _signIn(BuildContext context) {
     if (_formKey.currentState!.validate()) {
       context.read<AuthBloc>().add(
             SignInEvent(
-                email: emailController.text, password: passwordController.text),
+              email: emailController.text,
+              password: passwordController.text,
+            ),
           );
     }
   }

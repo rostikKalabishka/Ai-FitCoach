@@ -1,3 +1,5 @@
+import 'package:ai_fit_coach/features/auth/sign_in/sign_in_screen.dart';
+
 import 'package:ai_fit_coach/generated/l10n.dart';
 
 import 'package:ai_fit_coach/ui/theme/app_const.dart';
