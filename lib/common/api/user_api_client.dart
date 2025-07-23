@@ -39,6 +39,14 @@ class UserApiClient {
     }
   }
 
+  Future<void> updateUserInfo({required UserModel userModel}) async {
+    try {
+      await _usersCollection.doc(userModel.id).update(userModel.toJson());
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<UserModel> registration(
       {required UserModel userModel, required String password}) async {
     try {
@@ -120,8 +128,8 @@ class UserApiClient {
           if (!existingDoc.exists) {
             final userModel = UserModel.emptyUser.copyWith(
               id: firebaseUser.uid,
-              username: firebaseUser.displayName ?? 'Unknown',
-              email: firebaseUser.email ?? '',
+              username: firebaseUser.displayName,
+              email: firebaseUser.email,
             );
 
             await setUserData(userModel);
@@ -159,7 +167,7 @@ class UserApiClient {
             final userModel = UserModel.emptyUser.copyWith(
               id: firebaseUser.uid,
               username: googleSignInAccount.displayName,
-              email: googleSignInAccount.displayName,
+              email: googleSignInAccount.email,
             );
             await setUserData(userModel);
           }

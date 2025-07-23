@@ -1,5 +1,4 @@
 import 'package:ai_fit_coach/generated/l10n.dart';
-import 'package:ai_fit_coach/ui/widgets/custom_confirm_cancel_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

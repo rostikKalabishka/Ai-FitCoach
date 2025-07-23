@@ -194,6 +194,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "difficultyLevel": MessageLookupByLibrary.simpleMessage(
       "Рівень складності",
     ),
+    "discard": MessageLookupByLibrary.simpleMessage("Discard"),
     "doNotDisturbMode": MessageLookupByLibrary.simpleMessage(
       "Режим «Не турбувати»",
     ),
@@ -368,6 +369,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noneOfTheAbove": MessageLookupByLibrary.simpleMessage(
       "Жодне з вищезазначеного",
     ),
+    "notSelected": MessageLookupByLibrary.simpleMessage("Not selected"),
     "numberDaysStreak": m8,
     "numberOfExistingWorkouts": MessageLookupByLibrary.simpleMessage(
       "Кількість наявних тренувань",
@@ -555,6 +557,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "unableToRestEnough": MessageLookupByLibrary.simpleMessage(
       "Не можу достатньо відпочивати",
     ),
+    "unsavedChanges": MessageLookupByLibrary.simpleMessage("Unsaved changes"),
     "userNotAuthenticated": MessageLookupByLibrary.simpleMessage(
       "Користувач не автентифікований",
     ),
@@ -590,6 +593,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "workout": MessageLookupByLibrary.simpleMessage("Тренування"),
     "workoutTypes": MessageLookupByLibrary.simpleMessage("Типи тренувань"),
     "yoga": MessageLookupByLibrary.simpleMessage("Йога"),
+    "youHaveUnsavedChangesDoYouReallyWantToDiscard":
+        MessageLookupByLibrary.simpleMessage(
+          "You have unsaved changes. Do you really want to discard them?",
+        ),
     "yourAge": MessageLookupByLibrary.simpleMessage("ТВІЙ ВІК:"),
     "yourHeight": MessageLookupByLibrary.simpleMessage("ТВІЙ ЗРІСТ:"),
     "yourRightsAccessData": MessageLookupByLibrary.simpleMessage(

@@ -1,5 +1,7 @@
 import 'package:ai_fit_coach/blocs/health_bloc/health_bloc.dart';
+import 'package:ai_fit_coach/blocs/user_bloc/user_bloc.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
+import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 
 import 'package:ai_fit_coach/features/settings/settings_screen/settings_card_widgets.dart';
 
@@ -21,10 +23,19 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
+  void initState() {
+    super.initState();
+    context.read<UserBloc>().add(
+        GetUser(userId: context.read<AuthenticationBloc>().state.user!.id));
+  }
+
+  final int stepsCountNormal = 10000;
+
+  @override
   Widget build(BuildContext context) {
     final router = AutoRouter.of(context);
     final theme = Theme.of(context);
-    const int stepsCountNormal = 10000;
+
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: ListView(children: [
@@ -42,49 +53,59 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 20, left: 15, bottom: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            S.of(context).welcomeUser("User"),
-                            style: theme.textTheme.labelSmall,
-                          ),
-                          Text(S.of(context).appNameAccount('AI FitCoach'),
-                              style: theme.textTheme.headlineSmall),
-                        ],
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.local_fire_department,
-                          size: 35,
-                          color: theme.colorScheme.secondary,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 20, left: 15, bottom: 20),
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              S.of(context).numberDaysStreak(0),
-                              style: theme.textTheme.headlineMedium,
-                            ),
-                            Text(
-                              S.of(context).personalBestNumber(0),
-                              style: theme.textTheme.headlineSmall,
-                            ),
+                            BlocBuilder<UserBloc, UserState>(builder:
+                                (BuildContext context, UserState state) {
+                              return Text(
+                                S
+                                    .of(context)
+                                    .welcomeUser(state.userModel.username),
+                                style: theme.textTheme.labelSmall,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                                // softWrap: false,
+                              );
+                            }),
+                            Text(S.of(context).appNameAccount('AI FitCoach'),
+                                style: theme.textTheme.headlineSmall),
                           ],
                         ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                      ],
-                    )
+                      ),
+                    ),
+                    // Row(
+                    //   children: [
+                    //     Icon(
+                    //       Icons.local_fire_department,
+                    //       size: 35,
+                    //       color: theme.colorScheme.secondary,
+                    //     ),
+                    //     SizedBox(
+                    //       width: 10,
+                    //     ),
+                    //     Column(
+                    //       crossAxisAlignment: CrossAxisAlignment.start,
+                    //       children: [
+                    //         Text(
+                    //           S.of(context).numberDaysStreak(0),
+                    //           style: theme.textTheme.headlineMedium,
+                    //         ),
+                    //         Text(
+                    //           S.of(context).personalBestNumber(0),
+                    //           style: theme.textTheme.headlineSmall,
+                    //         ),
+                    //       ],
+                    //     ),
+                    //     SizedBox(
+                    //       width: 10,
+                    //     ),
+                    //   ],
+                    // )
                   ],
                 ),
                 CustomCalendar(),

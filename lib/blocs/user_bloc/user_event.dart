@@ -1,3 +1,4 @@
+// user_event.dart
 part of 'user_bloc.dart';
 
 sealed class UserEvent extends Equatable {
@@ -19,4 +20,18 @@ class UpdateUserInfo extends UserEvent {
   const UpdateUserInfo({
     required this.userModel,
   });
+
+  @override
+  List<Object> get props => [userModel];
+}
+
+class UpdateUserField extends UserEvent {
+  final UserModel userModel;
+
+  const UpdateUserField({
+    required this.userModel,
+  });
+
+  @override
+  List<Object> get props => [userModel];
 }

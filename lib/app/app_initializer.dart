@@ -26,11 +26,7 @@ class AppInitializer extends StatelessWidget {
       create: (context) => getIt<AuthenticationBloc>(),
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(
-            create: (_) => getIt<UserBloc>()
-              ..add(GetUser(
-                  userId: context.read<AuthenticationBloc>().state.user!.id)),
-          ),
+          BlocProvider(create: (_) => getIt<UserBloc>()),
           BlocProvider(
             create: (_) => getIt<SettingsCubit>(),
           ),

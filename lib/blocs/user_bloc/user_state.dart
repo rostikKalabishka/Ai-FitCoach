@@ -1,33 +1,35 @@
+// user_state.dart
 part of 'user_bloc.dart';
 
-enum UserStatus {
-  loading,
-  loaded,
-  unknown,
-}
+enum UserStatus { initial, loading, loaded, error }
 
 class UserState extends Equatable {
-  const UserState(
-      {this.userModel = UserModel.emptyUser,
-      this.error = '',
-      this.userStatus = UserStatus.unknown});
+  const UserState({
+    this.userModel = UserModel.emptyUser,
+    this.userStatus = UserStatus.initial,
+    this.error,
+    this.hasChanges = false, // Track changes
+  });
 
   final UserModel userModel;
-  final Object error;
   final UserStatus userStatus;
-
-  @override
-  List<Object> get props => [userModel, error, userStatus];
+  final Object? error;
+  final bool hasChanges;
 
   UserState copyWith({
-    Object? error,
     UserModel? userModel,
     UserStatus? userStatus,
+    Object? error,
+    bool? hasChanges,
   }) {
     return UserState(
-      error: error ?? this.error,
-      userStatus: userStatus ?? this.userStatus,
       userModel: userModel ?? this.userModel,
+      userStatus: userStatus ?? this.userStatus,
+      error: error ?? this.error,
+      hasChanges: hasChanges ?? this.hasChanges,
     );
   }
+
+  @override
+  List<Object?> get props => [userModel, userStatus, error, hasChanges];
 }

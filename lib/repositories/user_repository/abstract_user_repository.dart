@@ -21,4 +21,6 @@ abstract interface class AbstractUserRepository {
   Future<void> setUserData(UserModel userModel);
 
   Future<UserModel> getMyUser(String myUserId);
+
+  Future<void> updateUserInfo({required UserModel userModel});
 }
