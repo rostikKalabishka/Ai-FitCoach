@@ -2,6 +2,7 @@ import 'package:ai_fit_coach/common/api/model/challenges/challenge_item.dart';
 import 'package:ai_fit_coach/common/api/model/home/food_recommendation_item.dart';
 import 'package:ai_fit_coach/common/api/model/workout/workout_item.dart';
 import 'package:ai_fit_coach/ui/ui.dart';
+import 'package:ai_fit_coach/ui/widgets/custom_trending_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -184,20 +185,17 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                     'Recommendations',
                     style: theme.textTheme.labelSmall,
                   ),
-                  const SizedBox(height: 10),
-                  CustomSubcategoryWorkout(
+                  const SizedBox(height: 24),
+                  CustomTrendingCard(
                     title: 'Example 1',
-                    imagePath: 'assets/images/challenges/exercise/2.png',
                     repsNumber: 'reps | duration | sets | portions',
                   ),
-                  CustomSubcategoryWorkout(
+                  CustomTrendingCard(
                     title: 'Example 2',
-                    imagePath: 'assets/images/challenges/exercise/2.png',
                     repsNumber: 'reps | duration | sets | portions',
                   ),
-                  CustomSubcategoryWorkout(
+                  CustomTrendingCard(
                     title: 'Example 2',
-                    imagePath: 'assets/images/challenges/exercise/2.png',
                     repsNumber: 'reps | duration | sets | portions',
                   ),
                 ],
