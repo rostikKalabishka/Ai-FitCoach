@@ -13,19 +13,12 @@ final class HealthLoading extends HealthState {}
 
 final class HealthLoaded extends HealthState {
   final int steps;
+  final DateTime date;
 
-  const HealthLoaded({this.steps = 0});
-
-  HealthLoaded copyWith({
-    int? steps,
-  }) {
-    return HealthLoaded(
-      steps: steps ?? this.steps,
-    );
-  }
+  const HealthLoaded({required this.steps, required this.date});
 
   @override
-  List<Object> get props => [steps];
+  List<Object> get props => [steps, date];
 }
 
 final class HealthFailure extends HealthState {

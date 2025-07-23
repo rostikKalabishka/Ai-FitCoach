@@ -19,6 +19,11 @@ class HealthRepository implements AbstractHealthRepository {
 
   @override
   Future<int> getSteps() async {
+    return getStepsForDate(DateTime.now());
+  }
+
+  @override
+  Future<int> getStepsForDate(DateTime date) async {
     final types = [HealthDataType.STEPS];
 
     try {
@@ -27,14 +32,14 @@ class HealthRepository implements AbstractHealthRepository {
         throw Exception('Health data authorization failed');
       }
 
-      final now = DateTime.now();
-      final midnight = DateTime(now.year, now.month, now.day);
+      final startTime = DateTime(date.year, date.month, date.day);
+      final endTime = startTime.add(Duration(days: 1));
 
-      int? steps = await health.getTotalStepsInInterval(midnight, now);
+      int? steps = await health.getTotalStepsInInterval(startTime, endTime);
 
       return steps ?? 0;
     } catch (e) {
-      print('Error fetching health data: $e');
+      print('Error fetching steps for $date: $e');
       rethrow;
     }
   }

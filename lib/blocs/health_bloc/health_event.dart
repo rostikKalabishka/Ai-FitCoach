@@ -10,3 +10,12 @@ sealed class HealthEvent extends Equatable {
 class HealthLoadInfoEvent extends HealthEvent {}
 
 class HealthUpdateInfoEvent extends HealthEvent {}
+
+class FetchStepsForDate extends HealthEvent {
+  final DateTime date;
+
+  const FetchStepsForDate(this.date);
+
+  @override
+  List<Object> get props => [date];
+}

@@ -195,12 +195,20 @@ class UserApiClient {
           final userModel = UserModel.emptyUser.copyWith(
             id: firebaseUser.uid,
             username: firebaseUser.displayName ?? 'Unknown',
-            email: firebaseUser.email ?? '', // Twitter іноді не повертає email
+            email: firebaseUser.email ?? '',
           );
 
           await setUserData(userModel);
         }
       }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> deleteAccount(String userId) async {
+    try {
+      await _usersCollection.doc('DuuzJTgC3bXAecaEr5k6YEbpvQJ3').delete();
     } catch (e) {
       rethrow;
     }
