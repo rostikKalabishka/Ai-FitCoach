@@ -31,7 +31,7 @@ class _DescriptionCategoryWorkoutState
   @override
   void initState() {
     context.read<WorkoutExerciseBloc>().add(WorkoutExerciseItemEvent(
-        workoutCategoryType: WorkoutCategoryType.newbie,
+        workoutCategoryType: WorkoutCategoryType.all,
         workoutId: widget.workoutItem.id));
     super.initState();
   }
@@ -69,7 +69,8 @@ class _DescriptionCategoryWorkoutState
                             },
                             icon: Icon(
                               Icons.arrow_back,
-                              color: theme.bottomNavigationBarTheme.unselectedItemColor,
+                              color: theme
+                                  .bottomNavigationBarTheme.unselectedItemColor,
                               size: 32,
                             )),
                       ),
@@ -192,30 +193,25 @@ class _DescriptionCategoryWorkoutState
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Exercises',
-                              style: theme.textTheme.labelSmall,
-                            ),
-                            SizedBox(
-                              height: 400,
-                              width: 400,
-                                child: ListView.builder(
+                        Text(
+                          'Exercises',
+                          style: theme.textTheme.labelSmall,
+                        ),
+                        Container(
+                            height: 400,
+                            width: double.infinity,
+                            child: ListView.builder(
                               itemCount: state.workoutExercise.length,
                               itemBuilder: (context, index) =>
                                   CustomSubcategoryWorkout(
                                 title:
                                     state.workoutExercise[index].exerciseName,
                                 imagePath:
-                                    'assets/images/challenges/exercise/2.png',
+                                    state.workoutExercise[index].imageUrl,
                                 repsNumber:
                                     state.workoutExercise[index].exerciseReps,
                               ),
                             ))
-                          ],
-                        ),
                       ],
                     ),
                   )

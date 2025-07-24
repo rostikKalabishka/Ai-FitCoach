@@ -29,14 +29,14 @@ class WorkoutExerciseBloc
     try {
       final workoutExeciseList =
           await _workoutRepository.getWorkoutExerciseItemInCollection(
-              _workoutCategoryType(event.workoutCategoryType), event.workoutId);
+              workoutCategoryType(event.workoutCategoryType), event.workoutId);
       emit(WorkoutExerciseLoaded(workoutExercise: workoutExeciseList));
     } catch (e) {
       emit(WorkoutExerciseFailure(error: e));
     }
   }
 
-  String _workoutCategoryType(WorkoutCategoryType workoutCategoryType) {
+  String workoutCategoryType(WorkoutCategoryType workoutCategoryType) {
     switch (workoutCategoryType) {
       case WorkoutCategoryType.all:
         return 'all';
