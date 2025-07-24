@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
- <string name="app)name">Ai FitCoach</string>
+ <string name="app_name">Ai FitCoach</string>
 <string name="facebook_app_id">1872329286664345</string>
 <string name="fb_login_protocol_scheme">fb1872329286664345</string>
 <string name="facebook_client_token">df2eda1285bba4eda04bc09d3cca9171</string>
