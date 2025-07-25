@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:ai_fit_coach/app/ai_fit_coach_app.dart';
 import 'package:ai_fit_coach/common/api/api.dart';
 import 'package:ai_fit_coach/common/di/di.dart';
+
 import 'package:ai_fit_coach/config/firebase_options.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -23,10 +25,21 @@ Future<void> main() async {
 
   initDI(sharedPreferences: prefs);
 
-  // ✅ Перевірка платформи без dart:io
   if (defaultTargetPlatform != TargetPlatform.iOS) {
     await NotificationsApi().initNotifications();
   }
+
+  await NotificationsApi().initNotifications();
+
+  // await exerciseDescription();
+
+  // await exerciseDescription1();
+
+  // await exerciseDescription2();
+
+  // await exerciseDescription3();
+
+  // await exerciseDescription4();
 
   runApp(const AiFitCoachApp());
 }
