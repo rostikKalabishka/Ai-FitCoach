@@ -84,10 +84,10 @@ Future<void> saveWorkoutExerciseItemInCollection(WorkoutSubitem item) async {
 Future<void> exerciseDescription() async {
   final item = WorkoutSubitem(
       id: '',
-      imageUrl: '',
-      exerciseName: '',
-      exerciseReps: '',
-      workoutId: '',
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/ai-fitcoach-8a7cf.firebasestorage.app/o/workoutExercises%2FWalking%20Meditation.png?alt=media&token=be428667-d7b3-4861-a25f-450f6dbffd53',
+      exerciseName: 'Walking Meditation ',
+      exerciseReps: '5 min',
+      workoutId: '061e6592-b099-482b-9e87-0ba24027be8c',
       categoryType: '');
 
   try {
@@ -105,10 +105,10 @@ Future<void> saveExerciseItem(WorkoutSubitem item) async {
 Future<void> exerciseDescription1() async {
   final item = WorkoutSubitem(
       id: '',
-      imageUrl: '',
-      exerciseName: "",
-      exerciseReps: '',
-      workoutId: '',
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/ai-fitcoach-8a7cf.firebasestorage.app/o/workoutExercises%2FBreath-Synchronized%20Arm%20Flow.png?alt=media&token=2c820e29-79b4-498d-b36f-65adbaddf32d',
+      exerciseName: "Breath-Synchronized Arm Flow ",
+      exerciseReps: '3 sets of 5 min',
+      workoutId: '061e6592-b099-482b-9e87-0ba24027be8c',
       categoryType: '');
 
   try {
@@ -125,10 +125,10 @@ Future<void> saveExerciseItem1(WorkoutSubitem item) async {
 Future<void> exerciseDescription2() async {
   final item = WorkoutSubitem(
       id: '',
-      imageUrl: '',
-      exerciseName: '',
-      exerciseReps: '',
-      workoutId: '',
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/ai-fitcoach-8a7cf.firebasestorage.app/o/workoutExercises%2FSeated%20Grounding%20Movements.png?alt=media&token=abb75e84-eee6-4fd0-ab52-27518881ca64',
+      exerciseName: 'Seated Grounding Movements ',
+      exerciseReps: '5 min',
+      workoutId: '061e6592-b099-482b-9e87-0ba24027be8c',
       categoryType: '');
 
   try {
@@ -145,10 +145,10 @@ Future<void> saveExerciseItem2(WorkoutSubitem item) async {
 Future<void> exerciseDescription3() async {
   final item = WorkoutSubitem(
       id: '',
-      imageUrl: '',
-      exerciseName: '',
-      exerciseReps: '',
-      workoutId: '',
+      imageUrl: 'https://firebasestorage.googleapis.com/v0/b/ai-fitcoach-8a7cf.firebasestorage.app/o/workoutExercises%2FClosing%20Stillness.png?alt=media&token=1106329a-4e28-40c9-8fb7-1aa2dc7b8925',
+      exerciseName: "Closing Stillness ",
+      exerciseReps: '5 min',
+      workoutId: '061e6592-b099-482b-9e87-0ba24027be8c',
       categoryType: '');
 
   try {
@@ -168,7 +168,7 @@ Future<void> exerciseDescription4() async {
       imageUrl: '',
       exerciseName: '',
       exerciseReps: '',
-      workoutId: '',
+      workoutId: '061e6592-b099-482b-9e87-0ba24027be8c',
       categoryType: '');
 
   try {
