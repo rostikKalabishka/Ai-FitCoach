@@ -183,6 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Delete Your Account",
     ),
     "difficultyLevel": MessageLookupByLibrary.simpleMessage("Difficulty Level"),
+    "discard": MessageLookupByLibrary.simpleMessage("Discard"),
     "doNotDisturbMode": MessageLookupByLibrary.simpleMessage(
       "Do Not Disturb Mode",
     ),
@@ -347,6 +348,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "No excuses - only results",
     ),
     "noneOfTheAbove": MessageLookupByLibrary.simpleMessage("None of the above"),
+    "notSelected": MessageLookupByLibrary.simpleMessage("Not selected"),
     "numberDaysStreak": m8,
     "numberOfExistingWorkouts": MessageLookupByLibrary.simpleMessage(
       "Number of existing workouts",
@@ -524,6 +526,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "unableToRestEnough": MessageLookupByLibrary.simpleMessage(
       "Unable to rest enough",
     ),
+    "unsavedChanges": MessageLookupByLibrary.simpleMessage("Unsaved changes"),
     "userNotAuthenticated": MessageLookupByLibrary.simpleMessage(
       "User not authenticated",
     ),
@@ -559,6 +562,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "workout": MessageLookupByLibrary.simpleMessage("Workout"),
     "workoutTypes": MessageLookupByLibrary.simpleMessage("Workout Types"),
     "yoga": MessageLookupByLibrary.simpleMessage("Yoga"),
+    "youHaveUnsavedChangesDoYouReallyWantToDiscard":
+        MessageLookupByLibrary.simpleMessage(
+          "You have unsaved changes. Do you really want to discard them?",
+        ),
     "yourAge": MessageLookupByLibrary.simpleMessage("YOUR AGE:"),
     "yourHeight": MessageLookupByLibrary.simpleMessage("YOUR HEIGHT:"),
     "yourRightsAccessData": MessageLookupByLibrary.simpleMessage(

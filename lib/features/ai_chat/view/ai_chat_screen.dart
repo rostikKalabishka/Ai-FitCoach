@@ -128,7 +128,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
                                   ),
                                   if (state.isTyping) ...[
                                     SpinKitThreeBounce(
-                                      color: theme.colorScheme.secondary,
+                                      color: theme.colorScheme.primary,
                                       size: 18,
                                     ),
                                   ],

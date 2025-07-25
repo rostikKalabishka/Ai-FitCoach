@@ -39,9 +39,10 @@ class _TrainingDaysState extends State<TrainingDaysPage> {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           S.of(context).chooseYourTrainingDays,
-          style: theme.textTheme.labelMedium,
+          style: TextStyle(fontSize: 20),
         ),
         leading: NavigationBackButton(pageController: widget.pageController),
       ),
@@ -58,46 +59,47 @@ class _TrainingDaysState extends State<TrainingDaysPage> {
                     S
                         .of(context)
                         .forBestFitnessResultsChooseToTrainEveryOtherDay,
-                    style: TextStyle(color: Colors.white),
+                    style: theme.textTheme.headlineLarge
+                        ?.copyWith(fontWeight: FontWeight.normal),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).monday,
                     isSelected: _selectedDays.contains('Monday'),
                     onTap: () => _toggleDay('Monday'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).tuesday,
                     isSelected: _selectedDays.contains('Tuesday'),
                     onTap: () => _toggleDay('Tuesday'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).wednesday,
                     isSelected: _selectedDays.contains('Wednesday'),
                     onTap: () => _toggleDay('Wednesday'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).thursday,
                     isSelected: _selectedDays.contains('Thursday'),
                     onTap: () => _toggleDay('Thursday'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).friday,
                     isSelected: _selectedDays.contains('Friday'),
                     onTap: () => _toggleDay('Friday'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).saturday,
                     isSelected: _selectedDays.contains('Saturday'),
                     onTap: () => _toggleDay('Saturday'),
                   ),
                   SelectionButton(
-                    selectedColor: const Color.fromARGB(255, 85, 0, 0),
+                    selectedColor: theme.colorScheme.primary,
                     text: S.of(context).sunday,
                     isSelected: _selectedDays.contains('Sunday'),
                     onTap: () => _toggleDay('Sunday'),

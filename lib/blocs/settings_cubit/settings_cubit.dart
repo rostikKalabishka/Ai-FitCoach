@@ -5,7 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../../repositories/settings_repository/settings.dart';
+import '../../repositories/settings_repository/settings.dart'; // Переконайтеся, що шлях правильний
 
 part 'settings_state.dart';
 
@@ -50,7 +50,7 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   Future<void> setUserParametersScreen() async {
     try {
-      await _settingsRepository.setUserParametersScreenShown();
+      await _settingsRepository.setUserParametersScreenShown(shown: true);
       emit(state.copyWith(isUserParametersScreenShown: true));
     } catch (e) {
       log('setUserParametersScreen error: $e');
@@ -63,6 +63,18 @@ class SettingsCubit extends Cubit<SettingsState> {
       emit(state.copyWith(locale: locale));
     } catch (e) {
       log('changeLocale error: $e');
+    }
+  }
+
+  Future<void> resetSettings() async {
+    debugPrint(
+        'SettingsCubit: Resetting settings to initial state after logout.');
+    try {
+      await _settingsRepository.setUserParametersScreenShown(shown: false);
+
+      emit(state.copyWith(isUserParametersScreenShown: false));
+    } catch (e) {
+      log('resetSettings error: $e');
     }
   }
 

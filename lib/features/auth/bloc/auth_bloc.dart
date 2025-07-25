@@ -11,19 +11,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({required AbstractUserRepository userRepository})
       : _userRepository = userRepository,
         super(AuthInitial()) {
-    on<AuthEvent>((event, emit) async {
-      if (event is SignUpEvent) {
-        await _registration(event, emit);
-      } else if (event is SignInEvent) {
-        await _login(event, emit);
-      } else if (event is SignInWithGoogleEvent) {
-        await _signInWithGoogle(event, emit);
-      } else if (event is SignInWithTwitterEvent) {
-        await _signInWithTwitter(event, emit);
-      } else if (event is SignInWithFacebookEvent) {
-        await _signInWithFacebook(event, emit);
-      }
-    });
+    on<AuthEvent>(
+      (event, emit) async {
+        if (event is SignUpEvent) {
+          await _registration(event, emit);
+        } else if (event is SignInEvent) {
+          await _login(event, emit);
+        } else if (event is SignInWithGoogleEvent) {
+          await _signInWithGoogle(event, emit);
+        } else if (event is SignInWithTwitterEvent) {
+          await _signInWithTwitter(event, emit);
+        } else if (event is SignInWithFacebookEvent) {
+          await _signInWithFacebook(event, emit);
+        } else if (event is SignOutEvent) {
+          await _signOut(event, emit);
+        }
+      },
+    );
   }
 
   Future<void> _registration(SignUpEvent event, emit) async {
@@ -44,6 +48,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> _login(SignInEvent event, emit) async {
     emit(AuthProcess());
     try {
+      await _userRepository.login(email: event.email, password: event.password);
       emit(AuthSuccess());
     } catch (e) {
       emit(AuthFailure(error: e));
@@ -74,6 +79,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthProcess());
     try {
       await _userRepository.singInWithFacebook();
+      emit(AuthSuccess());
+    } catch (e) {
+      emit(AuthFailure(error: e));
+    }
+  }
+
+  Future<void> _signOut(SignOutEvent event, emit) async {
+    emit(AuthProcess());
+    try {
+      await _userRepository.logOut();
       emit(AuthSuccess());
     } catch (e) {
       emit(AuthFailure(error: e));

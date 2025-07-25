@@ -2273,6 +2273,41 @@ class S {
   String get trending {
     return Intl.message('Trending', name: 'trending', desc: '', args: []);
   }
+
+  /// `Not selected`
+  String get notSelected {
+    return Intl.message(
+      'Not selected',
+      name: 'notSelected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unsaved changes`
+  String get unsavedChanges {
+    return Intl.message(
+      'Unsaved changes',
+      name: 'unsavedChanges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have unsaved changes. Do you really want to discard them?`
+  String get youHaveUnsavedChangesDoYouReallyWantToDiscard {
+    return Intl.message(
+      'You have unsaved changes. Do you really want to discard them?',
+      name: 'youHaveUnsavedChangesDoYouReallyWantToDiscard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discard`
+  String get discard {
+    return Intl.message('Discard', name: 'discard', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

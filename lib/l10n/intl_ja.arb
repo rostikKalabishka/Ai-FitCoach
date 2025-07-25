@@ -262,5 +262,9 @@
   "allCategories": "すべてのカテゴリー",
   "joinNow": "今すぐ参加する！",
   "piscatorial": "ピスカトーレ",
-  "trending": "Trending"
+  "trending": "Trending",
+  "notSelected": "Not selected",
+  "unsavedChanges": "Unsaved changes",
+  "youHaveUnsavedChangesDoYouReallyWantToDiscard": "You have unsaved changes. Do you really want to discard them?",
+  "discard": "Discard"
 }

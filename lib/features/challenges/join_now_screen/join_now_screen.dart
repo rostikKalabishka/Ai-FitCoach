@@ -1,5 +1,4 @@
 import 'package:ai_fit_coach/common/api/model/challenges/challenge_item.dart';
-import 'package:ai_fit_coach/ui/theme/app_const.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +45,8 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                         },
                         icon: Icon(
                           Icons.arrow_back,
-                          color: theme.bottomNavigationBarTheme.unselectedItemColor,
+                          color: theme
+                              .bottomNavigationBarTheme.unselectedItemColor,
                           size: 32,
                         )),
                   ),
@@ -74,7 +74,7 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Row(
                       children: [
-                         Icon(
+                        Icon(
                           Icons.local_fire_department,
                           color: theme.colorScheme.secondary,
                         ),

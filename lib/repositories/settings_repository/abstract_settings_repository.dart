@@ -1,6 +1,7 @@
-import 'dart:ui';
+// abstract_settings_repository.dart
+import 'package:flutter/material.dart'; // Для Locale
 
-abstract interface class AbstractSettingsRepository {
+abstract class AbstractSettingsRepository {
   bool isDarkThemeSelected();
   Future<void> setDarkThemeSelected(bool selected);
 
@@ -8,9 +9,8 @@ abstract interface class AbstractSettingsRepository {
   Future<void> setOnboardingShown();
 
   bool isUserParametersScreenShown();
-  Future<void> setUserParametersScreenShown();
+  Future<void> setUserParametersScreenShown({required bool shown});
 
   Locale getLocale();
-
   Future<void> setLocale(Locale locale);
 }

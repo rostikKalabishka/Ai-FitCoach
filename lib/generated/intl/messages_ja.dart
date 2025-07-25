@@ -166,6 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteChat": MessageLookupByLibrary.simpleMessage("チャットを削除"),
     "deleteYourAccount": MessageLookupByLibrary.simpleMessage("アカウントを削除"),
     "difficultyLevel": MessageLookupByLibrary.simpleMessage("難易度"),
+    "discard": MessageLookupByLibrary.simpleMessage("Discard"),
     "doNotDisturbMode": MessageLookupByLibrary.simpleMessage("おやすみモード"),
     "doYouAgreeWithOurTermsAndPolicies": MessageLookupByLibrary.simpleMessage(
       "利用規約とポリシーに同意しますか？",
@@ -294,6 +295,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "next": MessageLookupByLibrary.simpleMessage("次へ"),
     "noExcusesOnlyResults": MessageLookupByLibrary.simpleMessage("言い訳なし、結果のみ"),
     "noneOfTheAbove": MessageLookupByLibrary.simpleMessage("上記のいずれでもない"),
+    "notSelected": MessageLookupByLibrary.simpleMessage("Not selected"),
     "numberDaysStreak": m8,
     "numberOfExistingWorkouts": MessageLookupByLibrary.simpleMessage(
       "既存のワークアウト数",
@@ -451,6 +453,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "tuesday": MessageLookupByLibrary.simpleMessage("火曜日"),
     "ukrainian": MessageLookupByLibrary.simpleMessage("ウクライナ語"),
     "unableToRestEnough": MessageLookupByLibrary.simpleMessage("十分に休息できない"),
+    "unsavedChanges": MessageLookupByLibrary.simpleMessage("Unsaved changes"),
     "userNotAuthenticated": MessageLookupByLibrary.simpleMessage(
       "ユーザーが認証されていません",
     ),
@@ -480,6 +483,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "workout": MessageLookupByLibrary.simpleMessage("ワークアウト"),
     "workoutTypes": MessageLookupByLibrary.simpleMessage("ワークアウトの種類"),
     "yoga": MessageLookupByLibrary.simpleMessage("ヨガ"),
+    "youHaveUnsavedChangesDoYouReallyWantToDiscard":
+        MessageLookupByLibrary.simpleMessage(
+          "You have unsaved changes. Do you really want to discard them?",
+        ),
     "yourAge": MessageLookupByLibrary.simpleMessage("あなたの年齢："),
     "yourHeight": MessageLookupByLibrary.simpleMessage("あなたの身長："),
     "yourRightsAccessData": MessageLookupByLibrary.simpleMessage(

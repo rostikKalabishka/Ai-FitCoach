@@ -24,6 +24,7 @@ class UserData extends Equatable {
   final bool termsAccepted; // Згода з умовами
 
   bool get isEmpty => this == emptyUserData;
+  bool get isNotEmpty => this != emptyUserData;
 
   const UserData({
     this.weight = 0,

@@ -40,4 +40,8 @@ class UserRepository implements AbstractUserRepository {
 
   @override
   Future<void> singInWithTwitter() => _userApiClient.signInWithTwitter();
+
+  @override
+  Future<void> updateUserInfo({required UserModel userModel}) =>
+      _userApiClient.updateUserInfo(userModel: userModel);
 }

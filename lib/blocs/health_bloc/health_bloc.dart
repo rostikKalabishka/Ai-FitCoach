@@ -7,22 +7,50 @@ part 'health_state.dart';
 
 class HealthBloc extends Bloc<HealthEvent, HealthState> {
   final AbstractHealthRepository _abstractHealthRepository;
+
   HealthBloc({required AbstractHealthRepository abstractHealthRepository})
       : _abstractHealthRepository = abstractHealthRepository,
         super(HealthInitial()) {
-    on<HealthEvent>((event, emit) async {
-      if (event is HealthLoadInfoEvent) {
-        await _loadHealthInfo(event, emit);
-      }
-    });
+    on<HealthLoadInfoEvent>(_loadHealthInfo);
+    on<HealthUpdateInfoEvent>(_updateHealthInfo);
+    on<FetchStepsForDate>(_fetchStepsForDate);
   }
-  Future<void> _loadHealthInfo(HealthLoadInfoEvent event, emit) async {
+
+  Future<void> _loadHealthInfo(
+      HealthLoadInfoEvent event, Emitter<HealthState> emit) async {
     if (state is! HealthLoaded) {
       emit(HealthLoading());
     }
     try {
       final steps = await _abstractHealthRepository.getSteps();
-      emit(HealthLoaded(steps: steps));
+      emit(HealthLoaded(steps: steps, date: DateTime.now()));
+    } catch (e) {
+      emit(HealthFailure(error: e));
+    }
+  }
+
+  Future<void> _updateHealthInfo(
+      HealthUpdateInfoEvent event, Emitter<HealthState> emit) async {
+    if (state is! HealthLoaded) {
+      emit(HealthLoading());
+    }
+    try {
+      // Placeholder: Update health info (e.g., sync with health platform)
+      final steps = await _abstractHealthRepository.getSteps();
+      emit(HealthLoaded(steps: steps, date: DateTime.now()));
+    } catch (e) {
+      emit(HealthFailure(error: e));
+    }
+  }
+
+  Future<void> _fetchStepsForDate(
+      FetchStepsForDate event, Emitter<HealthState> emit) async {
+    if (state is! HealthLoaded) {
+      emit(HealthLoading());
+    }
+    try {
+      final steps = await _abstractHealthRepository.getStepsForDate(event.date);
+      emit(HealthLoaded(steps: steps, date: event.date));
     } catch (e) {
       emit(HealthFailure(error: e));
     }

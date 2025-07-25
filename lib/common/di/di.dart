@@ -65,7 +65,7 @@ void initDI({required SharedPreferences sharedPreferences}) {
 
   getIt.registerLazySingleton<UserBloc>(
     () => UserBloc(
-      myUserRepository: getIt<AbstractUserRepository>(),
+      userRepository: getIt<AbstractUserRepository>(),
     ),
   );
 

@@ -41,13 +41,16 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<UserParametersBloc>();
-    //final isDark = Theme.of(context).brightness == Brightness.dark;
+
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           S.of(context).whatIsYourLevelOfPhysicalFitness,
           style: TextStyle(fontSize: 20),
+          maxLines: 2,
+          textAlign: TextAlign.center,
         ),
         leading: NavigationBackButton(pageController: widget.pageController),
       ),
@@ -65,17 +68,14 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
                     SliderTheme(
                       data: SliderTheme.of(context).copyWith(
                         trackHeight: 4.0,
-                        activeTrackColor: const Color.fromARGB(255, 85, 0, 0),
+                        activeTrackColor: theme.colorScheme.primary,
                         inactiveTrackColor: Colors.grey,
-                        thumbColor: const Color.fromARGB(255, 85, 0, 0),
-                        overlayColor:
-                            const Color.fromARGB(255, 85, 0, 0).withAlpha(50),
-                        valueIndicatorColor:
-                            const Color.fromARGB(255, 85, 0, 0),
+                        thumbColor: theme.colorScheme.primary,
+                        overlayColor: theme.colorScheme.primary.withAlpha(50),
+                        valueIndicatorColor: theme.colorScheme.primary,
                         tickMarkShape:
                             const RoundSliderTickMarkShape(tickMarkRadius: 8.0),
-                        activeTickMarkColor:
-                            const Color.fromARGB(255, 85, 0, 0),
+                        activeTickMarkColor: theme.colorScheme.primary,
                         inactiveTickMarkColor: Colors.grey.withAlpha(135),
                       ),
                       child: Slider(

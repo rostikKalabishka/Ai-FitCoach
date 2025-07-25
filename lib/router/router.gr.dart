@@ -474,12 +474,14 @@ class LoaderRoute extends PageRouteInfo<LoaderRouteArgs> {
   LoaderRoute({
     Key? key,
     bool showCircularProgressIndicator = false,
+    bool isDefaultMethod = true,
     List<PageRouteInfo>? children,
   }) : super(
           LoaderRoute.name,
           args: LoaderRouteArgs(
             key: key,
             showCircularProgressIndicator: showCircularProgressIndicator,
+            isDefaultMethod: isDefaultMethod,
           ),
           initialChildren: children,
         );
@@ -495,21 +497,28 @@ class LoaderRoute extends PageRouteInfo<LoaderRouteArgs> {
       return LoaderScreen(
         key: args.key,
         showCircularProgressIndicator: args.showCircularProgressIndicator,
+        isDefaultMethod: args.isDefaultMethod,
       );
     },
   );
 }
 
 class LoaderRouteArgs {
-  const LoaderRouteArgs({this.key, this.showCircularProgressIndicator = false});
+  const LoaderRouteArgs({
+    this.key,
+    this.showCircularProgressIndicator = false,
+    this.isDefaultMethod = true,
+  });
 
   final Key? key;
 
   final bool showCircularProgressIndicator;
 
+  final bool isDefaultMethod;
+
   @override
   String toString() {
-    return 'LoaderRouteArgs{key: $key, showCircularProgressIndicator: $showCircularProgressIndicator}';
+    return 'LoaderRouteArgs{key: $key, showCircularProgressIndicator: $showCircularProgressIndicator, isDefaultMethod: $isDefaultMethod}';
   }
 
   @override
@@ -517,11 +526,15 @@ class LoaderRouteArgs {
     if (identical(this, other)) return true;
     if (other is! LoaderRouteArgs) return false;
     return key == other.key &&
-        showCircularProgressIndicator == other.showCircularProgressIndicator;
+        showCircularProgressIndicator == other.showCircularProgressIndicator &&
+        isDefaultMethod == other.isDefaultMethod;
   }
 
   @override
-  int get hashCode => key.hashCode ^ showCircularProgressIndicator.hashCode;
+  int get hashCode =>
+      key.hashCode ^
+      showCircularProgressIndicator.hashCode ^
+      isDefaultMethod.hashCode;
 }
 
 /// generated route for

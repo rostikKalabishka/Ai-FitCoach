@@ -50,8 +50,8 @@ class _PlatformAdaptivePickerState extends State<PlatformAdaptivePicker> {
             maxValue: widget.maxValue,
             itemHeight: 50,
             axis: Axis.vertical,
-            textStyle: TextStyle(fontSize: 20),
-            selectedTextStyle: TextStyle(fontSize: 24),
+            textStyle: theme.textTheme.labelMedium?.copyWith(fontSize: 20),
+            selectedTextStyle: theme.textTheme.labelMedium,
             onChanged: (value) {
               setState(() {
                 _currentValue = value;
