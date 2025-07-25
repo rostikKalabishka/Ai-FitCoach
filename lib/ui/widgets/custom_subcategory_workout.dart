@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomSubcategoryWorkout extends StatelessWidget {
@@ -17,8 +18,8 @@ class CustomSubcategoryWorkout extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.13,
-        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height * 0.115,
+        width: double.infinity,
         decoration: BoxDecoration(color: theme.colorScheme.tertiary),
         child: Column(
           children: [
@@ -33,8 +34,7 @@ class CustomSubcategoryWorkout extends StatelessWidget {
                     imagePath != null ?
                     ClipRRect(
                       borderRadius: BorderRadius.circular(12),
-                      child: Image.asset(
-                        imagePath!,
+                      child: Image(image: CachedNetworkImageProvider(imagePath!),
                         height: MediaQuery.of(context).size.height * 0.09,
                         width: MediaQuery.of(context).size.width * 0.2,
                         fit: BoxFit.cover,
@@ -71,12 +71,6 @@ class CustomSubcategoryWorkout extends StatelessWidget {
                   ],
                 ),
               ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: 10,
             ),
           ],
         ),
