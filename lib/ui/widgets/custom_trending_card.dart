@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CustomSubcategoryWorkout extends StatelessWidget {
+class CustomTrendingCard extends StatelessWidget {
   final String title;
-  final String? imagePath;
   final String repsNumber;
 
-  const CustomSubcategoryWorkout(
+  const CustomTrendingCard(
       {super.key,
       required this.title,
-      this.imagePath,
       required this.repsNumber});
 
   @override
@@ -17,7 +15,7 @@ class CustomSubcategoryWorkout extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.13,
+        height: MediaQuery.of(context).size.height * 0.10,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(color: theme.colorScheme.tertiary),
         child: Column(
@@ -30,17 +28,6 @@ class CustomSubcategoryWorkout extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    imagePath != null ?
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.asset(
-                        imagePath!,
-                        height: MediaQuery.of(context).size.height * 0.09,
-                        width: MediaQuery.of(context).size.width * 0.2,
-                        fit: BoxFit.cover,
-                      ),
-                    ) : SizedBox.shrink(), 
-
                     SizedBox(
                       width: 16,
                     ),
