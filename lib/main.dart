@@ -31,16 +31,6 @@ Future<void> main() async {
 
   await NotificationsApi().initNotifications();
 
-  // await exerciseDescription();
-
-  // await exerciseDescription1();
-
-  // await exerciseDescription2();
-
-  // await exerciseDescription3();
-
-  // await exerciseDescription4();
-
   runApp(const AiFitCoachApp());
 }
 
