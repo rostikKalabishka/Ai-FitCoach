@@ -1,53 +1,48 @@
 import 'package:ai_fit_coach/common/api/model/recommendation_item/recommendation_item.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'food_recommendation_item.g.dart';
+part 'challenge_recommendation.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-class FoodRecommendationItem extends RecommendationItem {
-  final String foodCategory;
+class ChallengeRecommendation extends RecommendationItem {
 
-  const FoodRecommendationItem({
+  const ChallengeRecommendation({
     required super.id,
     required super.title,
     required super.description,
     required super.imageUrl,
-    required this.foodCategory,
     required super.recommendationItems,
   });
 
-  factory FoodRecommendationItem.fromJson(Map<String, dynamic> json) =>
-      _$FoodRecommendationItemFromJson(json);
+  factory ChallengeRecommendation.fromJson(Map<String, dynamic> json) =>
+      _$ChallengeRecommendationFromJson(json);
+  Map<String, dynamic> toJson() => _$ChallengeRecommendationToJson(this);
 
-  Map<String, dynamic> toJson() => _$FoodRecommendationItemToJson(this);
-
-  factory FoodRecommendationItem.empty() => FoodRecommendationItem(
+  factory ChallengeRecommendation.empty() => ChallengeRecommendation(
         id: '',
         title: '',
         description: '',
         imageUrl: '',
-        foodCategory: '',
-        recommendationItems: [],
+        recommendationItems: []
       );
 
-  FoodRecommendationItem copyWith({
+  ChallengeRecommendation copyWith({
     String? id,
     String? title,
     String? description,
     String? imageUrl,
-    String? foodCategory,
     List<String>? recommendationItems,
   }) {
-    return FoodRecommendationItem(
+    return ChallengeRecommendation(
       id: id ?? this.id,
       title: title ?? this.title,
       description: description ?? this.description,
       imageUrl: imageUrl ?? this.imageUrl,
-      foodCategory: foodCategory ?? this.foodCategory,
       recommendationItems: recommendationItems ?? this.recommendationItems,
     );
   }
 
   @override
-  List<Object?> get props => super.props..addAll([foodCategory, recommendationItems]);
+  List<Object?> get props => super.props..addAll([recommendationItems]);
 }
+

@@ -1,9 +1,7 @@
-import 'package:ai_fit_coach/common/api/model/challenges/challenge_item.dart';
-import 'package:ai_fit_coach/common/api/model/home/food_recommendation_item.dart';
-import 'package:ai_fit_coach/common/api/model/workout/workout_item.dart';
 import 'package:ai_fit_coach/features/trending_screen/follow_on_social_networks.dart';
+import 'package:ai_fit_coach/features/trending_screen/trending_details/bloc/trending_details_bloc.dart';
 import 'package:ai_fit_coach/features/trending_screen/trending_screen/bloc/list_bloc.dart';
-import 'package:ai_fit_coach/features/trending_screen/trending_subscreen.dart';
+import 'package:ai_fit_coach/features/trending_screen/trending_details/trending_subscreen.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -71,13 +69,10 @@ class _TrendingScreenState extends State<TrendingScreen> {
                               subtitle: '',
                               description: trendingWorkout.subtitle,
                               imagePath: trendingWorkout.imageUrl,
+                              
                               onJoin: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => TrendingSubScreen(
-                                          trendingWorkout,
-                                          ChallengeItem.empty(),
-                                          FoodRecommendationItem.empty(),
-                                        )));
+                                    builder: (context) => TrendingSubScreen(id: trendingWorkout.id, recommendationCategory: RecommendationCategory.workout,)));
                               },
                             ),
                           );
@@ -112,14 +107,11 @@ class _TrendingScreenState extends State<TrendingScreen> {
                             child: CustomMainScreenCard(
                               title: foodRecommandation.title,
                               subtitle: foodRecommandation.foodCategory,
-                              description: foodRecommandation.description,
+                              description: foodRecommandation.description ?? '',
                               imagePath: foodRecommandation.imageUrl,
                               onJoin: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => TrendingSubScreen(
-                                        WorkoutItem.empty(),
-                                        ChallengeItem.empty(),
-                                        foodRecommandation)));
+                                    builder: (context) => TrendingSubScreen(id: foodRecommandation.id, recommendationCategory: RecommendationCategory.food,)));
                               },
                             ),
                           );
@@ -158,10 +150,7 @@ class _TrendingScreenState extends State<TrendingScreen> {
                               imagePath: trendingChallenges.imageUrl,
                               onJoin: () {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => TrendingSubScreen(
-                                        WorkoutItem.empty(),
-                                        trendingChallenges,
-                                        FoodRecommendationItem.empty())));
+                                    builder: (context) => TrendingSubScreen(id: trendingChallenges.id, recommendationCategory: RecommendationCategory.challenges,)));
                               },
                             ),
                           );

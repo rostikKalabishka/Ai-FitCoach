@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 
 class CustomTrendingCard extends StatelessWidget {
   final String title;
-  final String repsNumber;
 
   const CustomTrendingCard(
       {super.key,
-      required this.title,
-      required this.repsNumber});
+      required this.title,});
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +43,6 @@ class CustomTrendingCard extends StatelessWidget {
                                 fontSize: 16,
                                 color: Theme.of(context).colorScheme.onSurface,
                               ),
-                        ),
-                        SizedBox(height: 5),
-                        Text(
-                          '$repsNumber times',
-                          style: theme.textTheme.displaySmall?.copyWith(
-                            color: theme.colorScheme.onSurface,
-                          ),
                         ),
                       ],
                     )

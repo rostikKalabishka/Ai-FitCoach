@@ -30,21 +30,6 @@ class WorkoutRepository implements AbstractWorkoutRepository {
     }
   }
 
-// trendingWorkout homepage method
-  @override
-  Future<List<WorkoutItem>> getWorkoutItemsFromCollection() async {
-    try {
-      final snapshot =
-          await FirebaseFirestore.instance.collection('trendingWorkout').get();
-      return snapshot.docs
-          .map((doc) => WorkoutItem.fromJson(doc.data()))
-          .toList();
-    } catch (e) {
-      print(e);
-      rethrow;
-    }
-  }
-
 @override
   Future<List<WorkoutSubitem>> getWorkoutExerciseItemInCollection(
       String categoryType, String workoutId) async {
