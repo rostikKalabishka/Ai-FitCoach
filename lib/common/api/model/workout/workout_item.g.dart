@@ -11,6 +11,9 @@ WorkoutItem _$WorkoutItemFromJson(Map<String, dynamic> json) => WorkoutItem(
       title: json['title'] as String,
       subtitle: json['subtitle'] as String,
       imageUrl: json['image_url'] as String,
+      recommendationItems: (json['recommendation_items'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$WorkoutItemToJson(WorkoutItem instance) =>
@@ -19,4 +22,5 @@ Map<String, dynamic> _$WorkoutItemToJson(WorkoutItem instance) =>
       'title': instance.title,
       'subtitle': instance.subtitle,
       'image_url': instance.imageUrl,
+      'recommendation_items': instance.recommendationItems,
     };

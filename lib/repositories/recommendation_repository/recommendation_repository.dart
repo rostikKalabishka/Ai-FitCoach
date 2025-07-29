@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import 'package:ai_fit_coach/common/api/model/challenge_recommendation/challenge_recommendation.dart';
+=======
+>>>>>>> a52f4f2 (methods, conn data to trending recommendations)
 import 'package:ai_fit_coach/common/api/model/challenges/challenge_item.dart';
 import 'package:ai_fit_coach/common/api/model/home/food_recommendation_item.dart';
 import 'package:ai_fit_coach/common/api/model/workout/workout_item.dart';
@@ -64,7 +67,10 @@ class RecommendationRepository implements AbstractRecommendationRepository {
     }
   }
 
+<<<<<<< HEAD
 @override
+=======
+>>>>>>> a52f4f2 (methods, conn data to trending recommendations)
   Future<WorkoutRecommendation> getWorkoutItem(String id) async {
     try {
       final workoutDoc =
@@ -77,6 +83,7 @@ class RecommendationRepository implements AbstractRecommendationRepository {
       rethrow;
     }
   }
+<<<<<<< HEAD
 
 @override
   Future<ChallengeRecommendation> getChallengeItem(String id) async {
@@ -105,4 +112,6 @@ class RecommendationRepository implements AbstractRecommendationRepository {
       rethrow;
     }
   }
+=======
+>>>>>>> a52f4f2 (methods, conn data to trending recommendations)
 }

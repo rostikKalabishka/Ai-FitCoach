@@ -21,6 +21,10 @@ class TrendingDetailsBloc
       }
     });
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a52f4f2 (methods, conn data to trending recommendations)
   Future<void> _loadingDetails(LoadingTrendingDetails event, emit) async {
     if (state is! TrendingDetailsLoaded) {
       emit(TrendingDetailsLoading());
@@ -30,12 +34,15 @@ class TrendingDetailsBloc
       if (event.recommendationCategory == RecommendationCategory.workout) {
         recommendationItem =
             await _recommendationRepository.getWorkoutItem(event.id);
+<<<<<<< HEAD
       } else if (event.recommendationCategory == RecommendationCategory.challenges) {
         recommendationItem =
             await _recommendationRepository.getChallengeItem(event.id);
       } else if (event.recommendationCategory == RecommendationCategory.food) {
         recommendationItem =
             await _recommendationRepository.getFoodItem(event.id);
+=======
+>>>>>>> a52f4f2 (methods, conn data to trending recommendations)
       }
       emit(TrendingDetailsLoaded(recommendationItem: recommendationItem));
     } catch (e) {

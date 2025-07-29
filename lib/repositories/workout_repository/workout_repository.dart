@@ -30,7 +30,11 @@ class WorkoutRepository implements AbstractWorkoutRepository {
     }
   }
 
+<<<<<<< HEAD
   @override
+=======
+@override
+>>>>>>> a52f4f2 (methods, conn data to trending recommendations)
   Future<List<WorkoutSubitem>> getWorkoutExerciseItemInCollection(
       String categoryType, String workoutId) async {
     try {

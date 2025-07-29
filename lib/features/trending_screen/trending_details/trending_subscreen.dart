@@ -1,4 +1,8 @@
 import 'package:ai_fit_coach/features/trending_screen/trending_details/bloc/trending_details_bloc.dart';
+<<<<<<< HEAD
+=======
+import 'package:ai_fit_coach/features/trending_screen/trending_screen/bloc/list_bloc.dart';
+>>>>>>> a52f4f2 (methods, conn data to trending recommendations)
 import 'package:ai_fit_coach/ui/widgets/custom_trending_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +38,7 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
         builder: (context, state) {
           if (state is TrendingDetailsLoaded) {
             final item = state.recommendationItem;
+<<<<<<< HEAD
             return CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(
@@ -42,6 +47,17 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.38,
                         width: double.infinity,
+=======
+            return SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Stack(
+                    children: [
+                      SizedBox(
+                        height: 350,
+                        width: MediaQuery.of(context).size.width,
+>>>>>>> a52f4f2 (methods, conn data to trending recommendations)
                         child: Image(
                           image: CachedNetworkImageProvider(item.imageUrl),
                           fit: BoxFit.cover,
@@ -70,7 +86,11 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                       Padding(
                         padding: const EdgeInsets.only(top: 310),
                         child: Container(
+<<<<<<< HEAD
                           height: MediaQuery.of(context).size.height * 0.25,
+=======
+                          height: 220,
+>>>>>>> a52f4f2 (methods, conn data to trending recommendations)
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             color: theme.colorScheme.tertiary,
@@ -111,6 +131,7 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
+<<<<<<< HEAD
                                     Padding(
                                       padding: const EdgeInsets.only(
                                           bottom: 4, top: 4),
@@ -123,6 +144,10 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                                         ),
                                         textAlign: TextAlign.center,
                                       ),
+=======
+                                    SizedBox(
+                                      height: 16,
+>>>>>>> a52f4f2 (methods, conn data to trending recommendations)
                                     ),
                                   ],
                                 ),
@@ -166,6 +191,7 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                       ),
                     ],
                   ),
+<<<<<<< HEAD
                 ),
                 SliverToBoxAdapter(
                   child: Padding(
@@ -193,6 +219,34 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
             );
           } else {
             return const Center(
+=======
+                  Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Recommendations',
+                            style: theme.textTheme.labelSmall,
+                          ),
+                          const SizedBox(height: 24),
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: item.recommendationItems.length,
+                            itemBuilder: (context, index) {
+                              return CustomTrendingCard(title: item.recommendationItems[index]);
+                            },
+                          ),
+                        ],
+                      )),
+                ],
+              ),
+            );
+          } else {
+            return Center(
+>>>>>>> a52f4f2 (methods, conn data to trending recommendations)
               child: CircularProgressIndicator.adaptive(),
             );
           }
