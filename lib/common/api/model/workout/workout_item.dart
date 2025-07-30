@@ -9,7 +9,7 @@ class WorkoutItem extends Equatable {
   final String title;
   final String subtitle;
   final String imageUrl;
-  final List<String> recommendationItems;
+
 
 
   const WorkoutItem(
@@ -18,10 +18,14 @@ class WorkoutItem extends Equatable {
       required this.subtitle,
       required this.imageUrl,
 <<<<<<< HEAD
+<<<<<<< HEAD
 });
 =======
       required this.recommendationItems});
 >>>>>>> a52f4f2 (methods, conn data to trending recommendations)
+=======
+});
+>>>>>>> 65fafef (food, challenges methods, conn to ux/ui)
 
   WorkoutItem copyWith(
       {String? id,
@@ -34,7 +38,6 @@ class WorkoutItem extends Equatable {
       title: title ?? this.title,
       subtitle: subtitle ?? this.subtitle,
       imageUrl: imageUrl ?? this.imageUrl,
-      recommendationItems: recommendationItems ?? this.recommendationItems,
     );
   }
 
@@ -44,6 +47,7 @@ class WorkoutItem extends Equatable {
       _$WorkoutItemFromJson(json);
 
   factory WorkoutItem.empty() => WorkoutItem(
+<<<<<<< HEAD
 <<<<<<< HEAD
       title: '', subtitle: '', imageUrl: '', id: '', );
 
@@ -57,4 +61,11 @@ class WorkoutItem extends Equatable {
   List<Object?> get props =>
       [id, title, subtitle, imageUrl, recommendationItems];
 >>>>>>> a52f4f2 (methods, conn data to trending recommendations)
+=======
+      title: '', subtitle: '', imageUrl: '', id: '', );
+
+  @override
+  List<Object?> get props =>
+      [id, title, subtitle, imageUrl,];
+>>>>>>> 65fafef (food, challenges methods, conn to ux/ui)
 }

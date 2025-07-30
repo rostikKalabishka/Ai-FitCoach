@@ -22,9 +22,12 @@ class TrendingDetailsBloc
     });
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> a52f4f2 (methods, conn data to trending recommendations)
+=======
+>>>>>>> 65fafef (food, challenges methods, conn to ux/ui)
   Future<void> _loadingDetails(LoadingTrendingDetails event, emit) async {
     if (state is! TrendingDetailsLoaded) {
       emit(TrendingDetailsLoading());
@@ -35,14 +38,20 @@ class TrendingDetailsBloc
         recommendationItem =
             await _recommendationRepository.getWorkoutItem(event.id);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 65fafef (food, challenges methods, conn to ux/ui)
       } else if (event.recommendationCategory == RecommendationCategory.challenges) {
         recommendationItem =
             await _recommendationRepository.getChallengeItem(event.id);
       } else if (event.recommendationCategory == RecommendationCategory.food) {
         recommendationItem =
             await _recommendationRepository.getFoodItem(event.id);
+<<<<<<< HEAD
 =======
 >>>>>>> a52f4f2 (methods, conn data to trending recommendations)
+=======
+>>>>>>> 65fafef (food, challenges methods, conn to ux/ui)
       }
       emit(TrendingDetailsLoaded(recommendationItem: recommendationItem));
     } catch (e) {

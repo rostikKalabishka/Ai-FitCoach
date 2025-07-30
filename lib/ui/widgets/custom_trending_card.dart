@@ -4,26 +4,36 @@ class CustomTrendingCard extends StatelessWidget {
   final String title;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 65fafef (food, challenges methods, conn to ux/ui)
   const CustomTrendingCard({
     super.key,
     required this.title,
   });
+<<<<<<< HEAD
 =======
   const CustomTrendingCard(
       {super.key,
       required this.title,});
 >>>>>>> a52f4f2 (methods, conn data to trending recommendations)
+=======
+>>>>>>> 65fafef (food, challenges methods, conn to ux/ui)
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 65fafef (food, challenges methods, conn to ux/ui)
     return Container(
         height: MediaQuery.of(context).size.height * 0.07,
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         decoration: BoxDecoration(
           color: theme.colorScheme.tertiary,
+<<<<<<< HEAD
 =======
     return InkWell(
       onTap: () {},
@@ -73,6 +83,8 @@ class CustomTrendingCard extends StatelessWidget {
             ),
           ],
 >>>>>>> a52f4f2 (methods, conn data to trending recommendations)
+=======
+>>>>>>> 65fafef (food, challenges methods, conn to ux/ui)
         ),
         child: Center(
           child: Row(
