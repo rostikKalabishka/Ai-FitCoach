@@ -10,14 +10,20 @@ class WorkoutItem extends Equatable {
   final String subtitle;
   final String imageUrl;
 
+
   const WorkoutItem(
       {required this.id,
       required this.title,
       required this.subtitle,
-      required this.imageUrl});
+      required this.imageUrl,
+});
 
   WorkoutItem copyWith(
-      {String? id, String? title, String? subtitle, String? imageUrl}) {
+      {String? id,
+      String? title,
+      String? subtitle,
+      String? imageUrl,
+      List<String>? recommendationItems}) {
     return WorkoutItem(
       id: id ?? this.id,
       title: title ?? this.title,
@@ -31,8 +37,10 @@ class WorkoutItem extends Equatable {
   factory WorkoutItem.fromJson(Map<String, dynamic> json) =>
       _$WorkoutItemFromJson(json);
 
-  factory WorkoutItem.empty() => WorkoutItem(title: '', subtitle: '', imageUrl: '', id: '');
+  factory WorkoutItem.empty() => WorkoutItem(
+      title: '', subtitle: '', imageUrl: '', id: '', );
 
   @override
-  List<Object?> get props => [id, title, subtitle, imageUrl];
+  List<Object?> get props =>
+      [id, title, subtitle, imageUrl,];
 }

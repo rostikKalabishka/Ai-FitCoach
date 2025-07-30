@@ -66,6 +66,7 @@ class CustomMainScreenCard extends StatelessWidget {
               description,
               overflow: TextOverflow.ellipsis,
               maxLines: 3,
+              style: TextStyle(color: Colors.white),
             ),
             const Spacer(),
             SizedBox(

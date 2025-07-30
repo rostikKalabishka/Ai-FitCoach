@@ -9,14 +9,15 @@ import 'package:ai_fit_coach/features/ai_chat/bloc/chat_bloc.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
 import 'package:ai_fit_coach/features/challenges/bloc/challenge_bloc.dart';
 import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
+import 'package:ai_fit_coach/features/trending_screen/trending_details/bloc/trending_details_bloc.dart';
 import 'package:ai_fit_coach/features/trending_screen/trending_screen/bloc/list_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
 
 import 'package:ai_fit_coach/repositories/health_repository/health.dart';
 
 import 'package:ai_fit_coach/features/workout/bloc/workout_bloc.dart';
-import 'package:ai_fit_coach/repositories/food_recommendation_repository/abstract_food_recommendation_repository.dart';
-import 'package:ai_fit_coach/repositories/food_recommendation_repository/food_recommendation_repository.dart';
+import 'package:ai_fit_coach/repositories/recommendation_repository/abstract_recommendation_repository.dart';
+import 'package:ai_fit_coach/repositories/recommendation_repository/recommendation_repository.dart';
 
 import 'package:ai_fit_coach/repositories/user_repository/user.dart';
 import 'package:ai_fit_coach/repositories/workout_repository/abstract_workout_repository.dart';
@@ -48,8 +49,8 @@ void initDI({required SharedPreferences sharedPreferences}) {
   getIt.registerLazySingleton<AbstractChallengeRepository>(
       () => ChallengeRepository());
 
-  getIt.registerLazySingleton<AbstractFoodRecommendationRepository>(
-      () => FoodRecommendationRepository());
+  getIt.registerLazySingleton<AbstractRecommendationRepository>(
+      () => RecommendationRepository());
 
   getIt.registerLazySingleton<SettingsCubit>(
     () => SettingsCubit(
@@ -113,16 +114,20 @@ void initDI({required SharedPreferences sharedPreferences}) {
 
   getIt.registerLazySingleton<ListBloc>(
     () => ListBloc(
-      challengeRepository: getIt<AbstractChallengeRepository>(),
-      workoutRepository: getIt<AbstractWorkoutRepository>(),
-      foodRecommendationRepository:
-          getIt<AbstractFoodRecommendationRepository>(),
+      recommendationRepository:
+          getIt<AbstractRecommendationRepository>(),
     ),
   );
 
   getIt.registerLazySingleton<WorkoutExerciseBloc>(
     () => WorkoutExerciseBloc(
       workoutRepository: getIt<AbstractWorkoutRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<TrendingDetailsBloc>(
+    () => TrendingDetailsBloc(
+      recommendationRepository: getIt<AbstractRecommendationRepository>(),
     ),
   );
 }
