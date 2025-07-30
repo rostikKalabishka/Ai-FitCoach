@@ -121,7 +121,7 @@ class UserApiClient {
 
         final User? firebaseUser = userCredential.user;
 
-        if (firebaseUser != null) {
+        if (firebaseUser != null && firebaseUser.uid.isNotEmpty) {
           final existingDoc =
               await _usersCollection.doc(firebaseUser.uid).get();
 
