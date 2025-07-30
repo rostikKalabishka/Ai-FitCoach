@@ -1,3 +1,4 @@
+import 'package:ai_fit_coach/common/api/model/challenge_recommendation/challenge_recommendation.dart';
 import 'package:ai_fit_coach/common/api/model/challenges/challenge_item.dart';
 import 'package:ai_fit_coach/common/api/model/home/food_recommendation_item.dart';
 import 'package:ai_fit_coach/common/api/model/workout/workout_item.dart';
@@ -63,6 +64,7 @@ class RecommendationRepository implements AbstractRecommendationRepository {
     }
   }
 
+@override
   Future<WorkoutRecommendation> getWorkoutItem(String id) async {
     try {
       final workoutDoc =
@@ -70,6 +72,34 @@ class RecommendationRepository implements AbstractRecommendationRepository {
       final workoutData = await workoutDoc.get();
       final workout = WorkoutRecommendation.fromJson(workoutData.data()!);
       return workout;
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+@override
+  Future<ChallengeRecommendation> getChallengeItem(String id) async {
+    try {
+      final challengeDoc =
+          FirebaseFirestore.instance.collection('trendingChallenges').doc(id);
+      final challengeData = await challengeDoc.get();
+      final challenge = ChallengeRecommendation.fromJson(challengeData.data()!);
+      return challenge;
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+@override
+  Future<FoodRecommendationItem> getFoodItem(String id) async {
+    try {
+      final foodDoc =
+          FirebaseFirestore.instance.collection('foodRecommendation').doc(id);
+      final foodData = await foodDoc.get();
+      final food = FoodRecommendationItem.fromJson(foodData.data()!);
+      return food;
     } catch (e) {
       print(e);
       rethrow;

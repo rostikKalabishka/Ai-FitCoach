@@ -1,5 +1,4 @@
 import 'package:ai_fit_coach/features/trending_screen/trending_details/bloc/trending_details_bloc.dart';
-import 'package:ai_fit_coach/features/trending_screen/trending_screen/bloc/list_bloc.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_trending_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +34,7 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
         builder: (context, state) {
           if (state is TrendingDetailsLoaded) {
             final item = state.recommendationItem;
+            print(item);
             return SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,8 +42,8 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                   Stack(
                     children: [
                       SizedBox(
-                        height: 350,
-                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.38,
+                        width: double.infinity,
                         child: Image(
                           image: CachedNetworkImageProvider(item.imageUrl),
                           fit: BoxFit.cover,
@@ -72,7 +72,7 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                       Padding(
                         padding: const EdgeInsets.only(top: 310),
                         child: Container(
-                          height: 220,
+                          height: MediaQuery.of(context).size.height * 0.25,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             color: theme.colorScheme.tertiary,
@@ -113,8 +113,18 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 16,
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          bottom: 4, top: 4),
+                                      child: Text(
+                                        item.description ?? '',
+                                        style: theme.textTheme.displaySmall
+                                            ?.copyWith(
+                                          fontSize: 16,
+                                          color: theme.colorScheme.onSurface,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -159,26 +169,27 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                     ],
                   ),
                   Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Recommendations',
-                            style: theme.textTheme.labelSmall,
-                          ),
-                          const SizedBox(height: 24),
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: item.recommendationItems.length,
-                            itemBuilder: (context, index) {
-                              return CustomTrendingCard(title: item.recommendationItems[index]);
-                            },
-                          ),
-                        ],
-                      )),
+                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Recommendations',
+                          style: theme.textTheme.labelSmall,
+                        ),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: item.recommendationItems.length,
+                          itemBuilder: (context, index) {
+                            return CustomTrendingCard(
+                              title: item.recommendationItems[index],
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             );
