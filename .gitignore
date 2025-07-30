@@ -51,4 +51,6 @@ lib/config/firebase_options.dart
 ios/Runner/GoogleService-Info.plist
 ios/Runner/Info.plist
 firebase.json
+/keystore/debug.keystore
+/android/key.properties
 
