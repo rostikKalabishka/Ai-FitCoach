@@ -21,7 +21,6 @@ class TrendingDetailsBloc
       }
     });
   }
-
   Future<void> _loadingDetails(LoadingTrendingDetails event, emit) async {
     if (state is! TrendingDetailsLoaded) {
       emit(TrendingDetailsLoading());
@@ -31,6 +30,12 @@ class TrendingDetailsBloc
       if (event.recommendationCategory == RecommendationCategory.workout) {
         recommendationItem =
             await _recommendationRepository.getWorkoutItem(event.id);
+      } else if (event.recommendationCategory == RecommendationCategory.challenges) {
+        recommendationItem =
+            await _recommendationRepository.getChallengeItem(event.id);
+      } else if (event.recommendationCategory == RecommendationCategory.food) {
+        recommendationItem =
+            await _recommendationRepository.getFoodItem(event.id);
       }
       emit(TrendingDetailsLoaded(recommendationItem: recommendationItem));
     } catch (e) {

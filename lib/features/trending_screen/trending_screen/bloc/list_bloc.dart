@@ -1,10 +1,9 @@
+import 'package:ai_fit_coach/common/api/model/home/food_recommendation_item.dart';
 import 'package:ai_fit_coach/common/api/model/workout/workout_item.dart';
 import 'package:ai_fit_coach/repositories/recommendation_repository/abstract_recommendation_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../common/api/model/challenges/challenge_item.dart';
-import '../../../../common/api/model/home/food_recommendation_item.dart';
 
 part 'list_event.dart';
 part 'list_state.dart';

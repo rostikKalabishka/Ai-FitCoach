@@ -49,5 +49,5 @@ class FoodRecommendationItem extends RecommendationItem {
   }
 
   @override
-  List<Object?> get props => super.props..addAll([foodCategory, recommendationItems]);
+  List<Object?> get props => super.props..addAll([id, title, description, imageUrl, foodCategory, recommendationItems]);
 }
