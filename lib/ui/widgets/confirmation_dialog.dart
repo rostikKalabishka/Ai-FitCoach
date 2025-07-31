@@ -29,14 +29,16 @@ class ConfirmationDialog extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: Text(cancelText),
+            child: Text(cancelText,
+                style: theme.textTheme.headlineSmall?.copyWith(fontSize: 24)),
           ),
           TextButton(
             onPressed: () {
               onConfirm.call();
-              Navigator.of(context).pop();
+              // Navigator.of(context).pop();
             },
-            child: Text(confirmText),
+            child: Text(confirmText,
+                style: theme.textTheme.headlineSmall?.copyWith(fontSize: 24)),
           ),
         ],
       );
@@ -54,7 +56,7 @@ class ConfirmationDialog extends StatelessWidget {
         CupertinoDialogAction(
           onPressed: () {
             onConfirm.call();
-            Navigator.of(context).pop();
+            // Navigator.of(context).pop();
           },
           isDestructiveAction: true,
           child: Text(

@@ -44,4 +44,8 @@ class UserRepository implements AbstractUserRepository {
   @override
   Future<void> updateUserInfo({required UserModel userModel}) =>
       _userApiClient.updateUserInfo(userModel: userModel);
+
+  @override
+  Future<void> deleteAccount(String userId) =>
+      _userApiClient.deleteAccount(userId);
 }

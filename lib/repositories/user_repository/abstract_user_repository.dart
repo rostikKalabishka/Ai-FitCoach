@@ -23,4 +23,6 @@ abstract interface class AbstractUserRepository {
   Future<UserModel> getMyUser(String myUserId);
 
   Future<void> updateUserInfo({required UserModel userModel});
+
+  Future<void> deleteAccount(String userId);
 }

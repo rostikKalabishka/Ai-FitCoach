@@ -8,9 +8,11 @@ part 'user_event.dart';
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
-  final AbstractUserRepository userRepository;
+  final AbstractUserRepository _userRepository;
 
-  UserBloc({required this.userRepository}) : super(const UserState()) {
+  UserBloc({required AbstractUserRepository userRepository})
+      : _userRepository = userRepository,
+        super(const UserState()) {
     on<UserEvent>((event, emit) async {
       if (event is GetUser) {
         await _getUser(event, emit);
@@ -18,6 +20,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         await _updateUserInfo(event, emit);
       } else if (event is UpdateUserField) {
         _updateUserField(event, emit);
+      } else if (event is DeleteUserAccount) {
+        await _deleteUserAccount(event, emit);
       }
     });
   }
@@ -27,7 +31,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       emit(state.copyWith(userStatus: UserStatus.loading));
     }
     try {
-      final UserModel userModel = await userRepository.getMyUser(event.userId);
+      final UserModel userModel = await _userRepository.getMyUser(event.userId);
       emit(state.copyWith(userModel: userModel, userStatus: UserStatus.loaded));
     } catch (e) {
       emit(state.copyWith(error: e, userStatus: UserStatus.error));
@@ -39,7 +43,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       emit(state.copyWith(userStatus: UserStatus.loading));
     }
     try {
-      await userRepository.updateUserInfo(userModel: event.userModel);
+      await _userRepository.updateUserInfo(userModel: event.userModel);
       emit(state.copyWith(
         userModel: event.userModel,
         userStatus: UserStatus.loaded,
@@ -55,5 +59,15 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       userModel: event.userModel,
       hasChanges: true, // Mark as changed
     ));
+  }
+
+  Future<void> _deleteUserAccount(event, emit) async {
+    try {
+      await _userRepository.deleteAccount(state.userModel.id);
+      emit(state.copyWith(
+          userStatus: UserStatus.delete, userModel: UserModel.emptyUser));
+    } catch (e) {
+      emit(state.copyWith(error: e, userStatus: UserStatus.error));
+    }
   }
 }

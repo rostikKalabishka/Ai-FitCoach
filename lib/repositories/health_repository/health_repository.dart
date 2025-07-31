@@ -1,19 +1,18 @@
-import 'package:ai_fit_coach/repositories/health_repository/abstract_health_repository.dart';
 import 'package:health/health.dart';
+import 'package:ai_fit_coach/repositories/health_repository/abstract_health_repository.dart';
 
 class HealthRepository implements AbstractHealthRepository {
-  final Health health = Health();
+  final Health _health = Health();
 
   HealthRepository() {
-    _configureHealth();
+    _configure();
   }
 
-  Future<void> _configureHealth() async {
+  Future<void> _configure() async {
     try {
-      await health.configure();
+      await _health.configure();
     } catch (e) {
-      print('Error configuring Health: $e');
-      rethrow;
+      print('Health configuration error: $e');
     }
   }
 
@@ -25,22 +24,23 @@ class HealthRepository implements AbstractHealthRepository {
   @override
   Future<int> getStepsForDate(DateTime date) async {
     final types = [HealthDataType.STEPS];
+    final permissions = [HealthDataAccess.READ];
 
     try {
-      bool requested = await health.requestAuthorization(types);
-      if (!requested) {
-        throw Exception('Health data authorization failed');
+      final authorized =
+          await _health.requestAuthorization(types, permissions: permissions);
+      if (!authorized) {
+        throw Exception('Authorization to health data denied');
       }
 
-      final startTime = DateTime(date.year, date.month, date.day);
-      final endTime = startTime.add(Duration(days: 1));
+      final start = DateTime(date.year, date.month, date.day);
+      final end = start.add(Duration(days: 1));
 
-      int? steps = await health.getTotalStepsInInterval(startTime, endTime);
-
+      final steps = await _health.getTotalStepsInInterval(start, end);
       return steps ?? 0;
     } catch (e) {
-      print('Error fetching steps for $date: $e');
-      rethrow;
+      print('Error getting steps: $e');
+      return 0;
     }
   }
 }

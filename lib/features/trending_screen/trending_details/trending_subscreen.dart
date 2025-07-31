@@ -34,12 +34,10 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
         builder: (context, state) {
           if (state is TrendingDetailsLoaded) {
             final item = state.recommendationItem;
-            print(item);
-            return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(
+            return CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Stack(
                     children: [
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.38,
@@ -168,33 +166,33 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                       ),
                     ],
                   ),
-                  Padding(
+                ),
+                SliverToBoxAdapter(
+                  child: Padding(
                     padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Recommendations',
-                          style: theme.textTheme.labelSmall,
-                        ),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: item.recommendationItems.length,
-                          itemBuilder: (context, index) {
-                            return CustomTrendingCard(
-                              title: item.recommendationItems[index],
-                            );
-                          },
-                        ),
-                      ],
+                    child: Text(
+                      'Recommendations',
+                      style: theme.textTheme.labelSmall,
                     ),
                   ),
-                ],
-              ),
+                ),
+                SliverPadding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                  sliver: SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        return CustomTrendingCard(
+                          title: item.recommendationItems[index],
+                        );
+                      },
+                      childCount: item.recommendationItems.length,
+                    ),
+                  ),
+                ),
+              ],
             );
           } else {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator.adaptive(),
             );
           }
