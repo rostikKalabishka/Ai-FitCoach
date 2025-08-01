@@ -42,7 +42,7 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                   Stack(
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.38,
+                        height: MediaQuery.of(context).size.height * 0.34,
                         width: double.infinity,
                         child: Image(
                           image: CachedNetworkImageProvider(item.imageUrl),
@@ -72,7 +72,7 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                       Padding(
                         padding: const EdgeInsets.only(top: 310),
                         child: Container(
-                          height: MediaQuery.of(context).size.height * 0.25,
+                          height: MediaQuery.of(context).size.height * 0.27,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                             color: theme.colorScheme.tertiary,
@@ -102,7 +102,10 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(
-                                          bottom: 4, top: 4),
+                                          bottom: 4,
+                                          top: 4,
+                                          right: 16,
+                                          left: 16),
                                       child: Text(
                                         item.subtitle ?? '',
                                         style: theme.textTheme.displaySmall
@@ -115,7 +118,10 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(
-                                          bottom: 4, top: 4),
+                                          bottom: 4,
+                                          top: 4,
+                                          right: 16,
+                                          left: 16),
                                       child: Text(
                                         item.description ?? '',
                                         style: theme.textTheme.displaySmall
@@ -177,8 +183,26 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                           'Recommendations',
                           style: theme.textTheme.labelSmall,
                         ),
-                        ListView.builder(
+                        SizedBox(
+                          height: 16,
+                        ),
+                        ListView.separated(
+                          separatorBuilder: (context, index) => Column(
+                            children: [
+                              Divider(
+                                thickness: 0.5,
+                                color: Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
+                              SizedBox(
+                                height: 8,
+                              ),
+                            ],
+                          ),
                           shrinkWrap: true,
+                          padding: EdgeInsets.zero,
                           physics: NeverScrollableScrollPhysics(),
                           itemCount: item.recommendationItems.length,
                           itemBuilder: (context, index) {
@@ -186,6 +210,9 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
                               title: item.recommendationItems[index],
                             );
                           },
+                        ),
+                        SizedBox(
+                          height: 50,
                         ),
                       ],
                     ),
