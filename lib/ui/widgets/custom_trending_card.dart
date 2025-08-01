@@ -28,9 +28,8 @@ class CustomTrendingCard extends StatelessWidget {
 =======
 >>>>>>> 65fafef (food, challenges methods, conn to ux/ui)
     return Container(
-        height: MediaQuery.of(context).size.height * 0.07,
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 8),
         decoration: BoxDecoration(
           color: theme.colorScheme.tertiary,
 <<<<<<< HEAD
@@ -93,7 +92,7 @@ class CustomTrendingCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  maxLines: 3,
+                  maxLines: 25,
                   softWrap: true,
                   overflow: TextOverflow.visible, 
                   style: theme.textTheme.displaySmall?.copyWith(
