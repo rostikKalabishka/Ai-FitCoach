@@ -34,7 +34,7 @@ Future<void> main() async {
     await NotificationsApi().initNotifications();
   }
 
-  await NotificationsApi().initNotifications();
+  
 
   runApp(const AiFitCoachApp());
 }

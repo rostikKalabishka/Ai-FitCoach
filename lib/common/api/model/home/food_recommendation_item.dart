@@ -49,13 +49,5 @@ class FoodRecommendationItem extends RecommendationItem {
   }
 
   @override
-<<<<<<< HEAD
-<<<<<<< HEAD
   List<Object?> get props => super.props..addAll([id, title, description, imageUrl, foodCategory, recommendationItems]);
-=======
-  List<Object?> get props => super.props..addAll([foodCategory, recommendationItems]);
->>>>>>> a52f4f2 (methods, conn data to trending recommendations)
-=======
-  List<Object?> get props => super.props..addAll([id, title, description, imageUrl, foodCategory, recommendationItems]);
->>>>>>> 65fafef (food, challenges methods, conn to ux/ui)
 }

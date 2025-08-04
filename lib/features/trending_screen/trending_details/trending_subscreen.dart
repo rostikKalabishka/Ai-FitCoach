@@ -42,103 +42,123 @@ class _TrendingSubScreenState extends State<TrendingSubScreen> {
 
             return CustomScrollView(
               slivers: [
-                // Картинка зверху без заокруглень
-                SliverAppBar(
-                  automaticallyImplyLeading: false,
-                  pinned: false,
-                  expandedHeight: MediaQuery.of(context).size.height * 0.34,
-                  flexibleSpace: CachedNetworkImage(
-                    imageUrl: item.imageUrl,
-                    fit: BoxFit.cover,
-                    errorWidget: (context, url, error) => Image.asset(
-                      'assets/images/challenges/exercise/2.png',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+                // Картинка зверху — без заокруглень
+               SliverAppBar(
+  automaticallyImplyLeading: false,
+  pinned: false,
+  expandedHeight: MediaQuery.of(context).size.height * 0.34,
+  flexibleSpace: Stack(
+    fit: StackFit.expand,
+    children: [
+      CachedNetworkImage(
+        imageUrl: item.imageUrl,
+        fit: BoxFit.cover,
+        errorWidget: (context, url, error) => Image.asset(
+          'assets/images/challenges/exercise/2.png',
+          fit: BoxFit.cover,
+        ),
+      ),
+      Positioned(
+        top: MediaQuery.of(context).padding.top + 8,
+        left: 16,
+        child: IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: Icon(
+            Icons.arrow_back,
+            color: theme.bottomNavigationBarTheme.unselectedItemColor,
+            size: 32,
+          ),
+        ),
+      ),
+    ],
+  ),
+),
 
-                // Контейнер з інформацією з заокругленими верхніми кутами і "наїжджає" на картинку
+
+                // Контейнер з деталями з верхніми заокругленнями і "наїжджає" на картинку
                 SliverToBoxAdapter(
-                  child: Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      Transform.translate(
-                        offset: const Offset(0, -32), // зсуваємо вгору
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(32),
-                            topRight: Radius.circular(32),
-                          ),
-                          child: Container(
-                            padding: const EdgeInsets.only(
-                                top: 32, left: 16, right: 16, bottom: 20),
-                            color: theme.colorScheme.tertiary,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  item.title,
-                                  style: theme.textTheme.displaySmall?.copyWith(
-                                    fontSize: 24,
-                                    color: theme.colorScheme.onSurface,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                                const SizedBox(height: 8),
-                                if (item.subtitle != null)
-                                  Text(
-                                    item.subtitle!,
-                                    style: theme.textTheme.bodyMedium?.copyWith(
-                                      fontSize: 16,
-                                      color: theme.colorScheme.onSurface,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                const SizedBox(height: 8),
-                                if (item.description != null)
-                                  Text(
-                                    item.description!,
-                                    style: theme.textTheme.bodyMedium?.copyWith(
-                                      fontSize: 16,
-                                      color: theme.colorScheme.onSurface,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                const SizedBox(height: 16),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.favorite_border_outlined),
-                                    ),
-                                    SizedBox(
-                                      height: MediaQuery.of(context).size.width * 0.12,
-                                      width: MediaQuery.of(context).size.width * 0.7,
-                                      child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: theme.colorScheme.primary,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(16),
-                                          ),
-                                        ),
-                                        onPressed: () {},
-                                        child: Text(
-                                          'Start',
-                                          style: theme.textTheme.displaySmall
-                                              ?.copyWith(fontSize: 18),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
+                
+                   
+                    child: Container(
+                      padding:
+                          const EdgeInsets.only(top: 32, left: 16, right: 16, bottom: 20),
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.tertiary,
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(32),
+                          topRight: Radius.circular(32),
                         ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05),
+                            blurRadius: 8,
+                            offset: const Offset(0, -2),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            item.title,
+                            style: theme.textTheme.displaySmall?.copyWith(
+                              fontSize: 24,
+                              color: theme.colorScheme.onSurface,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 8),
+                          if (item.subtitle != null)
+                            Text(
+                              item.subtitle!,
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                fontSize: 16,
+                                color: theme.colorScheme.onSurface,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          const SizedBox(height: 8),
+                          if (item.description != null)
+                            Text(
+                              item.description!,
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                fontSize: 16,
+                                color: theme.colorScheme.onSurface,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          const SizedBox(height: 16),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.favorite_border_outlined),
+                              ),
+                              SizedBox(
+                                height: MediaQuery.of(context).size.width * 0.12,
+                                width: MediaQuery.of(context).size.width * 0.7,
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: theme.colorScheme.primary,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Start',
+                                    style: theme.textTheme.displaySmall
+                                        ?.copyWith(fontSize: 18),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                
                 ),
 
                 // Заголовок Recommendations

@@ -1,5 +1,6 @@
-import 'package:ai_fit_coach/common/api/model/workout/workout_item.dart';
+
 import 'package:ai_fit_coach/common/api/model/workout/workout_subitem.dart';
+import 'package:ai_fit_coach/common/api/model/workout/workout_item.dart';
 import 'package:ai_fit_coach/repositories/workout_repository/abstract_workout_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
@@ -30,11 +31,7 @@ class WorkoutRepository implements AbstractWorkoutRepository {
     }
   }
 
-<<<<<<< HEAD
-  @override
-=======
-@override
->>>>>>> a52f4f2 (methods, conn data to trending recommendations)
+
   Future<List<WorkoutSubitem>> getWorkoutExerciseItemInCollection(
       String categoryType, String workoutId) async {
     try {
