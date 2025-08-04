@@ -1,16 +1,23 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:ai_fit_coach/app/ai_fit_coach_app.dart';
 import 'package:ai_fit_coach/common/api/api.dart';
-import 'package:ai_fit_coach/config/firebase_options.dart';
 import 'package:ai_fit_coach/common/di/di.dart';
+
+
+import 'package:ai_fit_coach/config/firebase_options.dart';
+
 import 'package:ai_fit_coach/repositories/challenge_repository/challenge_repository.dart';
 import 'package:ai_fit_coach/repositories/recommendation_repository/recommendation_repository.dart';
 import 'package:ai_fit_coach/repositories/workout_repository/workout_repository.dart';
+
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final navigatorKey = GlobalKey<NavigatorState>();
+//final navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,12 +30,15 @@ Future<void> main() async {
 
   initDI(sharedPreferences: prefs);
 
+  if (defaultTargetPlatform != TargetPlatform.iOS) {
+    await NotificationsApi().initNotifications();
+  }
+
   await NotificationsApi().initNotifications();
 
   runApp(const AiFitCoachApp());
 }
 
 Future<SharedPreferences> _initPrefs() async {
-  final prefs = await SharedPreferences.getInstance();
-  return prefs;
+  return await SharedPreferences.getInstance();
 }

@@ -208,7 +208,7 @@ class UserApiClient {
 
   Future<void> deleteAccount(String userId) async {
     try {
-      await _usersCollection.doc('DuuzJTgC3bXAecaEr5k6YEbpvQJ3').delete();
+      await _usersCollection.doc(userId).delete();
     } catch (e) {
       rethrow;
     }

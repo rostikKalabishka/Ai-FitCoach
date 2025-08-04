@@ -35,3 +35,7 @@ class UpdateUserField extends UserEvent {
   @override
   List<Object> get props => [userModel];
 }
+
+class DeleteUserAccount extends UserEvent {
+  const DeleteUserAccount();
+}

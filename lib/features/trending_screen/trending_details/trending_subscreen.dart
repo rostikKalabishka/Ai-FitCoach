@@ -21,209 +21,168 @@ class TrendingSubScreen extends StatefulWidget {
 class _TrendingSubScreenState extends State<TrendingSubScreen> {
   @override
   void initState() {
-    context.read<TrendingDetailsBloc>().add(LoadingTrendingDetails(
-        id: widget.id, recommendationCategory: widget.recommendationCategory));
     super.initState();
+    context.read<TrendingDetailsBloc>().add(
+          LoadingTrendingDetails(
+            id: widget.id,
+            recommendationCategory: widget.recommendationCategory,
+          ),
+        );
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Scaffold(
       body: BlocBuilder<TrendingDetailsBloc, TrendingDetailsState>(
         builder: (context, state) {
           if (state is TrendingDetailsLoaded) {
             final item = state.recommendationItem;
-            print(item);
-            return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(
+
+            return CustomScrollView(
+              slivers: [
+                // Картинка зверху без заокруглень
+                SliverAppBar(
+                  automaticallyImplyLeading: false,
+                  pinned: false,
+                  expandedHeight: MediaQuery.of(context).size.height * 0.34,
+                  flexibleSpace: CachedNetworkImage(
+                    imageUrl: item.imageUrl,
+                    fit: BoxFit.cover,
+                    errorWidget: (context, url, error) => Image.asset(
+                      'assets/images/challenges/exercise/2.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+
+                // Контейнер з інформацією з заокругленими верхніми кутами і "наїжджає" на картинку
+                SliverToBoxAdapter(
+                  child: Stack(
+                    clipBehavior: Clip.none,
                     children: [
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.34,
-                        width: double.infinity,
-                        child: Image(
-                          image: CachedNetworkImageProvider(item.imageUrl),
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) =>
-                              Image.asset(
-                            'assets/images/challenges/exercise/2.png',
-                            fit: BoxFit.cover,
+                      Transform.translate(
+                        offset: const Offset(0, -32), // зсуваємо вгору
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(32),
+                            topRight: Radius.circular(32),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 40),
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: theme
-                                .bottomNavigationBarTheme.unselectedItemColor,
-                            size: 32,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 310),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * 0.27,
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
+                          child: Container(
+                            padding: const EdgeInsets.only(
+                                top: 32, left: 16, right: 16, bottom: 20),
                             color: theme.colorScheme.tertiary,
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(24),
-                              topRight: Radius.circular(24),
-                            ),
-                          ),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 8, vertical: 8),
-                                child: Column(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  item.title,
+                                  style: theme.textTheme.displaySmall?.copyWith(
+                                    fontSize: 24,
+                                    color: theme.colorScheme.onSurface,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(height: 8),
+                                if (item.subtitle != null)
+                                  Text(
+                                    item.subtitle!,
+                                    style: theme.textTheme.bodyMedium?.copyWith(
+                                      fontSize: 16,
+                                      color: theme.colorScheme.onSurface,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                const SizedBox(height: 8),
+                                if (item.description != null)
+                                  Text(
+                                    item.description!,
+                                    style: theme.textTheme.bodyMedium?.copyWith(
+                                      fontSize: 16,
+                                      color: theme.colorScheme.onSurface,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                const SizedBox(height: 16),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 12),
-                                      child: Text(
-                                        item.title,
-                                        style: theme.textTheme.displaySmall
-                                            ?.copyWith(
-                                          fontSize: 24,
-                                          color: theme.colorScheme.onSurface,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(Icons.favorite_border_outlined),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          bottom: 4,
-                                          top: 4,
-                                          right: 16,
-                                          left: 16),
-                                      child: Text(
-                                        item.subtitle ?? '',
-                                        style: theme.textTheme.displaySmall
-                                            ?.copyWith(
-                                          fontSize: 16,
-                                          color: theme.colorScheme.onSurface,
+                                    SizedBox(
+                                      height: MediaQuery.of(context).size.width * 0.12,
+                                      width: MediaQuery.of(context).size.width * 0.7,
+                                      child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: theme.colorScheme.primary,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(16),
+                                          ),
                                         ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          bottom: 4,
-                                          top: 4,
-                                          right: 16,
-                                          left: 16),
-                                      child: Text(
-                                        item.description ?? '',
-                                        style: theme.textTheme.displaySmall
-                                            ?.copyWith(
-                                          fontSize: 16,
-                                          color: theme.colorScheme.onSurface,
+                                        onPressed: () {},
+                                        child: Text(
+                                          'Start',
+                                          style: theme.textTheme.displaySmall
+                                              ?.copyWith(fontSize: 18),
                                         ),
-                                        textAlign: TextAlign.center,
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                        Icons.favorite_border_outlined),
-                                  ),
-                                  SizedBox(
-                                    height: MediaQuery.of(context).size.width *
-                                        0.12,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.7,
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            theme.colorScheme.primary,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(16),
-                                        ),
-                                      ),
-                                      onPressed: () {},
-                                      child: Text(
-                                        'Start',
-                                        style: theme.textTheme.displaySmall
-                                            ?.copyWith(fontSize: 18),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Recommendations',
-                          style: theme.textTheme.labelSmall,
-                        ),
-                        SizedBox(
-                          height: 16,
-                        ),
-                        ListView.separated(
-                          separatorBuilder: (context, index) => Column(
-                            children: [
-                              Divider(
-                                thickness: 0.5,
-                                color: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Colors.white
-                                    : Colors.black,
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                            ],
-                          ),
-                          shrinkWrap: true,
-                          padding: EdgeInsets.zero,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: item.recommendationItems.length,
-                          itemBuilder: (context, index) {
-                            return CustomTrendingCard(
-                              title: item.recommendationItems[index],
-                            );
-                          },
-                        ),
-                        SizedBox(
-                          height: 50,
-                        ),
-                      ],
+                ),
+
+                // Заголовок Recommendations
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
+                    child: Text(
+                      'Recommendations',
+                      style: theme.textTheme.labelSmall,
                     ),
                   ),
-                ],
-              ),
+                ),
+
+                // Список карток рекомендацій
+                SliverPadding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  sliver: SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        return Column(
+                          children: [
+                            if (index != 0) ...[
+                              const Divider(thickness: 0.5),
+                              const SizedBox(height: 8),
+                            ],
+                            CustomTrendingCard(
+                              title: item.recommendationItems[index],
+                            ),
+                          ],
+                        );
+                      },
+                      childCount: item.recommendationItems.length,
+                    ),
+                  ),
+                ),
+
+                // Відступ знизу
+                const SliverToBoxAdapter(
+                  child: SizedBox(height: 32),
+                ),
+              ],
             );
           } else {
-            return Center(
-              child: CircularProgressIndicator.adaptive(),
-            );
+            return const Center(child: CircularProgressIndicator.adaptive());
           }
         },
       ),

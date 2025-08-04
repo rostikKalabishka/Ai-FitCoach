@@ -202,6 +202,8 @@ class _DescriptionCategoryWorkoutState
                             width: double.infinity,
                             child: ListView.builder(
                               itemCount: state.workoutExercise.length,
+                              padding: EdgeInsets.zero,
+                              clipBehavior: Clip.hardEdge,
                               itemBuilder: (context, index) =>
                                   CustomSubcategoryWorkout(
                                 title:
