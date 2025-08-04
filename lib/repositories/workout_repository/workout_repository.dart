@@ -1,4 +1,3 @@
-
 import 'package:ai_fit_coach/common/api/model/workout/workout_subitem.dart';
 import 'package:ai_fit_coach/common/api/model/workout/workout_item.dart';
 import 'package:ai_fit_coach/repositories/workout_repository/abstract_workout_repository.dart';
@@ -31,7 +30,7 @@ class WorkoutRepository implements AbstractWorkoutRepository {
     }
   }
 
-
+  @override
   Future<List<WorkoutSubitem>> getWorkoutExerciseItemInCollection(
       String categoryType, String workoutId) async {
     try {
