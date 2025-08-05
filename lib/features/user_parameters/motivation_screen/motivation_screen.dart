@@ -1,9 +1,13 @@
 import 'package:ai_fit_coach/common/api/model/user_motivation.dart';
+import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/navigation_back_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/selection_button.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
+import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class MotivationPage extends StatefulWidget {
   final PageController pageController;
@@ -28,21 +32,61 @@ class _MotivationPageState extends State<MotivationPage> {
   bool _boostImmune = false;
   bool _boostLibido = false;
   bool _isNextEnabled = false;
+  final analyticsRepository = GetIt.instance<AbstractAnalyticsRepository>();
 
-  void _updateMotivation() {
-    final motivation = UserMotivation(
-      stressReduction: _stressReduction,
-      eventTraining: _eventTraining,
-      rehabilitation: _rehabilitation,
-      improveHealth: _improveHealth,
-      buildStrength: _buildStrength,
-      boostImmune: _boostImmune,
-      boostLibido: _boostLibido,
-    );
-    setState(() {
-      _isNextEnabled = motivation.toList().isNotEmpty;
-    });
-    widget.onMotivationChanged(motivation);
+  @override
+  void initState() {
+    super.initState();
+    try {
+      analyticsRepository.logScreenView(
+        screenName: 'motivation_screen',
+        screenClass: 'MotivationPage',
+      );
+    } catch (e) {
+      debugPrint('Error logging screen view: $e');
+    }
+  }
+
+  void _updateMotivation(
+      {required String motivation, required bool isSelected}) {
+    try {
+      final userMotivation = UserMotivation(
+        stressReduction: _stressReduction,
+        eventTraining: _eventTraining,
+        rehabilitation: _rehabilitation,
+        improveHealth: _improveHealth,
+        buildStrength: _buildStrength,
+        boostImmune: _boostImmune,
+        boostLibido: _boostLibido,
+      );
+      setState(() {
+        _isNextEnabled = userMotivation.toList().isNotEmpty;
+      });
+      widget.onMotivationChanged(userMotivation);
+      analyticsRepository.logEvent(
+        name: 'motivation_selected',
+        parameters: {
+          'screen_name': 'motivation_screen',
+          'motivation': motivation,
+          'is_selected': isSelected.toString(),
+          'selected_count': userMotivation.toList().length,
+          'user_id':
+              context.read<AuthenticationBloc>().state.user?.id ?? 'unknown',
+        },
+      );
+    } catch (e) {
+      debugPrint('Error updating motivation: $e');
+      analyticsRepository.logEvent(
+        name: 'motivation_selection_error',
+        parameters: {
+          'screen_name': 'motivation_screen',
+          'motivation': motivation,
+          'error_message': e.toString(),
+          'user_id':
+              context.read<AuthenticationBloc>().state.user?.id ?? 'unknown',
+        },
+      );
+    }
   }
 
   @override
@@ -53,7 +97,7 @@ class _MotivationPageState extends State<MotivationPage> {
         centerTitle: true,
         title: Text(
           S.of(context).whatMotivatesYou,
-          style: TextStyle(fontSize: 20),
+          style: const TextStyle(fontSize: 20),
         ),
         leading: NavigationBackButton(pageController: widget.pageController),
       ),
@@ -66,8 +110,10 @@ class _MotivationPageState extends State<MotivationPage> {
                 spacing: 10,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(S.of(context).chooseYourMotivations,
-                      style: theme.textTheme.labelSmall),
+                  Text(
+                    S.of(context).chooseYourMotivations,
+                    style: theme.textTheme.labelSmall,
+                  ),
                   SelectionButton(
                     selectedColor: theme.colorScheme.primary,
                     text: S.of(context).reducingStress,
@@ -76,7 +122,10 @@ class _MotivationPageState extends State<MotivationPage> {
                       setState(() {
                         _stressReduction = !_stressReduction;
                       });
-                      _updateMotivation();
+                      _updateMotivation(
+                        motivation: 'Reducing Stress',
+                        isSelected: _stressReduction,
+                      );
                     },
                   ),
                   SelectionButton(
@@ -87,7 +136,10 @@ class _MotivationPageState extends State<MotivationPage> {
                       setState(() {
                         _eventTraining = !_eventTraining;
                       });
-                      _updateMotivation();
+                      _updateMotivation(
+                        motivation: 'Preparing for the Event',
+                        isSelected: _eventTraining,
+                      );
                     },
                   ),
                   SelectionButton(
@@ -98,7 +150,10 @@ class _MotivationPageState extends State<MotivationPage> {
                       setState(() {
                         _rehabilitation = !_rehabilitation;
                       });
-                      _updateMotivation();
+                      _updateMotivation(
+                        motivation: 'Rehabilitation',
+                        isSelected: _rehabilitation,
+                      );
                     },
                   ),
                   SelectionButton(
@@ -109,7 +164,10 @@ class _MotivationPageState extends State<MotivationPage> {
                       setState(() {
                         _improveHealth = !_improveHealth;
                       });
-                      _updateMotivation();
+                      _updateMotivation(
+                        motivation: 'Improving Health',
+                        isSelected: _improveHealth,
+                      );
                     },
                   ),
                   SelectionButton(
@@ -120,7 +178,10 @@ class _MotivationPageState extends State<MotivationPage> {
                       setState(() {
                         _buildStrength = !_buildStrength;
                       });
-                      _updateMotivation();
+                      _updateMotivation(
+                        motivation: 'Building Strength',
+                        isSelected: _buildStrength,
+                      );
                     },
                   ),
                   SelectionButton(
@@ -131,7 +192,10 @@ class _MotivationPageState extends State<MotivationPage> {
                       setState(() {
                         _boostImmune = !_boostImmune;
                       });
-                      _updateMotivation();
+                      _updateMotivation(
+                        motivation: 'Improving Immunity',
+                        isSelected: _boostImmune,
+                      );
                     },
                   ),
                   SelectionButton(
@@ -142,19 +206,61 @@ class _MotivationPageState extends State<MotivationPage> {
                       setState(() {
                         _boostLibido = !_boostLibido;
                       });
-                      _updateMotivation();
+                      _updateMotivation(
+                        motivation: 'Increase in Libido',
+                        isSelected: _boostLibido,
+                      );
                     },
                   ),
                 ],
               ),
             ),
           ),
-          ContinueButton(
-            isNextEnabled: _isNextEnabled,
-            pageController: widget.pageController,
-          ),
-          SizedBox(
-            height: 20,
+          Column(
+            children: [
+              ContinueButton(
+                isNextEnabled: _isNextEnabled,
+                pageController: widget.pageController,
+                onPressed: () {
+                  try {
+                    final userMotivation = UserMotivation(
+                      stressReduction: _stressReduction,
+                      eventTraining: _eventTraining,
+                      rehabilitation: _rehabilitation,
+                      improveHealth: _improveHealth,
+                      buildStrength: _buildStrength,
+                      boostImmune: _boostImmune,
+                      boostLibido: _boostLibido,
+                    );
+                    analyticsRepository.logEvent(
+                      name: 'continue_button_clicked',
+                      parameters: {
+                        'screen_name': 'motivation_screen',
+                        'selected_motivations':
+                            userMotivation.toList().join(','),
+                        'selected_count': userMotivation.toList().length,
+                        'user_id':
+                            context.read<AuthenticationBloc>().state.user?.id ??
+                                'unknown',
+                      },
+                    );
+                  } catch (e) {
+                    debugPrint('Error logging continue button click: $e');
+                    analyticsRepository.logEvent(
+                      name: 'continue_button_error',
+                      parameters: {
+                        'screen_name': 'motivation_screen',
+                        'error_message': e.toString(),
+                        'user_id':
+                            context.read<AuthenticationBloc>().state.user?.id ??
+                                'unknown',
+                      },
+                    );
+                  }
+                },
+              ),
+              const SizedBox(height: 20),
+            ],
           ),
         ],
       ),

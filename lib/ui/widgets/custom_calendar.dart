@@ -33,6 +33,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
       child: Padding(
         padding: EdgeInsets.all(8),
         child: TableCalendar(
+          rowHeight: 40,
           focusedDay: _focusedDay,
           firstDay: DateTime.utc(2022, 1, 1),
           lastDay: DateTime.utc(2032, 1, 1),

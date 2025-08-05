@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
 import 'package:rxdart/rxdart.dart';
 
 import 'model/model.dart';
@@ -147,7 +148,9 @@ class UserApiClient {
 
   Future<void> singInWithGoogle() async {
     try {
-      final googleSignInAccount = await GoogleSignIn().signIn();
+      final googleSignIn = GoogleSignIn();
+
+      final googleSignInAccount = await googleSignIn.signIn();
 
       if (googleSignInAccount == null) {
         return;

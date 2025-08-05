@@ -1,8 +1,12 @@
+import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/navigation_back_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/selection_button.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
+import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class TrainingDaysPage extends StatefulWidget {
   final PageController pageController;
@@ -21,17 +25,56 @@ class TrainingDaysPage extends StatefulWidget {
 class _TrainingDaysState extends State<TrainingDaysPage> {
   final List<String> _selectedDays = [];
   bool _isNextEnabled = false;
+  final analyticsRepository = GetIt.instance<AbstractAnalyticsRepository>();
+
+  @override
+  void initState() {
+    super.initState();
+    try {
+      analyticsRepository.logScreenView(
+        screenName: 'training_days_screen',
+        screenClass: 'TrainingDaysPage',
+      );
+    } catch (e) {
+      debugPrint('Error logging screen view: $e');
+    }
+  }
 
   void _toggleDay(String day) {
-    setState(() {
-      if (_selectedDays.contains(day)) {
-        _selectedDays.remove(day);
-      } else {
-        _selectedDays.add(day);
-      }
-      _isNextEnabled = _selectedDays.length >= 2 && _selectedDays.length <= 5;
-    });
-    widget.onTrainingDaysSelected(List.from(_selectedDays));
+    try {
+      setState(() {
+        if (_selectedDays.contains(day)) {
+          _selectedDays.remove(day);
+        } else {
+          _selectedDays.add(day);
+        }
+        _isNextEnabled = _selectedDays.length >= 2 && _selectedDays.length <= 5;
+      });
+      widget.onTrainingDaysSelected(List.from(_selectedDays));
+      analyticsRepository.logEvent(
+        name: 'training_day_selected',
+        parameters: {
+          'screen_name': 'training_days_screen',
+          'day': day,
+          'is_selected': _selectedDays.contains(day).toString(),
+          'selected_count': _selectedDays.length,
+          'user_id':
+              context.read<AuthenticationBloc>().state.user?.id ?? 'unknown',
+        },
+      );
+    } catch (e) {
+      debugPrint('Error toggling training day: $e');
+      analyticsRepository.logEvent(
+        name: 'training_day_selection_error',
+        parameters: {
+          'screen_name': 'training_days_screen',
+          'day': day,
+          'error_message': e.toString(),
+          'user_id':
+              context.read<AuthenticationBloc>().state.user?.id ?? 'unknown',
+        },
+      );
+    }
   }
 
   @override
@@ -42,7 +85,7 @@ class _TrainingDaysState extends State<TrainingDaysPage> {
         centerTitle: true,
         title: Text(
           S.of(context).chooseYourTrainingDays,
-          style: TextStyle(fontSize: 20),
+          style: const TextStyle(fontSize: 20),
         ),
         leading: NavigationBackButton(pageController: widget.pageController),
       ),
@@ -108,12 +151,41 @@ class _TrainingDaysState extends State<TrainingDaysPage> {
               ),
             ),
           ),
-          ContinueButton(
-            isNextEnabled: _isNextEnabled,
-            pageController: widget.pageController,
-          ),
-          SizedBox(
-            height: 20,
+          Column(
+            children: [
+              ContinueButton(
+                isNextEnabled: _isNextEnabled,
+                pageController: widget.pageController,
+                onPressed: () {
+                  try {
+                    analyticsRepository.logEvent(
+                      name: 'continue_button_clicked',
+                      parameters: {
+                        'screen_name': 'training_days_screen',
+                        'selected_days': _selectedDays.join(','),
+                        'selected_count': _selectedDays.length,
+                        'user_id':
+                            context.read<AuthenticationBloc>().state.user?.id ??
+                                'unknown',
+                      },
+                    );
+                  } catch (e) {
+                    debugPrint('Error logging continue button click: $e');
+                    analyticsRepository.logEvent(
+                      name: 'continue_button_error',
+                      parameters: {
+                        'screen_name': 'training_days_screen',
+                        'error_message': e.toString(),
+                        'user_id':
+                            context.read<AuthenticationBloc>().state.user?.id ??
+                                'unknown',
+                      },
+                    );
+                  }
+                },
+              ),
+              const SizedBox(height: 20),
+            ],
           ),
         ],
       ),

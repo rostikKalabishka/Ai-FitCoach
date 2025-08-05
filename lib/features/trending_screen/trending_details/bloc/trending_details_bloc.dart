@@ -10,7 +10,7 @@ enum RecommendationCategory { workout, challenges, food }
 
 class TrendingDetailsBloc
     extends Bloc<TrendingDetailsEvent, TrendingDetailsState> {
-  final AbstractRecommendationRepository _recommendationRepository;
+  final AbstractRecommendationRepository _recommendationRepository ;
   TrendingDetailsBloc({
     required AbstractRecommendationRepository recommendationRepository,
   })  : _recommendationRepository = recommendationRepository,

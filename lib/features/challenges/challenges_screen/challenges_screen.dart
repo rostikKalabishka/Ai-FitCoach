@@ -1,10 +1,10 @@
 import 'package:ai_fit_coach/common/api/model/challenges/challenge_item.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
+import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
 import 'package:ai_fit_coach/router/router.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
-
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 import '../challenges.dart';
 
@@ -20,34 +20,68 @@ class _ChallengesScreenState extends State<ChallengesScreen>
     with TickerProviderStateMixin {
   late TabController tabController;
   int initialIndex = 0;
+  final AbstractAnalyticsRepository _analyticsRepository =
+      GetIt.instance<AbstractAnalyticsRepository>();
+  late DateTime _screenEnterTime;
 
-String _categoryType (CategoryType categoryType) {
-  switch (categoryType) {
-    case CategoryType.exercise: 
-    return 'exercise';
-    case CategoryType.food: 
-    return 'food';
-    case CategoryType.sleepAndRelax: 
-    return 'sleepAndRelax';
-    case CategoryType.mental: 
-    return 'mental';
-    case CategoryType.hydration: 
-    return 'hydration';
+  String _categoryType(CategoryType categoryType) {
+    switch (categoryType) {
+      case CategoryType.exercise:
+        return 'exercise';
+      case CategoryType.food:
+        return 'food';
+      case CategoryType.sleepAndRelax:
+        return 'sleepAndRelax';
+      case CategoryType.mental:
+        return 'mental';
+      case CategoryType.hydration:
+        return 'hydration';
+    }
   }
-}
 
   @override
   void initState() {
     super.initState();
+    _screenEnterTime = DateTime.now();
+
+    _analyticsRepository.logScreenView(
+      screenName: 'challenges_screen',
+      screenClass: 'ChallengesScreen',
+    );
     tabController =
         TabController(initialIndex: initialIndex, length: 5, vsync: this);
     tabController.addListener(() {
-      setState(() {});
+      setState(() {
+        final tabNames = [
+          'food_tab',
+          'exercise_tab',
+          'sleepAndRelax_tab',
+          'hydration_tab',
+          'mental_tab',
+        ];
+        _analyticsRepository.logEvent(
+          name: 'tab_select',
+          parameters: {
+            'screen_name': 'challenges_screen',
+            'tab_name': tabNames[tabController.index],
+          },
+        );
+      });
     });
   }
 
   @override
   void dispose() {
+    // Логування виходу з екрану з тривалістю
+    final durationSeconds =
+        DateTime.now().difference(_screenEnterTime).inSeconds;
+    _analyticsRepository.logEvent(
+      name: 'screen_exit',
+      parameters: {
+        'screen_name': 'challenges_screen',
+        'duration_seconds': durationSeconds,
+      },
+    );
     tabController.dispose();
     super.dispose();
   }
@@ -94,11 +128,17 @@ String _categoryType (CategoryType categoryType) {
                 child: TabBarView(
                   controller: tabController,
                   children: [
-                    FoodChallengesScreen(categoryType: _categoryType(CategoryType.food)),
-                    ExerciseChallengesScreen(categoryType: _categoryType(CategoryType.exercise)),
-                    SleepAndRelaxChallengesScreen(categoryType: _categoryType(CategoryType.sleepAndRelax)),
-                    HydrationChallengesScreen(categoryType: _categoryType(CategoryType.hydration)),
-                    MentalChallengesScreen(categoryType: _categoryType(CategoryType.mental)),
+                    FoodChallengesScreen(
+                        categoryType: _categoryType(CategoryType.food)),
+                    ExerciseChallengesScreen(
+                        categoryType: _categoryType(CategoryType.exercise)),
+                    SleepAndRelaxChallengesScreen(
+                        categoryType:
+                            _categoryType(CategoryType.sleepAndRelax)),
+                    HydrationChallengesScreen(
+                        categoryType: _categoryType(CategoryType.hydration)),
+                    MentalChallengesScreen(
+                        categoryType: _categoryType(CategoryType.mental)),
                   ],
                 ),
               ),

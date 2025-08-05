@@ -1,9 +1,12 @@
+import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
-
-import 'package:ai_fit_coach/features/user_parameters/widgets/widgets.dart';
+import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
+import 'package:ai_fit_coach/features/user_parameters/widgets/navigation_back_button.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
+import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class FitnessLevelPage extends StatefulWidget {
   final PageController pageController;
@@ -22,6 +25,22 @@ class FitnessLevelPage extends StatefulWidget {
 class _FitnessLevelPageState extends State<FitnessLevelPage> {
   int _fitnessLevel = 0;
   bool _isNextEnabled = false;
+  final analyticsRepository = GetIt.instance<AbstractAnalyticsRepository>();
+
+  @override
+  void initState() {
+    super.initState();
+    try {
+      analyticsRepository.logScreenView(
+        screenName: 'fitness_level_screen',
+        screenClass: 'FitnessLevelPage',
+      );
+      analyticsRepository
+          .setUserFitnessLevel(_getFitnessLevelString(_fitnessLevel));
+    } catch (e) {
+      debugPrint('Error logging screen view or setting fitness level: $e');
+    }
+  }
 
   String _getFitnessLevelString(int level) {
     switch (level) {
@@ -41,14 +60,14 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<UserParametersBloc>();
-
     final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           S.of(context).whatIsYourLevelOfPhysicalFitness,
-          style: TextStyle(fontSize: 20),
+          style: const TextStyle(fontSize: 20),
           maxLines: 2,
           textAlign: TextAlign.center,
         ),
@@ -85,12 +104,40 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
                         divisions: 3,
                         label: _getFitnessLevelString(_fitnessLevel),
                         onChanged: (double value) {
-                          setState(() {
-                            _fitnessLevel = value.round();
-                            _isNextEnabled = true;
-                          });
-                          bloc.add(FitnessLevelChanged(
-                              _getFitnessLevelString(_fitnessLevel)));
+                          try {
+                            setState(() {
+                              _fitnessLevel = value.round();
+                              _isNextEnabled = true;
+                            });
+                            final fitnessLevel =
+                                _getFitnessLevelString(_fitnessLevel);
+                            bloc.add(FitnessLevelChanged(fitnessLevel));
+                            widget.onFitnessLevelChanged(fitnessLevel);
+                            analyticsRepository
+                                .setUserFitnessLevel(fitnessLevel);
+                            analyticsRepository.logSliderInteraction(
+                              sliderName: 'fitness_level',
+                              selectedLevel: fitnessLevel,
+                              screenName: 'fitness_level_screen',
+                            );
+                          } catch (e) {
+                            debugPrint('Error updating fitness level: $e');
+                            analyticsRepository.logEvent(
+                              name: 'fitness_level_error',
+                              parameters: {
+                                'screen_name': 'fitness_level_screen',
+                                'fitness_level':
+                                    _getFitnessLevelString(_fitnessLevel),
+                                'error_message': e.toString(),
+                                'user_id': context
+                                        .read<AuthenticationBloc>()
+                                        .state
+                                        .user
+                                        ?.id ??
+                                    'unknown',
+                              },
+                            );
+                          }
                         },
                       ),
                     ),
@@ -104,13 +151,41 @@ class _FitnessLevelPageState extends State<FitnessLevelPage> {
               ),
             ),
           ),
-          ContinueButton(
-            isNextEnabled: _isNextEnabled,
-            pageController: widget.pageController,
+          Column(
+            children: [
+              ContinueButton(
+                isNextEnabled: _isNextEnabled,
+                pageController: widget.pageController,
+                onPressed: () {
+                  try {
+                    analyticsRepository.logEvent(
+                      name: 'continue_button_clicked',
+                      parameters: {
+                        'screen_name': 'fitness_level_screen',
+                        'fitness_level': _getFitnessLevelString(_fitnessLevel),
+                        'user_id':
+                            context.read<AuthenticationBloc>().state.user?.id ??
+                                'unknown',
+                      },
+                    );
+                  } catch (e) {
+                    debugPrint('Error logging continue button click: $e');
+                    analyticsRepository.logEvent(
+                      name: 'continue_button_error',
+                      parameters: {
+                        'screen_name': 'fitness_level_screen',
+                        'error_message': e.toString(),
+                        'user_id':
+                            context.read<AuthenticationBloc>().state.user?.id ??
+                                'unknown',
+                      },
+                    );
+                  }
+                },
+              ),
+              const SizedBox(height: 20),
+            ],
           ),
-          SizedBox(
-            height: 20,
-          )
         ],
       ),
     );
