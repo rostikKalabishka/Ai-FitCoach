@@ -1,8 +1,12 @@
+import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/navigation_back_button.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/selection_button.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
+import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class BadHabitsSelectionPage extends StatefulWidget {
   final PageController pageController;
@@ -21,17 +25,56 @@ class BadHabitsSelectionPage extends StatefulWidget {
 class _BadHabitsSelectionPageState extends State<BadHabitsSelectionPage> {
   final List<String> _selectedHabits = [];
   bool _isNextEnabled = false;
+  final analyticsRepository = GetIt.instance<AbstractAnalyticsRepository>();
+
+  @override
+  void initState() {
+    super.initState();
+    try {
+      analyticsRepository.logScreenView(
+        screenName: 'bad_habits_screen',
+        screenClass: 'BadHabitsSelectionPage',
+      );
+    } catch (e) {
+      debugPrint('Error logging screen view: $e');
+    }
+  }
 
   void _toggleHabit(String habit) {
-    setState(() {
-      if (_selectedHabits.contains(habit)) {
-        _selectedHabits.remove(habit);
-      } else {
-        _selectedHabits.add(habit);
-      }
-      _isNextEnabled = _selectedHabits.isNotEmpty;
-    });
-    widget.onBadHabitsSelected(List.from(_selectedHabits));
+    try {
+      setState(() {
+        if (_selectedHabits.contains(habit)) {
+          _selectedHabits.remove(habit);
+        } else {
+          _selectedHabits.add(habit);
+        }
+        _isNextEnabled = _selectedHabits.isNotEmpty;
+      });
+      widget.onBadHabitsSelected(List.from(_selectedHabits));
+      analyticsRepository.logEvent(
+        name: 'bad_habit_selected',
+        parameters: {
+          'screen_name': 'bad_habits_screen',
+          'habit': habit,
+          'is_selected': _selectedHabits.contains(habit).toString(),
+          'selected_count': _selectedHabits.length,
+          'user_id':
+              context.read<AuthenticationBloc>().state.user?.id ?? 'unknown',
+        },
+      );
+    } catch (e) {
+      debugPrint('Error toggling bad habit: $e');
+      analyticsRepository.logEvent(
+        name: 'bad_habit_selection_error',
+        parameters: {
+          'screen_name': 'bad_habits_screen',
+          'habit': habit,
+          'error_message': e.toString(),
+          'user_id':
+              context.read<AuthenticationBloc>().state.user?.id ?? 'unknown',
+        },
+      );
+    }
   }
 
   @override
@@ -42,7 +85,7 @@ class _BadHabitsSelectionPageState extends State<BadHabitsSelectionPage> {
         centerTitle: true,
         title: Text(
           S.of(context).chooseYourBadHabits,
-          style: TextStyle(fontSize: 20),
+          style: const TextStyle(fontSize: 20),
         ),
         leading: NavigationBackButton(pageController: widget.pageController),
       ),
@@ -108,12 +151,41 @@ class _BadHabitsSelectionPageState extends State<BadHabitsSelectionPage> {
               ),
             ),
           ),
-          ContinueButton(
-            isNextEnabled: _isNextEnabled,
-            pageController: widget.pageController,
-          ),
-          SizedBox(
-            height: 20,
+          Column(
+            children: [
+              ContinueButton(
+                isNextEnabled: _isNextEnabled,
+                pageController: widget.pageController,
+                onPressed: () {
+                  try {
+                    analyticsRepository.logEvent(
+                      name: 'continue_button_clicked',
+                      parameters: {
+                        'screen_name': 'bad_habits_screen',
+                        'selected_habits': _selectedHabits.join(','),
+                        'selected_count': _selectedHabits.length,
+                        'user_id':
+                            context.read<AuthenticationBloc>().state.user?.id ??
+                                'unknown',
+                      },
+                    );
+                  } catch (e) {
+                    debugPrint('Error logging continue button click: $e');
+                    analyticsRepository.logEvent(
+                      name: 'continue_button_error',
+                      parameters: {
+                        'screen_name': 'bad_habits_screen',
+                        'error_message': e.toString(),
+                        'user_id':
+                            context.read<AuthenticationBloc>().state.user?.id ??
+                                'unknown',
+                      },
+                    );
+                  }
+                },
+              ),
+              const SizedBox(height: 20),
+            ],
           ),
         ],
       ),

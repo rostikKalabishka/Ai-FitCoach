@@ -4,11 +4,13 @@ import 'package:ai_fit_coach/features/ai_chat/bloc/chat_bloc.dart';
 import 'package:ai_fit_coach/features/ai_chat/widgets/widgets.dart';
 import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
+import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
 import 'package:ai_fit_coach/router/router.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get_it/get_it.dart';
 
 @RoutePage()
 class AiChatScreen extends StatefulWidget {
@@ -24,10 +26,16 @@ class _AiChatScreenState extends State<AiChatScreen> {
   late ScrollController _scrollController;
   late FocusNode focusNode;
   late String userId;
+  final AbstractAnalyticsRepository _analyticsRepository =
+      GetIt.instance<AbstractAnalyticsRepository>();
 
   @override
   void initState() {
     _init();
+    _analyticsRepository.logScreenView(
+      screenName: 'ai_chat_screen',
+      screenClass: 'AiChatScreen',
+    );
     super.initState();
   }
 
@@ -36,6 +44,12 @@ class _AiChatScreenState extends State<AiChatScreen> {
     _textFieldController.dispose();
     _scrollController.dispose();
     focusNode.dispose();
+    _analyticsRepository.logEvent(
+      name: 'screen_exit',
+      parameters: {
+        'screen_name': 'ai_chat_screen',
+      },
+    );
     super.dispose();
   }
 
@@ -57,6 +71,13 @@ class _AiChatScreenState extends State<AiChatScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(S.of(context).errorN(state.error))),
           );
+          _analyticsRepository.logEvent(
+            name: 'chat_error',
+            parameters: {
+              'screen_name': 'ai_chat_screen',
+              'error_message': state.error,
+            },
+          );
         }
       },
       child: BlocBuilder<ChatBloc, ChatState>(
@@ -64,6 +85,12 @@ class _AiChatScreenState extends State<AiChatScreen> {
           return GestureDetector(
             onTap: () {
               focusNode.unfocus();
+              _analyticsRepository.logEvent(
+                name: 'tap_outside',
+                parameters: {
+                  'screen_name': 'ai_chat_screen',
+                },
+              );
             },
             child: Scaffold(
               drawer: HistoryDrawer(
@@ -73,17 +100,22 @@ class _AiChatScreenState extends State<AiChatScreen> {
               appBar: AppBar(
                 actions: [
                   IconButton(
-                      onPressed:
-                          state is AiChatLoaded && state.chatModel.id.isNotEmpty
-                              ? () {
-                                  AutoRouter.of(context).pushAndPopUntil(
-                                    AiChatRoute(),
-                                    predicate: (_) => false,
-                                  );
-                                }
-                              : null,
-                      icon: const Icon(Icons.edit),
-                      tooltip: S.of(context).createNewChat),
+                    onPressed:
+                        state is AiChatLoaded && state.chatModel.id.isNotEmpty
+                            ? () async {
+                                await _analyticsRepository.logButtonClick(
+                                  buttonName: 'create_new_chat',
+                                  screenName: 'ai_chat_screen',
+                                );
+                                AutoRouter.of(context).pushAndPopUntil(
+                                  AiChatRoute(),
+                                  predicate: (_) => false,
+                                );
+                              }
+                            : null,
+                    icon: const Icon(Icons.edit),
+                    tooltip: S.of(context).createNewChat,
+                  ),
                 ],
                 title: Text(
                   S.of(context).aiAssistant,
@@ -101,6 +133,10 @@ class _AiChatScreenState extends State<AiChatScreen> {
                             userCreatorChatId: userId,
                           ),
                         );
+                    await _analyticsRepository.logButtonClick(
+                      buttonName: 'refresh_chat',
+                      screenName: 'ai_chat_screen',
+                    );
                   }
                 },
                 child: LayoutBuilder(
@@ -195,7 +231,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
                                     Text(S.of(context).errorN(state.error)),
                                     const SizedBox(height: 16),
                                     ElevatedButton(
-                                      onPressed: () {
+                                      onPressed: () async {
                                         if (userId.isNotEmpty) {
                                           context.read<ChatBloc>().add(
                                                 LoadChatEvent(
@@ -203,6 +239,11 @@ class _AiChatScreenState extends State<AiChatScreen> {
                                                   userCreatorChatId: userId,
                                                 ),
                                               );
+                                          await _analyticsRepository
+                                              .logButtonClick(
+                                            buttonName: 'retry_chat_load',
+                                            screenName: 'ai_chat_screen',
+                                          );
                                         }
                                       },
                                       child: Text(S.of(context).retry),
@@ -223,7 +264,7 @@ class _AiChatScreenState extends State<AiChatScreen> {
     );
   }
 
-  void _sendMessage(BuildContext context) {
+  void _sendMessage(BuildContext context) async {
     final newMessage = _textFieldController.text.trim();
 
     if (newMessage.isNotEmpty) {
@@ -231,6 +272,14 @@ class _AiChatScreenState extends State<AiChatScreen> {
       context.read<ChatBloc>().add(
             SendMessageEvent(message: newMessage),
           );
+      await _analyticsRepository.logEvent(
+        name: 'send_message',
+        parameters: {
+          'screen_name': 'ai_chat_screen',
+          'message_length': newMessage.length,
+          'chat_id': widget.chatId ?? 'new_chat',
+        },
+      );
     }
   }
 
@@ -243,12 +292,22 @@ class _AiChatScreenState extends State<AiChatScreen> {
     if (userId.isNotEmpty) {
       context.read<ChatBloc>().add(
             LoadChatEvent(
-                chatId: widget.chatId ?? '', userCreatorChatId: userId),
+              chatId: widget.chatId ?? '',
+              userCreatorChatId: userId,
+            ),
           );
       context.read<HistoryBloc>().add(LoadHistoryEvent(userId: userId));
+      _analyticsRepository.setUserId(userId);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(S.of(context).userNotAuthenticated)),
+      );
+      _analyticsRepository.logEvent(
+        name: 'auth_error',
+        parameters: {
+          'screen_name': 'ai_chat_screen',
+          'error_message': 'user_not_authenticated',
+        },
       );
     }
   }

@@ -1,10 +1,12 @@
 import 'package:ai_fit_coach/features/workout/bloc/workout_bloc.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
+import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
+import 'package:ai_fit_coach/ui/widgets/custom_workout_card.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
-import '../../../ui/widgets/custom_workout_card.dart';
 import '../workout.dart';
 
 @RoutePage()
@@ -16,10 +18,35 @@ class WorkoutScreen extends StatefulWidget {
 }
 
 class _WorkoutScreenState extends State<WorkoutScreen> {
+  final AbstractAnalyticsRepository _analyticsRepository =
+      GetIt.instance<AbstractAnalyticsRepository>();
+  late DateTime _screenEnterTime;
+
   @override
   void initState() {
-    context.read<WorkoutBloc>().add(LoadListWorkoutItemEvent());
     super.initState();
+    _screenEnterTime = DateTime.now();
+    // Логування перегляду екрану
+    _analyticsRepository.logScreenView(
+      screenName: 'workout_screen',
+      screenClass: 'WorkoutScreen',
+    );
+    context.read<WorkoutBloc>().add(LoadListWorkoutItemEvent());
+  }
+
+  @override
+  void dispose() {
+    // Логування виходу з екрану з тривалістю
+    final durationSeconds =
+        DateTime.now().difference(_screenEnterTime).inSeconds;
+    _analyticsRepository.logEvent(
+      name: 'screen_exit',
+      parameters: {
+        'screen_name': 'workout_screen',
+        'duration_seconds': durationSeconds,
+      },
+    );
+    super.dispose();
   }
 
   @override
@@ -56,12 +83,28 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                           width: MediaQuery.of(context).size.width * 0.97,
                           child: WorkoutCard(
                             title: workout.title,
-                            subtitle: 'duration: ${workout.subtitle} minutes', 
+                            subtitle: 'duration: ${workout.subtitle} minutes',
                             imageUrl: workout.imageUrl,
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
+                              // Логування натискання на картку тренування
+                              _analyticsRepository.logEvent(
+                                name: 'card_click',
+                                parameters: {
+                                  'screen_name': 'workout_screen',
+                                  'category': 'workout',
+                                  'item_id': workout.id,
+                                  'item_title': workout.title,
+                                  'duration_minutes': workout.subtitle,
+                                },
+                              );
+
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
                                   builder: (context) =>
-                                      DescriptionCategoryWorkout(workoutItem: workout)));
+                                      DescriptionCategoryWorkout(
+                                          workoutItem: workout),
+                                ),
+                              );
                             },
                           ),
                         ),
@@ -79,7 +122,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
               ],
             );
           } else {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator.adaptive(),
             );
           }

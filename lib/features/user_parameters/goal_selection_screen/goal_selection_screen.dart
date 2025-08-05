@@ -1,8 +1,12 @@
 import 'package:ai_fit_coach/common/api/model/user_data.dart';
+import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/widgets/continue_button.dart';
-import 'package:ai_fit_coach/features/user_parameters/widgets/widgets.dart';
+import 'package:ai_fit_coach/features/user_parameters/widgets/navigation_back_button.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
+import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class GoalSelectionPage extends StatefulWidget {
   final PageController pageController;
@@ -21,6 +25,20 @@ class GoalSelectionPage extends StatefulWidget {
 class _GoalSelectionPageState extends State<GoalSelectionPage> {
   Goal? _selectedGoal;
   bool _isNextEnabled = false;
+  final analyticsRepository = GetIt.instance<AbstractAnalyticsRepository>();
+
+  @override
+  void initState() {
+    super.initState();
+    try {
+      analyticsRepository.logScreenView(
+        screenName: 'goal_selection_screen',
+        screenClass: 'GoalSelectionPage',
+      );
+    } catch (e) {
+      debugPrint('Error logging screen view: $e');
+    }
+  }
 
   String _getGoalString(Goal goal) {
     switch (goal) {
@@ -33,6 +51,41 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
     }
   }
 
+  void _selectGoal(Goal goal) {
+    try {
+      setState(() {
+        _selectedGoal = goal;
+        _isNextEnabled = true;
+      });
+      final goalString = _getGoalString(goal);
+      widget.onGoalSelected(goalString);
+      analyticsRepository.logGoalSet(
+        goalType: goalString,
+      );
+      analyticsRepository.logEvent(
+        name: 'goal_selected',
+        parameters: {
+          'screen_name': 'goal_selection_screen',
+          'goal': goalString,
+          'user_id':
+              context.read<AuthenticationBloc>().state.user?.id ?? 'unknown',
+        },
+      );
+    } catch (e) {
+      debugPrint('Error selecting goal: $e');
+      analyticsRepository.logEvent(
+        name: 'goal_selection_error',
+        parameters: {
+          'screen_name': 'goal_selection_screen',
+          'goal': goal.toString(),
+          'error_message': e.toString(),
+          'user_id':
+              context.read<AuthenticationBloc>().state.user?.id ?? 'unknown',
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -41,11 +94,11 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
         centerTitle: true,
         title: Text(
           S.of(context).whatIsYourMainGoal,
-          style: TextStyle(fontSize: 20),
+          style: const TextStyle(fontSize: 20),
         ),
+        leading: NavigationBackButton(pageController: widget.pageController),
       ),
       body: Column(
-        spacing: 20,
         children: [
           Expanded(
             child: Padding(
@@ -65,15 +118,43 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
               ),
             ),
           ),
-          Column(children: [
-            ContinueButton(
-              isNextEnabled: _isNextEnabled,
-              pageController: widget.pageController,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-          ]),
+          Column(
+            children: [
+              ContinueButton(
+                isNextEnabled: _isNextEnabled,
+                pageController: widget.pageController,
+                onPressed: () {
+                  try {
+                    analyticsRepository.logEvent(
+                      name: 'continue_button_clicked',
+                      parameters: {
+                        'screen_name': 'goal_selection_screen',
+                        'selected_goal': _selectedGoal != null
+                            ? _getGoalString(_selectedGoal!)
+                            : 'none',
+                        'user_id':
+                            context.read<AuthenticationBloc>().state.user?.id ??
+                                'unknown',
+                      },
+                    );
+                  } catch (e) {
+                    debugPrint('Error logging continue button click: $e');
+                    analyticsRepository.logEvent(
+                      name: 'continue_button_error',
+                      parameters: {
+                        'screen_name': 'goal_selection_screen',
+                        'error_message': e.toString(),
+                        'user_id':
+                            context.read<AuthenticationBloc>().state.user?.id ??
+                                'unknown',
+                      },
+                    );
+                  }
+                },
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
         ],
       ),
     );
@@ -88,13 +169,7 @@ class _GoalSelectionPageState extends State<GoalSelectionPage> {
         borderRadius: BorderRadius.circular(8),
         child: InkWell(
           borderRadius: BorderRadius.circular(8),
-          onTap: () {
-            setState(() {
-              _selectedGoal = goal;
-              _isNextEnabled = true;
-            });
-            widget.onGoalSelected(_getGoalString(goal));
-          },
+          onTap: () => _selectGoal(goal),
           child: Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),

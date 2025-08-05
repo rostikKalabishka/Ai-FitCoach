@@ -12,6 +12,8 @@ import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 import 'package:ai_fit_coach/features/trending_screen/trending_details/bloc/trending_details_bloc.dart';
 import 'package:ai_fit_coach/features/trending_screen/trending_screen/bloc/list_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
+import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
+import 'package:ai_fit_coach/repositories/analytics_repository/analytics_repository.dart';
 
 import 'package:ai_fit_coach/repositories/health_repository/health.dart';
 
@@ -40,6 +42,10 @@ void initDI({required SharedPreferences sharedPreferences}) {
   getIt.registerLazySingleton<AbstractUserRepository>(() => UserRepository());
 
   getIt.registerLazySingleton<AbstractChatRepository>(() => ChatRepository());
+
+  getIt.registerLazySingleton<AbstractAnalyticsRepository>(
+      () => AnalyticsRepository());
+
   getIt.registerLazySingleton<AbstractHealthRepository>(
       () => HealthRepository());
 
@@ -114,8 +120,7 @@ void initDI({required SharedPreferences sharedPreferences}) {
 
   getIt.registerLazySingleton<ListBloc>(
     () => ListBloc(
-      recommendationRepository:
-          getIt<AbstractRecommendationRepository>(),
+      recommendationRepository: getIt<AbstractRecommendationRepository>(),
     ),
   );
 

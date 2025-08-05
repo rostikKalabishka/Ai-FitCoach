@@ -3,11 +3,12 @@ import 'package:ai_fit_coach/features/trending_screen/trending_details/bloc/tren
 import 'package:ai_fit_coach/features/trending_screen/trending_screen/bloc/list_bloc.dart';
 import 'package:ai_fit_coach/features/trending_screen/trending_details/trending_subscreen.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
+import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
+import 'package:ai_fit_coach/ui/widgets/custom_main_screen_card.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../ui/widgets/custom_main_screen_card.dart';
+import 'package:get_it/get_it.dart';
 
 @RoutePage()
 class TrendingScreen extends StatefulWidget {
@@ -18,10 +19,35 @@ class TrendingScreen extends StatefulWidget {
 }
 
 class _TrendingScreenState extends State<TrendingScreen> {
+  final AbstractAnalyticsRepository _analyticsRepository =
+      GetIt.instance<AbstractAnalyticsRepository>();
+  late DateTime _screenEnterTime;
+
   @override
   void initState() {
-    context.read<ListBloc>().add(LoadListEvent());
     super.initState();
+    _screenEnterTime = DateTime.now();
+    // Логування перегляду екрану
+    _analyticsRepository.logScreenView(
+      screenName: 'trending_screen',
+      screenClass: 'TrendingScreen',
+    );
+    context.read<ListBloc>().add(LoadListEvent());
+  }
+
+  @override
+  void dispose() {
+    // Логування виходу з екрану з тривалістю
+    final durationSeconds =
+        DateTime.now().difference(_screenEnterTime).inSeconds;
+    _analyticsRepository.logEvent(
+      name: 'screen_exit',
+      parameters: {
+        'screen_name': 'trending_screen',
+        'duration_seconds': durationSeconds,
+      },
+    );
+    super.dispose();
   }
 
   @override
@@ -49,38 +75,51 @@ class _TrendingScreenState extends State<TrendingScreen> {
                       style: theme.textTheme.labelSmall,
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.27,
                     width: double.infinity,
                     child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: state.trendingWorkoutList.length,
-                        padding: EdgeInsets.symmetric(horizontal: 8),
-                        itemBuilder: (context, index) {
-                          final trendingWorkout =
-                              state.trendingWorkoutList[index];
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 16),
-                            child: CustomMainScreenCard(
-                              title: trendingWorkout.title,
-                              subtitle: '',
-                              description: trendingWorkout.subtitle,
-                              imagePath: trendingWorkout.imageUrl,
-                              
-                              onJoin: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => TrendingSubScreen(id: trendingWorkout.id, recommendationCategory: RecommendationCategory.workout,)));
-                              },
-                            ),
-                          );
-                        }),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: state.trendingWorkoutList.length,
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      itemBuilder: (context, index) {
+                        final trendingWorkout =
+                            state.trendingWorkoutList[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 16),
+                          child: CustomMainScreenCard(
+                            title: trendingWorkout.title,
+                            subtitle: '',
+                            description: trendingWorkout.subtitle,
+                            imagePath: trendingWorkout.imageUrl,
+                            onJoin: () {
+                              // Логування натискання на картку тренування
+                              _analyticsRepository.logEvent(
+                                name: 'card_click',
+                                parameters: {
+                                  'screen_name': 'trending_screen',
+                                  'category': 'workout',
+                                  'item_id': trendingWorkout.id,
+                                  'item_title': trendingWorkout.title,
+                                },
+                              );
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => TrendingSubScreen(
+                                    id: trendingWorkout.id,
+                                    recommendationCategory:
+                                        RecommendationCategory.workout,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -89,37 +128,51 @@ class _TrendingScreenState extends State<TrendingScreen> {
                       style: theme.textTheme.labelSmall,
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.27,
                     width: double.infinity,
                     child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: state.trendingFoodRecommendationList.length,
-                        padding: EdgeInsets.symmetric(horizontal: 8),
-                        itemBuilder: (context, index) {
-                          final foodRecommandation =
-                              state.trendingFoodRecommendationList[index];
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 16),
-                            child: CustomMainScreenCard(
-                              title: foodRecommandation.title,
-                              subtitle: foodRecommandation.foodCategory,
-                              description: foodRecommandation.description ?? '',
-                              imagePath: foodRecommandation.imageUrl,
-                              onJoin: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => TrendingSubScreen(id: foodRecommandation.id, recommendationCategory: RecommendationCategory.food,)));
-                              },
-                            ),
-                          );
-                        }),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: state.trendingFoodRecommendationList.length,
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      itemBuilder: (context, index) {
+                        final foodRecommendation =
+                            state.trendingFoodRecommendationList[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 16),
+                          child: CustomMainScreenCard(
+                            title: foodRecommendation.title,
+                            subtitle: foodRecommendation.foodCategory,
+                            description: foodRecommendation.description ?? '',
+                            imagePath: foodRecommendation.imageUrl,
+                            onJoin: () {
+                              // Логування натискання на картку рекомендації їжі
+                              _analyticsRepository.logEvent(
+                                name: 'card_click',
+                                parameters: {
+                                  'screen_name': 'trending_screen',
+                                  'category': 'food',
+                                  'item_id': foodRecommendation.id,
+                                  'item_title': foodRecommendation.title,
+                                },
+                              );
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => TrendingSubScreen(
+                                    id: foodRecommendation.id,
+                                    recommendationCategory:
+                                        RecommendationCategory.food,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -128,60 +181,80 @@ class _TrendingScreenState extends State<TrendingScreen> {
                       style: theme.textTheme.labelSmall,
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.27,
                     width: double.infinity,
                     child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: state.trendingChallengeList.length,
-                        padding: EdgeInsets.symmetric(horizontal: 8),
-                        itemBuilder: (context, index) {
-                          final trendingChallenges =
-                              state.trendingChallengeList[index];
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 16),
-                            child: CustomMainScreenCard(
-                              title: trendingChallenges.title,
-                              subtitle: trendingChallenges.subtitle,
-                              description: trendingChallenges.description!,
-                              imagePath: trendingChallenges.imageUrl,
-                              onJoin: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => TrendingSubScreen(id: trendingChallenges.id, recommendationCategory: RecommendationCategory.challenges,)));
-                              },
-                            ),
-                          );
-                        }),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: state.trendingChallengeList.length,
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      itemBuilder: (context, index) {
+                        final trendingChallenge =
+                            state.trendingChallengeList[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 16),
+                          child: CustomMainScreenCard(
+                            title: trendingChallenge.title,
+                            subtitle: trendingChallenge.subtitle,
+                            description: trendingChallenge.description!,
+                            imagePath: trendingChallenge.imageUrl,
+                            onJoin: () {
+                              // Логування натискання на картку челенджу
+                              _analyticsRepository.logEvent(
+                                name: 'card_click',
+                                parameters: {
+                                  'screen_name': 'trending_screen',
+                                  'category': 'challenge',
+                                  'item_id': trendingChallenge.id,
+                                  'item_title': trendingChallenge.title,
+                                },
+                              );
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => TrendingSubScreen(
+                                    id: trendingChallenge.id,
+                                    recommendationCategory:
+                                        RecommendationCategory.challenges,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
+                  const SizedBox(height: 30),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Text(
                           'About us',
                           style: theme.textTheme.labelSmall,
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
+                      const SizedBox(height: 10),
+                      FollowOnSocialNetworks(
+                        onSocialNetworkClick: (network) {
+                          _analyticsRepository.logEvent(
+                            name: 'social_network_click',
+                            parameters: {
+                              'screen_name': 'trending_screen',
+                              'network': network,
+                            },
+                          );
+                        },
                       ),
-                      FollowOnSocialNetworks(),
                     ],
-                  )
+                  ),
                 ],
               ),
             );
           } else {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator.adaptive(),
             );
           }
