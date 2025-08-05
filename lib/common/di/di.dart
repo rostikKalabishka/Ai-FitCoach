@@ -31,6 +31,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../repositories/challenge_repository/abstract_challenge_repository.dart';
 import '../../repositories/challenge_repository/challenge_repository.dart';
 import '../../repositories/chat_repository/chat.dart';
+import '../../repositories/crashlytics_repository/crashlytics.dart';
 import '../../repositories/settings_repository/settings.dart';
 
 final getIt = GetIt.instance;
@@ -45,6 +46,9 @@ void initDI({required SharedPreferences sharedPreferences}) {
 
   getIt.registerLazySingleton<AbstractAnalyticsRepository>(
       () => AnalyticsRepository());
+
+  getIt.registerLazySingleton<AbstractCrashlyticsRepository>(
+      () => CrashlyticsRepository());
 
   getIt.registerLazySingleton<AbstractHealthRepository>(
       () => HealthRepository());
