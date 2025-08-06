@@ -104,6 +104,7 @@ class _TrendingScreenState extends State<TrendingScreen> {
                                   'item_title': trendingWorkout.title,
                                 },
                               );
+
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => TrendingSubScreen(
