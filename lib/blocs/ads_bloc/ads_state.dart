@@ -7,22 +7,36 @@ abstract class AdsState extends Equatable {
   List<Object> get props => [];
 }
 
-class AdsInitialState extends AdsState {}
+class AdsInitialState extends AdsState {
+  const AdsInitialState();
+}
 
-class AdLoadedState extends AdsState {
-  final BannerAd ad;
-  const AdLoadedState({required this.ad});
+class AdsLoadedState extends AdsState {
+  final BannerAd? bannerAd;
+  final InterstitialAd? interstitialAd;
+  final NativeAd? nativeAd;
 
-  AdLoadedState copyWith({
-    BannerAd? ad,
+  const AdsLoadedState({
+    this.bannerAd,
+    this.interstitialAd,
+    this.nativeAd,
+  });
+
+  AdsLoadedState copyWith({
+    BannerAd? bannerAd,
+    InterstitialAd? interstitialAd,
+    NativeAd? nativeAd,
   }) {
-    return AdLoadedState(
-      ad: ad ?? this.ad,
+    return AdsLoadedState(
+      bannerAd: bannerAd ?? this.bannerAd,
+      interstitialAd: interstitialAd ?? this.interstitialAd,
+      nativeAd: nativeAd ?? this.nativeAd,
     );
   }
 
   @override
-  List<Object> get props => [ad];
+  List<Object> get props =>
+      [bannerAd ?? '', interstitialAd ?? '', nativeAd ?? ''];
 }
 
 class AdFailedState extends AdsState {
