@@ -1,10 +1,10 @@
+import 'package:ai_fit_coach/blocs/ads_bloc/ads_bloc.dart';
 import 'package:ai_fit_coach/blocs/health_bloc/health_bloc.dart';
-
-import 'package:ai_fit_coach/blocs/bloc/workout_exercise_bloc.dart';
 
 import 'package:ai_fit_coach/blocs/history_bloc/history_bloc.dart';
 import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
 import 'package:ai_fit_coach/blocs/user_bloc/user_bloc.dart';
+import 'package:ai_fit_coach/blocs/workout_exercise_bloc/workout_exercise_bloc.dart';
 import 'package:ai_fit_coach/common/di/di.dart';
 import 'package:ai_fit_coach/features/ai_chat/bloc/chat_bloc.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
@@ -59,7 +59,11 @@ class AppInitializer extends StatelessWidget {
           ),
           BlocProvider(
             create: (_) => getIt<TrendingDetailsBloc>(),
-          )
+          ),
+          BlocProvider(
+            create: (_) =>
+                getIt<AdsBloc>()..add(LoadBannerAdEvent()), // Змінено тут
+          ),
         ],
         child: child,
       ),

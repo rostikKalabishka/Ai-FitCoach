@@ -63,6 +63,8 @@
 	<string>Ai Fit Coach хоче надсилати вам сповіщення, щоб інформувати про прогрес у тренуваннях та нагадування.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-2858198985041159~1379479866</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

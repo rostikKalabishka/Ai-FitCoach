@@ -1,4 +1,4 @@
-import 'package:ai_fit_coach/blocs/bloc/workout_exercise_bloc.dart';
+import 'package:ai_fit_coach/blocs/workout_exercise_bloc/workout_exercise_bloc.dart';
 import 'package:ai_fit_coach/common/api/model/workout/workout_item.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';

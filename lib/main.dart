@@ -11,6 +11,7 @@ import 'package:ai_fit_coach/config/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 //final navigatorKey = GlobalKey<NavigatorState>();
@@ -21,6 +22,7 @@ Future<void> main() async {
   await dotenv.load(fileName: ".env");
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await MobileAds.instance.initialize();
 
   final prefs = await _initPrefs();
 
