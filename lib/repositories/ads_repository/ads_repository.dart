@@ -18,4 +18,26 @@ class AdsRepository implements AbstractAdsRepository {
       throw UnsupportedError('Unsupported platform');
     }
   }
+
+  @override
+  String get interstitialAdUnitId {
+    if (Platform.isAndroid) {
+      return 'ca-app-pub-3940256099942544/1033173712'; // Тестовий ID для Android
+    } else if (Platform.isIOS) {
+      return 'ca-app-pub-3940256099942544/4411468910'; // Тестовий ID для iOS
+    } else {
+      throw UnsupportedError('Unsupported platform');
+    }
+  }
+
+  @override
+  String get nativeAdUnitId {
+    if (Platform.isAndroid) {
+      return 'ca-app-pub-3940256099942544/2247696110'; // Тестовий ID для Android
+    } else if (Platform.isIOS) {
+      return 'ca-app-pub-3940256099942544/3986624511'; // Тестовий ID для iOS
+    } else {
+      throw UnsupportedError('Unsupported platform');
+    }
+  }
 }

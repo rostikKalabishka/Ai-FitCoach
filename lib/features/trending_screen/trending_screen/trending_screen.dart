@@ -1,15 +1,19 @@
+import 'package:ai_fit_coach/blocs/ads_bloc/ads_bloc.dart';
+
 import 'package:ai_fit_coach/features/trending_screen/follow_on_social_networks.dart';
 import 'package:ai_fit_coach/features/trending_screen/trending_details/bloc/trending_details_bloc.dart';
 import 'package:ai_fit_coach/features/trending_screen/trending_screen/bloc/list_bloc.dart';
 import 'package:ai_fit_coach/features/trending_screen/trending_details/trending_subscreen.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
-import 'package:ai_fit_coach/ui/widgets/banner_ad_widget.dart';
+import 'package:ai_fit_coach/ui/widgets/ads/banner_ad_widget.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_main_screen_card.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'dart:developer';
 
 @RoutePage()
 class TrendingScreen extends StatefulWidget {
@@ -28,7 +32,6 @@ class _TrendingScreenState extends State<TrendingScreen> {
   void initState() {
     super.initState();
     _screenEnterTime = DateTime.now();
-    // Логування перегляду екрану
     _analyticsRepository.logScreenView(
       screenName: 'trending_screen',
       screenClass: 'TrendingScreen',
@@ -38,7 +41,6 @@ class _TrendingScreenState extends State<TrendingScreen> {
 
   @override
   void dispose() {
-    // Логування виходу з екрану з тривалістю
     final durationSeconds =
         DateTime.now().difference(_screenEnterTime).inSeconds;
     _analyticsRepository.logEvent(
@@ -49,6 +51,57 @@ class _TrendingScreenState extends State<TrendingScreen> {
       },
     );
     super.dispose();
+  }
+
+  void _navigateToSubScreen(String id, RecommendationCategory category) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => TrendingSubScreen(
+          id: id,
+          recommendationCategory: category,
+        ),
+      ),
+    );
+  }
+
+  // Винесений метод для обробки натискання на будь-яку картку
+  void _handleCardTap(dynamic item, RecommendationCategory category) {
+    _analyticsRepository.logEvent(
+      name: 'card_click',
+      parameters: {
+        'screen_name': 'trending_screen',
+        'category': category.toString().split('.').last,
+        'item_id': item.id,
+        'item_title': item.title,
+      },
+    );
+
+    final adsBloc = context.read<AdsBloc>();
+    final adsState = adsBloc.state;
+
+    // Перевіряємо, чи є завантажена міжсторінкова реклама
+    if (adsState is AdsLoadedState && adsState.interstitialAd != null) {
+      final ad = adsState.interstitialAd!;
+      ad.fullScreenContentCallback = FullScreenContentCallback(
+        onAdDismissedFullScreenContent: (ad) {
+          log('onAdDismissedFullScreenContent');
+          ad.dispose();
+          _navigateToSubScreen(item.id, category);
+          adsBloc.add(LoadInterstitialAdEvent());
+        },
+        onAdFailedToShowFullScreenContent: (ad, error) {
+          log('onAdFailedToShowFullScreenContent: $error');
+          ad.dispose();
+          _navigateToSubScreen(item.id, category);
+          adsBloc.add(LoadInterstitialAdEvent());
+        },
+      );
+      ad.show();
+    } else {
+      // Якщо реклама не завантажена, одразу переходимо на екран
+      _navigateToSubScreen(item.id, category);
+      adsBloc.add(LoadInterstitialAdEvent());
+    }
   }
 
   @override
@@ -95,28 +148,8 @@ class _TrendingScreenState extends State<TrendingScreen> {
                             subtitle: '',
                             description: trendingWorkout.subtitle,
                             imagePath: trendingWorkout.imageUrl,
-                            onJoin: () {
-                              // Логування натискання на картку тренування
-                              _analyticsRepository.logEvent(
-                                name: 'card_click',
-                                parameters: {
-                                  'screen_name': 'trending_screen',
-                                  'category': 'workout',
-                                  'item_id': trendingWorkout.id,
-                                  'item_title': trendingWorkout.title,
-                                },
-                              );
-
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => TrendingSubScreen(
-                                    id: trendingWorkout.id,
-                                    recommendationCategory:
-                                        RecommendationCategory.workout,
-                                  ),
-                                ),
-                              );
-                            },
+                            onJoin: () => _handleCardTap(trendingWorkout,
+                                RecommendationCategory.workout),
                           ),
                         );
                       },
@@ -149,27 +182,8 @@ class _TrendingScreenState extends State<TrendingScreen> {
                             subtitle: foodRecommendation.foodCategory,
                             description: foodRecommendation.description ?? '',
                             imagePath: foodRecommendation.imageUrl,
-                            onJoin: () {
-                              // Логування натискання на картку рекомендації їжі
-                              _analyticsRepository.logEvent(
-                                name: 'card_click',
-                                parameters: {
-                                  'screen_name': 'trending_screen',
-                                  'category': 'food',
-                                  'item_id': foodRecommendation.id,
-                                  'item_title': foodRecommendation.title,
-                                },
-                              );
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => TrendingSubScreen(
-                                    id: foodRecommendation.id,
-                                    recommendationCategory:
-                                        RecommendationCategory.food,
-                                  ),
-                                ),
-                              );
-                            },
+                            onJoin: () => _handleCardTap(foodRecommendation,
+                                RecommendationCategory.food),
                           ),
                         );
                       },
@@ -202,27 +216,8 @@ class _TrendingScreenState extends State<TrendingScreen> {
                             subtitle: trendingChallenge.subtitle,
                             description: trendingChallenge.description!,
                             imagePath: trendingChallenge.imageUrl,
-                            onJoin: () {
-                              // Логування натискання на картку челенджу
-                              _analyticsRepository.logEvent(
-                                name: 'card_click',
-                                parameters: {
-                                  'screen_name': 'trending_screen',
-                                  'category': 'challenge',
-                                  'item_id': trendingChallenge.id,
-                                  'item_title': trendingChallenge.title,
-                                },
-                              );
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => TrendingSubScreen(
-                                    id: trendingChallenge.id,
-                                    recommendationCategory:
-                                        RecommendationCategory.challenges,
-                                  ),
-                                ),
-                              );
-                            },
+                            onJoin: () => _handleCardTap(trendingChallenge,
+                                RecommendationCategory.challenges),
                           ),
                         );
                       },
