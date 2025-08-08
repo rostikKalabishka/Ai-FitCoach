@@ -3,7 +3,7 @@ import 'package:ai_fit_coach/router/router.dart';
 import 'package:ai_fit_coach/ui/widgets/widgets.dart';
 import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 

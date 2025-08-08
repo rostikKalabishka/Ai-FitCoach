@@ -54,6 +54,10 @@
         <meta-data android:name="com.facebook.sdk.ClientToken"
             android:value="@string/facebook_client_token" />
 
+<!-- Google Ads-->
+        <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="ca-app-pub-2858198985041159~7401930919"/>
+
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />

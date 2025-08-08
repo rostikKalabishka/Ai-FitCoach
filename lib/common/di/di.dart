@@ -1,10 +1,10 @@
+import 'package:ai_fit_coach/blocs/ads_bloc/ads_bloc.dart';
 import 'package:ai_fit_coach/blocs/health_bloc/health_bloc.dart';
-
-import 'package:ai_fit_coach/blocs/bloc/workout_exercise_bloc.dart';
 
 import 'package:ai_fit_coach/blocs/history_bloc/history_bloc.dart';
 import 'package:ai_fit_coach/blocs/settings_cubit/settings_cubit.dart';
 import 'package:ai_fit_coach/blocs/user_bloc/user_bloc.dart';
+import 'package:ai_fit_coach/blocs/workout_exercise_bloc/workout_exercise_bloc.dart';
 import 'package:ai_fit_coach/features/ai_chat/bloc/chat_bloc.dart';
 import 'package:ai_fit_coach/features/auth/bloc/auth_bloc.dart';
 import 'package:ai_fit_coach/features/challenges/bloc/challenge_bloc.dart';
@@ -12,6 +12,7 @@ import 'package:ai_fit_coach/features/loader/bloc/authentication_bloc.dart';
 import 'package:ai_fit_coach/features/trending_screen/trending_details/bloc/trending_details_bloc.dart';
 import 'package:ai_fit_coach/features/trending_screen/trending_screen/bloc/list_bloc.dart';
 import 'package:ai_fit_coach/features/user_parameters/bloc/user_parameters_bloc.dart';
+import 'package:ai_fit_coach/repositories/ads_repository/ads.dart';
 import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
 import 'package:ai_fit_coach/repositories/analytics_repository/analytics_repository.dart';
 
@@ -44,6 +45,7 @@ void initDI({required SharedPreferences sharedPreferences}) {
 
   getIt.registerLazySingleton<AbstractChatRepository>(() => ChatRepository());
 
+  getIt.registerLazySingleton<AbstractAdsRepository>(() => AdsRepository());
   getIt.registerLazySingleton<AbstractAnalyticsRepository>(
       () => AnalyticsRepository());
 
@@ -101,6 +103,12 @@ void initDI({required SharedPreferences sharedPreferences}) {
   getIt.registerLazySingleton<HistoryBloc>(
     () => HistoryBloc(
       chatRepository: getIt<AbstractChatRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<AdsBloc>(
+    () => AdsBloc(
+      adsRepository: getIt<AbstractAdsRepository>(),
     ),
   );
 

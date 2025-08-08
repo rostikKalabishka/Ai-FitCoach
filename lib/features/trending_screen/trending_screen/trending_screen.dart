@@ -4,6 +4,7 @@ import 'package:ai_fit_coach/features/trending_screen/trending_screen/bloc/list_
 import 'package:ai_fit_coach/features/trending_screen/trending_details/trending_subscreen.dart';
 import 'package:ai_fit_coach/generated/l10n.dart';
 import 'package:ai_fit_coach/repositories/analytics_repository/abstract_analytics_repository.dart';
+import 'package:ai_fit_coach/ui/widgets/banner_ad_widget.dart';
 import 'package:ai_fit_coach/ui/widgets/custom_main_screen_card.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +68,7 @@ class _TrendingScreenState extends State<TrendingScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const BannerAdWidget(),
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
