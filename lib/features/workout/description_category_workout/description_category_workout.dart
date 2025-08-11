@@ -36,7 +36,6 @@ class _DescriptionCategoryWorkoutState
   void initState() {
     super.initState();
     _screenEnterTime = DateTime.now();
-    // Логування перегляду екрану
     _analyticsRepository.logScreenView(
       screenName: 'workout_details_screen',
       screenClass: 'DescriptionCategoryWorkout',
@@ -49,7 +48,6 @@ class _DescriptionCategoryWorkoutState
 
   @override
   void dispose() {
-    // Логування виходу з екрану з тривалістю
     final durationSeconds =
         DateTime.now().difference(_screenEnterTime).inSeconds;
     _analyticsRepository.logEvent(
@@ -68,250 +66,205 @@ class _DescriptionCategoryWorkoutState
   Widget build(BuildContext context) {
     final workoutItem = widget.workoutItem;
     final theme = Theme.of(context);
+
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: BlocBuilder<WorkoutExerciseBloc, WorkoutExerciseState>(
         builder: (context, state) {
           if (state is WorkoutExerciseLoaded) {
-            return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                        height: 350,
-                        width: MediaQuery.of(context).size.width,
-                        child: Image(
-                          image:
-                              CachedNetworkImageProvider(workoutItem.imageUrl),
-                          fit: BoxFit.cover,
-                        ),
+            return CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  pinned: true,
+                  expandedHeight: 350,
+                  flexibleSpace: FlexibleSpaceBar(
+                    background: CachedNetworkImage(
+                      imageUrl: workoutItem.imageUrl,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  leading: IconButton(
+                    onPressed: () {
+                      _analyticsRepository.logButtonClick(
+                        buttonName: 'back_button',
+                        screenName: 'workout_details_screen',
+                      );
+                      Navigator.of(context).pop();
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: theme.bottomNavigationBarTheme.unselectedItemColor,
+                      size: 32,
+                    ),
+                  ),
+                ),
+
+                SliverToBoxAdapter(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.tertiary,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(24),
+                        topRight: Radius.circular(24),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 40),
-                        child: IconButton(
-                          onPressed: () {
-                            // Логування натискання кнопки "Назад"
-                            _analyticsRepository.logButtonClick(
-                              buttonName: 'back_button',
-                              screenName: 'workout_details_screen',
-                            );
-                            Navigator.of(context).pop();
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: theme
-                                .bottomNavigationBarTheme.unselectedItemColor,
-                            size: 32,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 310),
-                        child: Container(
-                          height: 190,
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.tertiary,
-                            borderRadius: BorderRadiusDirectional.only(
-                              topStart: Radius.circular(24),
-                              topEnd: Radius.circular(24),
-                            ),
-                          ),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    bottom: 8, left: 16, top: 16),
-                                child: SizedBox(
-                                  height: 30,
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: sections.length,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      final isSelected = index == selectedIndex;
-                                      return GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            selectedIndex = index;
-                                            // Логування вибору вкладки
-                                            _analyticsRepository.logEvent(
-                                              name: 'tab_select',
-                                              parameters: {
-                                                'screen_name':
-                                                    'workout_details_screen',
-                                                'tab_name': sections[index]
-                                                    .toLowerCase(),
-                                                'workout_id': workoutItem.id,
-                                                'workout_title':
-                                                    workoutItem.title,
-                                              },
-                                            );
-                                            // Оновлення блоку з новою категорією
-                                            context
-                                                .read<WorkoutExerciseBloc>()
-                                                .add(
-                                                  WorkoutExerciseItemEvent(
-                                                    workoutCategoryType:
-                                                        _getCategoryType(index),
-                                                    workoutId: workoutItem.id,
-                                                  ),
-                                                );
-                                          });
-                                        },
-                                        child: Container(
-                                          margin: const EdgeInsets.symmetric(
-                                              horizontal: 8, vertical: 1),
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 16),
-                                          decoration: BoxDecoration(
-                                            color: isSelected
-                                                ? theme.colorScheme.primary
-                                                : const Color.fromARGB(
-                                                    255, 39, 39, 39),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                          ),
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                            sections[index],
-                                            style:
-                                                theme.textTheme.headlineMedium,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ),
-                              Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 12),
-                                    child: Text(
-                                      workoutItem.title,
-                                      style: theme.textTheme.displaySmall
-                                          ?.copyWith(
-                                        fontSize: 24,
-                                        color: theme.colorScheme.onSurface,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 12),
-                                    child: Text(
-                                      'duration: ${workoutItem.subtitle} minutes',
-                                      style: theme.textTheme.displaySmall
-                                          ?.copyWith(
-                                        fontSize: 16,
-                                        color: theme.colorScheme.onSurface,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      // Логування додавання до улюблених
+                    ),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          child: SizedBox(
+                            height: 30,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: sections.length,
+                              itemBuilder: (context, index) {
+                                final isSelected = index == selectedIndex;
+                                return GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      selectedIndex = index;
                                       _analyticsRepository.logEvent(
-                                        name: 'add_to_favorites',
+                                        name: 'tab_select',
                                         parameters: {
                                           'screen_name':
                                               'workout_details_screen',
+                                          'tab_name':
+                                              sections[index].toLowerCase(),
                                           'workout_id': workoutItem.id,
                                           'workout_title': workoutItem.title,
                                         },
                                       );
-                                      // Додайте логіку для додавання до улюблених
-                                    },
-                                    icon: Icon(Icons.favorite_border_outlined),
-                                  ),
-                                  Container(
-                                    height: MediaQuery.of(context).size.width *
-                                        0.12,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.7,
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            theme.colorScheme.primary,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(16),
-                                        ),
-                                      ),
-                                      onPressed: () {
-                                        // Логування натискання кнопки "Start Workout"
-                                        _analyticsRepository.logButtonClick(
-                                          buttonName: 'start_workout',
-                                          screenName: 'workout_details_screen',
-                                          parameters: {
-                                            'workout_id': workoutItem.id,
-                                            'workout_title': workoutItem.title,
-                                            'duration_minutes':
-                                                workoutItem.subtitle,
-                                          },
-                                        );
-                                        // Додайте логіку для початку тренування
-                                      },
-                                      child: Text(
-                                        S.of(context).startWorkout,
-                                        style: theme.textTheme.displaySmall
-                                            ?.copyWith(fontSize: 18),
-                                      ),
+                                      context
+                                          .read<WorkoutExerciseBloc>()
+                                          .add(WorkoutExerciseItemEvent(
+                                            workoutCategoryType:
+                                                _getCategoryType(index),
+                                            workoutId: workoutItem.id,
+                                          ));
+                                    });
+                                  },
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 8),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16),
+                                    decoration: BoxDecoration(
+                                      color: isSelected
+                                          ? theme.colorScheme.primary
+                                          : const Color.fromARGB(
+                                              255, 39, 39, 39),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      sections[index],
+                                      style: theme.textTheme.headlineMedium,
                                     ),
                                   ),
-                                ],
-                              ),
-                            ],
+                                );
+                              },
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
                         Text(
-                          'Exercises',
-                          style: theme.textTheme.labelSmall,
-                        ),
-                        Container(
-                          height: 400,
-                          width: double.infinity,
-                          child: ListView.builder(
-                            itemCount: state.workoutExercise.length,
-                            padding: EdgeInsets.zero,
-                            clipBehavior: Clip.hardEdge,
-                            itemBuilder: (context, index) {
-                              final exercise = state.workoutExercise[index];
-                              // Логування перегляду вправи
-                              _analyticsRepository.logExerciseViewed(
-                                exerciseName: exercise.exerciseName,
-                                category: sections[selectedIndex].toLowerCase(),
-                              );
-                              return CustomSubcategoryWorkout(
-                                title: exercise.exerciseName,
-                                imagePath: exercise.imageUrl,
-                                repsNumber: exercise.exerciseReps,
-                              );
-                            },
+                          workoutItem.title,
+                          style: theme.textTheme.displaySmall?.copyWith(
+                            fontSize: 24,
+                            color: theme.colorScheme.onSurface,
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 12),
+                          child: Text(
+                            'duration: ${workoutItem.subtitle} minutes',
+                            style: theme.textTheme.displaySmall?.copyWith(
+                              fontSize: 16,
+                              color: theme.colorScheme.onSurface,
+                            ),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                _analyticsRepository.logEvent(
+                                  name: 'add_to_favorites',
+                                  parameters: {
+                                    'screen_name': 'workout_details_screen',
+                                    'workout_id': workoutItem.id,
+                                    'workout_title': workoutItem.title,
+                                  },
+                                );
+                              },
+                              icon: const Icon(Icons.favorite_border_outlined),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.7,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: theme.colorScheme.primary,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  _analyticsRepository.logButtonClick(
+                                    buttonName: 'start_workout',
+                                    screenName: 'workout_details_screen',
+                                    parameters: {
+                                      'workout_id': workoutItem.id,
+                                      'workout_title': workoutItem.title,
+                                      'duration_minutes': workoutItem.subtitle,
+                                    },
+                                  );
+                                },
+                                child: Text(
+                                  S.of(context).startWorkout,
+                                  style: theme.textTheme.displaySmall
+                                      ?.copyWith(fontSize: 18),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+
+                // Заголовок "Exercises"
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 16),
+                    child: Text(
+                      'Exercises',
+                      style: theme.textTheme.labelSmall,
+                    ),
+                  ),
+                ),
+
+                // Список вправ
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      final exercise = state.workoutExercise[index];
+                      _analyticsRepository.logExerciseViewed(
+                        exerciseName: exercise.exerciseName,
+                        category: sections[selectedIndex].toLowerCase(),
+                      );
+                      return CustomSubcategoryWorkout(
+                        title: exercise.exerciseName,
+                        imagePath: exercise.imageUrl,
+                        repsNumber: exercise.exerciseReps,
+                      );
+                    },
+                    childCount: state.workoutExercise.length,
+                  ),
+                ),
+              ],
             );
           } else {
             return const Center(
